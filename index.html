@@ -106,6 +106,10 @@ body.drag-cell .hint{display:none}
 .del.confirm{color:var(--warn);border-color:var(--warn)}
 .addrow{min-height:40px;padding:0 14px;border:1.5px dashed var(--line);background:none;border-radius:8px;font:500 13px/1 var(--font-body);color:var(--muted);width:100%}
 .setnote{margin:6px 0 0;font-size:13px;color:var(--muted)}
+.steps{margin:0 0 10px;padding-left:20px;font-size:14px;display:grid;gap:4px}
+.setup a{color:var(--focus)}
+.syncst{font-size:14px}
+.foot button{border:0;background:none;padding:0;color:var(--focus);text-decoration:underline;font:inherit}
 
 /* Day tabs (phone) */
 .days{display:none;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
@@ -271,6 +275,18 @@ var selDay=(fromKey(todayKey).getDay()+6)%7;
 var weekUnsub=null, weekTimer=0, setTimer=0, writeChain=Promise.resolve();
 var focusAfter=null;
 
+/* Change times per week and for settings, so two devices can tell whose copy is newer. */
+var meta=ljson('sp-meta')||{s:0,w:{}};
+if(!meta.w)meta.w={};
+try{
+  for(var mi=0;mi<localStorage.length;mi++){
+    var mk=localStorage.key(mi);
+    if(mk&&mk.indexOf('sp-week-')===0&&!meta.w[mk.slice(8)])meta.w[mk.slice(8)]=1;
+  }
+  if(lget('sp-settings')&&!meta.s)meta.s=1;
+}catch(e){}
+function stamp(k){ if(k==null)meta.s=Date.now(); else meta.w[k]=Date.now(); lset('sp-meta',JSON.stringify(meta)); }
+
 /* ---------- storage ---------- */
 function writeDoc(path,obj){
   if(!db||!uid){sync='local';renderFoot();return;}
@@ -281,6 +297,7 @@ function writeDoc(path,obj){
 function saveWeekNow(){
   clearTimeout(weekTimer);weekTimer=0;
   lset('sp-week-'+wk,JSON.stringify({cells:cells}));
+  stamp(wk); gistSoon();
   if(uid) writeDoc('data/users/'+uid+'/planner-week-'+wk,{week:wk,cells:cells});
   else {sync='local';renderFoot();}
 }
@@ -288,6 +305,7 @@ function saveWeekSoon(){clearTimeout(weekTimer);weekTimer=setTimeout(saveWeekNow
 function saveSettingsNow(){
   clearTimeout(setTimer);setTimer=0;
   lset('sp-settings',JSON.stringify(settings));
+  stamp(null); gistSoon();
   if(uid) writeDoc('data/users/'+uid+'/planner-settings',settings);
   else {sync='local';renderFoot();}
 }
@@ -310,6 +328,80 @@ function subscribeWeek(){
     },function(){sync='local';renderFoot();});
   }catch(e){sync='local';}
 }
+
+/* ---------- GitHub gist sync (for the standalone app) ---------- */
+var GIST_FILE='study-planner.json', GIST_DESC='Study Week Planner data';
+var gh={token:lget('sp-gh-token')||'',id:lget('sp-gh-gist')||'',state:'off',busy:false,again:false,timer:0,at:0,msg:''};
+function ghFetch(path,opt){
+  opt=opt||{};
+  opt.cache='no-store';
+  opt.headers={'Authorization':'Bearer '+gh.token,'Accept':'application/vnd.github+json'};
+  if(opt.body)opt.headers['Content-Type']='application/json';
+  return fetch('https://api.github.com'+path,opt).then(function(r){
+    if(!r.ok){var e=new Error('HTTP '+r.status);e.status=r.status;throw e;}
+    return r.status===204?null:r.json();
+  });
+}
+function localBundle(){
+  var weeks={};
+  Object.keys(meta.w).forEach(function(k){var d=ljson('sp-week-'+k);weeks[k]={cells:(d&&d.cells)||{},t:meta.w[k]};});
+  return {v:1,settings:{data:settings,t:meta.s},weeks:weeks};
+}
+function gistFiles(){var f={};f[GIST_FILE]={content:JSON.stringify(localBundle())};return f;}
+function getGist(){
+  if(gh.id) return ghFetch('/gists/'+gh.id).catch(function(e){
+    if(e.status===404){gh.id='';lset('sp-gh-gist','');return getGist();}
+    throw e;
+  });
+  return ghFetch('/gists?per_page=100').then(function(list){
+    var hit=(list||[]).filter(function(g){return g.files&&g.files[GIST_FILE];})[0];
+    if(hit){gh.id=hit.id;lset('sp-gh-gist',hit.id);return ghFetch('/gists/'+hit.id);}
+    return ghFetch('/gists',{method:'POST',body:JSON.stringify({description:GIST_DESC,public:false,files:gistFiles()})})
+      .then(function(g){gh.id=g.id;lset('sp-gh-gist',g.id);return g;});
+  });
+}
+/* Newest copy wins, per week and for settings. Returns true when the gist is missing something this device has. */
+function mergeRemote(r){
+  if(!r||typeof r!=='object')return true;
+  var push=false, redraw=false, rs=r.settings, rw=r.weeks||{};
+  if(rs&&rs.t>meta.s&&rs.data&&Array.isArray(rs.data.subjects)&&Array.isArray(rs.data.slots)){
+    settings=JSON.parse(JSON.stringify({subjects:rs.data.subjects,slots:rs.data.slots}));
+    meta.s=rs.t; lset('sp-settings',JSON.stringify(settings)); redraw=true;
+  } else if(meta.s>((rs&&rs.t)||0)) push=true;
+  Object.keys(rw).forEach(function(k){
+    var x=rw[k];
+    if(x&&x.t>(meta.w[k]||0)){
+      meta.w[k]=x.t; lset('sp-week-'+k,JSON.stringify({cells:x.cells||{}}));
+      if(k===wk){cells=JSON.parse(JSON.stringify(x.cells||{}));redraw=true;}
+    }
+  });
+  Object.keys(meta.w).forEach(function(k){if(!rw[k]||meta.w[k]>rw[k].t)push=true;});
+  lset('sp-meta',JSON.stringify(meta));
+  if(redraw)render();
+  return push;
+}
+function ghSync(){
+  if(!gh.token)return Promise.resolve();
+  if(gh.busy){gh.again=true;return Promise.resolve();}
+  clearTimeout(gh.timer);
+  if(weekTimer)saveWeekNow();
+  if(setTimer)saveSettingsNow();
+  clearTimeout(gh.timer);
+  gh.busy=true; gh.state='syncing'; renderFoot();
+  return getGist().then(function(g){
+    var remote=null;
+    try{var f=g&&g.files&&g.files[GIST_FILE];remote=f&&JSON.parse(f.content);}catch(e){}
+    if(mergeRemote(remote)) return ghFetch('/gists/'+gh.id,{method:'PATCH',body:JSON.stringify({files:gistFiles()})});
+  }).then(function(){gh.state='synced';gh.at=Date.now();},function(e){
+    gh.state=(e&&(e.status===401||e.status===403))?'auth':'offline';
+  }).then(function(){
+    gh.busy=false; renderFoot(); if(setupOpen)renderSetup();
+    if(gh.again){gh.again=false;gistSoon();}
+  });
+}
+function gistSoon(){ if(!gh.token)return; clearTimeout(gh.timer); gh.timer=setTimeout(ghSync,1500); }
+setInterval(function(){ if(gh.token&&!document.hidden&&!drag)ghSync(); },30000);
+window.addEventListener('online',function(){ if(gh.token)ghSync(); });
 
 /* ---------- model ---------- */
 function subj(id){for(var i=0;i<settings.subjects.length;i++)if(settings.subjects[i].id===id)return settings.subjects[i];return null;}
@@ -360,8 +452,24 @@ function renderTray(){
       '<span>'+esc(s.name||'Untitled')+'</span>'+(counts[s.id]?'<em>×'+counts[s.id]+'</em>':'')+'</button>';
   }).join(''):'<span class="hint">No subjects yet. Open Edit to add one.</span>';
 }
+function syncSetupHTML(){
+  if(uid)return '';
+  if(gh.token){
+    var st={syncing:'Syncing…',synced:'Synced'+(gh.at?' at '+new Date(gh.at).toLocaleTimeString('en-IE',{hour:'2-digit',minute:'2-digit'}):''),
+      offline:'Offline. Will sync when you are back online.',auth:'GitHub rejected the token. Disconnect and paste a new one.',off:'Connecting…'}[gh.state];
+    return '<div><h2>Sync across devices</h2>'+
+      '<p class="setnote">This device is connected. Your plan is kept in a private GitHub gist and syncs with every device you connect.</p>'+
+      '<div class="srow slot"><span class="syncst">'+esc(st)+'</span><button type="button" class="del" id="ghNow">Sync now</button></div>'+
+      '<button type="button" class="addrow" id="ghOff">Disconnect this device</button></div>';
+  }
+  return '<div><h2>Sync across devices</h2>'+
+    '<ol class="steps"><li><a href="https://github.com/settings/tokens/new?scopes=gist&amp;description=Study%20Planner" target="_blank" rel="noopener">Create a GitHub token</a> with only the <b>gist</b> box ticked. Pick an expiry after your exams.</li>'+
+    '<li>Paste it below and press Connect.</li><li>Do the same on your other device, using the same token.</li></ol>'+
+    '<div class="srow slot"><input class="input" id="ghTok" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_…" aria-label="GitHub token"><button type="button" class="del" id="ghGo">Connect</button></div>'+
+    (gh.msg?'<p class="setnote" style="color:var(--warn)">'+esc(gh.msg)+'</p>':'')+'</div>';
+}
 function renderSetup(){
-  var el=$('#setup'); el.hidden=!setupOpen; $('#editBtn').setAttribute('aria-expanded',String(setupOpen));
+  var el=$('#setup'), tokEl=document.getElementById('ghTok'), tokVal=tokEl?tokEl.value:''; el.hidden=!setupOpen; $('#editBtn').setAttribute('aria-expanded',String(setupOpen));
   if(!setupOpen)return;
   var used={}; visibleCells().forEach(function(k){used[cells[k].s]=(used[cells[k].s]||0)+1;});
   var usedSlot={}; visibleCells().forEach(function(k){var p=cellParts(k);usedSlot[p.slot]=(usedSlot[p.slot]||0)+1;});
@@ -378,7 +486,9 @@ function renderSetup(){
       return '<div class="srow slot"><span class="slotn">Slot '+(i+1)+'</span>'+
         '<button type="button" class="del'+(conf?' confirm':'')+'" data-delslot="'+esc(t.id)+'">'+(conf?(usedSlot[t.id]?'Delete + '+usedSlot[t.id]+' block'+(usedSlot[t.id]===1?'':'s'):'Confirm'):'Delete')+'</button></div>';
     }).join('')+'<button type="button" class="addrow" id="addSlot">+ Add slot</button>'+
-    '<p class="setnote">Every day and every week gets the same number of slots. Deleting one renumbers the rest.</p></div>';
+    '<p class="setnote">Every day and every week gets the same number of slots. Deleting one renumbers the rest.</p></div>'+
+    syncSetupHTML();
+  var tk=document.getElementById('ghTok'); if(tk&&tokVal)tk.value=tokVal;
 }
 function renderDays(){
   var counts=[0,0,0,0,0,0,0];
@@ -425,6 +535,14 @@ function renderBoard(){
   el.innerHTML=h;
 }
 function renderFoot(){
+  if(!uid){
+    var f=$('#foot');
+    if(gh.token){
+      f.textContent={syncing:'Syncing…',synced:'Synced across your devices',offline:'Offline. Changes are saved here and will sync later.',
+        auth:'Sync stopped: GitHub rejected the token. Open Edit subjects & slots to fix it.',off:'Connecting…'}[gh.state]||'';
+    } else f.innerHTML='Changes are kept on this device only. <button type="button" id="ghSetup">Set up sync</button>';
+    return;
+  }
   var t={idle:'Changes are kept on this device only.',saving:'Saving…',saved:'Saved',
     error:'Could not save to your account. Changes are kept on this device.',local:'Changes are kept on this device only.'};
   $('#foot').textContent=t[sync]||t.idle;
@@ -562,6 +680,20 @@ document.addEventListener('click',function(e){
     settings.subjects.push(ns); focusAfter='sn-'+ns.id; saveSettingsNow(); render();
     var inp=document.getElementById('sn-'+ns.id); if(inp)inp.select(); return;
   }
+  if(t.closest('#ghSetup')){ setupOpen=true; render(); var tke=document.getElementById('ghTok'); if(tke){tke.scrollIntoView({block:'center'});tke.focus();} return; }
+  if(t.closest('#ghGo')){
+    var tv=(($('#ghTok')||{}).value||'').trim(); if(!tv)return;
+    gh.token=tv; gh.msg=''; gh.state='off'; render();
+    ghSync().then(function(){
+      if(gh.state==='auth'){gh.token='';gh.msg='GitHub did not accept that token. Check you ticked the gist box and copied all of it.';}
+      else if(gh.state==='offline'&&!gh.id){gh.token='';gh.msg='Could not reach GitHub. Check your connection and try again.';}
+      else lset('sp-gh-token',tv);
+      render();
+    });
+    return;
+  }
+  if(t.closest('#ghNow')){ ghSync(); return; }
+  if(t.closest('#ghOff')){ gh.token='';gh.id='';gh.state='off';lset('sp-gh-token','');lset('sp-gh-gist','');render(); return; }
   if(t.closest('#addSlot')){
     settings.slots.push({id:uidGen()}); saveSettingsNow(); render(); return;
   }
@@ -583,7 +715,8 @@ document.addEventListener('keydown',function(e){
   }
 });
 document.addEventListener('visibilitychange',function(){
-  if(document.hidden){ if(weekTimer)saveWeekNow(); if(setTimer)saveSettingsNow(); }
+  if(document.hidden){ if(weekTimer)saveWeekNow(); if(setTimer)saveSettingsNow(); if(gh.token)ghSync(); }
+  else if(gh.token) ghSync();
   else { var n=keyOf(new Date()); if(n!==todayKey){todayKey=n;render();} }
 });
 
@@ -598,7 +731,7 @@ render();
       if(db&&user&&typeof user.id==='function'){try{uid=await user.id();}catch(e){uid=null;}}
     }
   }catch(e){db=null;}
-  if(!db||!uid){sync='local';renderFoot();return;}
+  if(!db||!uid){sync='local';renderFoot();if(gh.token)ghSync();return;}
   try{
     db.doc('data/users/'+uid+'/planner-settings').onSnapshot(function(s){
       if(setTimer||s.metadata.hasPendingWrites)return;
