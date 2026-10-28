@@ -191,6 +191,46 @@ body.armed .add{color:var(--muted)}
 .pick button{border-color:var(--k)}
 .pick .x{border-color:var(--edge)}
 
+/* View switch + progress page */
+.views{display:flex;width:max-content;max-width:100%;padding:3px;border:2px solid var(--edge);border-radius:999px;background:var(--surface)}
+.views button{min-height:38px;padding:0 20px;border:0;border-radius:999px;background:none;font-size:15px}
+.views button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+body.view-prog .navs,body.view-prog #tray,body.view-prog #setup,body.view-prog #days,body.view-prog #board{display:none!important}
+body:not(.view-prog) #prog{display:none}
+#prog{display:grid;gap:14px}
+.mods{display:flex;flex-wrap:wrap;gap:8px}
+.mod{--k:var(--c8);display:grid;gap:2px;min-height:48px;padding:6px 14px;text-align:left;border-radius:9px;border:2px solid var(--k);background:color-mix(in srgb,var(--k) 10%,var(--surface));font-size:15px}
+.mod small{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.mod[aria-pressed="true"]{background:var(--k);color:var(--surface)}
+.mod[aria-pressed="true"] small{color:inherit;opacity:.85}
+.pcard{--k:var(--c8);background:var(--surface);border:2px solid var(--edge);border-radius:12px;padding:16px;display:grid;gap:12px;min-width:0}
+.phead{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.phead h2{margin:0;font:400 24px/1.1 var(--font-display);color:var(--k);overflow-wrap:anywhere}
+.pct{font:400 30px/1 var(--font-display);font-variant-numeric:tabular-nums}
+.bar{height:18px;border-radius:999px;border:2px solid var(--k);background:color-mix(in srgb,var(--k) 12%,var(--surface));overflow:hidden}
+.bar span{display:block;height:100%;background:var(--k);transition:width .3s}
+.pstat{margin:-4px 0 0;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.legend{margin:0;font-size:13px;color:var(--muted)}
+.topics{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.topic{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;grid-template-areas:"tick name conf del";gap:8px;align-items:center;padding:8px;border:2px solid color-mix(in srgb,var(--k) 35%,var(--line));border-radius:10px;background:color-mix(in srgb,var(--k) 5%,var(--surface))}
+.tick{grid-area:tick;width:34px;height:34px;padding:0;border-radius:8px;border:2px solid var(--k);background:var(--surface);display:grid;place-items:center;color:var(--surface)}
+.tick svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.tick[aria-pressed="true"]{background:var(--k)}
+.tick[aria-pressed="true"] svg{opacity:1}
+.tname{grid-area:name;width:100%;min-width:0;min-height:36px;padding:4px 6px;border:0;border-radius:6px;background:none;font-size:16px}
+.tname:focus{outline:none;background:var(--bg)}
+.conf{grid-area:conf;display:flex;gap:4px}
+.conf button{width:32px;height:32px;padding:0;border-radius:7px;border:2px solid var(--k);background:var(--surface);font-size:14px;font-variant-numeric:tabular-nums}
+.conf button.on{background:var(--k);color:var(--surface)}
+.tdel{grid-area:del;width:auto;min-width:32px;padding:0 6px;font-size:13px}
+.tdel.confirm{color:var(--warn)}
+.addt{display:flex;gap:8px}
+.addt .input{flex:1;min-width:0}
+.addbtn{min-height:40px;padding:0 16px;border:2px solid var(--k);border-radius:8px;background:var(--k);color:var(--surface)}
+.pnone{margin:0;padding:18px;text-align:center;border:2px dashed var(--edge);border-radius:10px;color:var(--muted)}
+@media (max-width:560px){
+  .topic{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"tick name del" ". conf conf"}
+}
 @media (max-width:860px){
   .days{display:grid}
   .board{grid-template-columns:32px minmax(0,1fr)}
@@ -216,6 +256,11 @@ body.armed .add{color:var(--muted)}
     </div>
   </header>
 
+  <div class="views" role="group" aria-label="View">
+    <button type="button" data-view="plan" aria-pressed="true">Plan</button>
+    <button type="button" data-view="prog" aria-pressed="false">Progress</button>
+  </div>
+
   <section class="tray" id="tray" aria-label="Subjects">
     <div class="trayhead">
       <span class="hint" id="hint"></span>
@@ -229,6 +274,8 @@ body.armed .add{color:var(--muted)}
 
   <div class="days" id="days" role="group" aria-label="Day"></div>
   <div class="board" id="board"></div>
+
+  <section id="prog" aria-label="Module progress"></section>
 
   <p class="foot" id="foot" aria-live="polite"></p>
 </main>
@@ -272,12 +319,16 @@ var settings=ljson('sp-settings')||JSON.parse(JSON.stringify(DEFAULTS));
 var cells=(ljson('sp-week-'+wk)||{}).cells||{};
 var armed=null, picker=null, setupOpen=false, pendingDel=null;
 var selDay=(fromKey(todayKey).getDay()+6)%7;
+var progress=ljson('sp-progress')||{};
+var view=lget('sp-view')==='prog'?'prog':'plan';
+var selMod=lget('sp-mod')||'';
 var weekUnsub=null, weekTimer=0, setTimer=0, writeChain=Promise.resolve();
 var focusAfter=null;
 
 /* Change times per week and for settings, so two devices can tell whose copy is newer. */
 var meta=ljson('sp-meta')||{s:0,w:{}};
 if(!meta.w)meta.w={};
+if(!meta.pm)meta.pm={};
 try{
   for(var mi=0;mi<localStorage.length;mi++){
     var mk=localStorage.key(mi);
@@ -345,7 +396,9 @@ function ghFetch(path,opt){
 function localBundle(){
   var weeks={};
   Object.keys(meta.w).forEach(function(k){var d=ljson('sp-week-'+k);weeks[k]={cells:(d&&d.cells)||{},t:meta.w[k]};});
-  return {v:1,settings:{data:settings,t:meta.s},weeks:weeks};
+  var prog={};
+  Object.keys(meta.pm).forEach(function(k){prog[k]={topics:topicsOf(k),t:meta.pm[k]};});
+  return {v:1,settings:{data:settings,t:meta.s},weeks:weeks,progress:prog};
 }
 function gistFiles(){var f={};f[GIST_FILE]={content:JSON.stringify(localBundle())};return f;}
 function getGist(){
@@ -376,6 +429,13 @@ function mergeRemote(r){
     }
   });
   Object.keys(meta.w).forEach(function(k){if(!rw[k]||meta.w[k]>rw[k].t)push=true;});
+  var rp=r.progress||{}, pChanged=false;
+  Object.keys(rp).forEach(function(k){
+    var x=rp[k];
+    if(x&&x.t>(meta.pm[k]||0)&&Array.isArray(x.topics)){progress[k]={topics:x.topics};meta.pm[k]=x.t;pChanged=true;redraw=true;}
+  });
+  if(pChanged)lset('sp-progress',JSON.stringify(progress));
+  Object.keys(meta.pm).forEach(function(k){if(!rp[k]||meta.pm[k]>rp[k].t)push=true;});
   lset('sp-meta',JSON.stringify(meta));
   if(redraw)render();
   return push;
@@ -425,9 +485,41 @@ function moveCell(src,dst){
 }
 function removeCell(k){delete cells[k];saveWeekNow();render();}
 
+/* ---------- progress model ---------- */
+function topicsOf(sid){var p=progress[sid];return p&&Array.isArray(p.topics)?p.topics:[];}
+function topicById(id){return topicsOf(selMod).filter(function(t){return t.id===id;})[0];}
+/* Each topic is worth 100%: half for ticking it off, half for confidence (5/5 = full half). */
+function modScore(sid){
+  var ts=topicsOf(sid); if(!ts.length)return null;
+  var s=0; ts.forEach(function(t){s+=(t.done?.5:0)+(t.conf||0)/10;});
+  return Math.round(s/ts.length*100);
+}
+function saveProgress(sid){
+  if(!progress[sid])progress[sid]={topics:[]};
+  lset('sp-progress',JSON.stringify(progress));
+  meta.pm[sid]=Date.now(); lset('sp-meta',JSON.stringify(meta));
+  gistSoon();
+}
+function addTopics(txt){
+  txt=String(txt||'').trim(); if(!txt||!subj(selMod))return;
+  var names=[], m=txt.match(/^(\d+)\s*(?:-|–|to)\s*(\d+)$/i);
+  if(m){var a=+m[1],b=+m[2]; if(b>=a&&b-a<100) for(var i=a;i<=b;i++) names.push('Chapter '+i);}
+  if(!names.length) names=txt.split(/\s*[,;\n]\s*/).filter(Boolean);
+  if(!progress[selMod])progress[selMod]={topics:[]};
+  names.forEach(function(n,i){progress[selMod].topics.push({id:uidGen()+i,name:n.slice(0,80),done:false,conf:0});});
+  saveProgress(selMod); focusAfter='tNew'; render();
+}
+
 /* ---------- render ---------- */
 function fmtShort(k){return fromKey(k).toLocaleDateString('en-IE',{day:'numeric',month:'short'});}
 function renderHead(){
+  if(view==='prog'){
+    var sc=settings.subjects.map(function(s){return modScore(s.id);}).filter(function(x){return x!=null;});
+    $('#eyebrow').textContent='Progress';
+    $('#title').textContent='Module progress';
+    $('#stat').textContent=sc.length?'Overall '+Math.round(sc.reduce(function(a,b){return a+b;},0)/sc.length)+'% across '+sc.length+' module'+(sc.length===1?'':'s'):'Pick a module and add its chapters';
+    return;
+  }
   var end=addDays(wk,6), cur=weekStart(todayKey), diff=Math.round((fromKey(wk)-fromKey(cur))/6048e5);
   $('#eyebrow').textContent=diff===0?'This week':diff===1?'Next week':diff===-1?'Last week':'Week of';
   $('#title').textContent=fmtShort(wk)+' – '+fmtShort(end);
@@ -547,10 +639,44 @@ function renderFoot(){
     error:'Could not save to your account. Changes are kept on this device.',local:'Changes are kept on this device only.'};
   $('#foot').textContent=t[sync]||t.idle;
 }
+function renderProgress(){
+  document.body.classList.toggle('view-prog',view==='prog');
+  Array.prototype.forEach.call(document.querySelectorAll('[data-view]'),function(b){b.setAttribute('aria-pressed',String(b.dataset.view===view));});
+  var el=$('#prog'), newEl=document.getElementById('tNew'), newVal=newEl?newEl.value:'';
+  if(view!=='prog'){el.innerHTML='';return;}
+  if(!settings.subjects.length){el.innerHTML='<div class="empty"><b>No modules yet</b>Add subjects under Edit subjects &amp; slots on the Plan page.</div>';return;}
+  if(!subj(selMod))selMod=settings.subjects[0].id;
+  var s=subj(selMod), ts=topicsOf(selMod), sc=modScore(selMod)||0;
+  var done=ts.filter(function(t){return t.done;}).length;
+  var rated=ts.filter(function(t){return t.conf;});
+  var avg=rated.length?(rated.reduce(function(a,t){return a+t.conf;},0)/rated.length).toFixed(1):null;
+  var h='<div class="mods" role="group" aria-label="Module">'+settings.subjects.map(function(m){
+    var v=modScore(m.id);
+    return '<button type="button" class="mod" data-mod="'+esc(m.id)+'" aria-pressed="'+(m.id===selMod)+'" style="--k:'+kColor(m)+'">'+esc(m.name||'Untitled')+'<small>'+(v==null?'No topics yet':v+'%')+'</small></button>';
+  }).join('')+'</div>';
+  h+='<div class="pcard" style="--k:'+kColor(s)+'">'+
+    '<div class="phead"><h2>'+esc(s.name||'Untitled')+'</h2><span class="pct">'+(ts.length?sc+'%':'–')+'</span></div>'+
+    '<div class="bar" role="progressbar" aria-label="'+esc(s.name)+' progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+sc+'"><span style="width:'+sc+'%"></span></div>'+
+    (ts.length?'<p class="pstat">'+done+' of '+ts.length+' ticked · confidence '+(avg?avg+' / 5 average':'not rated yet')+(rated.length&&rated.length<ts.length?' · '+(ts.length-rated.length)+' not rated':'')+'</p>':'')+
+    '<p class="legend">The bar is half ticked topics, half confidence. Confidence: 1 = lost, 5 = exam-ready. Tap a number again to clear it.</p>';
+  h+=ts.length?'<ul class="topics">'+ts.map(function(t){
+    var conf=pendingDel==='p:'+t.id, nm=t.name||'Untitled';
+    var cb=''; for(var n=1;n<=5;n++) cb+='<button type="button" data-conf="'+t.id+'" data-n="'+n+'" class="'+((t.conf||0)>=n?'on':'')+'" aria-pressed="'+(t.conf===n)+'" aria-label="Confidence '+n+' of 5">'+n+'</button>';
+    return '<li class="topic">'+
+      '<button type="button" class="tick" data-tick="'+t.id+'" aria-pressed="'+!!t.done+'" aria-label="Done: '+esc(nm)+'">'+TICK+'</button>'+
+      '<input class="tname" id="tn-'+t.id+'" data-tname="'+t.id+'" value="'+esc(t.name)+'" maxlength="80" aria-label="Topic name">'+
+      '<div class="conf" role="group" aria-label="Confidence in '+esc(nm)+'">'+cb+'</div>'+
+      '<button type="button" class="ib tdel'+(conf?' confirm':'')+'" data-tdel="'+t.id+'" aria-label="Delete '+esc(nm)+'">'+(conf?'Delete?':CROSS)+'</button>'+
+    '</li>';
+  }).join('')+'</ul>':'<p class="pnone">No chapters yet. Type <b>1-10</b> below to add Chapters 1 to 10 in one go, or type topic names separated by commas.</p>';
+  h+='<div class="addt"><input class="input" id="tNew" maxlength="200" placeholder="Add a chapter or topic (or 1-10)" aria-label="New chapter or topic"><button type="button" class="addbtn" id="tAdd">Add</button></div></div>';
+  el.innerHTML=h;
+  var ne=document.getElementById('tNew'); if(ne&&newVal&&focusAfter!=='tNew')ne.value=newVal;
+}
 function render(){
   var a=document.activeElement, fid=a&&a.id, ss=null, se=null;
   if(fid&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA')){try{ss=a.selectionStart;se=a.selectionEnd;}catch(e){}}
-  renderHead();renderTray();renderSetup();renderDays();renderBoard();renderFoot();
+  renderHead();renderTray();renderSetup();renderDays();renderBoard();renderProgress();renderFoot();
   var target=focusAfter||fid; focusAfter=null;
   if(target){
     var n=document.getElementById(target);
@@ -680,6 +806,17 @@ document.addEventListener('click',function(e){
     settings.subjects.push(ns); focusAfter='sn-'+ns.id; saveSettingsNow(); render();
     var inp=document.getElementById('sn-'+ns.id); if(inp)inp.select(); return;
   }
+  if((b=t.closest('[data-view]'))){ view=b.dataset.view; lset('sp-view',view); armed=null; picker=null; pendingDel=null; render(); scrollTo(0,0); return; }
+  if((b=t.closest('[data-mod]'))){ selMod=b.dataset.mod; lset('sp-mod',selMod); pendingDel=null; render(); return; }
+  if((b=t.closest('[data-tick]'))){ var tk=topicById(b.dataset.tick); if(tk){tk.done=!tk.done;saveProgress(selMod);render();} return; }
+  if((b=t.closest('[data-conf]'))){ var tc=topicById(b.dataset.conf), n=+b.dataset.n; if(tc){tc.conf=tc.conf===n?0:n;saveProgress(selMod);render();} return; }
+  if((b=t.closest('[data-tdel]'))){
+    var tid=b.dataset.tdel;
+    if(pendingDel!=='p:'+tid){pendingDel='p:'+tid;render();return;}
+    pendingDel=null; progress[selMod].topics=topicsOf(selMod).filter(function(x){return x.id!==tid;});
+    saveProgress(selMod); render(); return;
+  }
+  if(t.closest('#tAdd')){ addTopics(($('#tNew')||{}).value); return; }
   if(t.closest('#ghSetup')){ setupOpen=true; render(); var tke=document.getElementById('ghTok'); if(tke){tke.scrollIntoView({block:'center'});tke.focus();} return; }
   if(t.closest('#ghGo')){
     var tv=(($('#ghTok')||{}).value||'').trim(); if(!tv)return;
@@ -703,12 +840,14 @@ document.addEventListener('input',function(e){
   var t=e.target;
   if(t.dataset.ch){ var c=cells[t.dataset.ch]; if(c){c.ch=t.value; saveWeekSoon(); renderHead();} return; }
   if(t.dataset.sname){ var s=subj(t.dataset.sname); if(s){s.name=t.value; saveSettingsSoon(); render();} return; }
+  if(t.dataset.tname){ var tp=topicById(t.dataset.tname); if(tp){tp.name=t.value; saveProgress(selMod);} return; }
 });
 document.addEventListener('focusout',function(e){
   if(e.target.dataset&&e.target.dataset.ch&&weekTimer) saveWeekNow();
   if(e.target.dataset&&e.target.dataset.sname&&setTimer) saveSettingsNow();
 });
 document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&e.target.id==='tNew'){ e.preventDefault(); addTopics(e.target.value); return; }
   if(e.key==='Escape'){
     if(drag){endDrag(false);return;}
     if(armed||picker||pendingDel){armed=null;picker=null;pendingDel=null;render();}
