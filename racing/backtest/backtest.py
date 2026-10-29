@@ -27,6 +27,11 @@ COUNTRIES = {'GB': 'uk', 'IE': 'ire'}
 COMMISSION = 0.05  # Betfair's standard rate on net winnings; the conservative case
 MIN_TRAIN_BETS = 200
 CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.cache')
+FAILURES = []  # download errors, reported in the results so a blocked source is visible
+
+
+class Unreachable(Exception):
+    pass
 
 
 def fetch(url):
@@ -35,10 +40,10 @@ def fetch(url):
     if os.path.exists(path):
         with open(path, encoding='utf-8', errors='replace') as f:
             return f.read()
-    for attempt in range(4):
+    for attempt in range(3):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (racing backtest)'})
-            with urllib.request.urlopen(req, timeout=30) as r:
+            with urllib.request.urlopen(req, timeout=20) as r:
                 text = r.read().decode('utf-8', errors='replace')
             with open(path, 'w', encoding='utf-8') as f:
                 f.write(text)
@@ -50,7 +55,10 @@ def fetch(url):
         except Exception as e:  # network hiccup: back off and retry
             err = e
         time.sleep(2 ** (attempt + 1))
-    print(f'  ! failed {url}: {err}', file=sys.stderr)
+    print(f'  ! failed {url}: {err}', file=sys.stderr, flush=True)
+    FAILURES.append(f'{url}: {err}')
+    if len(FAILURES) >= 6 and not os.listdir(CACHE):
+        raise Unreachable('; '.join(FAILURES[:3]))  # nothing has downloaded at all: stop rather than hang for hours
     return None
 
 
@@ -92,6 +100,7 @@ def load(start, end):
                     'date': d, 'country': country, 'name': row.get('event_name', ''),
                     'course': row.get('menu_hint', ''), 'runners': []})
                 r['runners'].append((num(row.get('morningwap')), bsp, row.get('win_lose') == '1'))
+        print(f'  {d}: {len(races)} races so far', file=sys.stderr, flush=True)
         d += timedelta(days=1)
     out = []
     for r in races.values():
@@ -170,13 +179,19 @@ def main():
     if out_path in args: args.remove(out_path)
     start, end, test_start = (datetime.strptime(a, '%Y-%m-%d').date() for a in args)
 
-    print(f'Loading {start}..{end}', file=sys.stderr)
-    races = load(start, end)
+    print(f'Loading {start}..{end}', file=sys.stderr, flush=True)
+    try:
+        races = load(start, end)
+    except Unreachable as e:
+        report([f'# Racing backtest: {start} to {end}', '', f'Could not download the Betfair SP files: {e}'], out_path)
+        return
     train = [r for r in races if r['date'] < test_start]
     test = [r for r in races if r['date'] >= test_start]
     lines = [f'# Racing backtest: {start} to {end}', '',
              f'Betfair SP files, UK & Ireland win markets. Selection on morning price only, settled at BSP less {COMMISSION:.0%} commission.',
              f'Training: {start} to {test_start - timedelta(days=1)} ({len(train)} races). Test: {test_start} to {end} ({len(test)} races).', '']
+    if FAILURES:
+        lines += [f'{len(FAILURES)} file(s) failed to download, e.g. {FAILURES[0]}', '']
     if not train or not test:
         lines.append('Not enough data loaded to run the backtest (files missing or unreachable).')
         report(lines, out_path)
