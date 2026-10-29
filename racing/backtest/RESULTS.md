@@ -21,7 +21,7 @@ Model weights: or_rel +0.83, or_rel_h -0.31, or_missing -0.46, wt_rel +0.12, wt_
 | Strategy | Train bets | Train ROI | Test bets | Test P/L | Test ROI |
 |---|---|---|---|---|---|
 | Back every runner (the bookmakers' margin) | 22176 | -27.4% | 11326 | -3049.0 | -26.9% |
-| Back the model top pick | 2327 | -17.6% | 1183 | -237.5 | -20.1% |
+| Back the model top pick | 2327 | -17.5% | 1183 | -237.5 | -20.1% |
 
 ## 3. Searching for an edge: best of 130 rules on training, then tested
 
@@ -43,6 +43,6 @@ Model weights: or_rel +0.83, or_rel_h -0.31, or_missing -0.46, wt_rel +0.12, wt_
 - Training: 179 bets, +46.5 pts, ROI +26.0% (t = 1.10)
 - Test, run once: 145 bets, +68.1 pts, ROI +47.0% (t = 1.38)
 
-**Verdict:** no reliable edge. The training profit came from picking the best of many rules and did not hold up on unseen races (a pass needs a positive test ROI with t >= 2 over at least 50 bets).
+**Verdict:** no proven edge yet. The rule also made a profit on the test month, but over 145 bets that is not enough to tell skill from luck (t = 1.38: about a 8% chance of doing this well by luck with no edge at all). A pass needs t >= 2 over at least 50 bets.
 
 Only the chosen rule counts as the test. The other rows show how training winners usually fade on new races.
