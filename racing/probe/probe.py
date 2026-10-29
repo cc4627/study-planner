@@ -1,24 +1,17 @@
-"""One-off: see which public UK/IRE racecard sites answer from GitHub's runners and how their pages are built."""
-import json
+"""One-off: map the structure of Racing Post's free racecard and results pages from GitHub's runners."""
 import re
 import sys
+import time
 import urllib.request
+from collections import Counter
 from urllib.parse import urljoin
 
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
-SITES = [
-    'https://www.sportinglife.com/racing/racecards',
-    'https://www.skysports.com/racing/racecards',
-    'https://www.attheraces.com/racecards',
-    'https://www.racingpost.com/racecards/',
-    'https://www.timeform.com/horse-racing/racecards',
-    'https://www.racingtv.com/racecards',
-    'https://www.horseracing.net/racecards',
-    'https://www.bbc.co.uk/sport/horse-racing',
-]
+RP = 'https://www.racingpost.com'
 
 
 def get(url):
+    time.sleep(2)
     req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept': 'text/html,*/*', 'Accept-Language': 'en-GB'})
     try:
         with urllib.request.urlopen(req, timeout=25) as r:
@@ -29,47 +22,59 @@ def get(url):
         return str(e)[:80], url, ''
 
 
-def describe(url, html):
-    title = re.search(r'<title[^>]*>(.*?)</title>', html, re.S | re.I)
-    print('  title:', (title.group(1).strip()[:90] if title else '-'))
-    print('  bytes:', len(html), '| __NEXT_DATA__:', '__NEXT_DATA__' in html, '| ld+json:', html.count('ld+json'),
-          '| "forecast":', len(re.findall('forecast', html, re.I)))
-    for m in list(re.finditer(r'forecast', html, re.I))[:2]:
-        text = re.sub(r'<[^>]+>', ' ', html[max(0, m.start() - 150):m.start() + 450])
-        print('  ctx:', re.sub(r'\s+', ' ', text)[:400])
-    nd = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.S)
-    if nd:
-        try:
-            data = json.loads(nd.group(1))
-            pp = data.get('props', {}).get('pageProps', {})
-            print('  pageProps keys:', list(pp)[:20])
-        except Exception as e:
-            print('  next data parse error', e)
+def structure(html):
+    print('  bytes', len(html), '| scripts with JSON:', len(re.findall(r'<script[^>]*type="application/(?:ld\+)?json"', html)),
+          '| window.PRELOADED:', 'PRELOADED' in html, '| __NEXT_DATA__:', '__NEXT_DATA__' in html)
+    sel = Counter(re.findall(r'data-test-selector="([^"]+)"', html))
+    print('  data-test-selector:', ', '.join(f'{k}×{v}' for k, v in sel.most_common(70)))
+    cls = Counter(c for cl in re.findall(r'class="([^"]+)"', html) for c in cl.split()
+                  if re.match(r'(rp-|RC-|rc-|ui-)', c))
+    print('  classes:', ', '.join(f'{k}×{v}' for k, v in cls.most_common(70)))
+    ends = Counter(re.findall(r'data-ending="([^"]+)"', html))
+    print('  data-ending:', dict(ends))
 
 
-def race_links(base, html):
-    hrefs = re.findall(r'href="([^"#?]+)"', html)
+def show(html, marker, n=2, width=700):
+    for m in list(re.finditer(re.escape(marker), html))[:n]:
+        frag = html[m.start():m.start() + width]
+        frag = re.sub(r'\s+', ' ', frag)
+        print(f'  [{marker}] {frag}')
+
+
+def links(base, html, pattern):
     out = []
-    for h in hrefs:
+    for h in re.findall(r'href="([^"#?]+)"', html):
         u = urljoin(base, h)
-        if re.search(r'racecard', u, re.I) and re.search(r'\d{3,}', u) and u not in out:
+        if re.search(pattern, u) and u not in out:
             out.append(u)
     return out
 
 
-for site in SITES:
-    status, final, html = get(site)
-    print(f'== {site} -> {status} ({final})')
-    if not html:
-        continue
-    describe(final, html)
-    links = race_links(final, html)
-    print('  race-like links:', len(links))
-    for l in links[:6]:
-        print('   ', l)
-    if links:
-        s2, f2, h2 = get(links[0])
-        print(f'  -- first race page {s2} {f2}')
-        if h2:
-            describe(f2, h2)
-    sys.stdout.flush()
+s, f, h = get(RP + '/racecards/')
+print('== racecards index', s, f)
+if h:
+    structure(h)
+    rl = links(f, h, r'/racecards/\d+/[^/]+/\d{4}-\d{2}-\d{2}/\d+')
+    print('  race links', len(rl), rl[:5])
+    if rl:
+        s, f, h = get(rl[0])
+        print('== racecard', s, f)
+        if h:
+            structure(h)
+            for mk in ['RC-runnerRow', 'RC-cardPage-runnerName', 'bettingForecast', 'Betting Forecast', 'RC-cardPage-runnerOr', 'RC-cardPage-runnerRpr', 'RC-header__raceInstanceTitle', 'RC-courseHeader']:
+                show(h, mk, 1)
+
+s, f, h = get(RP + '/results/2026-10-28')
+print('== results day', s, f)
+if h:
+    structure(h)
+    rl = links(f, h, r'/results/\d+/[^/]+/\d{4}-\d{2}-\d{2}/\d+')
+    print('  result links', len(rl), rl[:5])
+    if rl:
+        s, f, h = get(rl[0])
+        print('== result race', s, f)
+        if h:
+            structure(h)
+            for mk in ['rp-horseTable__mainRow', 'rp-horseTable__pos__number', 'rp-horseTable__horse__price', 'data-ending="OR"', 'rp-raceTimeCourseName', 'rp-raceInfo']:
+                show(h, mk, 1)
+sys.stdout.flush()
