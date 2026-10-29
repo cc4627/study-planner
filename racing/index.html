@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Racing Predictor</title>
+<meta name="description" content="UK and Ireland horse racing predictor: rate a racecard on ratings, weight, form, fitness, course and distance, going and trainer form, blend with the market and spot value.">
+<meta name="theme-color" content="#E4EFE6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E6B45'/%3E%3Cpath d='M18 46V30l8-10h10l6 6h6v8h-8l-4 4v8' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<style>
+/* Layout: one column of cards. Race details, then the verdict and prediction table, then runners (editable cards), then settings and the results log. */
+:root{
+  --bg:#E4EFE6; --surface:#FFFFFF; --ink:#11211A; --muted:#4D6157; --line:#C3D6C8; --soft:#F1F7F2;
+  --accent:#1E6B45; --on-accent:#FFFFFF; --focus:#2F4FC4; --warn:#B4441A; --good:#17805A; --gold:#9A6A00;
+  --font:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1A14; --surface:#15251D; --ink:#E6EFE9; --muted:#9DB3A6; --line:#2A4135; --soft:#1B2E24;
+    --accent:#5CC893; --on-accent:#06231A; --focus:#9AA6FF; --warn:#FF9A68; --good:#4CC79A; --gold:#F2C04E;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1A14; --surface:#15251D; --ink:#E6EFE9; --muted:#9DB3A6; --line:#2A4135; --soft:#1B2E24;
+  --accent:#5CC893; --on-accent:#06231A; --focus:#9AA6FF; --warn:#FF9A68; --good:#4CC79A; --gold:#F2C04E;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--font);
+  padding:20px max(16px,env(safe-area-inset-right,0px)) 48px max(16px,env(safe-area-inset-left,0px))}
+.app{max-width:1100px;margin:0 auto;display:grid;gap:14px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+a{color:var(--focus)}
+
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{margin:4px 0 0;font-size:clamp(26px,6vw,36px);line-height:1.05}
+.racepick{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;min-width:0}
+.card h2{margin:0 0 10px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px}
+label.f{display:grid;gap:4px;font-size:12px;color:var(--muted);min-width:0}
+.input{width:100%;min-height:40px;padding:7px 9px;border-radius:8px;border:1px solid var(--line);background:var(--soft);font-size:15px;min-width:0}
+textarea.input{min-height:120px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+.check{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--ink);min-height:40px}
+.check input{width:18px;height:18px;accent-color:var(--accent)}
+
+.btn{min-height:40px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-size:14px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.ghost{background:none;color:var(--muted)}
+.btn.danger{color:var(--warn);border-color:var(--warn)}
+.btn.small{min-height:32px;padding:0 10px;font-size:13px}
+
+/* Runner editor */
+.runners{display:grid;gap:10px}
+.runner{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--soft);display:grid;gap:8px}
+.runner.nr{opacity:.55}
+.rhead{display:flex;gap:8px;align-items:center}
+.rhead .num{min-width:28px;height:28px;border-radius:7px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:13px;font-weight:600}
+.rhead .input{flex:1;font-weight:600;background:var(--surface)}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,96px),1fr));gap:8px}
+.rgrid .input{background:var(--surface);min-height:36px;font-size:14px}
+.rgrid label.f{font-size:11px}
+.rfoot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.rfoot .check{min-height:32px;font-size:13px}
+
+/* Prediction */
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin-bottom:12px}
+.tip{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--soft)}
+.tip .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tip .v{font-size:18px;font-weight:600;margin-top:2px;overflow-wrap:anywhere}
+.tip .s{font-size:13px;color:var(--muted)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap;font-variant-numeric:tabular-nums}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--soft)}
+th:nth-child(2),td:nth-child(2){text-align:left;white-space:normal;min-width:150px}
+tbody tr:last-child td{border-bottom:0}
+td .why{display:block;font-size:12px;color:var(--muted);margin-top:2px;white-space:normal}
+.bar{display:inline-block;height:8px;border-radius:4px;background:var(--accent);vertical-align:middle;margin-right:6px}
+.badge{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid currentColor}
+.badge.value{color:var(--good)}
+.badge.ew{color:var(--gold)}
+.pos{color:var(--good)} .neg{color:var(--warn)}
+.empty{color:var(--muted);font-size:14px;margin:0}
+.note{font-size:13px;color:var(--muted);margin:10px 0 0}
+
+/* Settings */
+.slider{display:grid;gap:4px;font-size:13px}
+.slider input{width:100%;accent-color:var(--accent)}
+.slider b{font-weight:600}
+
+/* Results log */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px;margin-bottom:10px}
+.log{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px}
+.log li{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:6px}
+.foot{text-align:center;font-size:12px;color:var(--muted);margin:0}
+[hidden]{display:none!important}
+</style>
+
+<main class="app">
+  <header class="top">
+    <div>
+      <div class="eyebrow">UK &amp; Ireland</div>
+      <h1>Racing Predictor</h1>
+    </div>
+    <div class="racepick">
+      <label class="f" style="min-width:200px">Race
+        <select class="input" id="racesel" aria-label="Choose race"></select>
+      </label>
+      <button class="btn primary" id="newRace" type="button">New race</button>
+      <button class="btn" id="dupRace" type="button">Duplicate</button>
+      <button class="btn danger" id="delRace" type="button">Delete</button>
+    </div>
+  </header>
+
+  <section class="card" aria-labelledby="h-race">
+    <h2 id="h-race">Race</h2>
+    <div class="fields" id="raceFields"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-pred">
+    <h2 id="h-pred">Prediction</h2>
+    <div id="pred"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-run">
+    <div class="row" style="margin-bottom:10px">
+      <h2 id="h-run" style="margin:0">Runners</h2>
+      <div class="racepick">
+        <button class="btn small" id="pasteBtn" type="button" aria-expanded="false" aria-controls="pasteBox">Paste racecard</button>
+        <button class="btn small primary" id="addRunner" type="button">Add runner</button>
+      </div>
+    </div>
+    <div id="pasteBox" hidden style="margin-bottom:12px">
+      <label class="f">One runner per line, fields separated by commas, tabs or |. Order: name, odds, form, OR, weight, age, days since run, C/D/CD, trainer 14-day %. Lines starting with # are ignored.
+        <textarea class="input" id="pasteText" spellcheck="false" placeholder="Lough Derg Lad, 5/2, 1-213, 128, 11-7, 7, 21, CD, 22&#10;Ballyfin Star, 4/1, 32P-41, 125, 11-4, 8, 35, D, 15"></textarea>
+      </label>
+      <div class="racepick" style="margin-top:8px">
+        <button class="btn primary small" id="pasteReplace" type="button">Replace runners</button>
+        <button class="btn small" id="pasteAppend" type="button">Add to runners</button>
+        <span class="note" id="pasteMsg" style="margin:0" aria-live="polite"></span>
+      </div>
+    </div>
+    <div class="runners" id="runners"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-set">
+    <h2 id="h-set">Model settings</h2>
+    <div class="fields">
+      <label class="slider">Market weight: <b id="mwv"></b>
+        <input type="range" id="mw" min="0" max="100" step="5">
+        <span class="note" style="margin:0">0% = form model only, 100% = bookmaker prices only.</span>
+      </label>
+      <label class="slider">Confidence (lbs per step): <b id="scv"></b>
+        <input type="range" id="sc" min="4" max="16" step="1">
+        <span class="note" style="margin:0">Lower = model trusts its ratings more and makes stronger favourites.</span>
+      </label>
+      <label class="slider">Value threshold: <b id="vtv"></b>
+        <input type="range" id="vt" min="0" max="50" step="5">
+        <span class="note" style="margin:0">Minimum expected return over the price to flag a bet as value.</span>
+      </label>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="h-res">
+    <h2 id="h-res">Result &amp; track record</h2>
+    <div class="fields" style="margin-bottom:12px">
+      <label class="f">Winner of this race
+        <select class="input" id="winnerSel"></select>
+      </label>
+    </div>
+    <div id="track"></div>
+  </section>
+
+  <p class="foot">Predictions are estimates built from the details you enter, not certainties. Everything is stored only in this browser.
+    Bet only what you can afford to lose. Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> (UK, 0808 8020 133) ·
+    <a href="https://www.problemgambling.ie" target="_blank" rel="noopener">problemgambling.ie</a> · <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
+</main>
+
+<script>
+(function(){
+'use strict';
+var $=function(s){return document.querySelector(s);};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
+var uid=function(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);};
+var lget=function(k){try{return JSON.parse(localStorage.getItem(k)||'null');}catch(e){return null;}};
+var lset=function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}};
+
+/* ---------- reference data ---------- */
+var UK=['Aintree','Ascot','Ayr','Bangor-on-Dee','Bath','Beverley','Brighton','Carlisle','Cartmel','Catterick','Chelmsford City (AW)','Cheltenham','Chepstow','Chester','Doncaster','Epsom','Exeter','Fakenham','Ffos Las','Fontwell','Goodwood','Hamilton','Haydock','Hereford','Hexham','Huntingdon','Kelso','Kempton (AW)','Kempton','Leicester','Lingfield (AW)','Lingfield','Ludlow','Market Rasen','Musselburgh','Newbury','Newcastle (AW)','Newcastle','Newmarket','Newton Abbot','Nottingham','Perth','Plumpton','Pontefract','Redcar','Ripon','Salisbury','Sandown','Sedgefield','Southwell (AW)','Southwell','Stratford','Taunton','Thirsk','Uttoxeter','Warwick','Wetherby','Wincanton','Windsor','Wolverhampton (AW)','Worcester','Yarmouth','York'];
+var IRE=['Ballinrobe','Bellewstown','Clonmel','Cork','Curragh','Down Royal','Downpatrick','Dundalk (AW)','Fairyhouse','Galway','Gowran Park','Kilbeggan','Killarney','Laytown','Leopardstown','Limerick','Listowel','Naas','Navan','Punchestown','Roscommon','Sligo','Thurles','Tipperary','Tramore','Wexford'];
+var GOING_UK=['Heavy','Soft','Good to Soft','Good','Good to Firm','Firm'];
+var GOING_IRE=['Heavy','Soft to Heavy','Soft','Yielding to Soft','Yielding','Good to Yielding','Good','Good to Firm','Firm'];
+var GOING_AW=['Slow','Standard to Slow','Standard','Standard to Fast','Fast'];
+var TYPES={flat:'Flat',hurdle:'Hurdle',chase:'Chase',bumper:'NH Flat (bumper)'};
+var isAW=function(c){return /\(AW\)/.test(c);};
+var isIre=function(c){return IRE.indexOf(c)>=0;};
+var goingsFor=function(c){return isAW(c)?GOING_AW:isIre(c)?GOING_IRE:GOING_UK;};
+/* How testing the ground is: 0 = fast/standard, up to 1 = heavy. Weight and proven-going count for more on soft ground. */
+var SOFTNESS={'Heavy':1,'Soft to Heavy':.85,'Soft':.7,'Yielding to Soft':.55,'Good to Soft':.45,'Yielding':.4,'Good to Yielding':.3,'Good':.15,'Slow':.2,'Standard to Slow':.1};
+
+/* ---------- parsing ---------- */
+function parseOdds(s){
+  s=String(s||'').trim().toLowerCase();
+  if(!s)return null;
+  if(/^(evs|evens|evn|ev)$/.test(s))return 2;
+  var m=s.match(/^(\d+(?:\.\d+)?)\s*[\/\-]\s*(\d+(?:\.\d+)?)$/);
+  if(m){var d=+m[2];return d>0?1+(+m[1])/d:null;}
+  var n=parseFloat(s);
+  return isFinite(n)&&n>1?n:null;
+}
+function parseWeight(s){
+  s=String(s||'').trim();
+  if(!s)return null;
+  var m=s.match(/^(\d{1,2})\s*[-\s:.]\s*(\d{1,2})$/);
+  if(m)return (+m[1])*14+(+m[2]);
+  var n=parseFloat(s);
+  if(!isFinite(n))return null;
+  return n>60?n:n*14; // plain lbs, or whole stones
+}
+function num(s){var n=parseFloat(String(s==null?'':s).replace('%',''));return isFinite(n)?n:null;}
+/* Form figures read left (oldest) to right (latest). 0 = unplaced 10th or worse; P/F/U/R/B/S/C/O = did not complete. */
+var POS_PTS={1:10,2:7,3:5,4:3.5,5:2.5,6:1.8,7:1.3,8:1,9:.7,0:.3};
+function formRuns(s){
+  var out=[];String(s||'').toUpperCase().replace(/[^0-9PFURBSCO]/g,'').split('').forEach(function(ch){
+    if(/[0-9]/.test(ch))out.push(POS_PTS[ch]);
+    else out.push(ch==='F'?1:0);
+  });
+  return out.slice(-6);
+}
+function formScore(s){
+  var runs=formRuns(s);if(!runs.length)return null;
+  var w=1,sum=0,tot=0;
+  for(var i=runs.length-1;i>=0;i--){sum+=runs[i]*w;tot+=w;w*=.75;}
+  return sum/tot;
+}
+function median(a){if(!a.length)return null;var b=a.slice().sort(function(x,y){return x-y;});var m=b.length>>1;return b.length%2?b[m]:(b[m-1]+b[m])/2;}
+/* Snap a decimal price to the nearest fraction on the usual bookmaker ladder. */
+var LADDER='1/10 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 4/11 2/5 4/9 1/2 8/15 4/7 8/13 4/6 8/11 4/5 5/6 10/11 Evs 11/10 6/5 5/4 11/8 6/4 13/8 7/4 15/8 2/1 9/4 5/2 11/4 3/1 10/3 7/2 4/1 9/2 5/1 11/2 6/1 13/2 7/1 15/2 8/1 17/2 9/1 10/1 11/1 12/1 14/1 16/1 18/1 20/1 22/1 25/1 28/1 33/1 40/1 50/1 66/1 80/1 100/1 150/1 200/1 250/1 500/1'.split(' ');
+function toFrac(d){
+  var best=null,bd=Infinity;
+  LADDER.forEach(function(f){var v=parseOdds(f),e=Math.abs(Math.log(v)-Math.log(d));if(e<bd){bd=e;best=f;}});
+  return best;
+}
+var pct=function(p){return (p*100).toFixed(p<.1?1:0)+'%';};
+
+/* ---------- state ---------- */
+var S=lget('rp-state');
+var settings=lget('rp-settings')||{mw:50,sc:8,vt:10};
+function blankRunner(){return {id:uid(),name:'',odds:'',form:'',or:'',wt:'',age:'',days:'',cd:'',trainer:'',goingOk:false,nr:false};}
+function sampleRace(){
+  var R=function(name,odds,form,or,wt,age,days,cd,tr,g){var r=blankRunner();Object.assign(r,{name:name,odds:odds,form:form,or:or,wt:wt,age:age,days:days,cd:cd,trainer:tr,goingOk:!!g});return r;};
+  return {id:uid(),name:'Sample: 2m4f Handicap Hurdle (fictional runners)',date:new Date().toISOString().slice(0,10),course:'Leopardstown',type:'hurdle',going:'Yielding to Soft',hcap:true,winner:null,runners:[
+    R('Lough Derg Lad','5/2','1-213','128','11-7','7','21','CD','22',true),
+    R('Ballyfin Star','4/1','32P-41','125','11-4','8','35','D','15',false),
+    R('Shannon Bridge','6/1','4-1122','121','11-0','6','28','','18',true),
+    R('Copper Kettle','8/1','/3-560','124','11-3','9','190','C','9',false),
+    R('Midnight Fixer','10/1','2-3425','118','10-11','6','14','','12',false),
+    R('Glenmore Rebel','14/1','7P-U86','120','10-13','10','42','','6',false),
+    R('Harbour Sound','16/1','5-0047','116','10-9','5','60','','11',true),
+    R('Tullow Tiger','25/1','09-P80','115','10-8','11','300','','4',false)
+  ]};
+}
+if(!S||!Array.isArray(S.races)||!S.races.length){var sr=sampleRace();S={races:[sr],cur:sr.id};}
+function race(){return S.races.find(function(r){return r.id===S.cur;})||S.races[0];}
+function save(){lset('rp-state',S);}
+
+/* ---------- model ---------- */
+/* Every factor is expressed in pounds (lbs), the unit British and Irish handicappers already use.
+   strength = official rating + weight advantage + form + fitness + course/distance + going + trainer form + age.
+   Win chance: p ∝ exp(strength / confidence). Then pooled with the market (geometric blend) and simulated for places. */
+function rateRace(rc){
+  var act=rc.runners.filter(function(r){return !r.nr&&(r.name||r.odds||r.or||r.form);});
+  if(!act.length)return null;
+  var soft=SOFTNESS[rc.going]||0, nh=rc.type!=='flat';
+  var ors=act.map(function(r){return num(r.or);}).filter(function(x){return x!=null;});
+  var orMed=median(ors);
+  var wts=act.map(function(r){return parseWeight(r.wt);});
+  var wKnown=wts.filter(function(x){return x!=null;});
+  var avgW=wKnown.length?wKnown.reduce(function(a,b){return a+b;},0)/wKnown.length:null;
+  var fs=act.map(function(r){return formScore(r.form);});
+  var fKnown=fs.filter(function(x){return x!=null;});
+  var fMean=fKnown.length?fKnown.reduce(function(a,b){return a+b;},0)/fKnown.length:0;
+
+  var rows=act.map(function(r,i){
+    var f={};
+    var or=num(r.or);
+    f.rating=orMed==null?0:(or!=null?or-orMed:-2); // unrated runners get a small penalty
+    f.weight=(avgW!=null&&wts[i]!=null)?(avgW-wts[i])*(1+soft*.4):0; // lbs below the field average, worth more in testing ground
+    f.form=fs[i]!=null?(fs[i]-fMean)*1.6:0;
+    var d=num(r.days);
+    if(d==null)f.fitness=0;
+    else if(!nh)f.fitness=d<7?-1:d<=60?1:d<=120?0:d<=240?-3:-5;
+    else f.fitness=d<11?-1:d<=60?1:d<=150?0:d<=300?-2:-4;
+    var cd=String(r.cd||'').toUpperCase();
+    f.cd=/CD/.test(cd)?3.5:(/C/.test(cd)?1.5:0)+(/D/.test(cd)?1.5:0);
+    f.going=r.goingOk?2+soft*2.5:0;
+    var t=num(r.trainer);
+    f.trainer=t==null?0:Math.max(-3,Math.min(3,(t-12)*.18));
+    var a=num(r.age);
+    f.age=a==null?0:nh?(a>=12?-3:a>=11?-1.5:0):(rc.type==='flat'&&a>=8?-1.5:0);
+    var s=0;for(var k in f)s+=f[k];
+    return {r:r,f:f,s:s,dec:parseOdds(r.odds)};
+  });
+
+  // model probabilities
+  var sc=settings.sc,mx=Math.max.apply(null,rows.map(function(x){return x.s;}));
+  var ex=rows.map(function(x){return Math.exp((x.s-mx)/sc);}),ez=ex.reduce(function(a,b){return a+b;},0);
+  rows.forEach(function(x,i){x.pm=ex[i]/ez;});
+
+  // market probabilities with the bookmaker margin removed
+  var priced=rows.filter(function(x){return x.dec;});
+  var book=priced.reduce(function(a,x){return a+1/x.dec;},0);
+  var pmSumPriced=priced.reduce(function(a,x){return a+x.pm;},0);
+  rows.forEach(function(x){
+    x.pk=x.dec?(1/x.dec)/book*(priced.length===rows.length?1:pmSumPriced):x.pm; // unpriced runners borrow the model's view
+  });
+  var mw=settings.mw/100;
+  var lp=rows.map(function(x){return Math.exp((1-mw)*Math.log(x.pm)+mw*Math.log(x.pk));}),lz=lp.reduce(function(a,b){return a+b;},0);
+  rows.forEach(function(x,i){x.p=lp[i]/lz;});
+
+  // place probabilities by Plackett-Luce simulation (seeded so results don't jitter)
+  var n=rows.length,places=Math.min(4,n),hits=rows.map(function(){return [0,0,0,0];}),N=20000;
+  var seed=1234567;var rnd=function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};
+  var base=rows.map(function(x){return x.p;});
+  for(var it=0;it<N;it++){
+    var w=base.slice(),tot=1;
+    for(var k=0;k<places;k++){
+      var u=rnd()*tot,j=0,acc=w[0];
+      while(acc<u&&j<n-1){j++;acc+=w[j];}
+      while(w[j]===0)j=(j+n-1)%n; // float rounding can overshoot onto a horse already placed
+      for(var q=k;q<places;q++)hits[j][q]++;
+      tot-=w[j];w[j]=0;
+    }
+  }
+  rows.forEach(function(x,i){x.top=hits[i].map(function(h){return h/N;});});
+
+  var ew=eachWay(n,rc.hcap);
+  rows.forEach(function(x){
+    x.fair=1/x.p;
+    x.edge=x.dec?x.p*x.dec-1:null;
+    if(x.dec&&ew.places){
+      var pp=x.top[ew.places-1],pw=x.p,ret=x.dec-1;
+      x.ewEv=(pw*ret-(1-pw)+pp*ret*ew.frac-(1-pp))/2;
+    }else x.ewEv=null;
+  });
+  rows.sort(function(a,b){return b.p-a.p;});
+  return {rows:rows,book:book,priced:priced.length,ew:ew};
+}
+/* Standard UK/IRE each-way terms by field size. */
+function eachWay(n,hcap){
+  if(n<5)return {places:0,frac:0,label:'Win only (under 5 runners)'};
+  if(n<8)return {places:2,frac:1/4,label:'2 places at 1/4 odds'};
+  if(hcap&&n>=16)return {places:4,frac:1/4,label:'4 places at 1/4 odds (16+ runner handicap)'};
+  if(hcap&&n>=12)return {places:3,frac:1/4,label:'3 places at 1/4 odds (12-15 runner handicap)'};
+  return {places:3,frac:1/5,label:'3 places at 1/5 odds'};
+}
+
+/* ---------- rendering ---------- */
+function renderPicker(){
+  $('#racesel').innerHTML=S.races.map(function(r){
+    return '<option value="'+r.id+'"'+(r.id===S.cur?' selected':'')+'>'+esc((r.date?r.date+' · ':'')+(r.course?r.course+' · ':'')+(r.name||'Untitled race'))+(r.winner?' ✓':'')+'</option>';
+  }).join('');
+}
+function opt(v,label,sel){return '<option value="'+esc(v)+'"'+(v===sel?' selected':'')+'>'+esc(label)+'</option>';}
+function renderRace(){
+  var rc=race(),gs=goingsFor(rc.course);
+  if(gs.indexOf(rc.going)<0)rc.going=isAW(rc.course)?'Standard':'Good';
+  $('#raceFields').innerHTML=
+    '<label class="f">Race name / time<input class="input" data-rf="name" value="'+esc(rc.name)+'" placeholder="e.g. 3:15 Novices\' Hurdle"></label>'+
+    '<label class="f">Date<input class="input" type="date" data-rf="date" value="'+esc(rc.date)+'"></label>'+
+    '<label class="f">Course<select class="input" data-rf="course"><option value="">Choose…</option><optgroup label="Great Britain">'+UK.map(function(c){return opt(c,c,rc.course);}).join('')+'</optgroup><optgroup label="Ireland">'+IRE.map(function(c){return opt(c,c,rc.course);}).join('')+'</optgroup></select></label>'+
+    '<label class="f">Race type<select class="input" data-rf="type">'+Object.keys(TYPES).map(function(k){return opt(k,TYPES[k],rc.type);}).join('')+'</select></label>'+
+    '<label class="f">Going'+(isIre(rc.course)?' (Irish scale)':isAW(rc.course)?' (all-weather)':'')+'<select class="input" data-rf="going">'+gs.map(function(g){return opt(g,g,rc.going);}).join('')+'</select></label>'+
+    '<label class="check"><input type="checkbox" data-rf="hcap"'+(rc.hcap?' checked':'')+'> Handicap</label>';
+}
+var RF=[['odds','Odds','5/2'],['form','Form','1-213'],['or','OR','128'],['wt','Weight','11-7'],['age','Age','7'],['days','Days off','21'],['cd','C / D / CD',''],['trainer','Trainer 14d %','18']];
+function renderRunners(){
+  var rc=race();
+  $('#runners').innerHTML=rc.runners.length?rc.runners.map(function(r,i){
+    return '<div class="runner'+(r.nr?' nr':'')+'" data-id="'+r.id+'">'+
+      '<div class="rhead"><span class="num" aria-hidden="true">'+(i+1)+'</span><input class="input" data-k="name" value="'+esc(r.name)+'" placeholder="Horse name" aria-label="Runner '+(i+1)+' name"></div>'+
+      '<div class="rgrid">'+RF.map(function(f){return '<label class="f">'+f[1]+'<input class="input" data-k="'+f[0]+'" value="'+esc(r[f[0]])+'" placeholder="'+f[2]+'"'+(/^(or|age|days|trainer)$/.test(f[0])?' inputmode="decimal"':'')+'></label>';}).join('')+'</div>'+
+      '<div class="rfoot"><div class="racepick"><label class="check"><input type="checkbox" data-k="goingOk"'+(r.goingOk?' checked':'')+'> Proven on this going</label>'+
+      '<label class="check"><input type="checkbox" data-k="nr"'+(r.nr?' checked':'')+'> Non-runner</label></div>'+
+      '<button class="btn ghost small" type="button" data-del="'+r.id+'">Remove</button></div>'+
+    '</div>';
+  }).join(''):'<p class="empty">No runners yet. Add them one by one or paste a racecard.</p>';
+}
+var BREAK={rating:'Rating',weight:'Weight',form:'Form',fitness:'Fitness',cd:'C/D',going:'Going',trainer:'Trainer',age:'Age'};
+function renderPred(){
+  var rc=race(),res=rateRace(rc),box=$('#pred');
+  if(!res){box.innerHTML='<p class="empty">Add at least one runner to see a prediction.</p>';return;}
+  var rows=res.rows,top=rows[0],vt=settings.vt/100;
+  var value=rows.filter(function(x){return x.edge!=null&&x.edge>=vt&&x.p>=.04;}).sort(function(a,b){return b.edge-a.edge;})[0];
+  var ewPick=rows.filter(function(x){return x.ewEv!=null&&x.ewEv>0&&x.dec>=5;}).sort(function(a,b){return b.ewEv-a.ewEv;})[0];
+  var nm=function(x){return esc(x.r.name||'Unnamed');};
+  var maxP=top.p;
+  box.innerHTML=
+    '<div class="verdict">'+
+      '<div class="tip"><div class="k">Top pick</div><div class="v">'+nm(top)+'</div><div class="s">'+pct(top.p)+' to win · fair price '+toFrac(top.fair)+(top.dec?' · available '+esc(top.r.odds):'')+'</div></div>'+
+      (rows[1]?'<div class="tip"><div class="k">Main danger</div><div class="v">'+nm(rows[1])+'</div><div class="s">'+pct(rows[1].p)+' to win · '+pct(rows[1].top[Math.min(2,rows[1].top.length-1)])+' to place</div></div>':'')+
+      '<div class="tip"><div class="k">Best value</div><div class="v">'+(value?nm(value):'None')+'</div><div class="s">'+(value?'+'+Math.round(value.edge*100)+'% expected return at '+esc(value.r.odds):'No runner clears the '+settings.vt+'% value threshold')+'</div></div>'+
+      '<div class="tip"><div class="k">Each-way angle</div><div class="v">'+(ewPick?nm(ewPick):'None')+'</div><div class="s">'+(ewPick?'+'+Math.round(ewPick.ewEv*100)+'% e/w return · ':'')+esc(res.ew.label)+'</div></div>'+
+    '</div>'+
+    '<div class="scroll"><table><thead><tr><th>#</th><th>Horse</th><th>Win</th><th>Place</th><th>Fair</th><th>Price</th><th>Market</th><th>Model</th><th>Edge</th></tr></thead><tbody>'+
+    rows.map(function(x,i){
+      var why=Object.keys(BREAK).filter(function(k){return Math.abs(x.f[k])>=.5;}).sort(function(a,b){return Math.abs(x.f[b])-Math.abs(x.f[a]);}).slice(0,4)
+        .map(function(k){return BREAK[k]+' '+(x.f[k]>0?'+':'')+x.f[k].toFixed(1);}).join(' · ');
+      var pl=res.ew.places?x.top[res.ew.places-1]:x.top[Math.min(2,x.top.length-1)];
+      var badges=(value&&x===value?' <span class="badge value">Value</span>':'')+(ewPick&&x===ewPick?' <span class="badge ew">E/W</span>':'');
+      return '<tr><td>'+(i+1)+'</td><td>'+nm(x)+badges+'<span class="why">'+(why||'Close to field average')+' lbs</span></td>'+
+        '<td><span class="bar" style="width:'+Math.max(2,Math.round(x.p/maxP*48))+'px"></span>'+pct(x.p)+'</td>'+
+        '<td>'+pct(pl)+'</td><td>'+toFrac(x.fair)+'</td>'+
+        '<td>'+(x.dec?esc(x.r.odds):'-')+'</td>'+
+        '<td>'+(x.dec?pct(x.pk):'-')+'</td><td>'+pct(x.pm)+'</td>'+
+        '<td class="'+(x.edge==null?'':x.edge>0?'pos':'neg')+'">'+(x.edge==null?'-':(x.edge>0?'+':'')+Math.round(x.edge*100)+'%')+'</td></tr>';
+    }).join('')+'</tbody></table></div>'+
+    '<p class="note">'+rows.length+' runners'+(res.priced?' · book '+Math.round(res.book*100)+'% (bookmaker margin '+Math.round((res.book-1)*100)+'%)':' · no prices entered, so this is the form model alone')+
+    ' · Place = chance of finishing in the paid places'+(res.ew.places?' (top '+res.ew.places+')':' (top 3)')+'. The line under each horse shows its biggest factors in lbs against the field.</p>';
+}
+function renderWinner(){
+  var rc=race();
+  $('#winnerSel').innerHTML='<option value="">Not run yet</option>'+rc.runners.filter(function(r){return !r.nr&&r.name;}).map(function(r){return opt(r.id,r.name,rc.winner);}).join('');
+}
+function renderTrack(){
+  var settled=[],brier=0,ll=0,pl=0,valBets=0,valPl=0,topWins=0;
+  S.races.forEach(function(rc){
+    if(!rc.winner)return;
+    var res=rateRace(rc);if(!res)return;
+    var w=res.rows.find(function(x){return x.r.id===rc.winner;});if(!w)return;
+    var top=res.rows[0],won=top.r.id===rc.winner;
+    if(won)topWins++;
+    if(top.dec)pl+=won?top.dec-1:-1;
+    res.rows.forEach(function(x){
+      var o=x.r.id===rc.winner?1:0;brier+=(x.p-o)*(x.p-o);
+      if(x.edge!=null&&x.edge>=settings.vt/100&&x.p>=.04){valBets++;valPl+=o?x.dec-1:-1;}
+    });
+    ll+=-Math.log(Math.max(w.p,1e-6));
+    settled.push({rc:rc,top:top,won:won,wp:w.p,wn:w.r.name});
+  });
+  var box=$('#track');
+  if(!settled.length){box.innerHTML='<p class="empty">Once a race is run, pick the winner above. The tracker then scores every settled race against the current settings.</p>';return;}
+  var n=settled.length,sgn=function(v){return (v>0?'+':'')+v.toFixed(2);};
+  box.innerHTML='<div class="stats">'+
+    '<div class="tip"><div class="k">Races settled</div><div class="v">'+n+'</div></div>'+
+    '<div class="tip"><div class="k">Top pick won</div><div class="v">'+topWins+' / '+n+'</div><div class="s">'+Math.round(topWins/n*100)+'% strike rate</div></div>'+
+    '<div class="tip"><div class="k">Top pick P/L</div><div class="v '+(pl>=0?'pos':'neg')+'">'+sgn(pl)+' pts</div><div class="s">1pt win at entered prices</div></div>'+
+    '<div class="tip"><div class="k">Value bets P/L</div><div class="v '+(valPl>=0?'pos':'neg')+'">'+sgn(valPl)+' pts</div><div class="s">'+valBets+' bets</div></div>'+
+    '<div class="tip"><div class="k">Avg. winner chance</div><div class="v">'+pct(Math.exp(-ll/n))+'</div><div class="s">geometric mean, higher is better</div></div>'+
+  '</div><ul class="log">'+settled.slice().reverse().map(function(s){
+    return '<li><span>'+esc((s.rc.date||'')+' '+(s.rc.course||'')+' · '+(s.rc.name||'Race'))+'</span><span>Won: '+esc(s.wn)+' ('+pct(s.wp)+') · Pick: '+esc(s.top.r.name)+' <b class="'+(s.won?'pos':'neg')+'">'+(s.won?'✓':'✗')+'</b></span></li>';
+  }).join('')+'</ul>';
+}
+function renderSettings(){
+  $('#mw').value=settings.mw;$('#mwv').textContent=settings.mw+'%';
+  $('#sc').value=settings.sc;$('#scv').textContent=settings.sc;
+  $('#vt').value=settings.vt;$('#vtv').textContent=settings.vt+'%';
+}
+function renderAll(){renderPicker();renderRace();renderRunners();renderPred();renderWinner();renderTrack();renderSettings();}
+var liveTimer=null;
+function refreshLive(){clearTimeout(liveTimer);liveTimer=setTimeout(function(){renderPred();renderWinner();renderTrack();renderPicker();},120);}
+
+/* ---------- events ---------- */
+$('#racesel').addEventListener('change',function(e){S.cur=e.target.value;save();renderAll();});
+$('#newRace').addEventListener('click',function(){
+  var prev=race(),r={id:uid(),name:'',date:new Date().toISOString().slice(0,10),course:prev.course||'',type:prev.type||'flat',going:prev.going||'Good',hcap:false,winner:null,runners:[blankRunner()]};
+  S.races.push(r);S.cur=r.id;save();renderAll();$('#raceFields input').focus();
+});
+$('#dupRace').addEventListener('click',function(){
+  var c=JSON.parse(JSON.stringify(race()));c.id=uid();c.name=(c.name||'Race')+' (copy)';c.winner=null;c.runners.forEach(function(r){r.id=uid();});
+  S.races.push(c);S.cur=c.id;save();renderAll();
+});
+var delArmed=false;
+$('#delRace').addEventListener('click',function(e){
+  if(!delArmed){delArmed=true;e.target.textContent='Tap again to delete';setTimeout(function(){delArmed=false;e.target.textContent='Delete';},3000);return;}
+  delArmed=false;e.target.textContent='Delete';
+  S.races=S.races.filter(function(r){return r.id!==S.cur;});
+  if(!S.races.length)S.races.push(sampleRace());
+  S.cur=S.races[S.races.length-1].id;save();renderAll();
+});
+$('#raceFields').addEventListener('input',onRaceField);
+$('#raceFields').addEventListener('change',onRaceField);
+function onRaceField(e){
+  var k=e.target.dataset.rf;if(!k)return;
+  var rc=race();rc[k]=e.target.type==='checkbox'?e.target.checked:e.target.value;
+  save();
+  if(k==='course'&&e.type==='change')renderRace();
+  refreshLive();
+}
+$('#runners').addEventListener('input',onRunnerField);
+$('#runners').addEventListener('change',onRunnerField);
+function onRunnerField(e){
+  var k=e.target.dataset.k,card=e.target.closest('.runner');if(!k||!card)return;
+  var r=race().runners.find(function(x){return x.id===card.dataset.id;});if(!r)return;
+  r[k]=e.target.type==='checkbox'?e.target.checked:e.target.value;
+  if(k==='nr')card.classList.toggle('nr',r.nr);
+  save();refreshLive();
+}
+$('#runners').addEventListener('click',function(e){
+  var id=e.target.dataset&&e.target.dataset.del;if(!id)return;
+  var rc=race();rc.runners=rc.runners.filter(function(r){return r.id!==id;});
+  if(rc.winner===id)rc.winner=null;
+  save();renderRunners();refreshLive();
+});
+$('#addRunner').addEventListener('click',function(){
+  race().runners.push(blankRunner());save();renderRunners();refreshLive();
+  var ins=document.querySelectorAll('.runner .rhead input');ins[ins.length-1].focus();
+});
+$('#pasteBtn').addEventListener('click',function(e){
+  var open=$('#pasteBox').hidden;$('#pasteBox').hidden=!open;e.target.setAttribute('aria-expanded',String(open));
+  if(open)$('#pasteText').focus();
+});
+function importPaste(replace){
+  var lines=$('#pasteText').value.split(/\r?\n/).map(function(l){return l.trim();}).filter(function(l){return l&&l[0]!=='#';});
+  var keys=['name','odds','form','or','wt','age','days','cd','trainer'],out=[];
+  lines.forEach(function(l){
+    var parts=l.split(/\t|\||,/).map(function(p){return p.trim();});
+    if(!parts[0])return;
+    var r=blankRunner();keys.forEach(function(k,i){if(parts[i]!=null)r[k]=parts[i];});
+    if(/^nr$/i.test(r.odds)){r.nr=true;r.odds='';}
+    out.push(r);
+  });
+  if(!out.length){$('#pasteMsg').textContent='Nothing to import.';return;}
+  var rc=race();rc.runners=replace?out:rc.runners.filter(function(r){return r.name||r.odds;}).concat(out);
+  if(replace)rc.winner=null;
+  save();renderRunners();refreshLive();
+  $('#pasteMsg').textContent='Imported '+out.length+' runner'+(out.length===1?'':'s')+'.';
+}
+$('#pasteReplace').addEventListener('click',function(){importPaste(true);});
+$('#pasteAppend').addEventListener('click',function(){importPaste(false);});
+$('#winnerSel').addEventListener('change',function(e){race().winner=e.target.value||null;save();renderPicker();renderTrack();});
+['mw','sc','vt'].forEach(function(k){
+  $('#'+k).addEventListener('input',function(e){settings[k]=+e.target.value;lset('rp-settings',settings);renderSettings();refreshLive();});
+});
+
+renderAll();
+})();
+</script>
+</body>
+</html>
