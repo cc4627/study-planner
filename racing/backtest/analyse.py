@@ -20,6 +20,7 @@ import itertools
 import json
 import math
 import os
+import random
 import sys
 from datetime import date, datetime, timezone
 
@@ -48,6 +49,9 @@ def load(data_dir):
             continue  # need prices for (nearly) every runner
         for x in rs:
             x['fc'] = None  # on a results page this is the SP, not the morning forecast
+        # Results pages list runners in finishing order. Shuffle (repeatably) so that no ranking can
+        # pick up the winner just by breaking a tie in favour of whoever is listed first.
+        random.Random(r['id']).shuffle(rs)
         r['runners'] = rs
         if not any(x.get('pos') == 1 for x in rs):
             continue  # abandoned, void or no result
