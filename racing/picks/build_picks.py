@@ -38,7 +38,11 @@ def main():
     rank = ranker()
     races = []
     for _, path in sl.races_on(day, 'racecards'):
-        r = sl.race(path)
+        try:
+            r = sl.race(path)
+        except Exception as e:
+            print(f'  ! {path}: {e!r}')
+            continue
         if not r or len(r['runners']) < 2:
             continue
         rs = r['runners']

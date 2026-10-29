@@ -26,7 +26,11 @@ def main():
             listed = sl.races_on(d, 'results')
             day_got = 0
             for _, path in listed:
-                r = sl.race(path)
+                try:
+                    r = sl.race(path)
+                except Exception as e:  # one odd page shouldn't sink a month of collection
+                    print(f'  ! {path}: {e!r}', flush=True)
+                    r = None
                 if r and r['runners']:
                     f.write(json.dumps(r, ensure_ascii=False) + '\n')
                     day_got += 1

@@ -67,6 +67,13 @@ def races_on(day, kind):
     return out
 
 
+def obj(x):
+    """The dict itself, or the first dict of a list (some page fields come either way), else {}."""
+    if isinstance(x, list):
+        x = x[0] if x else {}
+    return x if isinstance(x, dict) else {}
+
+
 def dec(odds):
     """Fractional or 'Evs' odds string -> decimal odds, or None."""
     s = str(odds or '').strip().lower()
@@ -111,12 +118,12 @@ def race(path):
     pp = page(path)
     if not pp or not pp.get('race'):
         return None
-    rc = pp['race']
-    rs = rc.get('race_summary') or {}
+    rc = obj(pp['race'])
+    rs = obj(rc.get('race_summary'))
     fc = forecast(rc.get('betting_forecast'))
     runners = []
     for ride in rc.get('rides') or []:
-        horse = ride.get('horse') or {}
+        horse = obj(ride.get('horse'))
         status = ride.get('ride_status') or ''
         if 'NON' in status.upper():
             continue
@@ -124,20 +131,20 @@ def race(path):
         runners.append({
             'name': name,
             'fc': fc.get(norm(name)),
-            'sp': dec((ride.get('betting') or {}).get('current_odds')),
+            'sp': dec(obj(ride.get('betting')).get('current_odds')),
             'pos': ride.get('finish_position'),
             'or': ride.get('official_rating'),
             'wt': lbs(ride.get('handicap')),
             'age': horse.get('age'),
             'days': horse.get('last_ran_days'),
-            'form': ((horse.get('formsummary') or {}).get('display_text')) or '',
+            'form': obj(horse.get('formsummary')).get('display_text') or '',
         })
-    meeting = (pp.get('meeting') or {}).get('meeting_summary') or {}
+    meeting = obj(obj(pp.get('meeting')).get('meeting_summary'))
     return {
-        'id': (rs.get('race_summary_reference') or {}).get('id'),
+        'id': obj(rs.get('race_summary_reference')).get('id'),
         'date': rs.get('date'), 'time': (rs.get('time') or '')[:5], 'course': rs.get('course_name'),
-        'country': ((meeting.get('course') or {}).get('country') or {}).get('long_name'),
-        'name': rs.get('name'), 'kind': kind_of(rs.get('name'), (rs.get('course_surface') or {}).get('surface')),
+        'country': obj(obj(meeting.get('course')).get('country')).get('long_name'),
+        'name': rs.get('name'), 'kind': kind_of(rs.get('name'), obj(rs.get('course_surface')).get('surface')),
         'hcap': bool(rs.get('has_handicap')), 'going': rs.get('going'), 'cls': rs.get('race_class'),
         'stage': rs.get('race_stage'), 'runners': runners,
     }
