@@ -1,7 +1,7 @@
 name: Racing picks
 
-# Each morning, reads the day's UK & Irish win markets from Betfair (read-only, no bets) and commits
-# the top three per race for racing/index.html. Scheduled runs only happen from the default branch.
+# Each morning, reads the day's UK & Irish racecards from Sporting Life (free, no account, read-only)
+# and commits the top three per race for racing/index.html. Scheduled runs only happen from the default branch.
 on:
   schedule:
     - cron: '37 9 * * *'  # 09:37 UTC = 09:37 GMT / 10:37 BST, before the first race
@@ -15,16 +15,13 @@ concurrency: racing-picks
 jobs:
   picks:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Build picks
-        env:
-          BETFAIR_APP_KEY: ${{ secrets.BETFAIR_APP_KEY }}
-          BETFAIR_USERNAME: ${{ secrets.BETFAIR_USERNAME }}
-          BETFAIR_PASSWORD: ${{ secrets.BETFAIR_PASSWORD }}
         run: python racing/picks/build_picks.py
       - name: Commit picks
         run: |

@@ -1,106 +1,65 @@
 """Write today's UK & Irish race picks (time, course, top 3) for the racing page.
 
-Read-only: it calls only Betfair's login, listMarketCatalogue and listMarketBook. There is no code
-here that places, changes or cancels a bet, and the account needs no funds for any of these calls.
+Reads Sporting Life's free racecards (no account, read-only) and ranks each race with the model the
+backtest chose (racing/backtest/model.json): the model if it beat the betting forecast on the test
+month, otherwise the forecast order itself.
 
-Picks are the three shortest-priced runners on the Betfair Exchange win market when the job runs
-(mid-morning), the same "morning price" ranking the backtest in racing/backtest scores.
-
-Env: BETFAIR_APP_KEY, BETFAIR_USERNAME, BETFAIR_PASSWORD (GitHub secrets). Missing secrets = no-op.
 Writes racing/picks/YYYY-MM-DD.json and keeps racing/picks/index.json listing the dates available.
 """
 import json
 import os
 import sys
-import urllib.parse
-import urllib.request
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
-LONDON = ZoneInfo('Europe/London')
 HERE = os.path.dirname(os.path.abspath(__file__))
-LOGIN = 'https://identitysso.betfair.com/api/login'
-API = 'https://api.betfair.com/exchange/betting/rest/v1.0/'
+sys.path.insert(0, os.path.join(HERE, '..'))
+import model  # noqa: E402
+import sl  # noqa: E402
+
+LONDON = ZoneInfo('Europe/London')
+MODEL = os.path.join(HERE, '..', 'backtest', 'model.json')
 KEEP_DAYS = 60
 
 
-def post(url, data, headers):
-    req = urllib.request.Request(url, data=data, headers=headers, method='POST')
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read().decode('utf-8'))
-
-
-def login(app_key, user, password):
-    res = post(LOGIN, urllib.parse.urlencode({'username': user, 'password': password}).encode(),
-               {'X-Application': app_key, 'Accept': 'application/json',
-                'Content-Type': 'application/x-www-form-urlencoded'})
-    if res.get('status') != 'SUCCESS':
-        sys.exit(f"Betfair login failed: {res.get('error') or res.get('status')}")
-    return res['token']
-
-
-def call(method, body, app_key, token):
-    return post(API + method + '/', json.dumps(body).encode(),
-                {'X-Application': app_key, 'X-Authentication': token,
-                 'Content-Type': 'application/json', 'Accept': 'application/json'})
-
-
-def price(runner):
-    """Best guess at the current price: mid of best back/lay, else last traded, else best back."""
-    ex = runner.get('ex') or {}
-    back = (ex.get('availableToBack') or [{}])[0].get('price')
-    lay = (ex.get('availableToLay') or [{}])[0].get('price')
-    if back and lay and lay <= back * 1.25:
-        return (back + lay) / 2
-    return runner.get('lastPriceTraded') or back or lay
-
-
-def build(app_key, token, day):
-    start = datetime.combine(day, datetime.min.time(), LONDON)
-    cat = call('listMarketCatalogue', {
-        'filter': {'eventTypeIds': ['7'], 'marketCountries': ['GB', 'IE'], 'marketTypeCodes': ['WIN'],
-                   'marketStartTime': {'from': start.astimezone(timezone.utc).isoformat(),
-                                       'to': (start + timedelta(days=1)).astimezone(timezone.utc).isoformat()}},
-        'marketProjection': ['EVENT', 'MARKET_START_TIME', 'RUNNER_DESCRIPTION'],
-        'sort': 'FIRST_TO_START', 'maxResults': '1000'}, app_key, token)
-    books = {}
-    ids = [m['marketId'] for m in cat]
-    for i in range(0, len(ids), 25):  # EX_BEST_OFFERS costs 5 of the 200-point request limit per market
-        for b in call('listMarketBook', {'marketIds': ids[i:i + 25],
-                                         'priceProjection': {'priceData': ['EX_BEST_OFFERS']}}, app_key, token):
-            books[b['marketId']] = b
-    races = []
-    for m in cat:
-        book = books.get(m['marketId'])
-        if not book:
-            continue
-        names = {r['selectionId']: r['runnerName'] for r in m.get('runners', [])}
-        priced = [(price(r), names.get(r['selectionId'])) for r in book.get('runners', [])
-                  if r.get('status') == 'ACTIVE' and names.get(r['selectionId'])]
-        priced = sorted((p, n) for p, n in priced if p)
-        if len(priced) < 2:
-            continue
-        ev = m.get('event') or {}
-        off = datetime.fromisoformat(m['marketStartTime'].replace('Z', '+00:00')).astimezone(LONDON)
-        races.append({'time': off.strftime('%H:%M'), 'course': ev.get('venue') or ev.get('name', ''),
-                      'country': ev.get('countryCode', ''), 'picks': [n for _, n in priced[:3]]})
-    return races
+def ranker():
+    try:
+        with open(MODEL, encoding='utf-8') as f:
+            m = json.load(f)
+        if m.get('use_model'):
+            return lambda r: model.probs(r, m['coef'])
+    except (OSError, ValueError):
+        pass
+    return model.forecast_probs
 
 
 def main():
-    keys = [os.environ.get(k, '').strip() for k in ('BETFAIR_APP_KEY', 'BETFAIR_USERNAME', 'BETFAIR_PASSWORD')]
-    if not all(keys):
-        print('Betfair secrets not set; nothing to do.')
-        return
-    app_key, user, password = keys
     day = datetime.now(LONDON).date()
-    races = build(app_key, login(app_key, user, password), day)
+    rank = ranker()
+    races = []
+    for _, path in sl.races_on(day, 'racecards'):
+        r = sl.race(path)
+        if not r or len(r['runners']) < 2:
+            continue
+        rs = r['runners']
+        if any(x.get('fc') for x in rs):
+            p = rank(r)
+        elif any(x.get('sp') for x in rs):  # no forecast published: fall back to the current prices
+            p = [1 / x['sp'] if x.get('sp') else 0 for x in rs]
+        else:
+            continue
+        order = sorted(range(len(rs)), key=lambda i: -p[i])
+        races.append({'time': r['time'], 'course': r['course'], 'country': r['country'],
+                      'picks': [rs[i]['name'] for i in order[:3]]})
 
     path = os.path.join(HERE, f'{day}.json')
-    if os.path.exists(path):  # a re-run later in the day keeps races whose markets have since closed
+    if os.path.exists(path):  # a re-run later in the day keeps races it can no longer read
         with open(path, encoding='utf-8') as f:
             seen = {(r['time'], r['course']) for r in races}
             races += [r for r in json.load(f).get('races', []) if (r['time'], r['course']) not in seen]
+    if not races:
+        print(f'{day}: no races found; nothing written.')
+        return
     races.sort(key=lambda r: (r['time'], r['course']))
     with open(path, 'w', encoding='utf-8') as f:
         json.dump({'date': str(day), 'updated': datetime.now(timezone.utc).isoformat(timespec='seconds'),
