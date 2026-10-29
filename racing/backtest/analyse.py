@@ -204,10 +204,7 @@ def main():
     L += ['', f'**Chosen on training: {describe(best)}**', '',
           f"- Training: {s['n']} bets, {s['pl']:+.1f} pts, ROI {s['roi']:+.1%} (t = {s['t']:.2f})",
           f"- Test, run once: {t['n']} bets, {t['pl']:+.1f} pts, ROI {t['roi']:+.1%} (t = {t['t']:.2f})", '',
-          '**Verdict:** ' + ('this rule kept a profit on unseen races with t >= 2. Promising but not proven after one month; '
-                             'track it live before trusting it.' if passed else
-                             'no reliable edge. The training profit came from picking the best of many rules and did not hold up '
-                             'on unseen races (a pass needs a positive test ROI with t >= 2 over at least 50 bets).'), '',
+          '**Verdict:** ' + verdict(t, passed), '',
           'Only the chosen rule counts as the test. The other rows show how training winners usually fade on new races.']
     # The live page ranks by the morning forecast, which this backtest can't check (see above), so the
     # model is recorded here but not switched on for the daily picks.
@@ -215,6 +212,20 @@ def main():
         coef=coef, use_model=False, rule=describe(best), rule_passed=passed,
         train_races=len(train), test_races=len(test), test_start=test_start,
         generated=datetime.now(timezone.utc).isoformat(timespec='seconds')))
+
+
+def verdict(t, passed):
+    # One-sided chance of a test result at least this good if the rule really broke even (normal approx.).
+    luck = 0.5 * math.erfc(t['t'] / math.sqrt(2))
+    if passed:
+        return ('this rule kept a profit on unseen races with t >= 2. Promising but not proven after one month; '
+                'paper-trade it live before trusting it.')
+    if t['roi'] > 0:
+        return (f"no proven edge yet. The rule also made a profit on the test month, but over {t['n']} bets that is "
+                f"not enough to tell skill from luck (t = {t['t']:.2f}: about a {luck:.0%} chance of doing this well by luck "
+                'with no edge at all). A pass needs t >= 2 over at least 50 bets.')
+    return ('no edge. The training profit came from picking the best of many rules and did not hold up on unseen '
+            'races.')
 
 
 def finish(lines, out_path, model_path, model):
