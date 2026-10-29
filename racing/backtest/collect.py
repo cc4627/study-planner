@@ -40,6 +40,9 @@ def main():
                     sys.exit('Nothing could be read from Sporting Life (first 10 races failed); stopping.')
             got += day_got
             print(f'{d}: {day_got}/{len(listed)} races', flush=True)
+            if sl.SEEN_OTHER:
+                print('   skipped meetings:', '; '.join(sorted(sl.SEEN_OTHER)), flush=True)
+                sl.SEEN_OTHER.clear()
             d += timedelta(days=1)
     print(f'done: {got} races, {missed} unreadable')
 

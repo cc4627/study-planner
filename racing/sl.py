@@ -12,7 +12,25 @@ import urllib.request
 BASE = 'https://www.sportinglife.com'
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
 PAUSE = 0.6
-UK_IRE = {'England', 'Scotland', 'Wales', 'Ireland', 'Northern Ireland'}
+UK_IRE = ('england', 'scotland', 'wales', 'ireland', 'eire', 'great britain', 'united kingdom')
+# Every GB & Irish track, as a second check in case a meeting's country label is missing or unexpected.
+COURSES = {c.lower() for c in (
+    'Aintree Ascot Ayr Bangor-on-Dee Bath Beverley Brighton Carlisle Cartmel Catterick Chelmsford Cheltenham Chepstow '
+    'Chester Doncaster Epsom Exeter Fakenham Ffos-Las Fontwell Goodwood Hamilton Haydock Hereford Hexham Huntingdon Kelso '
+    'Kempton Leicester Lingfield Ludlow Market-Rasen Musselburgh Newbury Newcastle Newmarket Newton-Abbot Nottingham Perth '
+    'Plumpton Pontefract Redcar Ripon Salisbury Sandown Sedgefield Southwell Stratford Taunton Thirsk Uttoxeter Warwick '
+    'Wetherby Wincanton Windsor Wolverhampton Worcester Yarmouth York '
+    'Ballinrobe Bellewstown Clonmel Cork Curragh Down-Royal Downpatrick Dundalk Fairyhouse Galway Gowran-Park Kilbeggan '
+    'Killarney Laytown Leopardstown Limerick Listowel Naas Navan Punchestown Roscommon Sligo Thurles Tipperary Tramore Wexford'
+).replace('-', ' ').split()} | {'bangor on dee', 'ffos las', 'market rasen', 'newton abbot', 'down royal', 'gowran park'}
+SEEN_OTHER = set()  # country labels skipped, printed by callers so a mislabelled meeting is visible
+
+
+def is_uk_ire(country, course):
+    c = (country or '').lower().strip()
+    if c:  # trust the label when there is one (there's a Perth and a Newcastle in Australia too)
+        return any(k in c for k in UK_IRE)
+    return re.sub(r'\s*\(.*\)$', '', (course or '').lower()).replace('-', ' ').strip() in COURSES
 _last = [0.0]
 
 
@@ -55,7 +73,10 @@ def races_on(day, kind):
     for m in pp.get('meetings') or []:
         ms = m.get('meeting_summary') or {}
         country = ((ms.get('course') or {}).get('country') or {}).get('long_name')
-        if country not in UK_IRE or ms.get('date') != str(day):
+        if ms.get('date') != str(day):
+            continue
+        if not is_uk_ire(country, (ms.get('course') or {}).get('name')):
+            SEEN_OTHER.add(f"{country} ({(ms.get('course') or {}).get('name')})")
             continue
         course_slug = slugify((ms.get('course') or {}).get('name'))
         for r in m.get('races') or []:

@@ -2,12 +2,16 @@
 
 Usage: python analyse.py DATA_DIR TEST_START [--out RESULTS.md] [--model model.json]
 
-1. Model: a conditional logit (one softmax per race) on the features in racing/model.py, starting from
-   and shrunk towards "the betting forecast is right", fitted on training races only.
-2. Accuracy on the test month: log loss and hit rates for the forecast alone vs the model.
-3. Betting: a fixed family of rules (forecast/model rank, value against the forecast price, race type,
-   handicap, field size, price band) is scored on training races. The single best is then run once on
-   the test month. Every bet is settled at the starting price (SP): selection never looks at the SP.
+Sporting Life rewrites a race's betting forecast with the starting prices once it has run, so the
+"forecast" on results pages is the SP and is thrown away here: using it would be looking at the result.
+
+1. Model: a conditional logit (one softmax per race) on the pre-race facts in racing/model.py (official
+   rating, weight, age, form figures, days since last run), shrunk towards "no information", fitted on
+   training races only.
+2. Accuracy on the test month: the model against picking at random, with the SP shown for reference.
+3. Betting: a fixed family of rules (model rank, race type, handicap, field size) is scored on training
+   races. The single best is then run once on the test month. Bets are settled at the starting price
+   (SP); selection never looks at it.
 Paper points only; nothing here places a bet.
 """
 import glob
@@ -22,13 +26,12 @@ from datetime import date, datetime, timezone
 import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
-from model import FEATURES, features, forecast_probs  # noqa: E402
+from model import FEATURES, features  # noqa: E402
 
-LAMBDA = 2.0        # shrinkage towards the forecast-only model
+LAMBDA = 2.0        # shrinkage towards "no information"
 MIN_TRAIN_BETS = 150
 KINDS = ['all', 'flat', 'aw', 'hurdle', 'chase', 'nhf']
 FIELDS = [('all', 0, 99), ('<=7', 0, 7), ('8-12', 8, 12), ('13+', 13, 99)]
-PRICES = [('all', 0, 1e9), ('<3', 0, 3), ('3-6', 3, 6), ('6-12', 6, 12), ('12+', 12, 1e9)]
 
 
 def load(data_dir):
@@ -43,11 +46,11 @@ def load(data_dir):
         rs = [x for x in r['runners'] if x.get('sp')]
         if len(rs) < 3 or len(rs) < len(r['runners']) - 1:
             continue  # need prices for (nearly) every runner
+        for x in rs:
+            x['fc'] = None  # on a results page this is the SP, not the morning forecast
         r['runners'] = rs
         if not any(x.get('pos') == 1 for x in rs):
             continue  # abandoned, void or no result
-        if sum(1 for x in rs if x.get('fc')) < 0.7 * len(rs):
-            continue  # need the forecast to rank by
         out.append(r)
     return sorted(out, key=lambda r: (r['date'], r['time']))
 
@@ -57,11 +60,11 @@ def winners(r):
 
 
 def fit(races):
-    """Newton's method on the conditional-logit likelihood with an L2 pull towards coef = {lfc: 1}."""
+    """Newton's method on the conditional-logit likelihood with an L2 pull towards zero."""
     Xs = [np.array(features(r)) for r in races]
     ws = [winners(r) for r in races]
     F = len(FEATURES)
-    prior = np.zeros(F); prior[FEATURES.index('lfc')] = 1.0
+    prior = np.zeros(F)
     b = prior.copy()
     for _ in range(25):
         g = -LAMBDA * (b - prior)
@@ -97,43 +100,31 @@ def accuracy(races, pfn):
 
 def rows(races, coef):
     """One row per runner: what a rule can see before the race, plus the SP return of a 1pt win bet."""
-    cols = {k: [] for k in ('fc_rank', 'm_rank', 'kind', 'hcap', 'field', 'fc', 'value', 'ret')}
+    cols = {k: [] for k in ('m_rank', 'kind', 'hcap', 'field', 'ret')}
     for r in races:
         pm, w = model_probs(r, coef), winners(r)
         rs = r['runners']
-        fc_order = sorted(range(len(rs)), key=lambda i: rs[i].get('fc') or 1e9)
         m_order = sorted(range(len(rs)), key=lambda i: -pm[i])
         for i, x in enumerate(rs):
-            cols['fc_rank'].append(fc_order.index(i) + 1)
             cols['m_rank'].append(m_order.index(i) + 1)
             cols['kind'].append(r['kind']); cols['hcap'].append(bool(r['hcap'])); cols['field'].append(len(rs))
-            cols['fc'].append(x.get('fc') or 0.0)
-            cols['value'].append(pm[i] * x['fc'] if x.get('fc') else 0.0)
             cols['ret'].append(x['sp'] / len(w) - 1 if i in w else -1.0)  # dead heats split the stake
     return {k: np.array(v) for k, v in cols.items()}
 
 
 def rules():
-    for by, rank, kind, hc, fb, pb in itertools.product(['fc', 'model'], [1, 2, 3], KINDS, ['all', 'hcap', 'non-hcap'], FIELDS, PRICES):
-        yield dict(fam='rank', by=by, rank=rank, kind=kind, hcap=hc, field=fb, price=pb)
-    for k, rank, kind, fb in itertools.product([1.0, 1.1, 1.2, 1.35, 1.5], [1, 2, 3, 'any'], KINDS, FIELDS):
-        yield dict(fam='value', k=k, rank=rank, kind=kind, hcap='all', field=fb, price=PRICES[0])
+    for rank, kind, hc, fb in itertools.product([1, 2, 3, 'any'], KINDS, ['all', 'hcap', 'non-hcap'], FIELDS):
+        yield dict(rank=rank, kind=kind, hcap=hc, field=fb)
 
 
 def mask(rule, d):
     m = np.ones(len(d['ret']), bool)
-    if rule['fam'] == 'rank':
-        m &= d['fc_rank' if rule['by'] == 'fc' else 'm_rank'] == rule['rank']
-    else:
-        m &= d['value'] >= rule['k']
-        if rule['rank'] != 'any':
-            m &= d['m_rank'] == rule['rank']
+    if rule['rank'] != 'any':
+        m &= d['m_rank'] == rule['rank']
     if rule['kind'] != 'all': m &= d['kind'] == rule['kind']
     if rule['hcap'] == 'hcap': m &= d['hcap']
     if rule['hcap'] == 'non-hcap': m &= ~d['hcap']
     m &= (d['field'] >= rule['field'][1]) & (d['field'] <= rule['field'][2])
-    if rule['price'][0] != 'all':
-        m &= (d['fc'] >= rule['price'][1]) & (d['fc'] < rule['price'][2])
     return m
 
 
@@ -146,14 +137,10 @@ def stats(ret):
 
 
 def describe(rule):
-    if rule['fam'] == 'rank':
-        parts = [f"back {'forecast' if rule['by'] == 'fc' else 'model'} #{rule['rank']}"]
-    else:
-        parts = [f"back {'any runner' if rule['rank'] == 'any' else 'model #' + str(rule['rank'])} where model chance x forecast odds >= {rule['k']}"]
+    parts = ['back every runner' if rule['rank'] == 'any' else f"back model #{rule['rank']}"]
     if rule['kind'] != 'all': parts.append(rule['kind'])
     if rule['hcap'] != 'all': parts.append(rule['hcap'])
     if rule['field'][0] != 'all': parts.append('field ' + rule['field'][0])
-    if rule['price'][0] != 'all': parts.append('forecast price ' + rule['price'][0])
     return ', '.join(parts)
 
 
@@ -166,30 +153,30 @@ def main():
     train = [r for r in races if r['date'] < test_start]
     test = [r for r in races if r['date'] >= test_start]
     L = [f'# Racing backtest: {races[0]["date"] if races else "?"} to {races[-1]["date"] if races else "?"}', '',
-         'UK & Irish races from Sporting Life results pages. Runners are ranked using only what was published before the race '
-         '(betting forecast, official rating, weight, age, form, days since last run); every bet is settled at the starting price. '
+         'UK & Irish races from Sporting Life results pages. Runners are ranked using only facts known before the race '
+         '(official rating, weight, age, form figures, days since last run); every bet is settled at the starting price (SP). '
          'Paper points only.', '',
+         'The morning betting forecast is not used: once a race has run, Sporting Life replaces it with the SPs, so on '
+         'past races it would be looking at the result. The forecast-based daily picks can only be checked going forward.', '',
          f'Training: {len(train)} races before {test_start}. Test: {len(test)} races from {test_start}, used once.', '']
     if len(train) < 500 or len(test) < 200:
         L.append('Not enough races collected to run the backtest.')
         return finish(L, out_path, model_path, None)
 
     coef = fit(train)
-    fc_acc, m_acc = accuracy(test, forecast_probs), accuracy(test, lambda r: model_probs(r, coef))
+    un_acc = accuracy(test, lambda r: [1 / len(r['runners'])] * len(r['runners']))
+    m_acc = accuracy(test, lambda r: model_probs(r, coef))
     sp_acc = accuracy(test, lambda r: [1 / x['sp'] / sum(1 / y['sp'] for y in r['runners']) for x in r['runners']])
-    use_model = m_acc[0] < fc_acc[0]
     L += ['## 1. Who wins: accuracy on the test month', '',
           '| Ranking | Log loss (lower is better) | Top pick won | Winner in top 3 |', '|---|---|---|---|',
-          f'| Betting forecast | {fc_acc[0]:.4f} | {fc_acc[1]:.1%} | {fc_acc[2]:.1%} |',
-          f'| Model (forecast + form, ratings, fitness) | {m_acc[0]:.4f} | {m_acc[1]:.1%} | {m_acc[2]:.1%} |',
+          f'| Random pick | {un_acc[0]:.4f} | {un_acc[1]:.1%} | {un_acc[2]:.1%} |',
+          f'| Model (rating, weight, age, form, days off) | {m_acc[0]:.4f} | {m_acc[1]:.1%} | {m_acc[2]:.1%} |',
           f'| Starting price (known only at the off, for reference) | {sp_acc[0]:.4f} | {sp_acc[1]:.1%} | {sp_acc[2]:.1%} |', '',
-          ('The model ranks better than the forecast, so the daily top 3 use the model.' if use_model else
-           'The model does not beat the forecast out of sample, so the daily top 3 use the forecast order.'), '',
-          'Model weights: ' + ', '.join(f'{k} {v:+.2f}' for k, v in coef.items()), '']
+          'Model weights: ' + ', '.join(f'{k} {v:+.2f}' for k, v in coef.items() if k not in ('lfc', 'fc_missing')), '']
 
     dtr, dte = rows(train, coef), rows(test, coef)
-    base = [('Back the forecast favourite', dict(fam='rank', by='fc', rank=1, kind='all', hcap='all', field=FIELDS[0], price=PRICES[0])),
-            ('Back the model top pick', dict(fam='rank', by='model', rank=1, kind='all', hcap='all', field=FIELDS[0], price=PRICES[0]))]
+    base = [('Back every runner (the bookmakers\' margin)', dict(rank='any', kind='all', hcap='all', field=FIELDS[0])),
+            ('Back the model top pick', dict(rank=1, kind='all', hcap='all', field=FIELDS[0]))]
     L += ['## 2. Betting at SP: simple strategies', '', '| Strategy | Train bets | Train ROI | Test bets | Test P/L | Test ROI |', '|---|---|---|---|---|---|']
     for label, rule in base:
         a, b = stats(dtr['ret'][mask(rule, dtr)]), stats(dte['ret'][mask(rule, dte)])
@@ -218,8 +205,10 @@ def main():
                              'no reliable edge. The training profit came from picking the best of many rules and did not hold up '
                              'on unseen races (a pass needs a positive test ROI with t >= 2 over at least 50 bets).'), '',
           'Only the chosen rule counts as the test. The other rows show how training winners usually fade on new races.']
+    # The live page ranks by the morning forecast, which this backtest can't check (see above), so the
+    # model is recorded here but not switched on for the daily picks.
     return finish(L, out_path, model_path, dict(
-        coef=coef, use_model=use_model, rule=describe(best), rule_passed=passed,
+        coef=coef, use_model=False, rule=describe(best), rule_passed=passed,
         train_races=len(train), test_races=len(test), test_start=test_start,
         generated=datetime.now(timezone.utc).isoformat(timespec='seconds')))
 
