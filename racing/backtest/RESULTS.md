@@ -21,7 +21,7 @@ Model weights: or_rel +0.83, or_rel_h -0.31, or_missing -0.46, wt_rel +0.12, wt_
 | Strategy | Train bets | Train ROI | Test bets | Test P/L | Test ROI |
 |---|---|---|---|---|---|
 | Back every runner (the bookmakers' margin) | 22176 | -27.4% | 11326 | -3049.0 | -26.9% |
-| Back the model top pick | 2327 | -17.5% | 1183 | -237.5 | -20.1% |
+| Back the model top pick | 2327 | -17.6% | 1183 | -237.5 | -20.1% |
 
 ## 3. Searching for an edge: best of 130 rules on training, then tested
 
