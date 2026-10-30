@@ -5,7 +5,7 @@ name: Racing backtest
 # tests it once on the third, and commits the report and the chosen model.
 on:
   push:
-    paths: ['racing/backtest/**', 'racing/sl.py', 'racing/model.py', '.github/workflows/racing-backtest.yml']
+    paths: ['racing/backtest/**', '!racing/backtest/confirm.py', '!racing/backtest/frozen.json', 'racing/sl.py', 'racing/model.py', '.github/workflows/racing-backtest.yml']
   workflow_dispatch:
 
 permissions:
