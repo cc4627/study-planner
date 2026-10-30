@@ -6,6 +6,8 @@ on:
   schedule:
     - cron: '37 9 * * *'  # 09:37 UTC = 09:37 GMT / 10:37 BST, before the first race
   workflow_dispatch:
+  push:  # also rebuild straight away when the picks code or this workflow changes
+    paths: ['racing/picks/build_picks.py', '.github/workflows/racing-picks.yml']
 
 permissions:
   contents: write
