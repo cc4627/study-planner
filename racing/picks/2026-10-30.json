@@ -1,0 +1,455 @@
+{
+ "date": "2026-10-30",
+ "updated": "2026-10-30T13:11:41+00:00",
+ "races": [
+  {
+   "time": "11:35",
+   "course": "Newmarket",
+   "country": "England",
+   "picks": [
+    "Dove Tale",
+    "Dialstone",
+    "First Officer"
+   ]
+  },
+  {
+   "time": "12:05",
+   "course": "Newmarket",
+   "country": "England",
+   "picks": [
+    "Solo Quest",
+    "High Summer",
+    "Afif"
+   ]
+  },
+  {
+   "time": "12:35",
+   "course": "Uttoxeter",
+   "country": "England",
+   "picks": [
+    "Hold The Serve",
+    "Count Of Vendome",
+    "Constellation Walk"
+   ]
+  },
+  {
+   "time": "12:40",
+   "course": "Newmarket",
+   "country": "England",
+   "picks": [
+    "Last Horizon",
+    "Native German",
+    "Covet"
+   ]
+  },
+  {
+   "time": "13:00",
+   "course": "Down Royal",
+   "country": "Northern Ireland",
+   "picks": [
+    "With Nolimit",
+    "Water Mill",
+    "Master Locksley"
+   ]
+  },
+  {
+   "time": "13:07",
+   "course": "Uttoxeter",
+   "country": "England",
+   "picks": [
+    "Taranis Dubh",
+    "Seven Kites",
+    "Iamtheidaho"
+   ]
+  },
+  {
+   "time": "13:15",
+   "course": "Newmarket",
+   "country": "England",
+   "picks": [
+    "Fenlander",
+    "Marching Mac",
+    "Diomed Duke"
+   ]
+  },
+  {
+   "time": "13:20",
+   "course": "Wetherby",
+   "country": "England",
+   "picks": [
+    "Le Beau Madrik",
+    "Florida Dreams"
+   ]
+  },
+  {
+   "time": "13:30",
+   "course": "Down Royal",
+   "country": "Northern Ireland",
+   "picks": [
+    "The Ducks Walk",
+    "Juke Box Rock",
+    "Dark Lieutenant"
+   ]
+  },
+  {
+   "time": "13:37",
+   "course": "Uttoxeter",
+   "country": "England",
+   "picks": [
+    "Merry Wood",
+    "Magika Bella",
+    "Another Vega"
+   ]
+  },
+  {
+   "time": "13:45",
+   "course": "Newmarket",
+   "country": "England",
+   "picks": [
+    "Siena Storm",
+    "Nicely",
+    "Etonnante"
+   ]
+  },
+  {
+   "time": "13:50",
+   "course": "Wetherby",
+   "country": "England",
+   "picks": [
+    "Nate Of Spades",
+    "I've Got A Friend",
+    "Wings Of The Glen"
+   ]
+  },
+  {
+   "time": "14:00",
+   "course": "Down Royal",
+   "country": "Northern Ireland",
+   "picks": [
+    "Ash Hobbs",
+    "Switch From Diesel",
+    "Torpille Dagrostis"
+   ]
+  },
+  {
+   "time": "14:10",
+   "course": "Uttoxeter",
+   "country": "England",
+   "picks": [
+    "Kosasiempre",
+    "Sir Hobnob",
+    "Loustic Du Chatel"
+   ]
+  },
+  {
+   "time": "14:20",
+   "course": "Newmarket",
+   "country": "England",
+   "picks": [
+    "Aegean Prince",
+    "Al Aasy",
+    "Al Qareem"
+   ]
+  },
+  {
+   "time": "14:25",
+   "course": "Wetherby",
+   "country": "England",
+   "picks": [
+    "Service Minimum",
+    "Handlethekettle",
+    "Spot On Soph"
+   ]
+  },
+  {
+   "time": "14:35",
+   "course": "Down Royal",
+   "country": "Northern Ireland",
+   "picks": [
+    "Mange Tout",
+    "Blake",
+    "El Cairos"
+   ]
+  },
+  {
+   "time": "14:45",
+   "course": "Uttoxeter",
+   "country": "England",
+   "picks": [
+    "Kally Des Bruyeres",
+    "Kaviar Wood",
+    "Kingston Gent"
+   ]
+  },
+  {
+   "time": "14:55",
+   "course": "Newmarket",
+   "country": "England",
+   "picks": [
+    "Sail On Sailor",
+    "Berry Clever",
+    "Guilty Verdict"
+   ]
+  },
+  {
+   "time": "15:00",
+   "course": "Wetherby",
+   "country": "England",
+   "picks": [
+    "Charles Darnay",
+    "Minella Rockett",
+    "Sacre Chef"
+   ]
+  },
+  {
+   "time": "15:10",
+   "course": "Down Royal",
+   "country": "Northern Ireland",
+   "picks": [
+    "Farrokh",
+    "Manoir De Mirande",
+    "Court Canyon"
+   ]
+  },
+  {
+   "time": "15:20",
+   "course": "Uttoxeter",
+   "country": "England",
+   "picks": [
+    "Chico Magnifica",
+    "Moves Like Mason",
+    "Dino Bellagio"
+   ]
+  },
+  {
+   "time": "15:30",
+   "course": "Newmarket",
+   "country": "England",
+   "picks": [
+    "Carbine Country",
+    "Guiding Force",
+    "Venetian Storm"
+   ]
+  },
+  {
+   "time": "15:35",
+   "course": "Wetherby",
+   "country": "England",
+   "picks": [
+    "Kingston Narcissus",
+    "Crebilly",
+    "Prairie Wolf"
+   ]
+  },
+  {
+   "time": "15:45",
+   "course": "Down Royal",
+   "country": "Northern Ireland",
+   "picks": [
+    "Ballyfad",
+    "Matin Midi Et Soir",
+    "Port Authority"
+   ]
+  },
+  {
+   "time": "15:55",
+   "course": "Uttoxeter",
+   "country": "England",
+   "picks": [
+    "Lou Prince",
+    "Hello Charlie",
+    "Iceman Harry"
+   ]
+  },
+  {
+   "time": "16:05",
+   "course": "Newmarket",
+   "country": "England",
+   "picks": [
+    "Amused",
+    "Arundel",
+    "Eloquencia"
+   ]
+  },
+  {
+   "time": "16:10",
+   "course": "Wetherby",
+   "country": "England",
+   "picks": [
+    "Noonetellsmenothin",
+    "Bright Legend",
+    "Helsgetaway"
+   ]
+  },
+  {
+   "time": "16:15",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Alembic",
+    "Golspie",
+    "Wicklow Way"
+   ]
+  },
+  {
+   "time": "16:20",
+   "course": "Down Royal",
+   "country": "Northern Ireland",
+   "picks": [
+    "Premier Division",
+    "Passenger",
+    "Rokanako"
+   ]
+  },
+  {
+   "time": "16:45",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Keogie",
+    "Bella Angelina",
+    "Venetian Sky"
+   ]
+  },
+  {
+   "time": "17:15",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Pequenita",
+    "Xochipilli",
+    "Astral Crown"
+   ]
+  },
+  {
+   "time": "17:30",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Southern Boulevard",
+    "Pure Power",
+    "Monologue"
+   ]
+  },
+  {
+   "time": "17:45",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Ennoble",
+    "Believeinmenow",
+    "Brave Traveller"
+   ]
+  },
+  {
+   "time": "18:00",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "One Cool Bear",
+    "Jordan Breeze",
+    "Blue Anthem"
+   ]
+  },
+  {
+   "time": "18:15",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Elyam",
+    "Tatterstall",
+    "Michaela's Boy"
+   ]
+  },
+  {
+   "time": "18:30",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Mehman",
+    "Bear On The Run",
+    "Thunderbear"
+   ]
+  },
+  {
+   "time": "18:45",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Poppeye",
+    "Coramento",
+    "Cosmos Raj"
+   ]
+  },
+  {
+   "time": "19:00",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Wearing Stars",
+    "Lookingforarainbow",
+    "Subtle Shade"
+   ]
+  },
+  {
+   "time": "19:15",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Massimo Blue",
+    "Great",
+    "Roaring Ralph"
+   ]
+  },
+  {
+   "time": "19:30",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Suir Monad",
+    "Send Harry",
+    "Daler"
+   ]
+  },
+  {
+   "time": "19:45",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Yaajooz",
+    "Lanarra",
+    "Educating Rita"
+   ]
+  },
+  {
+   "time": "20:00",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Go Out",
+    "Storm Eric",
+    "Polanco"
+   ]
+  },
+  {
+   "time": "20:20",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Cavallo Pazzo",
+    "Ey Up He's A Star",
+    "Pit Boss"
+   ]
+  },
+  {
+   "time": "20:30",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Serenity Blue",
+    "Not Just Any Eagle",
+    "Pillar Of Hope"
+   ]
+  }
+ ]
+}
