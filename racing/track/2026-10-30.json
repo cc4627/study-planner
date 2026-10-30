@@ -1,0 +1,500 @@
+{
+ "date": "2026-10-30",
+ "updated": "2026-10-30T13:11:41+00:00",
+ "races": [
+  {
+   "time": "11:35",
+   "course": "Newmarket",
+   "path": "/racing/racecards/2026-10-30/newmarket/racecard/946723/newmarket-challenge-whip-handicap-gbbplus-race",
+   "picks": [
+    "Dove Tale",
+    "Dialstone",
+    "First Officer"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:05",
+   "course": "Newmarket",
+   "path": "/racing/racecards/2026-10-30/newmarket/racecard/946110/german-g1-racecourses-thank-world-pool-british-ebf-novice-stakes-c-g-div-1",
+   "picks": [
+    "Solo Quest",
+    "High Summer",
+    "Afif"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:35",
+   "course": "Uttoxeter",
+   "path": "/racing/racecards/2026-10-30/uttoxeter/racecard/946118/kalahari-king-chasing-excellence-beginners-chase-gbb-race",
+   "picks": [
+    "Hold The Serve",
+    "Count Of Vendome",
+    "Constellation Walk"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:40",
+   "course": "Newmarket",
+   "path": "/racing/racecards/2026-10-30/newmarket/racecard/946111/german-g1-racecourses-thank-world-pool-british-ebf-novice-stakes-c-g-div-2",
+   "picks": [
+    "Last Horizon",
+    "Native German",
+    "Covet"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:00",
+   "course": "Down Royal",
+   "path": "/racing/racecards/2026-10-30/down-royal/racecard/946306/irish-stallion-farms-ebf-maiden-hurdle",
+   "picks": [
+    "With Nolimit",
+    "Water Mill",
+    "Master Locksley"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:07",
+   "course": "Uttoxeter",
+   "path": "/racing/racecards/2026-10-30/uttoxeter/racecard/946119/quinnbet-novices-hurdle-gbb-race",
+   "picks": [
+    "Taranis Dubh",
+    "Seven Kites",
+    "Iamtheidaho"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:15",
+   "course": "Newmarket",
+   "path": "/racing/racecards/2026-10-30/newmarket/racecard/946112/157-grosser-preis-von-baden-handicap",
+   "picks": [
+    "Fenlander",
+    "Marching Mac",
+    "Diomed Duke"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:20",
+   "course": "Wetherby",
+   "path": "/racing/racecards/2026-10-30/wetherby/racecard/946105/bet365-chasing-excellence-beginners-chase-gbb-race",
+   "picks": [
+    "Le Beau Madrik",
+    "Florida Dreams"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:30",
+   "course": "Down Royal",
+   "path": "/racing/racecards/2026-10-30/down-royal/racecard/946307/eventsec-handicap-hurdle-0-100",
+   "picks": [
+    "The Ducks Walk",
+    "Juke Box Rock",
+    "Dark Lieutenant"
+   ],
+   "rule": "Mister Vic"
+  },
+  {
+   "time": "13:37",
+   "course": "Uttoxeter",
+   "path": "/racing/racecards/2026-10-30/uttoxeter/racecard/946120/support-the-royal-british-legion-poppy-appeal-mares-maiden-hurdle-gbb-race",
+   "picks": [
+    "Merry Wood",
+    "Magika Bella",
+    "Another Vega"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:45",
+   "course": "Newmarket",
+   "path": "/racing/racecards/2026-10-30/newmarket/racecard/946113/irish-stallion-farms-ebf-bosra-sham-fillies-stakes-listed",
+   "picks": [
+    "Siena Storm",
+    "Nicely",
+    "Etonnante"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:50",
+   "course": "Wetherby",
+   "path": "/racing/racecards/2026-10-30/wetherby/racecard/946106/best-odds-guaranteed-at-bet365-maiden-hurdle-gbb-race",
+   "picks": [
+    "Nate Of Spades",
+    "I've Got A Friend",
+    "Wings Of The Glen"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:00",
+   "course": "Down Royal",
+   "path": "/racing/racecards/2026-10-30/down-royal/racecard/946308/irish-stallion-farms-ebf-feathard-lady-mares-novice-hurdle-grade-3",
+   "picks": [
+    "Ash Hobbs",
+    "Switch From Diesel",
+    "Torpille Dagrostis"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:10",
+   "course": "Uttoxeter",
+   "path": "/racing/racecards/2026-10-30/uttoxeter/racecard/946121/abode-estate-agents-handicap-hurdle",
+   "picks": [
+    "Kosasiempre",
+    "Sir Hobnob",
+    "Loustic Du Chatel"
+   ],
+   "rule": "Fine Thing"
+  },
+  {
+   "time": "14:20",
+   "course": "Newmarket",
+   "path": "/racing/racecards/2026-10-30/newmarket/racecard/946114/st-simon-stakes-group-3",
+   "picks": [
+    "Aegean Prince",
+    "Al Aasy",
+    "Al Qareem"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:25",
+   "course": "Wetherby",
+   "path": "/racing/racecards/2026-10-30/wetherby/racecard/946107/bet365-handicap-hurdle",
+   "picks": [
+    "Service Minimum",
+    "Handlethekettle",
+    "Spot On Soph"
+   ],
+   "rule": "Spot On Soph"
+  },
+  {
+   "time": "14:35",
+   "course": "Down Royal",
+   "path": "/racing/racecards/2026-10-30/down-royal/racecard/946309/bottlegreen-hurdle-listed",
+   "picks": [
+    "Mange Tout",
+    "Blake",
+    "El Cairos"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:45",
+   "course": "Uttoxeter",
+   "path": "/racing/racecards/2026-10-30/uttoxeter/racecard/946122/ted-anderson-dixon-handicap-chase",
+   "picks": [
+    "Kally Des Bruyeres",
+    "Kaviar Wood",
+    "Kingston Gent"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:55",
+   "course": "Newmarket",
+   "path": "/racing/racecards/2026-10-30/newmarket/racecard/946115/munichs-grosser-dallmayr-preis-handicap",
+   "picks": [
+    "Sail On Sailor",
+    "Berry Clever",
+    "Guilty Verdict"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:00",
+   "course": "Wetherby",
+   "path": "/racing/racecards/2026-10-30/wetherby/racecard/946108/paul-fergusons-jumpers-to-follow-wensleydale-juvenile-hurdle-listed-gbb-race",
+   "picks": [
+    "Charles Darnay",
+    "Minella Rockett",
+    "Sacre Chef"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:10",
+   "course": "Down Royal",
+   "path": "/racing/racecards/2026-10-30/down-royal/racecard/946310/metcollect-handicap-chase",
+   "picks": [
+    "Farrokh",
+    "Manoir De Mirande",
+    "Court Canyon"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:20",
+   "course": "Uttoxeter",
+   "path": "/racing/racecards/2026-10-30/uttoxeter/racecard/946123/quinnbet-best-odds-guaranteed-handicap-hurdle",
+   "picks": [
+    "Chico Magnifica",
+    "Moves Like Mason",
+    "Dino Bellagio"
+   ],
+   "rule": "Keep Under Wraps"
+  },
+  {
+   "time": "15:30",
+   "course": "Newmarket",
+   "path": "/racing/racecards/2026-10-30/newmarket/racecard/946116/westminster-137-grosser-preis-von-berlin-novice-stakes-gbb-race",
+   "picks": [
+    "Carbine Country",
+    "Guiding Force",
+    "Venetian Storm"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:35",
+   "course": "Wetherby",
+   "path": "/racing/racecards/2026-10-30/wetherby/racecard/944193/bet-boost-at-bet365-crossley-handicap-chase-premier-handicap-gbb-race",
+   "picks": [
+    "Kingston Narcissus",
+    "Crebilly",
+    "Prairie Wolf"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:45",
+   "course": "Down Royal",
+   "path": "/racing/racecards/2026-10-30/down-royal/racecard/946311/betvictor-beginners-chase",
+   "picks": [
+    "Ballyfad",
+    "Matin Midi Et Soir",
+    "Port Authority"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:55",
+   "course": "Uttoxeter",
+   "path": "/racing/racecards/2026-10-30/uttoxeter/racecard/946124/bob-derry-50-years-at-uttoxeter-nh-flat-race-conditionalamateurs-gbb-race",
+   "picks": [
+    "Lou Prince",
+    "Hello Charlie",
+    "Iceman Harry"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:05",
+   "course": "Newmarket",
+   "path": "/racing/racecards/2026-10-30/newmarket/racecard/946117/german-g1-racecourses-thank-world-pool-handicap",
+   "picks": [
+    "Amused",
+    "Arundel",
+    "Eloquencia"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:10",
+   "course": "Wetherby",
+   "path": "/racing/racecards/2026-10-30/wetherby/racecard/946109/racing-value-at-bet365-handicap-hurdle",
+   "picks": [
+    "Noonetellsmenothin",
+    "Bright Legend",
+    "Helsgetaway"
+   ],
+   "rule": "Bright Legend"
+  },
+  {
+   "time": "16:15",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-10-30/newcastle/racecard/946125/midnite-built-for-2026-not-2006-handicap",
+   "picks": [
+    "Alembic",
+    "Golspie",
+    "Wicklow Way"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:20",
+   "course": "Down Royal",
+   "path": "/racing/racecards/2026-10-30/down-royal/racecard/946312/wtw-willis-flat-race",
+   "picks": [
+    "Premier Division",
+    "Passenger",
+    "Rokanako"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:45",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-10-30/newcastle/racecard/946126/all-weather-championship-is-back-novice-stakes-gbb-race",
+   "picks": [
+    "Keogie",
+    "Bella Angelina",
+    "Venetian Sky"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:15",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-10-30/newcastle/racecard/946127/awc-finals-day-at-newcastle-26th-march-nursery",
+   "picks": [
+    "Pequenita",
+    "Xochipilli",
+    "Astral Crown"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:30",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-10-30/dundalk/racecard/946299/irish-stallion-farms-ebf-maiden",
+   "picks": [
+    "Southern Boulevard",
+    "Pure Power",
+    "Monologue"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:45",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-10-30/newcastle/racecard/946128/midnite-built-different-handicap",
+   "picks": [
+    "Ennoble",
+    "Believeinmenow",
+    "Brave Traveller"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:00",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-10-30/dundalk/racecard/946300/view-restaurant-at-dundalk-handicap-0-60",
+   "picks": [
+    "One Cool Bear",
+    "Jordan Breeze",
+    "Blue Anthem"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:15",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-10-30/newcastle/racecard/946129/midnite-a-next-generation-betting-app-handicap",
+   "picks": [
+    "Elyam",
+    "Tatterstall",
+    "Michaela's Boy"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:30",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-10-30/dundalk/racecard/946301/bar-1-betting-bet-10-get-50-handicap",
+   "picks": [
+    "Mehman",
+    "Bear On The Run",
+    "Thunderbear"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:45",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-10-30/newcastle/racecard/946130/awc-season-14-has-begun-handicap",
+   "picks": [
+    "Poppeye",
+    "Coramento",
+    "Cosmos Raj"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:00",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-10-30/dundalk/racecard/946302/book-online-at-dundalkstadiumcom-maiden",
+   "picks": [
+    "Wearing Stars",
+    "Lookingforarainbow",
+    "Subtle Shade"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:15",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-10-30/newcastle/racecard/946131/make-the-move-to-midnite-handicap",
+   "picks": [
+    "Massimo Blue",
+    "Great",
+    "Roaring Ralph"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:30",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-10-30/dundalk/racecard/946303/happy-halloween-handicap",
+   "picks": [
+    "Suir Monad",
+    "Send Harry",
+    "Daler"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:45",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-10-30/newcastle/racecard/946132/aw-trials-day-lingfield-2nd-jan-2027-handicap-div-1",
+   "picks": [
+    "Yaajooz",
+    "Lanarra",
+    "Educating Rita"
+   ],
+   "rule": null
+  },
+  {
+   "time": "20:00",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-10-30/dundalk/racecard/946304/irishinjuredjockeyscom-handicap-0-60",
+   "picks": [
+    "Go Out",
+    "Storm Eric",
+    "Polanco"
+   ],
+   "rule": null
+  },
+  {
+   "time": "20:20",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-10-30/newcastle/racecard/946724/aw-trials-day-lingfield-2nd-jan-2027-handicap-div-2",
+   "picks": [
+    "Cavallo Pazzo",
+    "Ey Up He's A Star",
+    "Pit Boss"
+   ],
+   "rule": null
+  },
+  {
+   "time": "20:30",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-10-30/dundalk/racecard/946305/book-your-christmas-party-at-dundalk-stadium-handicap",
+   "picks": [
+    "Serenity Blue",
+    "Not Just Any Eagle",
+    "Pillar Of Hope"
+   ],
+   "rule": null
+  }
+ ]
+}

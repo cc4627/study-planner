@@ -1,0 +1,66 @@
+name: Racing backtest
+
+# Collects three months of UK & Irish results from Sporting Life (one month per job, one request a
+# second, kept in the Actions cache rather than the repo), then fits the model on the first two months,
+# tests it once on the third, and commits the report and the chosen model.
+on:
+  push:
+    paths: ['racing/backtest/**', '!racing/backtest/confirm.py', '!racing/backtest/frozen.json', 'racing/sl.py', 'racing/model.py', '.github/workflows/racing-backtest.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      matrix:
+        part:
+          - {start: '2026-07-29', end: '2026-08-28'}
+          - {start: '2026-08-29', end: '2026-09-28'}
+          - {start: '2026-09-29', end: '2026-10-28'}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - id: cache
+        uses: actions/cache@v4
+        with:
+          path: racing/backtest/data/${{ matrix.part.start }}.jsonl.gz
+          key: sl-results-v1-${{ matrix.part.start }}-${{ matrix.part.end }}-${{ hashFiles('racing/sl.py') }}
+      - name: Collect
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: python racing/backtest/collect.py ${{ matrix.part.start }} ${{ matrix.part.end }} racing/backtest/data/${{ matrix.part.start }}.jsonl.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: data-${{ matrix.part.start }}
+          path: racing/backtest/data/${{ matrix.part.start }}.jsonl.gz
+          retention-days: 7
+
+  analyse:
+    needs: collect
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: data-*
+          path: racing/backtest/data
+          merge-multiple: true
+      - name: Analyse
+        # Train on 29 Jul - 28 Sep, test once on 29 Sep - 28 Oct.
+        run: python racing/backtest/analyse.py racing/backtest/data 2026-09-29 --out racing/backtest/RESULTS.md --model racing/backtest/model.json
+      - name: Commit report and model
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add racing/backtest/RESULTS.md racing/backtest/model.json
+          git diff --cached --quiet || (git commit -m "Update racing backtest results" && git pull --rebase && git push)
