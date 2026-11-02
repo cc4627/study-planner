@@ -42,14 +42,21 @@ def report(label, url):
 
 
 h, data = report('index', B + '/racing/racecards')
-build = data.get('buildId') if isinstance(data, dict) else None
-print('buildId', build, '| query of index:', data.get('query') if isinstance(data, dict) else None, '| page:', data.get('page') if isinstance(data, dict) else None)
-for label, path in [('dated', f'/racing/racecards/{tom}'), ('tomorrow', '/racing/racecards/tomorrow'),
-                    ('query', f'/racing/racecards?date={tom}'), ('fixtures', '/racing/fixtures'),
-                    ('dated-racecards', f'/racing/racecards/{tom}/racecards')]:
-    report(label, B + path)
-if build:
-    report('next-data dated', f'{B}/_next/data/{build}/racing/racecards/{tom}.json')
-    report('next-data dated+query', f'{B}/_next/data/{build}/racing/racecards/{tom}.json?date={tom}')
-# any other date-looking links on the index
-print('index links with dates:', sorted(set(re.findall(r'href="(/racing/racecards/\d{4}-\d{2}-\d{2}[^"]*)"', h)))[:12])
+day2 = str(datetime.now(ZoneInfo('Europe/London')).date() + timedelta(days=2))
+report('two days ahead', f'{B}/racing/racecards/{day2}')
+race = sorted(set(re.findall(rf'href="(/racing/racecards/{tom}/[^"]+/racecard/\d+/[^"]*)"', h)))
+print('tomorrow race links on index:', race)
+if race:
+    s_, f_, h2 = get(B + race[0])
+    nd = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', h2, re.S)
+    pp = json.loads(nd.group(1))['props']['pageProps'] if nd else {}
+    ms = pp.get('meetings') or []
+    print(f'race page {s_}: {len(ms)} meetings')
+    for m in ms:
+        if not isinstance(m, dict):
+            continue
+        sm = m.get('meeting_summary') or {}
+        c = sm.get('course') or {}
+        print('   ', sm.get('date'), c.get('name'), (c.get('country') or {}).get('long_name'), 'races:', len(m.get('races') or []))
+    links = sorted(set(re.findall(rf'href="(/racing/racecards/{tom}/[^"]+/racecard/\d+/[^"]*)"', h2)))
+    print('race page links to tomorrow:', len(links), links[:5])
