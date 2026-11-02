@@ -67,10 +67,13 @@ def slugify(s):
 def races_on(day, kind):
     """[(race_id, path)] for UK & Irish races on a date. kind = 'results' (past) or 'racecards' (today or later)."""
     today = str(datetime.now(ZoneInfo('Europe/London')).date())
-    pp, html = page('/racing/racecards' if kind == 'racecards' and str(day) == today else f'/racing/{kind}/{day}',
-                    with_html=True)
+    path = '/racing/racecards' if kind == 'racecards' and str(day) == today else f'/racing/{kind}/{day}'
+    pp, html = page(path, with_html=True)
     if not pp:
+        print(f'  ! {path}: page could not be read')
         return []
+    if not pp.get('meetings'):
+        print(f'  ! {path}: no meetings on the page (keys: {sorted(pp)[:12]})')
     # Prefer the page's own links; build one from the names only if a race isn't linked.
     links = {int(rid): href for href, rid in re.findall(rf'href="(/racing/{kind}/{day}/[^/"]+(?:/racecard)?/(\d+)/[^"]*)"', html)}
     out = []
@@ -78,6 +81,7 @@ def races_on(day, kind):
         ms = m.get('meeting_summary') or {}
         country = ((ms.get('course') or {}).get('country') or {}).get('long_name')
         if ms.get('date') != str(day):
+            SEEN_OTHER.add(f"meeting dated {ms.get('date')}")
             continue
         if not is_uk_ire(country, (ms.get('course') or {}).get('name')):
             SEEN_OTHER.add(f"{country} ({(ms.get('course') or {}).get('name')})")

@@ -84,15 +84,20 @@ def main():
 def build(day, now):
     rank, rule = ranker(), rule_pick()
     races, track = [], []
-    for _, path in sl.races_on(day, 'racecards'):
+    listed = sl.races_on(day, 'racecards')
+    unread = off = small = 0
+    for _, path in listed:
         try:
             r = sl.race(path)
         except Exception as e:
             print(f'  ! {path}: {e!r}')
+            unread += 1
             continue
         if not r or len(r['runners']) < 2:
+            unread += not r; small += bool(r)
             continue
         if day < now.date() or (day == now.date() and r['time'] <= now.strftime('%H:%M')):
+            off += 1
             continue  # already off: a "prediction" now could see the result, and earlier picks stay as they were
         rs = r['runners']
         if any(x.get('fc') for x in rs):
@@ -106,6 +111,10 @@ def build(day, now):
         races.append({'time': r['time'], 'course': r['course'], 'country': r['country'], 'picks': picks})
         track.append({'time': r['time'], 'course': r['course'], 'path': path, 'picks': picks, 'rule': rule(r)})
 
+    if sl.SEEN_OTHER:
+        print(f'{day}: skipped meetings:', '; '.join(sorted(sl.SEEN_OTHER)))
+        sl.SEEN_OTHER.clear()
+    print(f'{day}: {len(listed)} races listed, {off} already off, {unread} unreadable, {small} with under 2 runners')
     if not races:
         print(f'{day}: no races still to run; nothing written.')
         return
