@@ -1,7 +1,8 @@
 name: Racing settle
 
 # Each evening, settles the day's paper-tracked picks at SP from Sporting Life's free results
-# (read-only, no bets) and commits racing/track/results.csv and SUMMARY.md.
+# (read-only, no bets), commits racing/track/results.csv and SUMMARY.md, and adds each pick's finishing
+# position to racing/picks/DATE.json.
 # Scheduled runs only happen from the default branch.
 on:
   schedule:
@@ -30,5 +31,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898+github-actions[bot]@users.noreply.github.com"
-          git add racing/track
+          git add racing/track racing/picks
           git diff --cached --quiet || (git commit -m "Settle racing paper-tracking" && git pull --rebase && git push)
