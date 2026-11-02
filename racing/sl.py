@@ -8,8 +8,6 @@ import re
 import time
 import urllib.error
 import urllib.request
-from datetime import datetime
-from zoneinfo import ZoneInfo
 
 BASE = 'https://www.sportinglife.com'
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
@@ -65,9 +63,11 @@ def slugify(s):
 
 
 def races_on(day, kind):
-    """[(race_id, path)] for UK & Irish races on a date. kind = 'results' (past) or 'racecards' (today or later)."""
-    today = str(datetime.now(ZoneInfo('Europe/London')).date())
-    path = '/racing/racecards' if kind == 'racecards' and str(day) == today else f'/racing/{kind}/{day}'
+    """[(race_id, path)] for UK & Irish races on a date. kind = 'results' (any past day) or 'racecards'.
+
+    Sporting Life's racecards page only ever carries today's cards (dated addresses redirect to it), so
+    for 'racecards' anything but today comes back empty."""
+    path = f'/racing/results/{day}' if kind == 'results' else '/racing/racecards'
     pp, html = page(path, with_html=True)
     if not pp:
         print(f'  ! {path}: page could not be read')

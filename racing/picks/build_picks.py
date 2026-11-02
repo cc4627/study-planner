@@ -1,6 +1,9 @@
 """Write UK & Irish race picks (time, course, top 3) for the racing page.
 
-Usage: python build_picks.py [today|tomorrow|YYYY-MM-DD ...]   (default: today)
+Usage: python build_picks.py
+
+Sporting Life's racecards page shows today's cards only, so this builds today's races still to run.
+It runs just after midnight (the day's first picks) and again mid-morning (late changes).
 
 Reads Sporting Life's free racecards (no account, read-only) and ranks each race with the model the
 backtest chose (racing/backtest/model.json): the model if it beat the betting forecast on the test
@@ -14,7 +17,7 @@ evening job (racing/track/settle.py) settles those at SP. Paper points only; no 
 import json
 import os
 import sys
-from datetime import date, datetime, timedelta, timezone
+from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -75,9 +78,7 @@ def merge_write(path, key, items, extra):
 
 def main():
     now = datetime.now(LONDON)
-    days = {'today': now.date(), 'tomorrow': now.date() + timedelta(days=1)}
-    for arg in sys.argv[1:] or ['today']:
-        build(days.get(arg) or date.fromisoformat(arg), now)
+    build(now.date(), now)
     write_index()
 
 
