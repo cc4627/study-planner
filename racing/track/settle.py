@@ -1,17 +1,18 @@
 """Settle the day's paper-tracked picks at SP and update the running totals.
 
-Usage: python settle.py [YYYY-MM-DD]   (default: today, London time)
+Usage: python settle.py [YYYY-MM-DD]   (default: every tracked day in the last week, up to today)
 
-Reads racing/track/DATE.json (written by the morning picks job), re-reads each race page after racing
-for finishing positions and starting prices, appends one row per race to results.csv and rewrites
-SUMMARY.md. Paper points only; nothing here places a bet.
+Reads racing/track/DATE.json (written by the picks job), reads each race's result page for finishing
+positions and starting prices, appends one row per race to results.csv, writes each pick's finishing
+position into racing/picks/DATE.json for the page, and rewrites SUMMARY.md. Paper points only; nothing
+here places a bet.
 """
 import csv
 import json
 import math
 import os
 import sys
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -19,6 +20,7 @@ sys.path.insert(0, os.path.join(HERE, '..'))
 import sl  # noqa: E402
 
 CSV = os.path.join(HERE, 'results.csv')
+PICKS = os.path.join(HERE, '..', 'picks')
 COLS = ['date', 'time', 'course', 'winner', 'top1', 'top1_sp', 'top1_ret', 'top3_hit', 'rule', 'rule_sp', 'rule_ret']
 
 
@@ -31,6 +33,19 @@ def ret(name, runners, winners):
     return round(x['sp'], 3), round(x['sp'] / len(winners) - 1 if won else -1.0, 3)
 
 
+def result_path(card_path):
+    """A racecard link -> the same race's result page, which keeps working after the day."""
+    return card_path.replace('/racing/racecards/', '/racing/results/').replace('/racecard/', '/')
+
+
+def finish(name, runners):
+    """Finishing position of a pick: an int, 'DNF' (fell, pulled up...), or 'NR' (didn't run)."""
+    x = next((x for x in runners if sl.norm(x['name']) == sl.norm(name)), None)
+    if not x:
+        return 'NR'
+    return x['pos'] if isinstance(x.get('pos'), int) and x['pos'] > 0 else 'DNF'
+
+
 def settle(day):
     path = os.path.join(HERE, f'{day}.json')
     if not os.path.exists(path):
@@ -38,6 +53,12 @@ def settle(day):
         return
     with open(path, encoding='utf-8') as f:
         tracked = json.load(f)['races']
+    picks_path = os.path.join(PICKS, f'{day}.json')
+    picks = {}
+    if os.path.exists(picks_path):
+        with open(picks_path, encoding='utf-8') as f:
+            picks_doc = json.load(f)
+        picks = {(p['time'], p['course']): p for p in picks_doc['races']}
     rows = []
     if os.path.exists(CSV):
         with open(CSV, encoding='utf-8') as f:
@@ -45,16 +66,21 @@ def settle(day):
     done = {(r['date'], r['time'], r['course']) for r in rows}
     added = 0
     for t in tracked:
-        if (str(day), t['time'], t['course']) in done:
+        shown = picks.get((t['time'], t['course']))
+        if (str(day), t['time'], t['course']) in done and (not shown or 'pos' in shown):
             continue
         try:
-            r = sl.race(t['path'])
+            r = sl.race(result_path(t['path']))
         except Exception as e:
             print(f"  ! {t['path']}: {e!r}")
             continue
         winners = [x['name'] for x in (r or {}).get('runners', []) if x.get('pos') == 1]
         if not winners:
             continue  # not run yet, abandoned or void
+        if shown:
+            shown['pos'] = [finish(n, r['runners']) for n in shown['picks']]
+        if (str(day), t['time'], t['course']) in done:
+            continue
         sp1, r1 = ret(t['picks'][0] if t['picks'] else None, r['runners'], winners)
         spr, rr = ret(t.get('rule'), r['runners'], winners)
         rows.append(dict(date=str(day), time=t['time'], course=t['course'], winner=' / '.join(winners),
@@ -62,6 +88,9 @@ def settle(day):
                          top3_hit=int(any(sl.norm(p) in {sl.norm(w) for w in winners} for p in t['picks'][:3])),
                          rule=t.get('rule') or '', rule_sp=spr, rule_ret=rr))
         added += 1
+    if picks:
+        with open(picks_path, 'w', encoding='utf-8') as f:
+            json.dump(picks_doc, f, indent=1, ensure_ascii=False)
     rows.sort(key=lambda r: (r['date'], r['time'], r['course']))
     with open(CSV, 'w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=COLS)
@@ -101,4 +130,9 @@ def summary(rows):
 
 
 if __name__ == '__main__':
-    settle(date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else datetime.now(ZoneInfo('Europe/London')).date())
+    if len(sys.argv) > 1:
+        settle(date.fromisoformat(sys.argv[1]))
+    else:  # catch up on any day in the last week that still has unsettled races
+        today = datetime.now(ZoneInfo('Europe/London')).date()
+        for n in range(7, -1, -1):
+            settle(today - timedelta(days=n))

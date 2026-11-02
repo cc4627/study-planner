@@ -5,7 +5,8 @@ name: Racing backtest
 # tests it once on the third, and commits the report and the chosen model.
 on:
   push:
-    paths: ['racing/backtest/**', '!racing/backtest/confirm.py', '!racing/backtest/frozen.json', 'racing/sl.py', 'racing/model.py', '.github/workflows/racing-backtest.yml']
+    # Only the backtest's own code: changes to the shared reader or the daily jobs shouldn't re-download three months.
+    paths: ['racing/backtest/analyse.py', 'racing/backtest/collect.py']
   workflow_dispatch:
 
 permissions:

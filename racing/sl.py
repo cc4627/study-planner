@@ -8,6 +8,8 @@ import re
 import time
 import urllib.error
 import urllib.request
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 BASE = 'https://www.sportinglife.com'
 UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
@@ -63,8 +65,10 @@ def slugify(s):
 
 
 def races_on(day, kind):
-    """[(race_id, path)] for UK & Irish races on a date. kind = 'results' (past) or 'racecards' (today)."""
-    pp, html = page(f'/racing/{kind}/{day}' if kind == 'results' else '/racing/racecards', with_html=True)
+    """[(race_id, path)] for UK & Irish races on a date. kind = 'results' (past) or 'racecards' (today or later)."""
+    today = str(datetime.now(ZoneInfo('Europe/London')).date())
+    pp, html = page('/racing/racecards' if kind == 'racecards' and str(day) == today else f'/racing/{kind}/{day}',
+                    with_html=True)
     if not pp:
         return []
     # Prefer the page's own links; build one from the names only if a race isn't linked.

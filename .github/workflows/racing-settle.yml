@@ -7,6 +7,8 @@ on:
   schedule:
     - cron: '37 22 * * *'  # 22:37 UTC, after the last evening meeting
   workflow_dispatch:
+  push:  # also settle straight away when the settling code changes
+    paths: ['racing/track/settle.py', '.github/workflows/racing-settle.yml']
 
 permissions:
   contents: write

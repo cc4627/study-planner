@@ -1,4 +1,6 @@
-"""Write today's UK & Irish race picks (time, course, top 3) for the racing page.
+"""Write UK & Irish race picks (time, course, top 3) for the racing page.
+
+Usage: python build_picks.py [today|tomorrow|YYYY-MM-DD ...]   (default: today)
 
 Reads Sporting Life's free racecards (no account, read-only) and ranks each race with the model the
 backtest chose (racing/backtest/model.json): the model if it beat the betting forecast on the test
@@ -12,7 +14,7 @@ evening job (racing/track/settle.py) settles those at SP. Paper points only; no 
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -72,7 +74,14 @@ def merge_write(path, key, items, extra):
 
 
 def main():
-    day = datetime.now(LONDON).date()
+    now = datetime.now(LONDON)
+    days = {'today': now.date(), 'tomorrow': now.date() + timedelta(days=1)}
+    for arg in sys.argv[1:] or ['today']:
+        build(days.get(arg) or date.fromisoformat(arg), now)
+    write_index()
+
+
+def build(day, now):
     rank, rule = ranker(), rule_pick()
     races, track = [], []
     for _, path in sl.races_on(day, 'racecards'):
@@ -83,6 +92,8 @@ def main():
             continue
         if not r or len(r['runners']) < 2:
             continue
+        if day < now.date() or (day == now.date() and r['time'] <= now.strftime('%H:%M')):
+            continue  # already off: a "prediction" now could see the result, and earlier picks stay as they were
         rs = r['runners']
         if any(x.get('fc') for x in rs):
             p = rank(r)
@@ -96,20 +107,22 @@ def main():
         track.append({'time': r['time'], 'course': r['course'], 'path': path, 'picks': picks, 'rule': rule(r)})
 
     if not races:
-        print(f'{day}: no races found; nothing written.')
+        print(f'{day}: no races still to run; nothing written.')
         return
     stamp = {'date': str(day), 'updated': datetime.now(timezone.utc).isoformat(timespec='seconds')}
     key = lambda r: (r['time'], r['course'])
     merge_write(os.path.join(HERE, f'{day}.json'), key, races, stamp)
     os.makedirs(TRACK, exist_ok=True)
     merge_write(os.path.join(TRACK, f'{day}.json'), key, track, stamp)
+    print(f'{day}: {len(races)} races')
 
+
+def write_index():
     dates = sorted(n[:-5] for n in os.listdir(HERE) if n[:4].isdigit() and n.endswith('.json'))
     for old in dates[:-KEEP_DAYS]:
         os.remove(os.path.join(HERE, old + '.json'))
     with open(os.path.join(HERE, 'index.json'), 'w', encoding='utf-8') as f:
         json.dump({'dates': dates[-KEEP_DAYS:]}, f)
-    print(f'{day}: {len(races)} races')
 
 
 if __name__ == '__main__':

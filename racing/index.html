@@ -84,9 +84,13 @@ h1{margin:6px 0 0;font:clamp(26px,6vw,38px)/1.05 var(--font);text-wrap:balance}
 .rh b{font:22px/1 var(--font);font-variant-numeric:tabular-nums}
 .rh span{font:12px/1.15 var(--font);text-transform:uppercase;color:var(--k);overflow-wrap:anywhere}
 .race ol{margin:0;padding:0;list-style:none;display:grid;gap:3px}
-.race li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:6px;align-items:baseline;font:15px/1.3 var(--font);overflow-wrap:anywhere}
+.race li{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:6px;align-items:baseline;font:15px/1.3 var(--font);overflow-wrap:anywhere}
 .race li i{font:12px/1 var(--font);font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
 .race li:first-child{font-size:17px}
+/* Finishing position once the race is run: filled for a winner, outlined for 2nd/3rd */
+.fp{font:12px/1 var(--font);font-style:normal;padding:3px 7px;border-radius:999px;border:2px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;align-self:center}
+.fp.win{background:var(--c3);border-color:var(--c3);color:var(--surface)}
+.fp.place{border-color:var(--k);color:var(--ink)}
 
 .empty{border:2px dashed var(--edge);border-radius:12px;padding:24px 18px;text-align:center;color:var(--muted);background:var(--surface)}
 .empty b{display:block;color:var(--ink);font:18px/1.2 var(--font);margin-bottom:6px}
@@ -160,8 +164,10 @@ function render(){
   var colourOf=function(c){return 'var(--c'+(courses.indexOf(c)%8+1)+')';};
   if(course&&!counts[course])course=null;
   var up=day.updated?new Date(day.updated):null;
+  var run=day.races.filter(function(r){return r.pos&&r.pos.length;});
+  var won=run.filter(function(r){return r.pos[0]===1;}).length;
   $('#stat').textContent=day.races.length+' races · '+courses.length+' meeting'+(courses.length===1?'':'s')+
-    (up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):'');
+    (run.length?' · top pick won '+won+' of '+run.length:(up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''));
 
   $('#tray').hidden=courses.length<2;
   $('#chips').innerHTML='<button class="chip all" type="button" data-c="" aria-pressed="'+(!course)+'">All <em>'+day.races.length+'</em></button>'+
@@ -175,9 +181,17 @@ function render(){
     var gone=now&&r.time<now;
     return '<article class="race'+(gone?' gone':'')+'" style="--k:'+colourOf(r.course)+'">'+
       '<div class="rh"><b>'+esc(r.time)+'</b><span>'+esc(r.course)+'</span></div>'+
-      '<ol>'+(r.picks||[]).slice(0,3).map(function(p,j){return '<li><i>'+(j+1)+'</i><span>'+esc(p)+'</span></li>';}).join('')+'</ol>'+
+      '<ol>'+(r.picks||[]).slice(0,3).map(function(p,j){return '<li><i>'+(j+1)+'</i><span>'+esc(p)+'</span>'+finishBadge(r.pos&&r.pos[j])+'</li>';}).join('')+'</ol>'+
     '</article>';
   }).join('');
+}
+
+/* Where a pick finished: '1st', '2nd'... or DNF (fell, pulled up) / NR (didn't run). Nothing until the race is run. */
+function finishBadge(p){
+  if(p==null)return '';
+  if(typeof p!=='number')return '<em class="fp" title="'+(p==='NR'?'Non-runner':'Did not finish')+'">'+esc(p)+'</em>';
+  var sfx=(p%100>=11&&p%100<=13)?'th':({1:'st',2:'nd',3:'rd'}[p%10]||'th');
+  return '<em class="fp'+(p===1?' win':p<=3?' place':'')+'">'+p+sfx+'</em>';
 }
 
 function show(k){

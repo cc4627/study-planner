@@ -1,10 +1,12 @@
 name: Racing picks
 
-# Each morning, reads the day's UK & Irish racecards from Sporting Life (free, no account, read-only)
-# and commits the top three per race for racing/index.html. Scheduled runs only happen from the default branch.
+# Reads UK & Irish racecards from Sporting Life (free, no account, read-only) and commits the top three
+# per race for racing/index.html: today's races still to run, and tomorrow's. Races already off are never
+# re-picked. Scheduled runs only happen from the default branch.
 on:
   schedule:
-    - cron: '37 9 * * *'  # 09:37 UTC = 09:37 GMT / 10:37 BST, before the first race
+    - cron: '37 9 * * *'   # 09:37 UTC = 09:37 GMT / 10:37 BST, before the first race
+    - cron: '37 17 * * *'  # 17:37 UTC: tomorrow's cards, once the betting forecasts are out
   workflow_dispatch:
   push:  # also rebuild straight away when the picks code or this workflow changes
     paths: ['racing/picks/build_picks.py', '.github/workflows/racing-picks.yml']
@@ -24,7 +26,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Build picks
-        run: python racing/picks/build_picks.py
+        run: python racing/picks/build_picks.py today tomorrow
       - name: Commit picks
         run: |
           git config user.name "github-actions[bot]"
