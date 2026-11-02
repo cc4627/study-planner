@@ -1,0 +1,14 @@
+name: Racing source probe
+
+# Temporary: finds where tomorrow's racecards are served. Removed after use.
+on:
+  push:
+    paths: ['racing/probe/**', '.github/workflows/racing-probe.yml']
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 racing/probe/probe.py
