@@ -25,7 +25,10 @@ def get(url):
 def report(label, url):
     s, f, h = get(url)
     nd = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', h, re.S)
-    data = json.loads(nd.group(1)) if nd else (json.loads(h) if h[:1] in '{[' else {})
+    try:
+        data = json.loads(nd.group(1)) if nd else (json.loads(h) if h and h[0] in '{[' else {})
+    except ValueError:
+        data = {}
     pp = data.get('props', {}).get('pageProps', data.get('pageProps', data)) if isinstance(data, dict) else {}
     dates = sorted({((m.get('meeting_summary') or {}).get('date')) for m in (pp.get('meetings') or []) if isinstance(m, dict)}) if isinstance(pp, dict) else []
     links = sorted(set(re.findall(rf'href="(/racing/racecards/{tom}/[^"]+)"', h)))
