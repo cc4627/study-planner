@@ -73,7 +73,7 @@ def settle(day):
     added = 0
     for t in tracked:
         shown = picks.get((t['time'], t['course']))
-        if (str(day), t['time'], t['course']) in done and (not shown or ('pos' in shown and 'sp' in shown)):
+        if (str(day), t['time'], t['course']) in done and (not shown or all(k in shown for k in ('pos', 'sp', 'field'))):
             continue
         try:
             r = sl.race(result_path(t['path']))
@@ -86,6 +86,7 @@ def settle(day):
         if shown:
             shown['pos'] = [finish(n, r['runners']) for n in shown['picks']]
             shown['sp'] = [starting_price(n, r['runners']) for n in shown['picks']]
+            shown['field'], shown['hcap'] = len(r['runners']), bool(r['hcap'])  # for each-way place terms
         if (str(day), t['time'], t['course']) in done:
             continue
         sp1, r1 = ret(t['picks'][0] if t['picks'] else None, r['runners'], winners)
