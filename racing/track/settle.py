@@ -4,7 +4,7 @@ Usage: python settle.py [YYYY-MM-DD]   (default: every tracked day in the last w
 
 Reads racing/track/DATE.json (written by the picks job), reads each race's result page for finishing
 positions and starting prices, appends one row per race to results.csv, writes each pick's finishing
-position into racing/picks/DATE.json for the page, and rewrites SUMMARY.md. Paper points only; nothing
+position and starting price into racing/picks/DATE.json, and rewrites SUMMARY.md. Paper points only; nothing
 here places a bet.
 """
 import csv
@@ -46,6 +46,12 @@ def finish(name, runners):
     return x['pos'] if isinstance(x.get('pos'), int) and x['pos'] > 0 else 'DNF'
 
 
+def starting_price(name, runners):
+    """A pick's starting price as decimal odds, or None if it didn't run."""
+    x = next((x for x in runners if sl.norm(x['name']) == sl.norm(name)), None)
+    return round(x['sp'], 3) if x and x.get('sp') else None
+
+
 def settle(day):
     path = os.path.join(HERE, f'{day}.json')
     if not os.path.exists(path):
@@ -67,7 +73,7 @@ def settle(day):
     added = 0
     for t in tracked:
         shown = picks.get((t['time'], t['course']))
-        if (str(day), t['time'], t['course']) in done and (not shown or 'pos' in shown):
+        if (str(day), t['time'], t['course']) in done and (not shown or ('pos' in shown and 'sp' in shown)):
             continue
         try:
             r = sl.race(result_path(t['path']))
@@ -79,6 +85,7 @@ def settle(day):
             continue  # not run yet, abandoned or void
         if shown:
             shown['pos'] = [finish(n, r['runners']) for n in shown['picks']]
+            shown['sp'] = [starting_price(n, r['runners']) for n in shown['picks']]
         if (str(day), t['time'], t['course']) in done:
             continue
         sp1, r1 = ret(t['picks'][0] if t['picks'] else None, r['runners'], winners)
