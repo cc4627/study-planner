@@ -16,6 +16,17 @@ Return per €1 staked (number of bets in brackets; – where under 30).
 | 5/1 to 9/1 | -17.9% (109) | -31.8% (109) | -21.7% (7767) | -15.3% (7509) |
 | 9/1 or bigger | – | – | -56.8% (803) | +1.2% (631) |
 
+## Each pick on its own, any price
+
+Return per €1 staked, chosen months and unseen months (number of bets in brackets).
+
+| Bet | Win, Nov-Jun | Win, Jul-Oct | Place, Nov-Jun | Place, Jul-Oct | Each way, Nov-Jun | Each way, Jul-Oct |
+|---|---|---|---|---|---|---|
+| top pick | -11.7% (8150) | -11.3% (4633) | -13.7% (7671) | -11.1% (4352) | -12.7% (7671) | -11.4% (4352) |
+| 2nd pick | -9.8% (8150) | -18.7% (4633) | -8.8% (7671) | -11.9% (4352) | -9.6% (7671) | -15.5% (4352) |
+| 3rd pick | -23.9% (8150) | -17.3% (4633) | -15.2% (7671) | -16.8% (4352) | -19.6% (7671) | -17.0% (4352) |
+| all three picks | -15.1% (24450) | -15.7% (13899) | -12.5% (23013) | -13.3% (13056) | -14.0% (23013) | -14.6% (13056) |
+
 ## "Only back the picks at odds over x"
 
 All three picks, at or above each price. Chosen months (Nov - Jun) and unseen months (Jul - Oct) side by side.
