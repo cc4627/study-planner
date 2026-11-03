@@ -10,6 +10,16 @@
     "Speculateur",
     "Caher Roes Den",
     "Some Song"
+   ],
+   "pos": [
+    4,
+    7,
+    3
+   ],
+   "sp": [
+    5.5,
+    5.5,
+    2.375
    ]
   },
   {
@@ -19,6 +29,14 @@
    "picks": [
     "Loriko",
     "Un Sens A La Vie"
+   ],
+   "pos": [
+    2,
+    1
+   ],
+   "sp": [
+    3.0,
+    1.364
    ]
   },
   {
