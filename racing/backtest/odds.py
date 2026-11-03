@@ -74,9 +74,11 @@ def describe(rule):
 
 def returns(rows, rule):
     picks, kind, lo, hi = rule
+    keep = [b for b in rows if b[1] in PICKS[picks] and b[2] >= lo and (hi is None or b[2] < hi)]
+    if kind == 'each way':  # €1 each way is €2 staked: return per €1 is the average of the two halves
+        return np.array([(b[3] + b[4]) / 2 for b in keep if b[4] is not None], dtype=float)
     col = 3 if kind == 'win' else 4
-    return np.array([b[col] for b in rows if b[1] in PICKS[picks] and b[2] >= lo and (hi is None or b[2] < hi)
-                     and b[col] is not None], dtype=float)
+    return np.array([b[col] for b in keep if b[col] is not None], dtype=float)
 
 
 def row(name, s):
@@ -111,6 +113,18 @@ def main():
                 cells.append(f"{s['roi']:+.1%} ({s['n']})" if s['n'] >= 30 else '–')
         label = f'under {odds(hi)}' if lo <= 1 else f'{odds(lo)} to {odds(hi)}' if hi else f'{odds(lo)} or bigger'
         L.append(f'| {label} | ' + ' | '.join(cells) + ' |')
+
+    L += ['', '## Each pick on its own, any price', '',
+          'Return per €1 staked, chosen months and unseen months (number of bets in brackets).', '',
+          '| Bet | Win, Nov-Jun | Win, Jul-Oct | Place, Nov-Jun | Place, Jul-Oct | Each way, Nov-Jun | Each way, Jul-Oct |',
+          '|---|---|---|---|---|---|---|']
+    for picks in PICKS:
+        cells = []
+        for kind in ('win', 'place', 'each way'):
+            for rows_ in (search, test):
+                s = stats(returns(rows_, (picks, kind, 1.0, None)))
+                cells.append(f"{s['roi']:+.1%} ({s['n']})")
+        L.append(f'| {picks} | ' + ' | '.join(cells) + ' |')
 
     L += ['', '## "Only back the picks at odds over x"', '',
           'All three picks, at or above each price. Chosen months (Nov - Jun) and unseen months (Jul - Oct) side by side.', '',
