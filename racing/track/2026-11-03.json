@@ -1,0 +1,401 @@
+{
+ "date": "2026-11-03",
+ "updated": "2026-11-03T12:33:33+00:00",
+ "races": [
+  {
+   "time": "12:00",
+   "course": "Fairyhouse",
+   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/947376/irish-stallion-farms-ebf-beginners-chase",
+   "picks": [
+    "Speculateur",
+    "Caher Roes Den",
+    "Some Song"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:18",
+   "course": "Warwick",
+   "path": "/racing/racecards/2026-11-03/warwick/racecard/946737/stan-mellor-memorial-chasing-excellence-beginners-chase-gbb-race",
+   "picks": [
+    "Loriko",
+    "Un Sens A La Vie"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:35",
+   "course": "Fairyhouse",
+   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/946918/adare-manor-opportunity-handicap-chase",
+   "picks": [
+    "Schiehallion",
+    "Ceroc",
+    "Urbs Intacta Manet"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:44",
+   "course": "Sedgefield",
+   "path": "/racing/racecards/2026-11-03/sedgefield/racecard/946725/christmas-parties-at-sedgefield-racecourse-conditional-jockeys-handicap-chase",
+   "picks": [
+    "Jeteye",
+    "Luminaries",
+    "Puddlesinthepark"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:53",
+   "course": "Warwick",
+   "path": "/racing/racecards/2026-11-03/warwick/racecard/946738/alder-demain-and-akers-juvenile-maiden-hurdle-gbb-race",
+   "picks": [
+    "Changing Lanes",
+    "Kelly Burn",
+    "Plan C"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:02",
+   "course": "Lingfield",
+   "path": "/racing/racecards/2026-11-03/lingfield/racecard/946731/free-race-replays-on-attheracescom-open-maiden-nh-flat-race-gbb-race",
+   "picks": [
+    "Burk Flight",
+    "Templar Knight",
+    "Cheese"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:10",
+   "course": "Fairyhouse",
+   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/946919/winter-festival-28th-and-29th-november-3-y-o-maiden-hurdle",
+   "picks": [
+    "Sir Benji",
+    "Maxminelli",
+    "Espritroyale"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:19",
+   "course": "Sedgefield",
+   "path": "/racing/racecards/2026-11-03/sedgefield/racecard/946726/green-howards-museum-richmond-juvenile-hurdle-gbb-race",
+   "picks": [
+    "Moment Of Light",
+    "Jambearee",
+    "Al Qatem"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:28",
+   "course": "Warwick",
+   "path": "/racing/racecards/2026-11-03/warwick/racecard/946739/alder-demain-and-akers-novices-hurdle-gbb-race",
+   "picks": [
+    "Trigg",
+    "One Knight",
+    "Nightflyer"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:37",
+   "course": "Lingfield",
+   "path": "/racing/racecards/2026-11-03/lingfield/racecard/946732/john-marshall-80th-birthday-celebration-novices-hurdle-gbb-race",
+   "picks": [
+    "The Perfect Poet",
+    "Analogical",
+    "Ballyboy Prince"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:45",
+   "course": "Fairyhouse",
+   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/946920/sign-up-to-gavinlynchracingcom-maiden-hurdle",
+   "picks": [
+    "Bon Bon Fizz",
+    "Poets Rambler",
+    "Quest For Answers"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:54",
+   "course": "Sedgefield",
+   "path": "/racing/racecards/2026-11-03/sedgefield/racecard/946727/mw-civils-and-groundworks-mares-maiden-hurdle-gbb-race",
+   "picks": [
+    "Roxy Russet",
+    "Another Classic",
+    "Letmeseethecolts"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:03",
+   "course": "Warwick",
+   "path": "/racing/racecards/2026-11-03/warwick/racecard/946740/alder-demain-and-akers-handicap-hurdle",
+   "picks": [
+    "Lucy The Wire",
+    "Berry Edge",
+    "Woodstock City"
+   ],
+   "rule": "A Good Yomp"
+  },
+  {
+   "time": "14:12",
+   "course": "Lingfield",
+   "path": "/racing/racecards/2026-11-03/lingfield/racecard/946733/sky-sports-racing-sky-415-mares-handicap-hurdle",
+   "picks": [
+    "Everest",
+    "Poets Pearl",
+    "Lets Go Mo"
+   ],
+   "rule": "Everest"
+  },
+  {
+   "time": "14:20",
+   "course": "Fairyhouse",
+   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/946921/group-discounts-for-winter-festival-general-admission-rated-hurdle",
+   "picks": [
+    "Quinta Do Lago",
+    "Generous Risk",
+    "Sageborough"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:29",
+   "course": "Sedgefield",
+   "path": "/racing/racecards/2026-11-03/sedgefield/racecard/946728/sedgefield-racecourse-for-outdoor-events-handicap-chase",
+   "picks": [
+    "Treaty Boy",
+    "Prospect House",
+    "Applejack Poet"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:38",
+   "course": "Warwick",
+   "path": "/racing/racecards/2026-11-03/warwick/racecard/946741/jets-richard-davis-awards-handicap-chase-gbb-race",
+   "picks": [
+    "Playful Fox",
+    "Court In A Storm",
+    "Ukantango"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:47",
+   "course": "Lingfield",
+   "path": "/racing/racecards/2026-11-03/lingfield/racecard/946734/follow-attheraces-on-instagram-handicap-chase-gbb-race",
+   "picks": [
+    "Anariza",
+    "Touquet",
+    "Away For The Night"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:55",
+   "course": "Fairyhouse",
+   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/946922/william-hill-challenge-series-handicap-hurdle-0-100-div-1",
+   "picks": [
+    "Another Challenge",
+    "Kazbek",
+    "Millbrook Queen"
+   ],
+   "rule": "Kayla's Friend"
+  },
+  {
+   "time": "15:04",
+   "course": "Sedgefield",
+   "path": "/racing/racecards/2026-11-03/sedgefield/racecard/946729/canine-premier-flex-plus-joint-supplement-etc-handicap-hurdle",
+   "picks": [
+    "Cadillac Ranch",
+    "Elemental Eye",
+    "Character Testing"
+   ],
+   "rule": "Character Testing"
+  },
+  {
+   "time": "15:13",
+   "course": "Warwick",
+   "path": "/racing/racecards/2026-11-03/warwick/racecard/946742/alder-demain-and-akers-handicap-chase",
+   "picks": [
+    "Bahtiyar",
+    "I Love You Sivola",
+    "The Magus"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:22",
+   "course": "Lingfield",
+   "path": "/racing/racecards/2026-11-03/lingfield/racecard/946735/attheracescommarketmovers-handicap-hurdle",
+   "picks": [
+    "Market House",
+    "Cooler Than Me",
+    "Gone In Sixty"
+   ],
+   "rule": "Cooler Than Me"
+  },
+  {
+   "time": "15:30",
+   "course": "Fairyhouse",
+   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/946923/william-hill-challenge-series-handicap-hurdle-0-100-div-2",
+   "picks": [
+    "Goin'",
+    "King Of The Greys",
+    "Diamond Tipp"
+   ],
+   "rule": "Dusky Night"
+  },
+  {
+   "time": "15:39",
+   "course": "Sedgefield",
+   "path": "/racing/racecards/2026-11-03/sedgefield/racecard/946730/sedgefield-christmas-jumper-raceday-22nd-december-novices-limited-handicap-hurdle",
+   "picks": [
+    "Curious Mrs Fox",
+    "Slievehill",
+    "American Empire"
+   ],
+   "rule": "Rock Armour"
+  },
+  {
+   "time": "15:48",
+   "course": "Warwick",
+   "path": "/racing/racecards/2026-11-03/warwick/racecard/946743/alex-and-edward-alder-handicap-hurdle",
+   "picks": [
+    "Ballymoreen",
+    "Kittys Glance",
+    "Katarcice"
+   ],
+   "rule": "Kentucky River"
+  },
+  {
+   "time": "15:57",
+   "course": "Lingfield",
+   "path": "/racing/racecards/2026-11-03/lingfield/racecard/946736/sky-sports-racing-virgin-512-handicap-chase",
+   "picks": [
+    "Onewayortother",
+    "A Great Excuse",
+    "Mersey Street"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:04",
+   "course": "Fairyhouse",
+   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/946924/christmas-parties-at-fairyhouse-december-12th-handicap-hurdle",
+   "picks": [
+    "Moonshine Girl",
+    "Princess Felicia",
+    "Felicity Smoak"
+   ],
+   "rule": "Mickey Cohen"
+  },
+  {
+   "time": "16:30",
+   "course": "Wolverhampton",
+   "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/947375/awc-season-14-has-begun-handicap-div-1",
+   "picks": [
+    "Mini Mac",
+    "Rovinia",
+    "Luna Beaux"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:00",
+   "course": "Wolverhampton",
+   "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946744/awc-season-14-has-begun-handicap-div-2",
+   "picks": [
+    "Oppenheimer",
+    "Barry The Worm",
+    "Snooze Lane"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:30",
+   "course": "Wolverhampton",
+   "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946745/aw-trials-day-lingfield-2nd-jan-2027-ebf-restricted-novice-stakes-gbb-race",
+   "picks": [
+    "Amandari",
+    "Bibury Star",
+    "Mehen"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:00",
+   "course": "Wolverhampton",
+   "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946746/all-weather-championship-is-back-ebf-maiden-stakes-gbb-race",
+   "picks": [
+    "Red Blue Point",
+    "Time Teller",
+    "Casting Coach"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:30",
+   "course": "Wolverhampton",
+   "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946747/midnite-its-actually-pretty-good-handicap",
+   "picks": [
+    "Sam's Xpress",
+    "Stash The Cash",
+    "Fancy Dancer"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:00",
+   "course": "Wolverhampton",
+   "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946748/awc-finals-day-at-newcastle-26th-march-fillies-handicap",
+   "picks": [
+    "Rogue Citation",
+    "Star Mirage",
+    "Foxy Night"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:30",
+   "course": "Wolverhampton",
+   "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946749/midnite-aint-your-grandads-bookie-handicap",
+   "picks": [
+    "Lipsink",
+    "Woodstock",
+    "Kiniro"
+   ],
+   "rule": null
+  },
+  {
+   "time": "20:00",
+   "course": "Wolverhampton",
+   "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946750/midnite-built-different-handicap",
+   "picks": [
+    "Saxophonic",
+    "Atalanta Mist",
+    "Forever Perfect"
+   ],
+   "rule": null
+  },
+  {
+   "time": "20:30",
+   "course": "Wolverhampton",
+   "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946751/midnite-built-for-2026-not-2006-handicap",
+   "picks": [
+    "Caraway",
+    "Barachiel",
+    "Jodhpur Blue"
+   ],
+   "rule": null
+  }
+ ]
+}

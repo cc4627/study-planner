@@ -1,0 +1,33 @@
+{
+ "note": "Pre-registered before confirm.py ran: the model and rule exactly as chosen by analyse.py on 29 Jul-28 Sep 2026 (commit e49bff3). Do not edit; the confirmation is only valid for this exact model and rule.",
+ "coef": {
+  "or_rel": 0.831318,
+  "or_rel_h": -0.313016,
+  "or_missing": -0.457864,
+  "wt_rel": 0.12357,
+  "wt_rel_h": -0.357536,
+  "form_last": 0.516279,
+  "form_avg": 1.69162,
+  "form_missing": 0.294505,
+  "nf_last": 0.078288,
+  "d_short": 0.325245,
+  "d_mid": -0.087018,
+  "d_long": 0.04701,
+  "d_vlong": -0.307931,
+  "debut": -0.248719,
+  "age_young": 0.031119,
+  "age_old": -0.308893
+ },
+ "rule": {
+  "rank": 3,
+  "kind": "hurdle",
+  "hcap": "hcap",
+  "field": [
+   "all",
+   0,
+   99
+  ]
+ },
+ "rule_text": "back model #3, hurdle, hcap",
+ "frozen_from": "e49bff3"
+}
