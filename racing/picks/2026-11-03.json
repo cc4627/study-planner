@@ -1,0 +1,365 @@
+{
+ "date": "2026-11-03",
+ "updated": "2026-11-03T00:05:31+00:00",
+ "races": [
+  {
+   "time": "12:00",
+   "course": "Fairyhouse",
+   "country": "Eire",
+   "picks": [
+    "Speculateur",
+    "Caher Roes Den",
+    "Some Song"
+   ]
+  },
+  {
+   "time": "12:18",
+   "course": "Warwick",
+   "country": "England",
+   "picks": [
+    "Loriko",
+    "Un Sens A La Vie"
+   ]
+  },
+  {
+   "time": "12:35",
+   "course": "Fairyhouse",
+   "country": "Eire",
+   "picks": [
+    "Schiehallion",
+    "Ceroc",
+    "Urbs Intacta Manet"
+   ]
+  },
+  {
+   "time": "12:44",
+   "course": "Sedgefield",
+   "country": "England",
+   "picks": [
+    "Jeteye",
+    "Luminaries",
+    "Puddlesinthepark"
+   ]
+  },
+  {
+   "time": "12:53",
+   "course": "Warwick",
+   "country": "England",
+   "picks": [
+    "Changing Lanes",
+    "Kelly Burn",
+    "Plan C"
+   ]
+  },
+  {
+   "time": "13:02",
+   "course": "Lingfield",
+   "country": "England",
+   "picks": [
+    "Burk Flight",
+    "Unbroken Spirit",
+    "Templar Knight"
+   ]
+  },
+  {
+   "time": "13:10",
+   "course": "Fairyhouse",
+   "country": "Eire",
+   "picks": [
+    "Sir Benji",
+    "Maxminelli",
+    "Espritroyale"
+   ]
+  },
+  {
+   "time": "13:19",
+   "course": "Sedgefield",
+   "country": "England",
+   "picks": [
+    "Moment Of Light",
+    "Jambearee",
+    "Al Qatem"
+   ]
+  },
+  {
+   "time": "13:28",
+   "course": "Warwick",
+   "country": "England",
+   "picks": [
+    "Trigg",
+    "One Knight",
+    "Nightflyer"
+   ]
+  },
+  {
+   "time": "13:37",
+   "course": "Lingfield",
+   "country": "England",
+   "picks": [
+    "The Perfect Poet",
+    "Analogical",
+    "Ballyboy Prince"
+   ]
+  },
+  {
+   "time": "13:45",
+   "course": "Fairyhouse",
+   "country": "Eire",
+   "picks": [
+    "Bon Bon Fizz",
+    "Poets Rambler",
+    "Quest For Answers"
+   ]
+  },
+  {
+   "time": "13:54",
+   "course": "Sedgefield",
+   "country": "England",
+   "picks": [
+    "Roxy Russet",
+    "Another Classic",
+    "Letmeseethecolts"
+   ]
+  },
+  {
+   "time": "14:03",
+   "course": "Warwick",
+   "country": "England",
+   "picks": [
+    "Lucy The Wire",
+    "Berry Edge",
+    "Woodstock City"
+   ]
+  },
+  {
+   "time": "14:12",
+   "course": "Lingfield",
+   "country": "England",
+   "picks": [
+    "Everest",
+    "Poets Pearl",
+    "Lets Go Mo"
+   ]
+  },
+  {
+   "time": "14:20",
+   "course": "Fairyhouse",
+   "country": "Eire",
+   "picks": [
+    "Quinta Do Lago",
+    "Generous Risk",
+    "Sageborough"
+   ]
+  },
+  {
+   "time": "14:29",
+   "course": "Sedgefield",
+   "country": "England",
+   "picks": [
+    "Treaty Boy",
+    "Prospect House",
+    "Applejack Poet"
+   ]
+  },
+  {
+   "time": "14:38",
+   "course": "Warwick",
+   "country": "England",
+   "picks": [
+    "Playful Fox",
+    "Court In A Storm",
+    "Ukantango"
+   ]
+  },
+  {
+   "time": "14:47",
+   "course": "Lingfield",
+   "country": "England",
+   "picks": [
+    "Anariza",
+    "Touquet",
+    "Away For The Night"
+   ]
+  },
+  {
+   "time": "14:55",
+   "course": "Fairyhouse",
+   "country": "Eire",
+   "picks": [
+    "Another Challenge",
+    "Kazbek",
+    "Colesberg"
+   ]
+  },
+  {
+   "time": "15:04",
+   "course": "Sedgefield",
+   "country": "England",
+   "picks": [
+    "Cadillac Ranch",
+    "Elemental Eye",
+    "Character Testing"
+   ]
+  },
+  {
+   "time": "15:13",
+   "course": "Warwick",
+   "country": "England",
+   "picks": [
+    "Bahtiyar",
+    "I Love You Sivola",
+    "The Magus"
+   ]
+  },
+  {
+   "time": "15:22",
+   "course": "Lingfield",
+   "country": "England",
+   "picks": [
+    "Market House",
+    "Cooler Than Me",
+    "Gone In Sixty"
+   ]
+  },
+  {
+   "time": "15:30",
+   "course": "Fairyhouse",
+   "country": "Eire",
+   "picks": [
+    "Goin'",
+    "King Of The Greys",
+    "Diamond Tipp"
+   ]
+  },
+  {
+   "time": "15:39",
+   "course": "Sedgefield",
+   "country": "England",
+   "picks": [
+    "Curious Mrs Fox",
+    "Slievehill",
+    "American Empire"
+   ]
+  },
+  {
+   "time": "15:48",
+   "course": "Warwick",
+   "country": "England",
+   "picks": [
+    "Ballymoreen",
+    "Kittys Glance",
+    "Katarcice"
+   ]
+  },
+  {
+   "time": "15:57",
+   "course": "Lingfield",
+   "country": "England",
+   "picks": [
+    "Onewayortother",
+    "A Great Excuse",
+    "Mersey Street"
+   ]
+  },
+  {
+   "time": "16:04",
+   "course": "Fairyhouse",
+   "country": "Eire",
+   "picks": [
+    "Moonshine Girl",
+    "Princess Felicia",
+    "Felicity Smoak"
+   ]
+  },
+  {
+   "time": "16:30",
+   "course": "Wolverhampton",
+   "country": "England",
+   "picks": [
+    "Mini Mac",
+    "Rovinia",
+    "Luna Beaux"
+   ]
+  },
+  {
+   "time": "17:00",
+   "course": "Wolverhampton",
+   "country": "England",
+   "picks": [
+    "Oppenheimer",
+    "Sonbelievable",
+    "Barry The Worm"
+   ]
+  },
+  {
+   "time": "17:30",
+   "course": "Wolverhampton",
+   "country": "England",
+   "picks": [
+    "Crown Of Ivy",
+    "Amandari",
+    "Bibury Star"
+   ]
+  },
+  {
+   "time": "18:00",
+   "course": "Wolverhampton",
+   "country": "England",
+   "picks": [
+    "Red Blue Point",
+    "Time Teller",
+    "Casting Coach"
+   ]
+  },
+  {
+   "time": "18:30",
+   "course": "Wolverhampton",
+   "country": "England",
+   "picks": [
+    "Sam's Xpress",
+    "Outer Edge",
+    "Stash The Cash"
+   ]
+  },
+  {
+   "time": "19:00",
+   "course": "Wolverhampton",
+   "country": "England",
+   "picks": [
+    "Rogue Citation",
+    "Star Mirage",
+    "Foxy Night"
+   ]
+  },
+  {
+   "time": "19:30",
+   "course": "Wolverhampton",
+   "country": "England",
+   "picks": [
+    "Yes I'm Mali",
+    "Lipsink",
+    "Woodstock"
+   ]
+  },
+  {
+   "time": "20:00",
+   "course": "Wolverhampton",
+   "country": "England",
+   "picks": [
+    "Tiger Beetle",
+    "Saxophonic",
+    "Atalanta Mist"
+   ]
+  },
+  {
+   "time": "20:30",
+   "course": "Wolverhampton",
+   "country": "England",
+   "picks": [
+    "Caraway",
+    "Barachiel",
+    "Jodhpur Blue"
+   ]
+  }
+ ]
+}
