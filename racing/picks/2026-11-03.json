@@ -359,7 +359,19 @@
     "Playful Fox",
     "Court In A Storm",
     "Ukantango"
-   ]
+   ],
+   "pos": [
+    "DNF",
+    1,
+    2
+   ],
+   "sp": [
+    2.5,
+    2.1,
+    23.0
+   ],
+   "field": 4,
+   "hcap": true
   },
   {
    "time": "14:47",
