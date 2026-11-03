@@ -1,6 +1,6 @@
 {
  "date": "2026-11-03",
- "updated": "2026-11-03T00:05:31+00:00",
+ "updated": "2026-11-03T12:33:33+00:00",
  "races": [
   {
    "time": "12:00",
@@ -62,15 +62,15 @@
    "path": "/racing/racecards/2026-11-03/lingfield/racecard/946731/free-race-replays-on-attheracescom-open-maiden-nh-flat-race-gbb-race",
    "picks": [
     "Burk Flight",
-    "Unbroken Spirit",
-    "Templar Knight"
+    "Templar Knight",
+    "Cheese"
    ],
    "rule": null
   },
   {
    "time": "13:10",
    "course": "Fairyhouse",
-   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/946919/winter-festival-28th-29th-november-3-y-o-maiden-hurdle",
+   "path": "/racing/racecards/2026-11-03/fairyhouse/racecard/946919/winter-festival-28th-and-29th-november-3-y-o-maiden-hurdle",
    "picks": [
     "Sir Benji",
     "Maxminelli",
@@ -206,7 +206,7 @@
    "picks": [
     "Another Challenge",
     "Kazbek",
-    "Colesberg"
+    "Millbrook Queen"
    ],
    "rule": "Kayla's Friend"
   },
@@ -315,8 +315,8 @@
    "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946744/awc-season-14-has-begun-handicap-div-2",
    "picks": [
     "Oppenheimer",
-    "Sonbelievable",
-    "Barry The Worm"
+    "Barry The Worm",
+    "Snooze Lane"
    ],
    "rule": null
   },
@@ -325,9 +325,9 @@
    "course": "Wolverhampton",
    "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946745/aw-trials-day-lingfield-2nd-jan-2027-ebf-restricted-novice-stakes-gbb-race",
    "picks": [
-    "Crown Of Ivy",
     "Amandari",
-    "Bibury Star"
+    "Bibury Star",
+    "Mehen"
    ],
    "rule": null
   },
@@ -348,8 +348,8 @@
    "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946747/midnite-its-actually-pretty-good-handicap",
    "picks": [
     "Sam's Xpress",
-    "Outer Edge",
-    "Stash The Cash"
+    "Stash The Cash",
+    "Fancy Dancer"
    ],
    "rule": null
   },
@@ -369,9 +369,9 @@
    "course": "Wolverhampton",
    "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946749/midnite-aint-your-grandads-bookie-handicap",
    "picks": [
-    "Yes I'm Mali",
     "Lipsink",
-    "Woodstock"
+    "Woodstock",
+    "Kiniro"
    ],
    "rule": null
   },
@@ -380,9 +380,9 @@
    "course": "Wolverhampton",
    "path": "/racing/racecards/2026-11-03/wolverhampton/racecard/946750/midnite-built-different-handicap",
    "picks": [
-    "Tiger Beetle",
     "Saxophonic",
-    "Atalanta Mist"
+    "Atalanta Mist",
+    "Forever Perfect"
    ],
    "rule": null
   },
