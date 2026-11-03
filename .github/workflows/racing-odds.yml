@@ -3,9 +3,9 @@ name: Racing price rules
 # Tests "only back the picks within a price range" on the year of results the backtest and confirmation
 # runs already collected (restored from the Actions cache, nothing re-downloaded), then commits
 # racing/backtest/ODDS.md. Paper points only.
+# Run by hand only (Actions > this workflow > Run workflow): its report is committed, and a push to main
+# shouldn't start hours of downloading again.
 on:
-  push:
-    paths: ['racing/backtest/odds.py', '.github/workflows/racing-odds.yml']
   workflow_dispatch:
 
 permissions:

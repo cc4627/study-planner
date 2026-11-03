@@ -3,10 +3,9 @@ name: Racing backtest
 # Collects three months of UK & Irish results from Sporting Life (one month per job, one request a
 # second, kept in the Actions cache rather than the repo), then fits the model on the first two months,
 # tests it once on the third, and commits the report and the chosen model.
+# Run by hand only (Actions > this workflow > Run workflow): its report is committed, and a push to main
+# shouldn't start hours of downloading again.
 on:
-  push:
-    # Only the backtest's own code: changes to the shared reader or the daily jobs shouldn't re-download three months.
-    paths: ['racing/backtest/analyse.py', 'racing/backtest/collect.py']
   workflow_dispatch:
 
 permissions:

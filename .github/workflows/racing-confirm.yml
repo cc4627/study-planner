@@ -3,9 +3,9 @@ name: Racing confirmation
 # Runs the frozen model and rule (racing/backtest/frozen.json) once over nine months the backtest never
 # saw (Nov 2025 - Jul 2026), collected from Sporting Life at one request a second per job and kept in
 # the Actions cache, then commits racing/backtest/CONFIRM.md.
+# Run by hand only (Actions > this workflow > Run workflow): its report is committed, and a push to main
+# shouldn't start hours of downloading again.
 on:
-  push:
-    paths: ['racing/backtest/confirm.py', 'racing/backtest/frozen.json', '.github/workflows/racing-confirm.yml']
   workflow_dispatch:
 
 permissions:
