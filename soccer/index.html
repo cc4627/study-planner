@@ -4,153 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Soccer Picks</title>
-<meta name="description" content="Each day's matches: the favourite, goals, both to score, corners and yellow cards, and the day's corner double.">
-<meta name="theme-color" content="#D9EAFB">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Each day's matches: the favourite, goals, both to score, corners and yellow cards, with doubles and results.">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Carlito&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/sports.css">
 </head>
 <body>
-<style>
-/* Same look as the Study Week Planner: light-blue board, Calibri regular, 2px outlined boxes. */
-:root{
-  --bg:#D9EAFB; --surface:#FFFFFF; --ink:#101C26; --muted:#4F6476; --line:#BCD2E8; --edge:#7F9DBA;
-  --focus:#3B4CCA; --good:#177A4F;
-  --c1:#3B4CCA; --c2:#B84A17; --c3:#177A4F; --c4:#8A3FA8; --c5:#0E7490; --c6:#A16207; --c7:#BE185D; --c8:#4D5B68;
-  --font:'Calibri','Carlito','Segoe UI',system-ui,sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0F2133; --surface:#16293C; --ink:#E8EEF3; --muted:#9DB1C3; --line:#2B4258; --edge:#5C7A96;
-    --focus:#9AA6FF; --good:#53C894;
-    --c1:#9AA6FF; --c2:#FF9A68; --c3:#53C894; --c4:#D29BF0; --c5:#5CC8E0; --c6:#F2C04E; --c7:#F48FB8; --c8:#A4B2BE;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0F2133; --surface:#16293C; --ink:#E8EEF3; --muted:#9DB1C3; --line:#2B4258; --edge:#5C7A96;
-  --focus:#9AA6FF; --good:#53C894;
-  --c1:#9AA6FF; --c2:#FF9A68; --c3:#53C894; --c4:#D29BF0; --c5:#5CC8E0; --c6:#F2C04E; --c7:#F48FB8; --c8:#A4B2BE;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-*,*::before,*::after{font-weight:400!important;letter-spacing:normal!important}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 var(--font);
-  padding-left:max(16px,env(safe-area-inset-left,0px));
-  padding-right:max(16px,env(safe-area-inset-right,0px));
-  padding-block:20px 40px;
-}
-.app{max-width:1240px;margin:0 auto;display:grid;gap:14px}
-button{font:inherit;color:inherit;cursor:pointer}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-a{color:var(--focus)}
-
-.top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
-.eyebrow{font:12px/1 var(--font);text-transform:uppercase;color:var(--muted)}
-.eyebrow a{color:var(--muted)}
-h1{margin:6px 0 0;font:clamp(26px,6vw,38px)/1.05 var(--font);text-wrap:balance}
-.stat{margin:6px 0 0;font:13px/1.45 var(--font);color:var(--muted);font-variant-numeric:tabular-nums}
-.stat i{font-style:normal;color:var(--ink)}
-.navs{display:flex;gap:8px;align-items:center}
-.nav{width:44px;height:44px;border-radius:10px;border:2px solid var(--edge);background:var(--surface);display:grid;place-items:center;padding:0}
-.nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.nav:disabled{opacity:.35;cursor:default}
-.pill{min-height:44px;padding:0 14px;border:2px solid var(--edge);background:var(--surface);border-radius:999px;font:12px/1 var(--font);text-transform:uppercase}
-
-.dbl{background:var(--surface);border:2px solid var(--c4);border-radius:12px;padding:10px 14px 12px;display:grid;gap:8px}
-.dbl h2{margin:0;font:12px/1 var(--font);text-transform:uppercase;color:var(--c4)}
-.dbl ol{margin:0;padding:0;list-style:none;display:grid;gap:6px}
-.dbl li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
-.dbl li b{display:block;font:18px/1.2 var(--font)}
-.dbl li span{display:block;font:13px/1.3 var(--font);color:var(--muted);overflow-wrap:anywhere}
-.dbl .sum{font:14px/1.35 var(--font);color:var(--ink);font-variant-numeric:tabular-nums}
-.dbl .sum small{color:var(--muted);font-size:12px}
-#daily{border-color:var(--c3)}
-#daily h2{color:var(--c3)}
-.money{font-variant-numeric:tabular-nums}
-
-.tray{background:var(--surface);border:2px solid var(--edge);border-radius:12px;padding:10px 12px;display:grid;gap:8px}
-.hint{font:12px/1.35 var(--font);color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{
-  --k:var(--c8);
-  display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:6px 12px 6px 10px;
-  border-radius:9px;border:2px solid var(--k);
-  background:color-mix(in srgb,var(--k) 10%,var(--surface));font:14px/1.1 var(--font);
-}
-.chip em{font:11px/1 var(--font);font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
-.chip[aria-pressed="true"]{box-shadow:0 0 0 2px var(--k);background:color-mix(in srgb,var(--k) 24%,var(--surface))}
-.chip.all{--k:var(--ink)}
-
-.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:10px}
-.m{
-  --k:var(--c8);
-  border-radius:9px;border:2px solid var(--k);
-  background:color-mix(in srgb,var(--k) 11%,var(--surface));
-  padding:8px 12px 10px;display:grid;gap:6px;min-width:0;
-}
-.m.gone{opacity:.6}
-.mh{display:flex;align-items:baseline;gap:8px;min-width:0}
-.mh b{font:20px/1 var(--font);font-variant-numeric:tabular-nums}
-.mh span{font:12px/1.15 var(--font);text-transform:uppercase;color:var(--k);overflow-wrap:anywhere}
-.teams{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font:17px/1.25 var(--font);overflow-wrap:anywhere}
-.teams i{font-style:normal;color:var(--muted)}
-.score{font:15px/1 var(--font);font-variant-numeric:tabular-nums;padding:4px 8px;border-radius:7px;border:2px solid var(--k);background:var(--surface)}
-.m ul{margin:0;padding:0;list-style:none;display:grid;gap:3px}
-.m li{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:6px;align-items:center;font:15px/1.3 var(--font)}
-.m li > i{font:11px/1 var(--font);font-style:normal;text-transform:uppercase;color:var(--muted)}
-.m li small{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
-.badge{font:12px/1 var(--font);font-style:normal;padding:3px 7px;border-radius:999px;border:2px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-.badge.ok{background:var(--good);border-color:var(--good);color:var(--surface)}
-
-.empty{border:2px dashed var(--edge);border-radius:12px;padding:24px 18px;text-align:center;color:var(--muted);background:var(--surface)}
-.empty b{display:block;color:var(--ink);font:18px/1.2 var(--font);margin-bottom:6px}
-.foot{margin:0;text-align:center;font:12px/1.4 var(--font);color:var(--muted)}
-[hidden]{display:none!important}
-/* Sports tabs along the bottom: Racing, Soccer, Tennis */
-body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;display:grid;grid-template-columns:repeat(3,1fr);
-  background:var(--surface);border-top:2px solid var(--edge);padding-bottom:env(safe-area-inset-bottom,0px)}
-.tabs a{display:grid;justify-items:center;align-content:center;gap:4px;min-height:58px;padding:7px 4px;color:var(--muted);
-  text-decoration:none;font:12px/1 var(--font);text-transform:uppercase}
-.tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tabs a[aria-current="page"]{color:var(--focus);box-shadow:inset 0 3px 0 var(--focus)}
-</style>
-
 <main class="app">
   <header class="top">
     <div>
-      <div class="eyebrow" id="eyebrow">Soccer</div>
+      <p class="eyebrow"><span>Soccer</span><span id="when"></span></p>
       <h1 id="title">&nbsp;</h1>
-      <p class="stat" id="stat"></p>
     </div>
-    <div class="navs">
-      <button class="pill" id="today" type="button" hidden>Today</button>
-      <button class="nav" id="prev" type="button" aria-label="Previous day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button class="nav" id="next" type="button" aria-label="Next day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div class="daynav">
+      <button class="today" id="today" type="button" hidden>Today</button>
+      <button id="prev" type="button" aria-label="Previous day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button id="next" type="button" aria-label="Next day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </header>
-
-  <section class="dbl" id="daily" aria-label="Daily double" hidden></section>
-
-  <section class="dbl" id="dbl" aria-label="Corner double" hidden></section>
-
-  <section class="tray" id="tray" aria-label="Leagues" hidden>
-    <span class="hint">Tap a league to show only its matches</span>
-    <div class="chips" id="chips"></div>
-  </section>
-
-  <section class="list" id="list" aria-label="Matches"></section>
-
-  <p class="foot">Result: the bookmakers' favourite, from the average odds with their margin taken out. Goals and both to score: from the match odds.
-    Corners and yellow cards: models of each side's recent corners and shots, cards and fouls, the referee and the match odds,
-    fitted on 2021–24 and tested on later seasons. <b>Fair</b> = 1 ÷ chance: a bet is only
-    worth it at a bigger price than that. Fixtures and results from football-data.co.uk; results can take a day or two to appear.
-    Doubles: €1 at the average bookmaker prices (result and goals only, where the data has real odds); the match double multiplies the two single prices, though bookmakers sell same-match doubles as bet builders at their own price. A guide, not a tip; no bets are placed.
-    Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
+  <section class="ledger" id="ledger" aria-label="How the calls did" hidden></section>
+  <section class="slips" id="slips" aria-label="Doubles" hidden></section>
+  <nav class="filters" id="filters" aria-label="Leagues" hidden></nav>
+  <section class="cards" id="cards" aria-label="Matches"></section>
+  <p class="foot">Result: the bookmakers' favourite from the average odds, margin taken out. Goals and both to score: from the odds.
+    Corners and yellow cards: models of each side's recent corners and shots, cards and fouls, the referee and the match odds, fitted on
+    2021–24 and tested on later seasons. Prices: the average bookmaker odds where the data has them (result, goals); elsewhere the fair
+    price, 1 ÷ chance, which a bet has to beat to be worth it. The match double multiplies the two single prices; bookmakers sell
+    same-match doubles as bet builders at their own price. Fixtures and results from football-data.co.uk; results can take a day or two.
+    A guide, not a tip; no bets are placed. Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
     <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
 </main>
 
@@ -160,193 +44,100 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   <a href="../tennis/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M6 5.3a9.5 9.5 0 0 1 0 13.4M18 5.3a9.5 9.5 0 0 0 0 13.4"/></svg>Tennis</a>
 </nav>
 
+<script src="../assets/sports.js"></script>
 <script>
 (function(){
 'use strict';
-var $=function(s){return document.querySelector(s);};
-var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
-var pad=function(n){return String(n).padStart(2,'0');};
-var keyOf=function(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());};
-var fromKey=function(k){var p=String(k).split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);};
-var getJSON=function(u){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});};
-var pct=function(p){return Math.round(p*100)+'%';};
-var fair=function(p){return p>0?(1/p).toFixed(2):'–';};
+var cap=function(s){return s.charAt(0).toUpperCase()+s.slice(1);};
+var line=function(c){return cap(c.side)+' '+c.line;};
+var pickName=function(m){return m.pick.side==='H'?m.home:m.pick.side==='A'?m.away:'Draw';};
+/* Did each call come in? null until the match is settled. */
+var hits={
+  pick:function(m){if(!m.ft||!m.pick)return null;var r=m.ft[0]>m.ft[1]?'H':m.ft[0]<m.ft[1]?'A':'D';return r===m.pick.side;},
+  goals:function(m){if(!m.ft||!m.goals)return null;var o=m.ft[0]+m.ft[1]>2.5;return m.goals.side==='over'?o:!o;},
+  btts:function(m){if(!m.ft||!m.btts)return null;var b=m.ft[0]>0&&m.ft[1]>0;return m.btts.side==='yes'?b:!b;},
+  corners:function(m){if(m.cn==null||!m.corners)return null;return m.corners.side==='over'?m.cn>m.corners.line:m.cn<m.corners.line;},
+  cards:function(m){if(m.yc==null||!m.cards)return null;return m.cards.side==='over'?m.yc>m.cards.line:m.yc<m.cards.line;}
+};
+var comboHit=function(m){var a=hits.pick(m),b=hits.goals(m);return a==null||b==null?null:a&&b;};
+var comboPL=function(m){var h=comboHit(m);return h==null?null:h?m.combo.odds-1:-1;};
+var legText=function(m,kind){return kind==='pick'?(m.pick.side==='D'?'Draw':pickName(m)+' to win'):cap(m.goals.side)+' 2.5 goals';};
+var legBet=function(m,kind){return kind==='pick'?m.pick:m.goals;};
+var sum=function(a){return a.reduce(function(x,y){return x+y;},0);};
 
-var dates=[],cur=null,day=null,league=null;
-var today=keyOf(new Date());
-
-function nowLondon(){
-  try{return new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date());}
-  catch(e){var d=new Date();return pad(d.getHours())+':'+pad(d.getMinutes());}
-}
-/* Did the result pick / corner call come in? null until the match is settled. */
-function pickHit(m){
-  if(!m.ft||!m.pick)return null;
-  var r=m.ft[0]>m.ft[1]?'H':m.ft[0]<m.ft[1]?'A':'D';
-  return r===m.pick.side;
-}
-function cornerHit(m){
-  if(m.cn==null||!m.corners)return null;
-  return m.corners.side==='over'?m.cn>m.corners.line:m.cn<m.corners.line;
-}
-function cardHit(m){
-  if(m.yc==null||!m.cards)return null;
-  return m.cards.side==='over'?m.yc>m.cards.line:m.yc<m.cards.line;
-}
-function goalsHit(m){
-  if(!m.ft||!m.goals)return null;
-  var over=m.ft[0]+m.ft[1]>2.5;return m.goals.side==='over'?over:!over;
-}
-function bttsHit(m){
-  if(!m.ft||!m.btts)return null;
-  var both=m.ft[0]>0&&m.ft[1]>0;return m.btts.side==='yes'?both:!both;
-}
-function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
-var eur=function(x){return (x>=0?'+':'−')+'€'+Math.abs(x).toFixed(2);};
-/* Match double: the favourite with the goals call, at the two average prices multiplied. */
-function comboHit(m){
-  var a=pickHit(m),b=goalsHit(m);
-  return a==null||b==null?null:a&&b;
-}
-function comboPL(m){var h=comboHit(m);return h==null?null:h?m.combo.odds-1:-1;}
-function legOf(l){return day.matches.filter(function(m){return m.home===l.home&&m.away===l.away;})[0];}
-function legText(m,kind){
-  if(kind==='pick')return m.pick.side==='D'?'Draw: '+m.home+' v '+m.away:pickName(m)+' to win';
-  return cap(m.goals.side)+' 2.5 goals';
-}
-function legHit(m,kind){return kind==='pick'?pickHit(m):goalsHit(m);}
-function legBet(m,kind){return kind==='pick'?m.pick:m.goals;}
-function dailyPL(){
-  var d=day.daily;if(!d)return null;
-  var hits=d.legs.map(function(l){var m=legOf(l);return m?legHit(m,l.kind):null;});
-  if(hits.indexOf(false)>=0)return -1;
-  return hits[0]&&hits[1]?d.odds-1:null;
-}
-function row(label,text,p,hit,shown){
-  return '<li><i>'+label+'</i><span>'+text+' <small>'+pct(p)+' · fair '+fair(p)+'</small></span>'+badge(hit,shown)+'</li>';
-}
-function pickName(m){
-  if(!m.pick)return '';
-  return m.pick.side==='H'?m.home:m.pick.side==='A'?m.away:'Draw';
-}
-function cornerText(c){return (c.side==='over'?'Over ':'Under ')+c.line;}
-function badge(hit,text){
-  if(hit==null)return '';
-  return '<em class="badge'+(hit?' ok':'')+'">'+esc(text)+' '+(hit?'✓':'✗')+'</em>';
-}
-
-function render(){
-  var i=dates.indexOf(cur);
-  $('#prev').disabled=i<=0;
-  $('#next').disabled=i<0||i>=dates.length-1;
-  $('#today').hidden=cur===today||dates.indexOf(today)<0;
-  $('#title').textContent=cur?fromKey(cur).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}):'Soccer picks';
-  $('#eyebrow').textContent=cur===today?'Today · Soccer':'Soccer';
-
-  var box=$('#list');
-  if(!day||!day.matches||!day.matches.length){
-    $('#tray').hidden=true;$('#dbl').hidden=true;$('#stat').textContent='';
-    box.innerHTML='<div class="empty" style="grid-column:1/-1"><b>'+(dates.length?'No matches on this day':'No picks yet')+'</b>'+
-      (dates.length?'Use the arrows to see another day.':'Picks appear here a day or two before each match.')+'</div>';
-    return;
+SportsPage({
+  name:'Soccer picks',
+  emptyText:'Picks appear here a day or two before each match.',
+  items:function(d){return d.matches;},
+  groupOf:function(m){return m.league;},
+  over:function(m,now){return !!m.ft||(!!now&&!!m.time&&m.time<now);},
+  ledger:function(d,ms,H){
+    var t=function(k){return ms.map(hits[k]).filter(function(x){return x!=null;});};
+    var tiles=[['Favourite won','pick'],['Goals 2.5','goals'],['Both score','btts'],['Corners','corners'],['Cards','cards']]
+      .map(function(x){var a=t(x[1]);return a.length?H.tile(x[0],a.filter(Boolean).length,a.length,null):'';}).join('');
+    var cps=ms.filter(function(m){return m.combo;}).map(comboPL).filter(function(x){return x!=null;});
+    if(cps.length)tiles+=H.tile('Match doubles',cps.filter(function(x){return x>0;}).length,cps.length,sum(cps));
+    if(!tiles){
+      var lg={};ms.forEach(function(m){lg[m.league]=1;});
+      tiles='<div class="tile"><span class="k">Matches</span><b class="v">'+ms.length+'</b><span class="pl">&nbsp;</span></div>'+
+        '<div class="tile"><span class="k">Leagues</span><b class="v">'+Object.keys(lg).length+'</b><span class="pl">&nbsp;</span></div>'+
+        '<div class="tile"><span class="k">Results</span><b class="v">0<small>/'+ms.length+'</small></b><span class="pl say">in a day or two</span></div>';
+    }
+    return tiles;
+  },
+  slips:function(d,ms,H){
+    var find=function(h,a){return ms.filter(function(m){return m.home===h&&m.away===a;})[0];};
+    var out='';
+    var dd=d.daily;
+    if(dd&&dd.legs){
+      var legs=dd.legs.map(function(l){return {l:l,m:find(l.home,l.away)};}).filter(function(x){return x.m&&legBet(x.m,x.l.kind);});
+      if(legs.length===2){
+        var st=legs.map(function(x){return hits[x.l.kind==='pick'?'pick':'goals'](x.m);});
+        var pl=st.indexOf(false)>=0?-1:st[0]&&st[1]?dd.odds-1:null;
+        out+='<article class="slip"><header><h2>Daily double</h2><span class="stake">€1 stake</span></header><ol>'+
+          legs.map(function(x,j){var b=legBet(x.m,x.l.kind);
+            return H.leg(st[j],H.esc(legText(x.m,x.l.kind)),H.esc((x.m.time||'')+' '+x.m.home+' v '+x.m.away)+' · '+H.pct(b.p),b.odds.toFixed(2));}).join('')+'</ol>'+
+          '<footer><span>Both '+H.pct(dd.p)+' · pays '+dd.odds.toFixed(2)+'</span>'+
+          (pl==null?'<span class="ret">€'+dd.odds.toFixed(2)+'</span>':'<span class="ret '+H.cls(pl)+'">'+H.eur(pl)+'</span>')+'</footer>'+
+          '<p class="note">The day\'s two most confident calls with real odds (result or goals), from two matches, at the average prices.</p></article>';
+      }
+    }
+    var cd=d.double;
+    if(cd&&cd.legs){
+      var cl=cd.legs.map(function(k){return find(k[0],k[1]);}).filter(function(m){return m&&m.corners;});
+      if(cl.length===2){
+        var cs=cl.map(hits.corners);
+        var res=cs.indexOf(false)>=0?'Lost':cs[0]&&cs[1]?'Landed':null;
+        out+='<article class="slip corner"><header><h2>Corner double</h2><span class="stake">fair price</span></header><ol>'+
+          cl.map(function(m,j){return H.leg(cs[j],line(m.corners)+' corners',H.esc((m.time||'')+' '+m.home+' v '+m.away)+' · '+H.pct(m.corners.p)+
+            (m.cn!=null?' · '+m.cn+' taken':''),'');}).join('')+'</ol>'+
+          '<footer><span>Both '+H.pct(cd.p)+'</span>'+(res?'<span class="stamp '+(res==='Landed'?'gain':'loss')+'">'+res+'</span>':'<span class="ret">fair '+H.fair(cd.p)+'</span>')+'</footer>'+
+          '<p class="note">No corner odds in the free data: worth backing only if your bookmaker pays more than '+H.fair(cd.p)+'.</p></article>';
+      }
+    }
+    return out;
+  },
+  card:function(m,H,gone){
+    var row=function(label,text,p,price,h){
+      return '<div><i>'+label+'</i><span>'+text+'<small>'+H.pct(p)+(price?' · '+price:'')+'</small></span>'+H.hit(h)+'</div>';
+    };
+    var c=m.corners,k=m.cards,cp=m.combo?comboPL(m):null;
+    return '<article class="card'+(gone?' gone':'')+'" style="--k:'+H.colour(m.league)+'">'+
+      '<div class="when"><b>'+H.esc(m.time||'')+'</b><span>'+(m.ft?'FT':'')+'</span></div>'+
+      '<div class="body"><p class="where">'+H.esc(m.league)+'</p>'+
+      '<div class="fixture"><span>'+H.esc(m.home)+'</span>'+(m.ft?'<b class="score">'+m.ft[0]+'–'+m.ft[1]+'</b>':'<span class="vs">v</span>')+'<span>'+H.esc(m.away)+'</span></div>'+
+      '<div class="mk">'+
+        (m.pick?row('Result',H.esc(pickName(m)),m.pick.p,m.pick.odds?'@'+m.pick.odds.toFixed(2):'',hits.pick(m)):'')+
+        (m.goals?row('Goals',cap(m.goals.side)+' 2.5',m.goals.p,m.goals.odds?'@'+m.goals.odds.toFixed(2):'',hits.goals(m)):'')+
+        (m.btts?row('Both score',cap(m.btts.side),m.btts.p,'fair '+H.fair(m.btts.p),hits.btts(m)):'')+
+        (c?row('Corners',line(c)+(m.cn!=null?' ('+m.cn+')':''),c.p,'fair '+H.fair(c.p),hits.corners(m)):'')+
+        (k?row('Cards',line(k)+(m.yc!=null?' ('+m.yc+')':''),k.p,'fair '+H.fair(k.p),hits.cards(m)):'')+
+        (m.combo?'<div class="double"><i>Double</i><span>'+H.esc(legText(m,'pick'))+' &amp; '+m.goals.side+' 2.5<small>'+
+          H.pct(m.combo.p)+' · pays '+m.combo.odds.toFixed(2)+'</small></span>'+
+          (cp==null?'<span></span>':'<span class="money '+H.cls(cp)+'">'+H.eur(cp)+'</span>')+'</div>':'')+
+      '</div></div></article>';
   }
-  var ms=day.matches;
-  var counts={};ms.forEach(function(m){counts[m.league]=(counts[m.league]||0)+1;});
-  var leagues=Object.keys(counts).sort();
-  var colourOf=function(l){return 'var(--c'+(leagues.indexOf(l)%8+1)+')';};
-  if(league&&!counts[league])league=null;
-
-  var tally=function(fn){return ms.map(fn).filter(function(x){return x!=null;});};
-  var right=function(a){return a.filter(Boolean).length+'/'+a.length;};
-  var parts=[['favourite',tally(pickHit)],['goals',tally(goalsHit)],['both score',tally(bttsHit)],['corners',tally(cornerHit)],['cards',tally(cardHit)]]
-    .filter(function(x){return x[1].length;}).map(function(x){return x[0]+' '+right(x[1]);});
-  var up=day.updated?new Date(day.updated):null;
-  var cps=ms.filter(function(m){return m.combo;}).map(comboPL).filter(function(x){return x!=null;});
-  var cpl=cps.reduce(function(a,b){return a+b;},0),dpl=dailyPL();
-  var money=[];
-  if(cps.length)money.push('€1 match doubles: '+cps.filter(function(x){return x>0;}).length+' of '+cps.length+' landed <i>'+eur(cpl)+'</i>');
-  if(dpl!=null)money.push('daily double <i>'+eur(dpl)+'</i>');
-  $('#stat').innerHTML=esc(ms.length+' match'+(ms.length===1?'':'es')+
-    (!parts.length&&up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''))+
-    (parts.length?'<br>Calls right: '+esc(parts.join(' · ')):'')+(money.length?'<br>'+money.join(' · '):'');
-
-  renderDaily();
-  renderDouble(ms);
-
-  $('#tray').hidden=leagues.length<2;
-  $('#chips').innerHTML='<button class="chip all" type="button" data-l="" aria-pressed="'+(!league)+'">All <em>'+ms.length+'</em></button>'+
-    leagues.map(function(l){return '<button class="chip" type="button" data-l="'+esc(l)+'" style="--k:'+colourOf(l)+'" aria-pressed="'+(league===l)+'">'+esc(l)+' <em>'+counts[l]+'</em></button>';}).join('');
-
-  var now=cur===today?nowLondon():null;
-  var shown=ms.filter(function(m){return !league||m.league===league;});
-  var done=function(m){return m.ft||(now&&m.time&&m.time<now);};
-  if(now)shown=shown.filter(function(m){return !done(m);}).concat(shown.filter(done));
-  box.innerHTML=shown.map(function(m){
-    var c=m.corners;
-    return '<article class="m'+(now&&done(m)?' gone':'')+'" style="--k:'+colourOf(m.league)+'">'+
-      '<div class="mh"><b>'+esc(m.time||'')+'</b><span>'+esc(m.league)+'</span></div>'+
-      '<div class="teams"><span>'+esc(m.home)+' <i>v</i> '+esc(m.away)+'</span>'+(m.ft?'<span class="score">'+m.ft[0]+'–'+m.ft[1]+'</span>':'')+'</div>'+
-      '<ul>'+
-        (m.pick?'<li><i>Result</i><span>'+esc(pickName(m))+' <small>'+pct(m.pick.p)+'</small></span>'+badge(pickHit(m),'')+'</li>':'')+
-        (m.goals?row('Goals',cap(m.goals.side)+' 2.5',m.goals.p,goalsHit(m),m.ft?String(m.ft[0]+m.ft[1]):''):'')+
-        (m.btts?row('Both score',cap(m.btts.side),m.btts.p,bttsHit(m),''):'')+
-        (c?row('Corners',cornerText(c),c.p,cornerHit(m),m.cn!=null?String(m.cn):''):'')+
-        (m.cards?row('Cards',cornerText(m.cards)+' yellow',m.cards.p,cardHit(m),m.yc!=null?String(m.yc):''):'')+
-        (m.combo?'<li><i>Double</i><span>'+esc(legText(m,'pick'))+' &amp; '+esc(legText(m,'goals').toLowerCase())+' <small>'+pct(m.combo.p)+
-          ' · pays '+m.combo.odds.toFixed(2)+'</small></span>'+(comboHit(m)==null?'':'<em class="badge'+(comboHit(m)?' ok':'')+'">'+eur(comboPL(m))+'</em>')+'</li>':'')+
-      '</ul></article>';
-  }).join('');
-}
-
-function renderDouble(ms){
-  var d=day.double,box=$('#dbl');
-  if(!d||!d.legs||d.legs.length<2){box.hidden=true;return;}
-  var legs=d.legs.map(function(k){return ms.filter(function(m){return m.home===k[0]&&m.away===k[1];})[0];}).filter(Boolean);
-  if(legs.length<2||!legs[0].corners||!legs[1].corners){box.hidden=true;return;}
-  var hits=legs.map(cornerHit);
-  var result=hits.indexOf(false)>=0?'Lost':hits[0]&&hits[1]?'Landed':null;
-  box.hidden=false;
-  box.innerHTML='<h2>Corner double</h2><ol>'+legs.map(function(m,j){
-    return '<li><div><b>'+cornerText(m.corners)+' corners · '+pct(m.corners.p)+'</b>'+
-      '<span>'+esc(m.time||'')+' '+esc(m.home)+' v '+esc(m.away)+' · '+esc(m.league)+'</span></div>'+badge(hits[j],m.cn!=null?String(m.cn):'')+'</li>';
-  }).join('')+'</ol>'+
-  '<div class="sum">Both come in: '+pct(d.p)+' · fair price '+fair(d.p)+(result?' · <b>'+result+'</b>':'')+
-  '<br><small>Only worth backing if your bookmaker pays more than '+fair(d.p)+' for the double.</small></div>';
-}
-
-function renderDaily(){
-  var d=day.daily,box=$('#daily');
-  var legs=d&&d.legs?d.legs.map(function(l){return {l:l,m:legOf(l)};}).filter(function(x){return x.m&&legBet(x.m,x.l.kind);}):[];
-  if(legs.length<2){box.hidden=true;return;}
-  var pl=dailyPL();
-  box.hidden=false;
-  box.innerHTML='<h2>Daily double · €1</h2><ol>'+legs.map(function(x){
-    var b=legBet(x.m,x.l.kind),h=legHit(x.m,x.l.kind);
-    return '<li><div><b>'+esc(legText(x.m,x.l.kind))+' · '+pct(b.p)+' @ '+b.odds.toFixed(2)+'</b>'+
-      '<span>'+esc(x.m.time||'')+' '+esc(x.m.home)+' v '+esc(x.m.away)+' · '+esc(x.m.league)+'</span></div>'+
-      (h==null?'':'<em class="badge'+(h?' ok':'')+'">'+(x.m.ft?x.m.ft[0]+'–'+x.m.ft[1]:'')+' '+(h?'✓':'✗')+'</em>')+'</li>';
-  }).join('')+'</ol>'+
-  '<div class="sum">Both come in: '+pct(d.p)+' · pays '+d.odds.toFixed(2)+' · €1 returns €'+d.odds.toFixed(2)+
-  (pl!=null?' · <b class="money">'+(pl>0?'Landed ':'Lost ')+eur(pl)+'</b>':'')+
-  '<br><small>The two most confident calls with real bookmaker odds (result or goals over/under), at the average prices.</small></div>';
-}
-
-function show(k){
-  cur=k;day=null;render();
-  if(!k)return;
-  getJSON('picks/'+k+'.json').then(function(d){if(cur===k){day=d;render();}}).catch(function(){if(cur===k)render();});
-}
-
-$('#prev').addEventListener('click',function(){var i=dates.indexOf(cur);if(i>0)show(dates[i-1]);});
-$('#next').addEventListener('click',function(){var i=dates.indexOf(cur);if(i>=0&&i<dates.length-1)show(dates[i+1]);});
-$('#today').addEventListener('click',function(){show(today);});
-$('#chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;league=b.dataset.l||null;render();});
-
-getJSON('picks/index.json').then(function(ix){
-  dates=(ix&&ix.dates)||[];
-  var next=dates.filter(function(d){return d>=today;})[0];
-  show(dates.indexOf(today)>=0?today:next||dates[dates.length-1]||null);
-}).catch(function(){dates=[];show(null);});
+});
 })();
 </script>
 </body>

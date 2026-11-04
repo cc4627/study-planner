@@ -4,144 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Racing Picks</title>
-<meta name="description" content="Each day's UK and Irish races: time, course and the top three in the morning market.">
-<meta name="theme-color" content="#D9EAFB">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Each day's UK and Irish races: time, course and the top three, with results and a daily double.">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Carlito&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/sports.css">
 </head>
 <body>
-<style>
-/* Same look as the Study Week Planner: light-blue board, Calibri regular, 2px outlined boxes.
-   Course chips sit in a tray on top and filter the day's races, which are cards of time, course and top three. */
-:root{
-  --bg:#D9EAFB; --surface:#FFFFFF; --ink:#101C26; --muted:#4F6476; --line:#BCD2E8; --edge:#7F9DBA;
-  --focus:#3B4CCA;
-  --c1:#3B4CCA; --c2:#B84A17; --c3:#177A4F; --c4:#8A3FA8; --c5:#0E7490; --c6:#A16207; --c7:#BE185D; --c8:#4D5B68;
-  --font:'Calibri','Carlito','Segoe UI',system-ui,sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0F2133; --surface:#16293C; --ink:#E8EEF3; --muted:#9DB1C3; --line:#2B4258; --edge:#5C7A96;
-    --focus:#9AA6FF;
-    --c1:#9AA6FF; --c2:#FF9A68; --c3:#53C894; --c4:#D29BF0; --c5:#5CC8E0; --c6:#F2C04E; --c7:#F48FB8; --c8:#A4B2BE;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0F2133; --surface:#16293C; --ink:#E8EEF3; --muted:#9DB1C3; --line:#2B4258; --edge:#5C7A96;
-  --focus:#9AA6FF;
-  --c1:#9AA6FF; --c2:#FF9A68; --c3:#53C894; --c4:#D29BF0; --c5:#5CC8E0; --c6:#F2C04E; --c7:#F48FB8; --c8:#A4B2BE;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-*,*::before,*::after{font-weight:400!important;letter-spacing:normal!important}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 var(--font);
-  padding-left:max(16px,env(safe-area-inset-left,0px));
-  padding-right:max(16px,env(safe-area-inset-right,0px));
-  padding-block:20px 40px;
-}
-.app{max-width:1240px;margin:0 auto;display:grid;gap:14px}
-button{font:inherit;color:inherit;cursor:pointer}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-a{color:var(--focus)}
-
-.top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
-.eyebrow{font:12px/1 var(--font);text-transform:uppercase;color:var(--muted)}
-h1{margin:6px 0 0;font:clamp(26px,6vw,38px)/1.05 var(--font);text-wrap:balance}
-.stat{margin:6px 0 0;font:13px/1.45 var(--font);color:var(--muted);font-variant-numeric:tabular-nums}
-.stat i{font-style:normal;color:var(--ink)}
-.navs{display:flex;gap:8px;align-items:center}
-.nav{width:44px;height:44px;border-radius:10px;border:2px solid var(--edge);background:var(--surface);display:grid;place-items:center;padding:0}
-.nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.nav:disabled{opacity:.35;cursor:default}
-.pill{min-height:44px;padding:0 14px;border:2px solid var(--edge);background:var(--surface);border-radius:999px;font:12px/1 var(--font);text-transform:uppercase}
-
-.dbl{background:var(--surface);border:2px solid var(--c4);border-radius:12px;padding:10px 14px 12px;display:grid;gap:8px}
-.dbl h2{margin:0;font:12px/1 var(--font);text-transform:uppercase;color:var(--c4)}
-.dbl ol{margin:0;padding:0;list-style:none;display:grid;gap:6px}
-.dbl li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
-.dbl li b{display:block;font:18px/1.2 var(--font)}
-.dbl li span{display:block;font:13px/1.3 var(--font);color:var(--muted);overflow-wrap:anywhere}
-.dbl .sum{font:14px/1.35 var(--font);color:var(--ink);font-variant-numeric:tabular-nums}
-.dbl .sum small{color:var(--muted);font-size:12px}
-.dbl{border-color:var(--c3)}
-.dbl h2{color:var(--c3)}
-.tray{background:var(--surface);border:2px solid var(--edge);border-radius:12px;padding:10px 12px;display:grid;gap:8px}
-.hint{font:12px/1.35 var(--font);color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{
-  --k:var(--c8);
-  display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:6px 12px 6px 10px;
-  border-radius:9px;border:2px solid var(--k);
-  background:color-mix(in srgb,var(--k) 10%,var(--surface));font:14px/1.1 var(--font);
-}
-.chip em{font:11px/1 var(--font);font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
-.chip[aria-pressed="true"]{box-shadow:0 0 0 2px var(--k);background:color-mix(in srgb,var(--k) 24%,var(--surface))}
-.chip.all{--k:var(--ink)}
-
-.races{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:10px}
-.race{
-  --k:var(--c8);
-  border-radius:9px;border:2px solid var(--k);
-  background:color-mix(in srgb,var(--k) 11%,var(--surface));
-  padding:8px 12px 10px;display:grid;gap:6px;min-width:0;
-}
-.race.gone{opacity:.55}
-.rh{display:flex;align-items:baseline;gap:8px;min-width:0}
-.rh b{font:22px/1 var(--font);font-variant-numeric:tabular-nums}
-.rh span{font:12px/1.15 var(--font);text-transform:uppercase;color:var(--k);overflow-wrap:anywhere}
-.race ol{margin:0;padding:0;list-style:none;display:grid;gap:3px}
-.race li{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:6px;align-items:baseline;font:15px/1.3 var(--font);overflow-wrap:anywhere}
-.race li i{font:12px/1 var(--font);font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
-.race li:first-child{font-size:17px}
-/* Finishing position once the race is run: filled for a winner, outlined for 2nd/3rd */
-.fp{font:12px/1 var(--font);font-style:normal;padding:3px 7px;border-radius:999px;border:2px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;align-self:center}
-.fp.win{background:var(--c3);border-color:var(--c3);color:var(--surface)}
-.fp.place{border-color:var(--k);color:var(--ink)}
-
-.empty{border:2px dashed var(--edge);border-radius:12px;padding:24px 18px;text-align:center;color:var(--muted);background:var(--surface)}
-.empty b{display:block;color:var(--ink);font:18px/1.2 var(--font);margin-bottom:6px}
-.foot{margin:0;text-align:center;font:12px/1.4 var(--font);color:var(--muted)}
-[hidden]{display:none!important}
-/* Sports tabs along the bottom: Racing, Soccer, Tennis */
-body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;display:grid;grid-template-columns:repeat(3,1fr);
-  background:var(--surface);border-top:2px solid var(--edge);padding-bottom:env(safe-area-inset-bottom,0px)}
-.tabs a{display:grid;justify-items:center;align-content:center;gap:4px;min-height:58px;padding:7px 4px;color:var(--muted);
-  text-decoration:none;font:12px/1 var(--font);text-transform:uppercase}
-.tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tabs a[aria-current="page"]{color:var(--focus);box-shadow:inset 0 3px 0 var(--focus)}
-</style>
-
 <main class="app">
   <header class="top">
     <div>
-      <div class="eyebrow" id="eyebrow">UK &amp; Ireland racing</div>
+      <p class="eyebrow"><span>UK &amp; Ireland racing</span><span id="when"></span></p>
       <h1 id="title">&nbsp;</h1>
-      <p class="stat" id="stat"></p>
     </div>
-    <div class="navs">
-      <button class="pill" id="today" type="button" hidden>Today</button>
-      <button class="nav" id="prev" type="button" aria-label="Previous day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button class="nav" id="next" type="button" aria-label="Next day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div class="daynav">
+      <button class="today" id="today" type="button" hidden>Today</button>
+      <button id="prev" type="button" aria-label="Previous day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button id="next" type="button" aria-label="Next day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </header>
-
-  <section class="dbl" id="dbl" aria-label="Daily double" hidden></section>
-
-  <section class="tray" id="tray" aria-label="Courses" hidden>
-    <span class="hint">Tap a course to show only its races</span>
-    <div class="chips" id="chips"></div>
-  </section>
-
-  <section class="races" id="races" aria-label="Races"></section>
-
-  <p class="foot">Top three from each race's morning betting forecast and form on Sporting Life's free racecards. +/− is the result of €1 stakes at the starting price (to place at standard each-way terms); tricast returns are estimates from the starting prices, since real payouts aren't published with the results. A guide, not a tip; no bets are placed.
-    Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
+  <section class="ledger" id="ledger" aria-label="How the picks did" hidden></section>
+  <section class="slips" id="slips" aria-label="Daily double" hidden></section>
+  <nav class="filters" id="filters" aria-label="Courses" hidden></nav>
+  <section class="cards" id="cards" aria-label="Races"></section>
+  <p class="foot">Top three from each race's morning betting forecast on Sporting Life's free racecards. Money figures are €1 stakes at the
+    starting price: to place at standard each-way terms, and tricasts in races of 8+ runners (any order = 6 × €1, exact = €1), whose
+    payouts are estimated from the starting prices because real ones aren't published with the results. A guide, not a tip; no bets
+    are placed. Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
     <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
 </main>
 
@@ -151,150 +42,85 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   <a href="../tennis/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M6 5.3a9.5 9.5 0 0 1 0 13.4M18 5.3a9.5 9.5 0 0 0 0 13.4"/></svg>Tennis</a>
 </nav>
 
+<script src="../assets/sports.js"></script>
 <script>
 (function(){
 'use strict';
-var $=function(s){return document.querySelector(s);};
-var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
-var pad=function(n){return String(n).padStart(2,'0');};
-var keyOf=function(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());};
-var fromKey=function(k){var p=String(k).split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);};
-var getJSON=function(u){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});};
-
-var dates=[],cur=null,day=null,course=null;
-var today=keyOf(new Date());
-
-
-function nowLondon(){
-  try{return new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date());}
-  catch(e){var d=new Date();return pad(d.getHours())+':'+pad(d.getMinutes());}
-}
-
-function render(){
-  var i=dates.indexOf(cur);
-  $('#prev').disabled=i<=0;
-  $('#next').disabled=i<0||i>=dates.length-1;
-  $('#today').hidden=cur===today||dates.indexOf(today)<0;
-  $('#title').textContent=cur?fromKey(cur).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}):'Racing picks';
-  $('#eyebrow').textContent=cur===today?'Today · UK & Ireland racing':'UK & Ireland racing';
-
-  var box=$('#races');
-  if(!day||!day.races||!day.races.length){
-    $('#tray').hidden=true;$('#dbl').hidden=true;$('#stat').textContent='';
-    box.innerHTML='<div class="empty" style="grid-column:1/-1"><b>'+(dates.length?'No races on this day':'No picks yet')+'</b>'+
-      (dates.length?'Use the arrows to see another day.':'Picks appear here each morning, at about 10am, once the daily job is running.')+'</div>';
-    return;
-  }
-  var counts={};day.races.forEach(function(r){counts[r.course]=(counts[r.course]||0)+1;});
-  var courses=Object.keys(counts).sort();
-  /* Each of the day's meetings gets its own planner colour (rarely more than eight in a day). */
-  var colourOf=function(c){return 'var(--c'+(courses.indexOf(c)%8+1)+')';};
-  if(course&&!counts[course])course=null;
-  var up=day.updated?new Date(day.updated):null;
-  var run=day.races.filter(function(r){return r.pos&&r.pos.length;});
-  /* Top pick: races where it ran. Tricast: races of 8+ runners with all three picks running, landing when the
-     three picks fill the first three places (any order), or exactly as predicted. */
-  var ran=run.filter(function(r){return r.pos[0]!=='NR';});
-  var won=ran.filter(function(r){return r.pos[0]===1;}).length;
-  var placed=ran.filter(function(r){return typeof r.pos[0]==='number'&&r.pos[0]<=3;}).length;
-  var tri=run.filter(function(r){return (r.field||0)>=8&&r.pos.length>=3&&r.pos.slice(0,3).indexOf('NR')<0&&
-    r.sp&&r.sp[0]&&r.sp[1]&&r.sp[2];});
-  var isAny=function(r){return r.pos.slice(0,3).every(function(x){return typeof x==='number'&&x<=3;});};
-  var isExact=function(r){return r.pos[0]===1&&r.pos[1]===2&&r.pos[2]===3;};
-  var pl=money(ran,tri,isAny,isExact);
-  $('#stat').innerHTML=esc(day.races.length+' races · '+courses.length+' meeting'+(courses.length===1?'':'s')+
-    (!run.length&&up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''))+
-    (ran.length?'<br>Top pick won '+won+' of '+ran.length+' <i>'+eur(pl.win)+'</i> · top pick 1st–3rd '+placed+' of '+ran.length+' <i>'+eur(pl.place)+'</i>'+
-      (tri.length?'<br>8+ runner tricasts: '+tri.filter(isAny).length+' of '+tri.length+' any order <i>'+eur(pl.any)+' est.</i> · '+
-        tri.filter(isExact).length+' exact <i>'+eur(pl.exact)+' est.</i>':''):'');
-
-  renderDouble();
-  $('#tray').hidden=courses.length<2;
-  $('#chips').innerHTML='<button class="chip all" type="button" data-c="" aria-pressed="'+(!course)+'">All <em>'+day.races.length+'</em></button>'+
-    courses.map(function(c){return '<button class="chip" type="button" data-c="'+esc(c)+'" style="--k:'+colourOf(c)+'" aria-pressed="'+(course===c)+'">'+esc(c)+' <em>'+counts[c]+'</em></button>';}).join('');
-
-  // Today: races still to run come first, finished ones drop to the end.
-  var now=cur===today?nowLondon():null;
-  var shown=day.races.filter(function(r){return !course||r.course===course;});
-  if(now)shown=shown.filter(function(r){return r.time>=now;}).concat(shown.filter(function(r){return r.time<now;}));
-  box.innerHTML=shown.map(function(r){
-    var gone=now&&r.time<now;
-    return '<article class="race'+(gone?' gone':'')+'" style="--k:'+colourOf(r.course)+'">'+
-      '<div class="rh"><b>'+esc(r.time)+'</b><span>'+esc(r.course)+'</span></div>'+
-      '<ol>'+(r.picks||[]).slice(0,3).map(function(p,j){return '<li><i>'+(j+1)+'</i><span>'+esc(p)+'</span>'+finishBadge(r.pos&&r.pos[j])+'</li>';}).join('')+'</ol>'+
-    '</article>';
-  }).join('');
-}
-
-/* Profit or loss on €1 stakes at the starting price: the top pick to win, the top pick to place (standard
-   each-way terms: 2 places at 1/4 with 5-7 runners, 3 at 1/5 with 8+, 3 at 1/4 in handicaps of 12-15, 4 at 1/4 in
-   handicaps of 16+, none under 5), and the three picks as tricasts in 8+ runner races (any order = 6 x €1, exact
-   order = €1). Tricast payouts aren't published with the results, so they're estimated from the three starting
-   prices: chances = 1 / (SP x 1.2), chained place by place (Harville), less a 20% bookmaker cut. */
-function eur(x){return (x>=0?'+':'−')+'€'+Math.abs(x).toFixed(2);}
+/* Standard each-way place terms: none under 5 runners; 2 places at 1/4 with 5-7; 3 at 1/5 with 8+;
+   3 at 1/4 in handicaps of 12-15; 4 at 1/4 in handicaps of 16+. */
 function placeTerms(n,hcap){if(n<5)return null;if(n<=7)return [2,.25];if(hcap&&n>=16)return [4,.25];if(hcap&&n>=12)return [3,.25];return [3,.2];}
+/* Tricast payout estimate: chances = 1 / (SP x 1.2), chained place by place (Harville), less a 20% bookmaker cut. */
 function harville(p,order){var out=1,left=1;order.forEach(function(i){out*=p[i]/left;left-=p[i];});return out;}
-function money(ran,tri,isAny,isExact){
-  var o={win:0,place:0,any:0,exact:0};
-  ran.forEach(function(r){
-    var sp=r.sp&&r.sp[0],p=r.pos[0];if(!sp)return;
-    o.win+=p===1?sp-1:-1;
-    var t=placeTerms(r.field||0,r.hcap);
-    if(t)o.place+=(typeof p==='number'&&p<=t[0])?(sp-1)*t[1]:-1;
-  });
-  tri.forEach(function(r){
-    var pr=r.sp.slice(0,3).map(function(s){return 1/s/1.2;});
-    o.any-=6;o.exact-=1;
-    if(isAny(r))o.any+=0.8/harville(pr,[1,2,3].map(function(k){return r.pos.indexOf(k);}));
-    if(isExact(r))o.exact+=0.8/harville(pr,[0,1,2]);
-  });
-  return o;
+var isAny=function(r){return r.pos.slice(0,3).every(function(x){return typeof x==='number'&&x<=3;});};
+var isExact=function(r){return r.pos[0]===1&&r.pos[1]===2&&r.pos[2]===3;};
+function ord(p){return p+((p%100>=11&&p%100<=13)?'th':({1:'st',2:'nd',3:'rd'}[p%10]||'th'));}
+function finish(p){
+  if(p==null)return '<span></span>';
+  if(typeof p!=='number')return '<em class="pos" title="'+(p==='NR'?'Non-runner':'Did not finish')+'">'+p+'</em>';
+  return '<em class="pos'+(p===1?' win':p<=3?' place':'')+'">'+ord(p)+'</em>';
 }
 
-/* The day's double: the two top picks with the best win chances (chosen before either race), €1 at the
-   starting prices. A non-runner leg is void, leaving a single on the other. */
-function renderDouble(){
-  var d=day.double,box=$('#dbl');
-  var legs=d&&d.legs?d.legs.map(function(k){return day.races.filter(function(r){return r.time===k[0]&&r.course===k[1];})[0];}).filter(Boolean):[];
-  if(legs.length<2){box.hidden=true;return;}
-  var done=legs.every(function(r){return r.pos&&r.pos.length;}),lost=legs.some(function(r){return r.pos&&typeof r.pos[0]==='number'&&r.pos[0]!==1||r.pos&&r.pos[0]==='DNF';});
-  var pl=null;
-  if(lost)pl=-1;
-  else if(done){pl=legs.reduce(function(a,r){return r.pos[0]==='NR'?a:a*(r.sp&&r.sp[0]||1);},1)-1;}
-  box.hidden=false;
-  box.innerHTML='<h2>Daily double · €1</h2><ol>'+legs.map(function(r){
-    var p=r.pos&&r.pos[0];
-    return '<li><div><b>'+esc(r.picks[0])+' to win · '+Math.round(r.p*100)+'%'+(r.sp&&r.sp[0]?' · SP '+r.sp[0].toFixed(2):'')+'</b>'+
-      '<span>'+esc(r.time)+' '+esc(r.course)+'</span></div>'+finishBadge(p)+'</li>';
-  }).join('')+'</ol>'+
-  '<div class="sum">Both win: '+Math.round(d.p*100)+'% · fair price '+(1/d.p).toFixed(2)+
-  (pl!=null?' · <b>'+(pl>0?'Landed ':'Lost ')+eur(pl)+'</b>':'')+
-  '<br><small>Settled at the starting prices, multiplied. Chosen just after midnight from the morning forecast.</small></div>';
-}
-
-/* Where a pick finished: '1st', '2nd'... or DNF (fell, pulled up) / NR (didn't run). Nothing until the race is run. */
-function finishBadge(p){
-  if(p==null)return '';
-  if(typeof p!=='number')return '<em class="fp" title="'+(p==='NR'?'Non-runner':'Did not finish')+'">'+esc(p)+'</em>';
-  var sfx=(p%100>=11&&p%100<=13)?'th':({1:'st',2:'nd',3:'rd'}[p%10]||'th');
-  return '<em class="fp'+(p===1?' win':p<=3?' place':'')+'">'+p+sfx+'</em>';
-}
-
-function show(k){
-  cur=k;day=null;render();
-  if(!k)return;
-  getJSON('picks/'+k+'.json').then(function(d){if(cur===k){day=d;render();}}).catch(function(){if(cur===k)render();});
-}
-
-$('#prev').addEventListener('click',function(){var i=dates.indexOf(cur);if(i>0)show(dates[i-1]);});
-$('#next').addEventListener('click',function(){var i=dates.indexOf(cur);if(i>=0&&i<dates.length-1)show(dates[i+1]);});
-$('#today').addEventListener('click',function(){show(today);});
-$('#chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;course=b.dataset.c||null;render();});
-
-getJSON('picks/index.json').then(function(ix){
-  dates=(ix&&ix.dates)||[];
-  show(dates.indexOf(today)>=0?today:dates[dates.length-1]||null);
-}).catch(function(){show(null);});
+SportsPage({
+  name:'Racing picks',
+  emptyText:'Picks appear here just after midnight, once the day\'s racecards are out.',
+  items:function(d){return d.races;},
+  groupOf:function(r){return r.course;},
+  over:function(r,now){return !!(r.pos&&r.pos.length)||(!!now&&r.time<now);},
+  ledger:function(d,races,H){
+    var run=races.filter(function(r){return r.pos&&r.pos.length;});
+    var ran=run.filter(function(r){return r.pos[0]!=='NR';});
+    if(!ran.length){
+      var courses={};races.forEach(function(r){courses[r.course]=1;});
+      return '<div class="tile"><span class="k">Races</span><b class="v">'+races.length+'</b><span class="pl">&nbsp;</span></div>'+
+        '<div class="tile"><span class="k">Meetings</span><b class="v">'+Object.keys(courses).length+'</b><span class="pl">&nbsp;</span></div>'+
+        '<div class="tile"><span class="k">Results</span><b class="v">0<small>/'+races.length+'</small></b><span class="pl say">as races finish</span></div>';
+    }
+    var tri=run.filter(function(r){return (r.field||0)>=8&&r.pos.length>=3&&r.pos.slice(0,3).indexOf('NR')<0&&r.sp&&r.sp[0]&&r.sp[1]&&r.sp[2];});
+    var o={win:0,place:0,any:0,exact:0};
+    ran.forEach(function(r){
+      var sp=r.sp&&r.sp[0],p=r.pos[0];if(!sp)return;
+      o.win+=p===1?sp-1:-1;
+      var t=placeTerms(r.field||0,r.hcap);
+      if(t)o.place+=(typeof p==='number'&&p<=t[0])?(sp-1)*t[1]:-1;
+    });
+    tri.forEach(function(r){
+      var pr=r.sp.slice(0,3).map(function(s){return 1/s/1.2;});
+      o.any-=6;o.exact-=1;
+      if(isAny(r))o.any+=0.8/harville(pr,[1,2,3].map(function(k){return r.pos.indexOf(k);}));
+      if(isExact(r))o.exact+=0.8/harville(pr,[0,1,2]);
+    });
+    var won=ran.filter(function(r){return r.pos[0]===1;}).length;
+    var placed=ran.filter(function(r){return typeof r.pos[0]==='number'&&r.pos[0]<=3;}).length;
+    return H.tile('Top pick won',won,ran.length,o.win)+
+      H.tile('Top pick 1st–3rd',placed,ran.length,o.place)+
+      (tri.length?H.tile('Tricast any order · 8+',tri.filter(isAny).length,tri.length,o.any,true)+
+        H.tile('Tricast exact · 8+',tri.filter(isExact).length,tri.length,o.exact,true):'');
+  },
+  slips:function(d,races,H){
+    var dbl=d.double;
+    var legs=dbl&&dbl.legs?dbl.legs.map(function(k){return races.filter(function(r){return r.time===k[0]&&r.course===k[1];})[0];}).filter(Boolean):[];
+    if(legs.length<2)return '';
+    var state=function(r){var p=r.pos&&r.pos[0];return p==null||p==='NR'?null:p===1;};
+    var states=legs.map(state);
+    var lost=states.indexOf(false)>=0;
+    var done=legs.every(function(r){return r.pos&&r.pos.length;});
+    var pl=lost?-1:done?legs.reduce(function(a,r){return r.pos[0]==='NR'?a:a*(r.sp&&r.sp[0]||1);},1)-1:null;
+    return '<article class="slip"><header><h2>Daily double</h2><span class="stake">€1 stake</span></header><ol>'+
+      legs.map(function(r,j){
+        return H.leg(states[j],H.esc(r.picks[0])+' to win',H.esc(r.time+' '+r.course)+(r.p?' · '+H.pct(r.p)+' chance':''),r.sp&&r.sp[0]?'SP '+r.sp[0].toFixed(2):'');
+      }).join('')+'</ol>'+
+      '<footer><span>Both win '+H.pct(dbl.p)+' · fair '+H.fair(dbl.p)+'</span>'+
+      (pl==null?'<span class="ret">at SP</span>':'<span class="ret '+H.cls(pl)+'">'+H.eur(pl)+'</span>')+'</footer>'+
+      '<p class="note">The day\'s two strongest top picks, chosen just after midnight; settled at the two starting prices.</p></article>';
+  },
+  card:function(r,H,gone){
+    return '<article class="card'+(gone?' gone':'')+'" style="--k:'+H.colour(r.course)+'">'+
+      '<div class="when"><b>'+H.esc(r.time)+'</b><span>'+(r.field?r.field+' ran':'')+'</span></div>'+
+      '<div class="body"><p class="where">'+H.esc(r.course)+'</p><ol class="runners">'+
+      (r.picks||[]).slice(0,3).map(function(n,j){return '<li><i>'+(j+1)+'</i><span>'+H.esc(n)+'</span>'+finish(r.pos&&r.pos[j])+'</li>';}).join('')+
+      '</ol></div></article>';
+  }
+});
 })();
 </script>
 </body>
