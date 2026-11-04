@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "updated": "2026-11-04T01:09:36+00:00",
+ "updated": "2026-11-04T10:38:36+00:00",
  "races": [
   {
    "time": "12:05",
@@ -69,7 +69,7 @@
    "picks": [
     "Palinca",
     "Zara's Dream",
-    "Dooks"
+    "Melody D'Arc"
    ]
   },
   {
@@ -157,9 +157,9 @@
    "course": "Musselburgh",
    "country": "Scotland",
    "picks": [
-    "Aighear",
     "Storm On Jura",
-    "Neddies Boy"
+    "Neddies Boy",
+    "Quercus Robur"
    ]
   },
   {
@@ -239,7 +239,7 @@
    "picks": [
     "Mr Mcwhinny",
     "Rangatira Jack",
-    "Bahtiyar"
+    "Two To Tango"
    ]
   },
   {
@@ -249,7 +249,7 @@
    "picks": [
     "The Big Westerner",
     "Bossofthebrownies",
-    "The Enabler"
+    "Sandor Clegane"
    ]
   },
   {
@@ -349,7 +349,7 @@
    "picks": [
     "Uncle Cc",
     "Don't Panic",
-    "Mirage D'ainay"
+    "Smoke And Fire"
    ]
   },
   {
@@ -368,8 +368,8 @@
    "country": "England",
    "picks": [
     "Silken Warrior",
-    "Unerring",
-    "Basics"
+    "Basics",
+    "Is This The Horse"
    ]
   },
   {

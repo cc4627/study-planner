@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "updated": "2026-11-04T01:09:36+00:00",
+ "updated": "2026-11-04T10:38:36+00:00",
  "races": [
   {
    "time": "12:05",
@@ -75,7 +75,7 @@
    "picks": [
     "Palinca",
     "Zara's Dream",
-    "Dooks"
+    "Melody D'Arc"
    ],
    "rule": null
   },
@@ -172,9 +172,9 @@
    "course": "Musselburgh",
    "path": "/racing/racecards/2026-11-04/musselburgh/racecard/946930/joe-fanning-fond-farewell-handicap",
    "picks": [
-    "Aighear",
     "Storm On Jura",
-    "Neddies Boy"
+    "Neddies Boy",
+    "Quercus Robur"
    ],
    "rule": null
   },
@@ -262,7 +262,7 @@
    "picks": [
     "Mr Mcwhinny",
     "Rangatira Jack",
-    "Bahtiyar"
+    "Two To Tango"
    ],
    "rule": null
   },
@@ -273,7 +273,7 @@
    "picks": [
     "The Big Westerner",
     "Bossofthebrownies",
-    "The Enabler"
+    "Sandor Clegane"
    ],
    "rule": null
   },
@@ -383,7 +383,7 @@
    "picks": [
     "Uncle Cc",
     "Don't Panic",
-    "Mirage D'ainay"
+    "Smoke And Fire"
    ],
    "rule": null
   },
@@ -404,8 +404,8 @@
    "path": "/racing/racecards/2026-11-04/kempton/racecard/946944/british-ebf-future-stayers-maiden-stakes-gbbgbbplus-race",
    "picks": [
     "Silken Warrior",
-    "Unerring",
-    "Basics"
+    "Basics",
+    "Is This The Horse"
    ],
    "rule": null
   },
