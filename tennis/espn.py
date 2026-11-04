@@ -51,7 +51,9 @@ def scoreboard(tour, day, cache=None):
 def _player(x):
     a = x.get('athlete') if isinstance(x.get('athlete'), dict) else {}
     pid, name = a.get('id') or x.get('id'), a.get('displayName') or a.get('fullName')
-    return {'id': str(pid), 'name': name} if pid and name else None
+    if not pid or not name or name.strip().upper() in ('TBD', 'TBA', 'BYE', 'QUALIFIER'):
+        return None  # a draw slot still to be decided
+    return {'id': str(pid), 'name': name}
 
 
 def matches(board, tour):

@@ -101,7 +101,8 @@ def main():
             if old and ('winner' in old or (day == today and old['time'] <= now.strftime('%H:%M'))):
                 continue  # started or played: the pick stays as it was
             keep[e['id']] = e
-        doc['matches'] = list(keep.values())
+        # drop draw slots picked before both players were known (older runs listed them as TBD)
+        doc['matches'] = [e for e in keep.values() if 'winner' in e or 'TBD' not in (e['p1'], e['p2'])]
         doc['updated'] = stamp
         write(day, doc)
         print(f'{day}: {len(entries)} scheduled matches picked, {len(doc["matches"])} on the page')
