@@ -82,6 +82,7 @@ h1{margin:6px 0 0;font:700 clamp(30px,7vw,48px)/.95 var(--display);text-transfor
 .slip .note{margin:0;font-size:12px;color:var(--muted)}
 .stamp{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;padding:4px 7px;border-radius:4px;border:1.5px solid currentColor}
 .slip.corner h2{color:var(--s4)}
+.slip.acca h2{color:var(--s1)}
 
 /* Filters: one row of chips that scrolls sideways on its own when there are many */
 .filters{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin}

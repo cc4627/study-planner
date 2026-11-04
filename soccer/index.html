@@ -64,6 +64,16 @@ var comboPL=function(m){var h=comboHit(m);return h==null?null:h?m.combo.odds-1:-
 var legText=function(m,kind){return kind==='pick'?(m.pick.side==='D'?'Draw':pickName(m)+' to win'):cap(m.goals.side)+' 2.5 goals';};
 var legBet=function(m,kind){return kind==='pick'?m.pick:m.goals;};
 var sum=function(a){return a.reduce(function(x,y){return x+y;},0);};
+/* Acca: every call with a real price (result picks and goals over/under), €1 on all of them together.
+   Same-match legs are priced as the singles multiplied; bookmakers sell those as bet builders at their own price. */
+function accaOf(ms,kinds){
+  var L=[];
+  ms.forEach(function(m){kinds.forEach(function(k){var b=m[k];if(b&&b.odds)L.push({o:b.odds,p:b.p,h:hits[k](m)});});});
+  var done=L.filter(function(x){return x.h!=null;}),inn=done.filter(function(x){return x.h;}).length;
+  return {n:L.length,odds:L.reduce(function(a,x){return a*x.o;},1),p:L.reduce(function(a,x){return a*x.p;},1),
+    done:done.length,inn:inn,state:done.length>inn?false:done.length===L.length&&L.length?true:null};
+}
+var big=function(x){return x.toLocaleString('en-GB',{maximumFractionDigits:2,minimumFractionDigits:2});};
 
 SportsPage({
   name:'Soccer picks',
@@ -101,6 +111,20 @@ SportsPage({
           (pl==null?'<span class="ret">€'+dd.odds.toFixed(2)+'</span>':'<span class="ret '+H.cls(pl)+'">'+H.eur(pl)+'</span>')+'</footer>'+
           '<p class="note">The day\'s two most confident calls with real odds (result or goals), from two matches, at the average prices.</p></article>';
       }
+    }
+    var all=accaOf(ms,['pick','goals']),fav=accaOf(ms,['pick']);
+    if(all.n>=3){
+      var nGoals=all.n-fav.n;
+      var pl=all.state===false?-1:all.state?all.odds-1:null;
+      var accaRow=function(a,title,what){
+        return H.leg(a.state,title,what+' · '+(a.done?a.inn+' of '+a.n+' in':'none played yet')+' · '+(a.p<0.001?'<0.1%':H.pct(a.p))+' chance',big(a.odds));
+      };
+      out+='<article class="slip acca"><header><h2>Acca</h2><span class="stake">€1 stake</span></header><ol>'+
+        accaRow(all,'Every priced call',fav.n+' results'+(nGoals?' + '+nGoals+' goals':''))+
+        (nGoals?accaRow(fav,'Favourites only',fav.n+' results'):'')+'</ol>'+
+        '<footer><span>Every call: €1 returns €'+big(all.odds)+' if all '+all.n+' come in</span>'+
+        (pl==null?'<span class="ret">€'+big(all.odds)+'</span>':'<span class="ret '+H.cls(pl)+'">'+(pl>0?'+€'+big(pl):'−€1.00')+'</span>')+'</footer>'+
+        '<p class="note">All the day\'s result and goals calls in one bet, at the average prices. Corners, cards and both-to-score have no odds in the data, so they\'re left out. One wrong leg loses it.</p></article>';
     }
     var cd=d.double;
     if(cd&&cd.legs){
