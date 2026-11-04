@@ -1,0 +1,825 @@
+{
+ "date": "2026-11-05",
+ "matches": [
+  {
+   "time": "17:45",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "AGF",
+   "away": "Braga",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.2,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.678
+   },
+   "cards": {
+    "exp": 4.6,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.688
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "Atalanta",
+   "away": "Kairat Almaty",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.52
+   },
+   "cards": {
+    "exp": 3.5,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.733
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "FC Midtjylland",
+   "away": "Ajax Amsterdam",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.598
+   },
+   "cards": {
+    "exp": 3.7,
+    "line": 2.5,
+    "side": "over",
+    "p": 0.72
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "FC Thun",
+   "away": "Heart of Midlothian",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "KuPS Kuopio",
+   "away": "KAA Gent",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.594
+   },
+   "cards": {
+    "exp": 3.9,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.547
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "Lincoln Red Imps",
+   "away": "Hajduk Split",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.3,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.545
+   },
+   "cards": {
+    "exp": 4.3,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.618
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "Mjällby AIF",
+   "away": "Borac Banja Luka",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "Red Star Belgrade",
+   "away": "Inter D'Escaldes",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.3,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.555
+   },
+   "cards": {
+    "exp": 3.8,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.667
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "Trabzonspor",
+   "away": "SC Freiburg",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.4,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.54
+   },
+   "cards": {
+    "exp": 4.0,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.638
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "AC Milan",
+   "away": "Ferencvaros",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.2,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.563
+   },
+   "cards": {
+    "exp": 3.8,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.669
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Anderlecht",
+   "away": "RB Salzburg",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.0,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.587
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.577
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Crystal Palace",
+   "away": "TSG Hoffenheim",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.2,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.561
+   },
+   "cards": {
+    "exp": 3.8,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.516
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Levski Sofia",
+   "away": "Jagiellonia Bialystok",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Lillestrom",
+   "away": "Viktoria Plzen",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.5,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.527
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.59
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "NEC Nijmegen",
+   "away": "Omonia Nicosia",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.1,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.57
+   },
+   "cards": {
+    "exp": 3.8,
+    "line": 2.5,
+    "side": "over",
+    "p": 0.728
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Real Sociedad",
+   "away": "Lyon",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.2,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.554
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.598
+   }
+  },
+  {
+   "time": "17:45",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Sparta Prague",
+   "away": "AFC Bournemouth",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.8,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.607
+   },
+   "cards": {
+    "exp": 4.5,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.652
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "AS Monaco",
+   "away": "FC Nordsjælland",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.5,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.521
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.59
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "CSU Craiova",
+   "away": "Egnatia",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "F.C. København",
+   "away": "Iberia 1999",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "FC Lugano",
+   "away": "Kauno Zalgiris",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "FC Twente",
+   "away": "Pafos",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.2,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.559
+   },
+   "cards": {
+    "exp": 3.5,
+    "line": 2.5,
+    "side": "over",
+    "p": 0.678
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "Getafe",
+   "away": "Brighton & Hove Albion",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.8,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.514
+   },
+   "cards": {
+    "exp": 4.6,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.508
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "Panathinaikos",
+   "away": "CSKA Sofia",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.5,
+    "line": 8.5,
+    "side": "over",
+    "p": 0.592
+   },
+   "cards": {
+    "exp": 4.6,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.522
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "Riga FC",
+   "away": "Jablonec",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UECL",
+   "league": "Conference League",
+   "home": "Sint-Truidense",
+   "away": "SK Brann",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.4,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.542
+   },
+   "cards": {
+    "exp": 3.7,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.512
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "AZ Alkmaar",
+   "away": "Juventus",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.1,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.55
+   },
+   "cards": {
+    "exp": 3.2,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.607
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Bayer Leverkusen",
+   "away": "Marseille",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.2,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.559
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.581
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Benfica",
+   "away": "Lech Poznan",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.6,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.628
+   },
+   "cards": {
+    "exp": 4.8,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.657
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Celta Vigo",
+   "away": "Union St.-Gilloise",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.6,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.584
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Celtic",
+   "away": "Besiktas",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.4,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.535
+   },
+   "cards": {
+    "exp": 4.3,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.576
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Hapoel Be'er",
+   "away": "OFI Crete",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.5,
+    "line": 8.5,
+    "side": "over",
+    "p": 0.595
+   },
+   "cards": {
+    "exp": 4.6,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.51
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "SK Sturm Graz",
+   "away": "NK Celje",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Sunderland",
+   "away": "Dinamo Zagreb",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.7,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.613
+   },
+   "cards": {
+    "exp": 4.3,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.615
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UEL",
+   "league": "Europa League",
+   "home": "Torreense",
+   "away": "Ararat-Armenia",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  }
+ ],
+ "updated": "2026-11-04T18:26:01+00:00",
+ "double": {
+  "legs": [
+   [
+    "AGF",
+    "Braga"
+   ],
+   [
+    "Benfica",
+    "Lech Poznan"
+   ]
+  ],
+  "p": 0.426
+ },
+ "daily": null
+}
