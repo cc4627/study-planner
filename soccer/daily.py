@@ -195,7 +195,11 @@ def main():
         open_euro = doc and any(e['div'] in ('UCL', 'UEL', 'UECL') and 'ft' not in e for e in doc['matches'])
         if not open_euro:
             continue
-        played_ = {(m['home'], m['away']): m for m in europe.matches(day) if m['hg'] is not None}
+        try:
+            played_ = {(m['home'], m['away']): m for m in europe.matches(day) if m['hg'] is not None}
+        except Exception as err:
+            print(f'  ! European results for {day}: {err!r}')
+            continue
         for e in doc['matches']:
             m = played_.get((e['home'], e['away']))
             if m and 'ft' not in e:
@@ -208,7 +212,12 @@ def main():
         write(day, doc)
     euro = []
     for k in range(EURO_AHEAD + 1):
-        for m in europe.matches(today + timedelta(days=k)):
+        try:
+            coming = europe.matches(today + timedelta(days=k))
+        except Exception as err:
+            print(f'  ! European fixtures for {today + timedelta(days=k)}: {err!r}')
+            coming = []
+        for m in coming:
             if m['state'] != 'pre':
                 continue
             look = dict(m, home=europe.to_fd(m['home'], known) or m['home'], away=europe.to_fd(m['away'], known) or m['away'])

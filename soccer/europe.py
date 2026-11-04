@@ -85,7 +85,10 @@ def _stat(team, *names):
 def _odds(comp):
     """Decimal 1X2 and over/under 2.5 prices from the first odds provider ESPN lists, where there is one."""
     out = {}
-    for o in comp.get('odds') or []:
+    odds = comp.get('odds')
+    for o in (odds if isinstance(odds, list) else [odds]):
+        if not isinstance(o, dict):
+            continue  # ESPN sometimes lists an empty slot
         h, a, d = (o.get('homeTeamOdds') or {}), (o.get('awayTeamOdds') or {}), (o.get('drawOdds') or {})
         out['oh'] = _decimal(h.get('moneyLine'))
         out['oa'] = _decimal(a.get('moneyLine'))
@@ -103,30 +106,40 @@ def matches(day):
     for slug, (code, name) in COMPS.items():
         j = _get(f'{BASE}/{slug}/scoreboard?dates={day:%Y%m%d}') or {}
         for e in j.get('events', []):
-            comp = (e.get('competitions') or [{}])[0]
-            teams = {t.get('homeAway'): t for t in comp.get('competitors') or []}
-            if 'home' not in teams or 'away' not in teams or not e.get('date'):
+            try:
+                m = _match(slug, code, name, e, day)
+            except Exception as err:  # one odd event shouldn't lose the night
+                print(f'  ! {slug} {e.get("id")}: {err!r}')
                 continue
-            ko = datetime.strptime(e['date'].replace('Z', '+0000'), '%Y-%m-%dT%H:%M%z').astimezone(LONDON)
-            if ko.date() != day:
-                continue
-            st = ((comp.get('status') or e.get('status') or {}).get('type') or {})
-            h, a = teams['home'], teams['away']
-            post = st.get('state') == 'post' and st.get('completed')
-            num = lambda x: float(x) if x not in (None, '') else None
-            m = {'div': code, 'league': name, 'date': day, 'time': ko.strftime('%H:%M'), 'state': st.get('state'),
-                 'home': (h.get('team') or {}).get('displayName') or '', 'away': (a.get('team') or {}).get('displayName') or '',
-                 'hg': num(h.get('score')) if post else None, 'ag': num(a.get('score')) if post else None,
-                 'hc': _stat(h, 'wonCorners', 'cornerKicks') if post else None, 'ac': _stat(a, 'wonCorners', 'cornerKicks') if post else None,
-                 'hy': _stat(h, 'yellowCards') if post else None, 'ay': _stat(a, 'yellowCards') if post else None,
-                 'hs': None, 'as': None, 'hf': None, 'af': None, 'ref': None,
-                 'oh': None, 'od': None, 'oa': None, 'over': None, 'under': None}
-            m.update({k: v for k, v in _odds(comp).items() if v})
-            if post and (m['hy'] is None or m['ay'] is None) and e.get('id'):
-                m['hy'], m['ay'] = _yellows(slug, e['id'], m['home'], m['away'])
-            if m['home'] and m['away']:
+            if m:
                 out.append(m)
     return out
+
+
+def _match(slug, code, name, e, day):
+    """One ESPN event as a match dict, or None if it isn't a complete fixture on this UK date."""
+    comp = (e.get('competitions') or [{}])[0]
+    teams = {t.get('homeAway'): t for t in comp.get('competitors') or []}
+    if 'home' not in teams or 'away' not in teams or not e.get('date'):
+        return None
+    ko = datetime.strptime(e['date'].replace('Z', '+0000'), '%Y-%m-%dT%H:%M%z').astimezone(LONDON)
+    if ko.date() != day:
+        return None
+    st = ((comp.get('status') or e.get('status') or {}).get('type') or {})
+    h, a = teams['home'], teams['away']
+    post = st.get('state') == 'post' and st.get('completed')
+    num = lambda x: float(x) if x not in (None, '') else None
+    m = {'div': code, 'league': name, 'date': day, 'time': ko.strftime('%H:%M'), 'state': st.get('state'),
+         'home': (h.get('team') or {}).get('displayName') or '', 'away': (a.get('team') or {}).get('displayName') or '',
+         'hg': num(h.get('score')) if post else None, 'ag': num(a.get('score')) if post else None,
+         'hc': _stat(h, 'wonCorners', 'cornerKicks') if post else None, 'ac': _stat(a, 'wonCorners', 'cornerKicks') if post else None,
+         'hy': _stat(h, 'yellowCards') if post else None, 'ay': _stat(a, 'yellowCards') if post else None,
+         'hs': None, 'as': None, 'hf': None, 'af': None, 'ref': None,
+         'oh': None, 'od': None, 'oa': None, 'over': None, 'under': None}
+    m.update({k: v for k, v in _odds(comp).items() if v})
+    if post and (m['hy'] is None or m['ay'] is None) and e.get('id'):
+        m['hy'], m['ay'] = _yellows(slug, e['id'], m['home'], m['away'])
+    return m if m['home'] and m['away'] else None
 
 
 def _yellows(slug, event_id, home, away):
