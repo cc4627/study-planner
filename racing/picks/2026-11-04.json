@@ -890,7 +890,19 @@
     "Amelia's Joy",
     "Miracleoftheandes",
     "Phoenix Moon"
-   ]
+   ],
+   "pos": [
+    4,
+    3,
+    2
+   ],
+   "sp": [
+    3.5,
+    7.0,
+    13.0
+   ],
+   "field": 7,
+   "hcap": true
   },
   {
    "time": "17:45",
@@ -900,7 +912,19 @@
     "Elmakaya",
     "Otsana",
     "Justiciar"
-   ]
+   ],
+   "pos": [
+    3,
+    2,
+    1
+   ],
+   "sp": [
+    4.5,
+    3.25,
+    3.25
+   ],
+   "field": 8,
+   "hcap": false
   },
   {
    "time": "18:00",
@@ -911,7 +935,19 @@
     "Invincible Speed",
     "Monsieur Patat"
    ],
-   "p": 0.252
+   "p": 0.252,
+   "pos": [
+    8,
+    5,
+    2
+   ],
+   "sp": [
+    5.0,
+    10.0,
+    11.0
+   ],
+   "field": 11,
+   "hcap": true
   },
   {
    "time": "18:15",
@@ -922,7 +958,19 @@
     "Mutamarid Lsk",
     "Closefield Beau"
    ],
-   "p": 0.349
+   "p": 0.349,
+   "pos": [
+    4,
+    2,
+    1
+   ],
+   "sp": [
+    2.875,
+    5.5,
+    2.1
+   ],
+   "field": 7,
+   "hcap": true
   },
   {
    "time": "18:30",
@@ -933,7 +981,19 @@
     "Super Hit",
     "Goldfinder"
    ],
-   "p": 0.13
+   "p": 0.13,
+   "pos": [
+    14,
+    7,
+    9
+   ],
+   "sp": [
+    2.625,
+    5.5,
+    15.0
+   ],
+   "field": 14,
+   "hcap": true
   },
   {
    "time": "18:45",
@@ -944,7 +1004,19 @@
     "Carrigans Grove",
     "Dandyville"
    ],
-   "p": 0.247
+   "p": 0.247,
+   "pos": [
+    2,
+    1,
+    11
+   ],
+   "sp": [
+    5.5,
+    6.5,
+    13.0
+   ],
+   "field": 13,
+   "hcap": true
   },
   {
    "time": "19:15",
@@ -955,7 +1027,19 @@
     "Star Mind",
     "Suerte"
    ],
-   "p": 0.213
+   "p": 0.213,
+   "pos": [
+    5,
+    10,
+    8
+   ],
+   "sp": [
+    4.0,
+    12.0,
+    19.0
+   ],
+   "field": 14,
+   "hcap": true
   }
  ],
  "double": {
