@@ -1,0 +1,104 @@
+name: Sports data probe
+
+# Temporary: checks which free soccer and tennis data sources GitHub's runners can read. Removed once the
+# real jobs are in place.
+on:
+  push:
+    paths: ['.github/workflows/sports-probe.yml']
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install openpyxl
+      - name: Probe
+        shell: python
+        run: |
+          import csv, io, json, urllib.request, datetime, traceback
+          UA = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) study-planner/1.0', 'Accept': '*/*'}
+          def get(url):
+              req = urllib.request.Request(url, headers=UA)
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return r.status, r.read()
+          def section(name, fn):
+              print(f'\n===== {name}', flush=True)
+              try:
+                  fn()
+              except Exception:
+                  traceback.print_exc()
+          today = datetime.date.today()
+
+          def fixtures():
+              for url in ['https://www.football-data.co.uk/fixtures.csv', 'https://www.football-data.co.uk/new_league_fixtures.csv']:
+                  s, b = get(url)
+                  rows = list(csv.DictReader(io.StringIO(b.decode('utf-8-sig', 'replace'))))
+                  print(url, s, len(rows))
+                  if rows:
+                      print(' cols:', list(rows[0].keys()))
+                      print(' divs:', sorted({(r.get('Div') or r.get('Country') or '') for r in rows}))
+                      print(' dates:', sorted({r.get('Date') for r in rows}))
+                      print(' sample:', {k: rows[0][k] for k in list(rows[0])[:12]})
+          section('football-data fixtures', fixtures)
+
+          def seasons():
+              for season in ['2627', '2526']:
+                  for div in ['E0','E1','E2','E3','EC','SC0','SC1','SC2','SC3','D1','D2','I1','I2','SP1','SP2','F1','F2','N1','B1','P1','T1','G1']:
+                      try:
+                          s, b = get(f'https://www.football-data.co.uk/mmz4281/{season}/{div}.csv')
+                      except Exception as e:
+                          print(season, div, 'ERR', e); continue
+                      rows = [r for r in csv.DictReader(io.StringIO(b.decode('latin-1'))) if r.get('HomeTeam')]
+                      hc = sum(1 for r in rows if (r.get('HC') or '').strip())
+                      print(season, div, len(rows), 'rows, corners in', hc, 'last', rows[-1].get('Date') if rows else None)
+                  if season == '2627':
+                      s, b = get('https://www.football-data.co.uk/mmz4281/2627/E0.csv')
+                      print(' E0 2627 cols:', b.decode('latin-1').splitlines()[0])
+          section('football-data seasons', seasons)
+
+          def tennis_data():
+              import openpyxl
+              for url in ['http://www.tennis-data.co.uk/2026/2026.xlsx', 'http://www.tennis-data.co.uk/2026w/2026.xlsx']:
+                  s, b = get(url)
+                  wb = openpyxl.load_workbook(io.BytesIO(b), read_only=True)
+                  ws = wb.worksheets[0]
+                  rows = list(ws.iter_rows(values_only=True))
+                  print(url, s, len(b), 'bytes,', len(rows) - 1, 'matches')
+                  print(' header:', rows[0])
+                  print(' last:', rows[-1])
+          section('tennis-data', tennis_data)
+
+          def espn_tennis():
+              for tour in ['atp', 'wta']:
+                  for d in (today, today + datetime.timedelta(1)):
+                      s, b = get(f'https://site.api.espn.com/apis/site/v2/sports/tennis/{tour}/scoreboard?dates={d:%Y%m%d}')
+                      j = json.loads(b)
+                      ev = j.get('events', [])
+                      print(tour, d, s, len(ev), 'events:', [e.get('name') for e in ev])
+                      for e in ev[:2]:
+                          for g in e.get('groupings', [])[:2]:
+                              comps = g.get('competitions', [])
+                              print('  ', (g.get('grouping') or {}).get('slug'), len(comps), 'matches')
+                              for c in comps[:2]:
+                                  print('    ', c.get('date'), (c.get('status') or {}).get('type', {}).get('state'),
+                                        [(x.get('athlete') or {}).get('displayName') for x in c.get('competitors', [])],
+                                        [x.get('winner') for x in c.get('competitors', [])], (c.get('round') or {}).get('displayName'),
+                                        (c.get('venue') or {}).get('court'))
+          section('ESPN tennis', espn_tennis)
+
+          def espn_soccer():
+              d = today - datetime.timedelta(3)
+              s, b = get(f'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?dates={d:%Y%m%d}-{today:%Y%m%d}')
+              j = json.loads(b)
+              ev = j.get('events', [])
+              print('eng.1', s, len(ev), 'events')
+              for e in ev[:2]:
+                  c = e['competitions'][0]
+                  print(' ', e.get('name'), e.get('date'), (c.get('status') or {}).get('type', {}).get('state'))
+                  for t in c.get('competitors', []):
+                      print('    ', t.get('homeAway'), (t.get('team') or {}).get('displayName'), t.get('score'),
+                            [(x.get('name'), x.get('displayValue')) for x in t.get('statistics', [])][:20])
+          section('ESPN soccer', espn_soccer)
