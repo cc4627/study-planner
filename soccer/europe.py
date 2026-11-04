@@ -60,15 +60,38 @@ def _get(url):
 
 
 def _decimal(ml):
-    """American odds (+150 / -120) -> decimal (2.5 / 1.83)."""
+    """American odds (+150 / -120 / EVEN) -> decimal (2.5 / 1.83 / 2.0)."""
+    if isinstance(ml, str) and ml.strip().upper() in ('EVEN', 'EV', 'EVS'):
+        return 2.0
     try:
-        v = float(str(ml).replace('+', ''))
+        v = float(str(ml).replace('+', '').strip())
     except (TypeError, ValueError):
         return None
     if v >= 100:
         return round(1 + v / 100, 3)
     if v <= -100:
         return round(1 + 100 / -v, 3)
+    return None
+
+
+def _price(node):
+    """The closing (else opening) price from ESPN's newer {'close': {'odds': ..}, 'open': {..}} layout."""
+    node = node or {}
+    for when in ('close', 'current', 'open'):
+        v = (node.get(when) or {}).get('odds')
+        if v not in (None, ''):
+            return v
+    return node.get('odds')
+
+
+def _line(node):
+    for when in ('close', 'current', 'open'):
+        v = (node or {}).get(when) or {}
+        if v.get('line') not in (None, ''):
+            try:
+                return float(str(v['line']).lstrip('ouOU'))
+            except ValueError:
+                return None
     return None
 
 
@@ -83,19 +106,32 @@ def _stat(team, *names):
 
 
 def _odds(comp):
-    """Decimal 1X2 and over/under 2.5 prices from the first odds provider ESPN lists, where there is one."""
+    """Decimal 1X2 and over/under 2.5 prices from the first odds provider ESPN lists, in either of its layouts."""
     out = {}
     odds = comp.get('odds')
     for o in (odds if isinstance(odds, list) else [odds]):
         if not isinstance(o, dict):
             continue  # ESPN sometimes lists an empty slot
-        h, a, d = (o.get('homeTeamOdds') or {}), (o.get('awayTeamOdds') or {}), (o.get('drawOdds') or {})
-        out['oh'] = _decimal(h.get('moneyLine'))
-        out['oa'] = _decimal(a.get('moneyLine'))
-        out['od'] = _decimal(d.get('moneyLine'))
-        if o.get('overUnder') in (2.5, '2.5'):
-            out['over'] = _decimal(o.get('overOdds'))
-            out['under'] = _decimal(o.get('underOdds'))
+        ml = o.get('moneyline') or {}
+        out['oh'] = _decimal((o.get('homeTeamOdds') or {}).get('moneyLine')) or _decimal(_price(ml.get('home')))
+        out['oa'] = _decimal((o.get('awayTeamOdds') or {}).get('moneyLine')) or _decimal(_price(ml.get('away')))
+        out['od'] = _decimal((o.get('drawOdds') or {}).get('moneyLine')) or _decimal(_price(ml.get('draw')))
+        tot = o.get('total') or {}
+        line = o.get('overUnder')
+        if line in (None, ''):
+            line = _line(tot.get('over'))
+        try:
+            line = float(line)
+        except (TypeError, ValueError):
+            line = None
+        if line == 2.5:
+            out['over'] = _decimal(o.get('overOdds')) or _decimal(_price(tot.get('over')))
+            out['under'] = _decimal(o.get('underOdds')) or _decimal(_price(tot.get('under')))
+        if not out.get('oh'):  # log the layout once, so a change on ESPN's side shows in the job output
+            if not getattr(_odds, 'logged', False):
+                _odds.logged = True
+                slim = {k: v for k, v in o.items() if k not in ('link', 'links', 'provider')}
+                print('  ESPN odds layout:', json.dumps(slim, default=str)[:1500])
         break
     return out
 
