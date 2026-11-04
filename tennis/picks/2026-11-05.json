@@ -2,66 +2,6 @@
  "date": "2026-11-05",
  "matches": [
   {
-   "id": "186494",
-   "time": "05:00",
-   "tour": "ATP",
-   "event": "Rolex Paris Masters",
-   "round": "Round 3",
-   "p1": "Nuno Borges",
-   "p2": "Ignacio Buse",
-   "pick": 1,
-   "p": 0.546,
-   "new": false
-  },
-  {
-   "id": "186496",
-   "time": "05:00",
-   "tour": "ATP",
-   "event": "Rolex Paris Masters",
-   "round": "Round 3",
-   "p1": "Tommy Paul",
-   "p2": "Quentin Halys",
-   "pick": 1,
-   "p": 0.697,
-   "new": false
-  },
-  {
-   "id": "186497",
-   "time": "05:00",
-   "tour": "ATP",
-   "event": "Rolex Paris Masters",
-   "round": "Round 3",
-   "p1": "Ben Shelton",
-   "p2": "Arthur Rinderknech",
-   "pick": 1,
-   "p": 0.758,
-   "new": false
-  },
-  {
-   "id": "186498",
-   "time": "05:00",
-   "tour": "ATP",
-   "event": "Rolex Paris Masters",
-   "round": "Round 3",
-   "p1": "Rinky Hijikata",
-   "p2": "Tomas Martin Etcheverry",
-   "pick": 1,
-   "p": 0.566,
-   "new": false
-  },
-  {
-   "id": "186499",
-   "time": "05:00",
-   "tour": "ATP",
-   "event": "Rolex Paris Masters",
-   "round": "Round 3",
-   "p1": "Lorenzo Musetti",
-   "p2": "Luca Van Assche",
-   "pick": 1,
-   "p": 0.808,
-   "new": false
-  },
-  {
    "id": "186631",
    "time": "06:00",
    "tour": "WTA",
@@ -146,6 +86,18 @@
    "new": false
   },
   {
+   "id": "186496",
+   "time": "10:00",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 3",
+   "p1": "Tommy Paul",
+   "p2": "Quentin Halys",
+   "pick": 1,
+   "p": 0.697,
+   "new": false
+  },
+  {
    "id": "186677",
    "time": "10:30",
    "tour": "WTA",
@@ -179,6 +131,18 @@
    "p2": "Lucrezia Stefanini",
    "pick": 2,
    "p": 0.617,
+   "new": false
+  },
+  {
+   "id": "186497",
+   "time": "11:30",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 3",
+   "p1": "Ben Shelton",
+   "p2": "Arthur Rinderknech",
+   "pick": 1,
+   "p": 0.758,
    "new": false
   },
   {
@@ -216,14 +180,134 @@
    "pick": 1,
    "p": 0.787,
    "new": false
+  },
+  {
+   "id": "186498",
+   "time": "13:00",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 3",
+   "p1": "Rinky Hijikata",
+   "p2": "Tomas Martin Etcheverry",
+   "pick": 1,
+   "p": 0.566,
+   "new": false
+  },
+  {
+   "id": "186499",
+   "time": "13:00",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 3",
+   "p1": "Lorenzo Musetti",
+   "p2": "Luca Van Assche",
+   "pick": 1,
+   "p": 0.808,
+   "new": false
+  },
+  {
+   "id": "186494",
+   "time": "14:30",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 3",
+   "p1": "Nuno Borges",
+   "p2": "Ignacio Buse",
+   "pick": 1,
+   "p": 0.546,
+   "new": false
+  },
+  {
+   "id": "186495",
+   "time": "16:00",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 3",
+   "p1": "Jan-Lennard Struff",
+   "p2": "Casper Ruud",
+   "pick": 2,
+   "p": 0.542,
+   "new": false
+  },
+  {
+   "id": "186727",
+   "time": "17:00",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Quarterfinal",
+   "p1": "Julia Riera",
+   "p2": "Renata Zarazua",
+   "pick": 2,
+   "p": 0.513,
+   "new": false
+  },
+  {
+   "id": "186728",
+   "time": "17:00",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Quarterfinal",
+   "p1": "Carole Monnet",
+   "p2": "Leyre Romero Gormaz",
+   "pick": 2,
+   "p": 0.559,
+   "new": false
+  },
+  {
+   "id": "186502",
+   "time": "18:00",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 3",
+   "p1": "Matteo Berrettini",
+   "p2": "Carlos Alcaraz",
+   "pick": 2,
+   "p": 0.928,
+   "new": false
+  },
+  {
+   "id": "186730",
+   "time": "18:30",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Quarterfinal",
+   "p1": "Leolia Jeanjean",
+   "p2": "Alice Tubello",
+   "pick": 1,
+   "p": 0.509,
+   "new": false
+  },
+  {
+   "id": "186729",
+   "time": "19:00",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Quarterfinal",
+   "p1": "Luisina Giovannini",
+   "p2": "Bianca Andreescu",
+   "pick": 2,
+   "p": 0.817,
+   "new": false
+  },
+  {
+   "id": "186503",
+   "time": "19:30",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 3",
+   "p1": "Arthur Fils",
+   "p2": "Taylor Fritz",
+   "pick": 1,
+   "p": 0.526,
+   "new": false
   }
  ],
- "updated": "2026-11-04T18:25:19+00:00",
+ "updated": "2026-11-04T23:41:35+00:00",
  "double": {
   "legs": [
-   "186683",
-   "186639"
+   "186502",
+   "186683"
   ],
-  "p": 0.693
+  "p": 0.791
  }
 }

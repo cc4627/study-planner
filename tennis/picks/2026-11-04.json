@@ -11,7 +11,9 @@
    "p2": "Renata Zarazua",
    "pick": 2,
    "p": 0.696,
-   "new": false
+   "new": false,
+   "winner": 2,
+   "score": "6-7 5-7"
   },
   {
    "id": "186485",
@@ -23,7 +25,9 @@
    "p2": "Jan-Lennard Struff",
    "pick": 2,
    "p": 0.66,
-   "new": false
+   "new": false,
+   "winner": 2,
+   "score": "7-6 3-6 6-7"
   },
   {
    "id": "186723",
@@ -35,7 +39,9 @@
    "p2": "Julia Riera",
    "pick": 1,
    "p": 0.66,
-   "new": false
+   "new": false,
+   "winner": 2,
+   "score": "2-6 4-6"
   },
   {
    "id": "186732",
@@ -47,7 +53,9 @@
    "p2": "Marina Bassols Ribera",
    "pick": 1,
    "p": 0.58,
-   "new": false
+   "new": false,
+   "winner": 1,
+   "score": "6-1 6-1"
   },
   {
    "id": "186480",
@@ -59,7 +67,9 @@
    "p2": "Carlos Alcaraz",
    "pick": 2,
    "p": 0.906,
-   "new": false
+   "new": false,
+   "winner": 2,
+   "score": "6-7 3-6"
   },
   {
    "id": "186724",
@@ -71,7 +81,9 @@
    "p2": "Solana Sierra",
    "pick": 2,
    "p": 0.53,
-   "new": false
+   "new": false,
+   "winner": 1,
+   "score": "6-4 6-1"
   },
   {
    "id": "186491",
@@ -83,7 +95,9 @@
    "p2": "Tomas Machac",
    "pick": 1,
    "p": 0.772,
-   "new": false
+   "new": false,
+   "winner": 1,
+   "score": "6-3 7-6"
   },
   {
    "id": "186726",
@@ -95,7 +109,9 @@
    "p2": "Bianca Andreescu",
    "pick": 2,
    "p": 0.826,
-   "new": false
+   "new": false,
+   "winner": 2,
+   "score": "2-6 3-6"
   }
  ],
  "updated": "2026-11-04T18:25:19+00:00",
