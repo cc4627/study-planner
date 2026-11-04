@@ -2,54 +2,6 @@
  "date": "2026-11-05",
  "matches": [
   {
-   "id": "186727",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Reto Win Tennis Cali Open",
-   "round": "Quarterfinal",
-   "p1": "TBD",
-   "p2": "TBD",
-   "pick": 1,
-   "p": 0.5,
-   "new": true
-  },
-  {
-   "id": "186728",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Reto Win Tennis Cali Open",
-   "round": "Quarterfinal",
-   "p1": "TBD",
-   "p2": "TBD",
-   "pick": 1,
-   "p": 0.5,
-   "new": true
-  },
-  {
-   "id": "186729",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Reto Win Tennis Cali Open",
-   "round": "Quarterfinal",
-   "p1": "Luisina Giovannini",
-   "p2": "TBD",
-   "pick": 1,
-   "p": 0.591,
-   "new": true
-  },
-  {
-   "id": "186730",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Reto Win Tennis Cali Open",
-   "round": "Quarterfinal",
-   "p1": "Leolia Jeanjean",
-   "p2": "TBD",
-   "pick": 1,
-   "p": 0.773,
-   "new": true
-  },
-  {
    "id": "186494",
    "time": "05:00",
    "tour": "ATP",
@@ -60,18 +12,6 @@
    "pick": 1,
    "p": 0.546,
    "new": false
-  },
-  {
-   "id": "186495",
-   "time": "05:00",
-   "tour": "ATP",
-   "event": "Rolex Paris Masters",
-   "round": "Round 3",
-   "p1": "TBD",
-   "p2": "Casper Ruud",
-   "pick": 2,
-   "p": 0.886,
-   "new": true
   },
   {
    "id": "186496",
@@ -120,30 +60,6 @@
    "pick": 1,
    "p": 0.808,
    "new": false
-  },
-  {
-   "id": "186502",
-   "time": "05:00",
-   "tour": "ATP",
-   "event": "Rolex Paris Masters",
-   "round": "Round 3",
-   "p1": "TBD",
-   "p2": "TBD",
-   "pick": 1,
-   "p": 0.5,
-   "new": true
-  },
-  {
-   "id": "186503",
-   "time": "05:00",
-   "tour": "ATP",
-   "event": "Rolex Paris Masters",
-   "round": "Round 3",
-   "p1": "TBD",
-   "p2": "TBD",
-   "pick": 1,
-   "p": 0.5,
-   "new": true
   },
   {
    "id": "186631",
@@ -302,5 +218,5 @@
    "new": false
   }
  ],
- "updated": "2026-11-04T17:42:31+00:00"
+ "updated": "2026-11-04T17:44:44+00:00"
 }
