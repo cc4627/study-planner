@@ -1,0 +1,104 @@
+{
+ "date": "2026-11-04",
+ "matches": [
+  {
+   "time": "19:30",
+   "div": "B1",
+   "league": "Belgian Pro League",
+   "home": "Kortrijk",
+   "away": "KV Mechelen",
+   "pick": {
+    "side": "A",
+    "p": 0.367
+   },
+   "corners": {
+    "exp": 10.1,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.576
+   }
+  },
+  {
+   "time": "19:45",
+   "div": "E1",
+   "league": "Championship",
+   "home": "Cardiff",
+   "away": "West Ham",
+   "pick": {
+    "side": "A",
+    "p": 0.473
+   },
+   "corners": {
+    "exp": 10.9,
+    "line": 10.5,
+    "side": "over",
+    "p": 0.521
+   }
+  },
+  {
+   "time": "19:45",
+   "div": "E1",
+   "league": "Championship",
+   "home": "Wrexham",
+   "away": "Middlesbrough",
+   "pick": {
+    "side": "A",
+    "p": 0.528
+   },
+   "corners": {
+    "exp": 10.4,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.539
+   }
+  },
+  {
+   "time": "19:45",
+   "div": "E2",
+   "league": "League One",
+   "home": "Oxford Utd",
+   "away": "Reading",
+   "pick": {
+    "side": "A",
+    "p": 0.381
+   },
+   "corners": {
+    "exp": 10.8,
+    "line": 10.5,
+    "side": "over",
+    "p": 0.504
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "E1",
+   "league": "Championship",
+   "home": "Bristol City",
+   "away": "Wolves",
+   "pick": {
+    "side": "A",
+    "p": 0.453
+   },
+   "corners": {
+    "exp": 10.4,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.531
+   }
+  }
+ ],
+ "updated": "2026-11-04T17:37:52+00:00",
+ "double": {
+  "legs": [
+   [
+    "Kortrijk",
+    "KV Mechelen"
+   ],
+   [
+    "Wrexham",
+    "Middlesbrough"
+   ]
+  ],
+  "p": 0.31
+ }
+}
