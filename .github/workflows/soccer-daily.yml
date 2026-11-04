@@ -16,7 +16,7 @@ on:
 permissions:
   contents: write
 
-concurrency: soccer-data
+concurrency: soccer-picks
 
 jobs:
   picks:

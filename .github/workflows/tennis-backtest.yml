@@ -10,7 +10,7 @@ on:
 permissions:
   contents: write
 
-concurrency: tennis-data
+concurrency: tennis-backtest
 
 jobs:
   backtest:
