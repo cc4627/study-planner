@@ -151,6 +151,167 @@
   },
   {
    "time": "20:00",
+   "div": "UCL",
+   "league": "Champions League",
+   "home": "Borussia Dortmund",
+   "away": "Real Betis",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.0,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.535
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.616
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UCL",
+   "league": "Champions League",
+   "home": "FC Porto",
+   "away": "Napoli",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.6,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 3.6,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.842
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UCL",
+   "league": "Champions League",
+   "home": "Lens",
+   "away": "Como",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.6,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.509
+   },
+   "cards": {
+    "exp": 3.5,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.722
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UCL",
+   "league": "Champions League",
+   "home": "PSV Eindhoven",
+   "away": "Club Brugge",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.7,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.508
+   },
+   "cards": {
+    "exp": 3.4,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.568
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UCL",
+   "league": "Champions League",
+   "home": "RB Leipzig",
+   "away": "Manchester City",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 10.5,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.522
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.581
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UCL",
+   "league": "Champions League",
+   "home": "Slavia Prague",
+   "away": "Arsenal",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.596
+   },
+   "cards": {
+    "exp": 4.5,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.66
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "UCL",
+   "league": "Champions League",
+   "home": "Viking FK",
+   "away": "Sabah FK",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.583
+   }
+  },
+  {
+   "time": "20:00",
    "div": "E1",
    "league": "Championship",
    "home": "Bristol City",
@@ -187,19 +348,19 @@
    }
   }
  ],
- "updated": "2026-11-04T17:56:25+00:00",
+ "updated": "2026-11-04T18:25:08+00:00",
  "double": {
   "legs": [
    [
-    "Kortrijk",
-    "KV Mechelen"
+    "Slavia Prague",
+    "Arsenal"
    ],
    [
-    "Wrexham",
-    "Middlesbrough"
+    "Kortrijk",
+    "KV Mechelen"
    ]
   ],
-  "p": 0.301
+  "p": 0.331
  },
  "daily": {
   "legs": [
