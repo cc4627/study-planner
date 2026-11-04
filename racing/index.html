@@ -52,7 +52,8 @@ a{color:var(--focus)}
 .top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
 .eyebrow{font:12px/1 var(--font);text-transform:uppercase;color:var(--muted)}
 h1{margin:6px 0 0;font:clamp(26px,6vw,38px)/1.05 var(--font);text-wrap:balance}
-.stat{margin:6px 0 0;font:13px/1.3 var(--font);color:var(--muted);font-variant-numeric:tabular-nums}
+.stat{margin:6px 0 0;font:13px/1.45 var(--font);color:var(--muted);font-variant-numeric:tabular-nums}
+.stat i{font-style:normal;color:var(--ink)}
 .navs{display:flex;gap:8px;align-items:center}
 .nav{width:44px;height:44px;border-radius:10px;border:2px solid var(--edge);background:var(--surface);display:grid;place-items:center;padding:0}
 .nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
@@ -127,7 +128,7 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
 
   <section class="races" id="races" aria-label="Races"></section>
 
-  <p class="foot">Top three from each race's morning betting forecast and form on Sporting Life's free racecards. A guide, not a tip; no bets are placed.
+  <p class="foot">Top three from each race's morning betting forecast and form on Sporting Life's free racecards. +/− is the result of €1 stakes at the starting price (to place at standard each-way terms); tricast returns are estimates from the starting prices, since real payouts aren't published with the results. A guide, not a tip; no bets are placed.
     Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
     <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
 </main>
@@ -184,13 +185,16 @@ function render(){
   var ran=run.filter(function(r){return r.pos[0]!=='NR';});
   var won=ran.filter(function(r){return r.pos[0]===1;}).length;
   var placed=ran.filter(function(r){return typeof r.pos[0]==='number'&&r.pos[0]<=3;}).length;
-  var tri=run.filter(function(r){return (r.field||0)>=8&&r.pos.length>=3&&r.pos.slice(0,3).indexOf('NR')<0;});
-  var triAny=tri.filter(function(r){return r.pos.slice(0,3).every(function(x){return typeof x==='number'&&x<=3;});}).length;
-  var triExact=tri.filter(function(r){return r.pos[0]===1&&r.pos[1]===2&&r.pos[2]===3;}).length;
+  var tri=run.filter(function(r){return (r.field||0)>=8&&r.pos.length>=3&&r.pos.slice(0,3).indexOf('NR')<0&&
+    r.sp&&r.sp[0]&&r.sp[1]&&r.sp[2];});
+  var isAny=function(r){return r.pos.slice(0,3).every(function(x){return typeof x==='number'&&x<=3;});};
+  var isExact=function(r){return r.pos[0]===1&&r.pos[1]===2&&r.pos[2]===3;};
+  var pl=money(ran,tri,isAny,isExact);
   $('#stat').innerHTML=esc(day.races.length+' races · '+courses.length+' meeting'+(courses.length===1?'':'s')+
     (!run.length&&up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''))+
-    (ran.length?'<br>Top pick won '+won+' of '+ran.length+' · top pick 1st–3rd '+placed+' of '+ran.length+
-      (tri.length?'<br>8+ runner tricasts: '+triAny+' of '+tri.length+' in any order, '+triExact+' in exact order':''):'');
+    (ran.length?'<br>Top pick won '+won+' of '+ran.length+' <i>'+eur(pl.win)+'</i> · top pick 1st–3rd '+placed+' of '+ran.length+' <i>'+eur(pl.place)+'</i>'+
+      (tri.length?'<br>8+ runner tricasts: '+tri.filter(isAny).length+' of '+tri.length+' any order <i>'+eur(pl.any)+' est.</i> · '+
+        tri.filter(isExact).length+' exact <i>'+eur(pl.exact)+' est.</i>':''):'');
 
   $('#tray').hidden=courses.length<2;
   $('#chips').innerHTML='<button class="chip all" type="button" data-c="" aria-pressed="'+(!course)+'">All <em>'+day.races.length+'</em></button>'+
@@ -207,6 +211,31 @@ function render(){
       '<ol>'+(r.picks||[]).slice(0,3).map(function(p,j){return '<li><i>'+(j+1)+'</i><span>'+esc(p)+'</span>'+finishBadge(r.pos&&r.pos[j])+'</li>';}).join('')+'</ol>'+
     '</article>';
   }).join('');
+}
+
+/* Profit or loss on €1 stakes at the starting price: the top pick to win, the top pick to place (standard
+   each-way terms: 2 places at 1/4 with 5-7 runners, 3 at 1/5 with 8+, 3 at 1/4 in handicaps of 12-15, 4 at 1/4 in
+   handicaps of 16+, none under 5), and the three picks as tricasts in 8+ runner races (any order = 6 x €1, exact
+   order = €1). Tricast payouts aren't published with the results, so they're estimated from the three starting
+   prices: chances = 1 / (SP x 1.2), chained place by place (Harville), less a 20% bookmaker cut. */
+function eur(x){return (x>=0?'+':'−')+'€'+Math.abs(x).toFixed(2);}
+function placeTerms(n,hcap){if(n<5)return null;if(n<=7)return [2,.25];if(hcap&&n>=16)return [4,.25];if(hcap&&n>=12)return [3,.25];return [3,.2];}
+function harville(p,order){var out=1,left=1;order.forEach(function(i){out*=p[i]/left;left-=p[i];});return out;}
+function money(ran,tri,isAny,isExact){
+  var o={win:0,place:0,any:0,exact:0};
+  ran.forEach(function(r){
+    var sp=r.sp&&r.sp[0],p=r.pos[0];if(!sp)return;
+    o.win+=p===1?sp-1:-1;
+    var t=placeTerms(r.field||0,r.hcap);
+    if(t)o.place+=(typeof p==='number'&&p<=t[0])?(sp-1)*t[1]:-1;
+  });
+  tri.forEach(function(r){
+    var pr=r.sp.slice(0,3).map(function(s){return 1/s/1.2;});
+    o.any-=6;o.exact-=1;
+    if(isAny(r))o.any+=0.8/harville(pr,[1,2,3].map(function(k){return r.pos.indexOf(k);}));
+    if(isExact(r))o.exact+=0.8/harville(pr,[0,1,2]);
+  });
+  return o;
 }
 
 /* Where a pick finished: '1st', '2nd'... or DNF (fell, pulled up) / NR (didn't run). Nothing until the race is run. */
