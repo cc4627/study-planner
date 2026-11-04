@@ -32,8 +32,9 @@
   <p class="foot">Result: the bookmakers' favourite from the average odds, margin taken out. Goals and both to score: from the odds.
     Corners and yellow cards: models of each side's recent corners and shots, cards and fouls, the referee and the match odds, fitted on
     2021–24 and tested on later seasons. Prices: the average bookmaker odds where the data has them (result, goals); elsewhere the fair
-    price, 1 ÷ chance, which a bet has to beat to be worth it. The match double multiplies the two single prices; bookmakers sell
-    same-match doubles as bet builders at their own price. Domestic fixtures and results from football-data.co.uk (results can take a day or two); Champions, Europa and Conference League from ESPN's free feed, with DraftKings odds.
+    price, 1 ÷ chance, which a bet has to beat to be worth it. The match double (favourite + goals) and the match acca (every call on the game) multiply the single prices, using the fair
+    price for corners, cards and both to score, so the acca payout is an estimate; bookmakers sell same-game bets as bet builders at
+    their own, usually shorter, price. Domestic fixtures and results from football-data.co.uk (results can take a day or two); Champions, Europa and Conference League from ESPN's free feed, with DraftKings odds.
     A guide, not a tip; no bets are placed. Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
     <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
 </main>
@@ -64,14 +65,21 @@ var comboPL=function(m){var h=comboHit(m);return h==null?null:h?m.combo.odds-1:-
 var legText=function(m,kind){return kind==='pick'?(m.pick.side==='D'?'Draw':pickName(m)+' to win'):cap(m.goals.side)+' 2.5 goals';};
 var legBet=function(m,kind){return kind==='pick'?m.pick:m.goals;};
 var sum=function(a){return a.reduce(function(x,y){return x+y;},0);};
-/* Acca: every call with a real price (result picks and goals over/under), €1 on all of them together.
-   Same-match legs are priced as the singles multiplied; bookmakers sell those as bet builders at their own price. */
-function accaOf(ms,kinds){
+/* Match acca: every call on one game in one €1 bet (result, goals, both to score, corners, cards). Result and goals
+   use the average odds; the others have no odds in the data, so they use the fair price (1 ÷ chance) and the payout
+   is an estimate. Bookmakers price same-game accas as bet builders, usually shorter than this. */
+function matchAcca(m){
   var L=[];
-  ms.forEach(function(m){kinds.forEach(function(k){var b=m[k];if(b&&b.odds)L.push({o:b.odds,p:b.p,h:hits[k](m)});});});
-  var done=L.filter(function(x){return x.h!=null;}),inn=done.filter(function(x){return x.h;}).length;
-  return {n:L.length,odds:L.reduce(function(a,x){return a*x.o;},1),p:L.reduce(function(a,x){return a*x.p;},1),
-    done:done.length,inn:inn,state:done.length>inn?false:done.length===L.length&&L.length?true:null};
+  [['pick','pick'],['goals','goals'],['btts','btts'],['corners','corners'],['cards','cards']].forEach(function(x){
+    var b=m[x[0]];if(!b)return;
+    L.push({o:b.odds||1/b.p,p:b.p,h:hits[x[1]](m),real:!!b.odds});
+  });
+  if(L.length<2)return null;
+  var done=L.filter(function(x){return x.h!=null;});
+  var lost=done.some(function(x){return !x.h;}),all=done.length===L.length;
+  var odds=L.reduce(function(a,x){return a*x.o;},1);
+  return {n:L.length,odds:odds,p:L.reduce(function(a,x){return a*x.p;},1),est:L.some(function(x){return !x.real;}),
+    pl:lost?-1:all?odds-1:null};
 }
 var big=function(x){return x.toLocaleString('en-GB',{maximumFractionDigits:2,minimumFractionDigits:2});};
 
@@ -87,6 +95,8 @@ SportsPage({
       .map(function(x){var a=t(x[1]);return a.length?H.tile(x[0],a.filter(Boolean).length,a.length,null):'';}).join('');
     var cps=ms.filter(function(m){return m.combo;}).map(comboPL).filter(function(x){return x!=null;});
     if(cps.length)tiles+=H.tile('Match doubles',cps.filter(function(x){return x>0;}).length,cps.length,sum(cps));
+    var acs=ms.map(matchAcca).filter(function(a){return a&&a.pl!=null;}).map(function(a){return a.pl;});
+    if(acs.length)tiles+=H.tile('Match accas',acs.filter(function(x){return x>0;}).length,acs.length,sum(acs),true);
     if(!tiles){
       var lg={};ms.forEach(function(m){lg[m.league]=1;});
       tiles='<div class="tile"><span class="k">Matches</span><b class="v">'+ms.length+'</b><span class="pl">&nbsp;</span></div>'+
@@ -112,20 +122,6 @@ SportsPage({
           '<p class="note">The day\'s two most confident calls with real odds (result or goals), from two matches, at the average prices.</p></article>';
       }
     }
-    var all=accaOf(ms,['pick','goals']),fav=accaOf(ms,['pick']);
-    if(all.n>=3){
-      var nGoals=all.n-fav.n;
-      var pl=all.state===false?-1:all.state?all.odds-1:null;
-      var accaRow=function(a,title,what){
-        return H.leg(a.state,title,what+' · '+(a.done?a.inn+' of '+a.n+' in':'none played yet')+' · '+(a.p<0.001?'<0.1%':H.pct(a.p))+' chance',big(a.odds));
-      };
-      out+='<article class="slip acca"><header><h2>Acca</h2><span class="stake">€1 stake</span></header><ol>'+
-        accaRow(all,'Every priced call',fav.n+' results'+(nGoals?' + '+nGoals+' goals':''))+
-        (nGoals?accaRow(fav,'Favourites only',fav.n+' results'):'')+'</ol>'+
-        '<footer><span>Every call: €1 returns €'+big(all.odds)+' if all '+all.n+' come in</span>'+
-        (pl==null?'<span class="ret">€'+big(all.odds)+'</span>':'<span class="ret '+H.cls(pl)+'">'+(pl>0?'+€'+big(pl):'−€1.00')+'</span>')+'</footer>'+
-        '<p class="note">All the day\'s result and goals calls in one bet, at the average prices. Corners, cards and both-to-score have no odds in the data, so they\'re left out. One wrong leg loses it.</p></article>';
-    }
     var cd=d.double;
     if(cd&&cd.legs){
       var cl=cd.legs.map(function(k){return find(k[0],k[1]);}).filter(function(m){return m&&m.corners;});
@@ -145,7 +141,7 @@ SportsPage({
     var row=function(label,text,p,price,h){
       return '<div><i>'+label+'</i><span>'+text+'<small>'+H.pct(p)+(price?' · '+price:'')+'</small></span>'+H.hit(h)+'</div>';
     };
-    var c=m.corners,k=m.cards,cp=m.combo?comboPL(m):null;
+    var c=m.corners,k=m.cards,cp=m.combo?comboPL(m):null,ac=matchAcca(m);
     return '<article class="card'+(gone?' gone':'')+'" style="--k:'+H.colour(m.league)+'">'+
       '<div class="when"><b>'+H.esc(m.time||'')+'</b><span>'+(m.ft?'FT':'')+'</span></div>'+
       '<div class="body"><p class="where">'+H.esc(m.league)+'</p>'+
@@ -159,6 +155,8 @@ SportsPage({
         (m.combo?'<div class="double"><i>Double</i><span>'+H.esc(legText(m,'pick'))+' &amp; '+m.goals.side+' 2.5<small>'+
           H.pct(m.combo.p)+' · pays '+m.combo.odds.toFixed(2)+'</small></span>'+
           (cp==null?'<span></span>':'<span class="money '+H.cls(cp)+'">'+H.eur(cp)+'</span>')+'</div>':'')+
+        (ac?'<div class="double acca"><i>Acca</i><span>All '+ac.n+' calls<small>'+(ac.p<0.001?'<0.1%':H.pct(ac.p))+' · pays '+big(ac.odds)+(ac.est?' est.':'')+'</small></span>'+
+          (ac.pl==null?'<span></span>':'<span class="money '+H.cls(ac.pl)+'">'+(ac.pl>0?'+€'+big(ac.pl):'−€1.00')+'</span>')+'</div>':'')+
       '</div></div></article>';
   }
 });
