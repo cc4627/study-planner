@@ -1,0 +1,523 @@
+{
+ "date": "2026-11-04",
+ "updated": "2026-11-04T01:09:36+00:00",
+ "races": [
+  {
+   "time": "12:05",
+   "course": "Musselburgh",
+   "path": "/racing/racecards/2026-11-04/musselburgh/racecard/947466/veronika-walker-moments-that-matter-handicap",
+   "picks": [
+    "Fear And Fast",
+    "Albegone",
+    "Alnofoor"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:15",
+   "course": "Nottingham",
+   "path": "/racing/racecards/2026-11-04/nottingham/racecard/947464/ebf-desert-crown-novice-stakes-gbb-race",
+   "picks": [
+    "Chevere",
+    "Christmas Is Comin",
+    "Apricot"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:20",
+   "course": "Chepstow",
+   "path": "/racing/racecards/2026-11-04/chepstow/racecard/947462/lords-taverners-conditional-jockeys-handicap-chase-gbb-race",
+   "picks": [
+    "Gingerbred",
+    "Roe And Co",
+    "Ballynaheer"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:35",
+   "course": "Musselburgh",
+   "path": "/racing/racecards/2026-11-04/musselburgh/racecard/946927/british-stallion-studs-ebf-restricted-maiden-stakes-gbb-race",
+   "picks": [
+    "True Heart",
+    "Sequoiadendron",
+    "So Farhh"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:45",
+   "course": "Nottingham",
+   "path": "/racing/racecards/2026-11-04/nottingham/racecard/946934/ladies-day-8th-may-on-sale-now-handicap",
+   "picks": [
+    "Sergeant Mayer",
+    "Maharajas Express",
+    "Sonic Si"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:51",
+   "course": "Chepstow",
+   "path": "/racing/racecards/2026-11-04/chepstow/racecard/946949/free-tips-on-attheracescom-maiden-hurdle-gbb-race",
+   "picks": [
+    "Red Acres Max",
+    "Cool Customer",
+    "New Rules"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:00",
+   "course": "Wexford",
+   "path": "/racing/racecards/2026-11-04/wexford/racecard/946897/racing-tv-free-trial-for-a-month-maiden-hurdle",
+   "picks": [
+    "Palinca",
+    "Zara's Dream",
+    "Dooks"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:10",
+   "course": "Musselburgh",
+   "path": "/racing/racecards/2026-11-04/musselburgh/racecard/946928/burton-roofing-merchants-handicap-div-1",
+   "picks": [
+    "Kartini",
+    "Flying Moonlight",
+    "Naturalia"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:20",
+   "course": "Nottingham",
+   "path": "/racing/racecards/2026-11-04/nottingham/racecard/946935/racedays-for-9-pound-at-nottingham-racecourse-handicap-gbbplus-race",
+   "picks": [
+    "Shaffron",
+    "Pole Star",
+    "Hello Friend"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:25",
+   "course": "Chepstow",
+   "path": "/racing/racecards/2026-11-04/chepstow/racecard/946950/lsl-racing-national-hunt-maiden-hurdle-gbb-race-div-1",
+   "picks": [
+    "Order On Time",
+    "St James's Finest",
+    "Moonrise Monarch"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:33",
+   "course": "Wexford",
+   "path": "/racing/racecards/2026-11-04/wexford/racecard/946898/botanica-international-rated-novice-hurdle",
+   "picks": [
+    "Euro Agent",
+    "Le Roi Du Livet",
+    "Hey Now"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:42",
+   "course": "Musselburgh",
+   "path": "/racing/racecards/2026-11-04/musselburgh/racecard/946929/burton-roofing-merchants-handicap-div-2",
+   "picks": [
+    "Gemini Man",
+    "West Sleekburn Lad",
+    "Alpine Sierra"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:50",
+   "course": "Nottingham",
+   "path": "/racing/racecards/2026-11-04/nottingham/racecard/946936/experience-hospitality-at-nottingham-racecourse-novice-stakes-gbbgbbplus-race",
+   "picks": [
+    "Indhaar",
+    "Marquetry",
+    "Temple"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:58",
+   "course": "Chepstow",
+   "path": "/racing/racecards/2026-11-04/chepstow/racecard/946951/lsl-racing-national-hunt-maiden-hurdle-gbb-race-div-2",
+   "picks": [
+    "A Sight To Sea",
+    "Jerry The Dreamer",
+    "The Lightmaker"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:05",
+   "course": "Wexford",
+   "path": "/racing/racecards/2026-11-04/wexford/racecard/946899/start-your-free-trial-on-racing-tv-now-maiden-hurdle",
+   "picks": [
+    "Mcallister",
+    "Walking Saint",
+    "Lucky Valley"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:15",
+   "course": "Musselburgh",
+   "path": "/racing/racecards/2026-11-04/musselburgh/racecard/946930/joe-fanning-fond-farewell-handicap",
+   "picks": [
+    "Aighear",
+    "Storm On Jura",
+    "Neddies Boy"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:20",
+   "course": "Nottingham",
+   "path": "/racing/racecards/2026-11-04/nottingham/racecard/947465/conference-and-events-at-nottingham-racecourse-handicap-gbbplus-race-div-1",
+   "picks": [
+    "Love You Back",
+    "Selection",
+    "Lady Hornblower"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:25",
+   "course": "Kempton",
+   "path": "/racing/racecards/2026-11-04/kempton/racecard/947463/unibet-supports-safer-gambling-apprentice-handicap",
+   "picks": [
+    "Mister Mojito",
+    "Mythical Composer",
+    "Panama Black"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:30",
+   "course": "Chepstow",
+   "path": "/racing/racecards/2026-11-04/chepstow/racecard/946952/lysaght-cup-novices-limited-handicap-chase-gbb-race",
+   "picks": [
+    "Rula Bula",
+    "Desertmore News",
+    "Tour Ovalie"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:37",
+   "course": "Wexford",
+   "path": "/racing/racecards/2026-11-04/wexford/racecard/946900/jim-ryan-racecourse-services-handicap-hurdle-0-100",
+   "picks": [
+    "Ardera Gun",
+    "The Cobblers Wife",
+    "Spellacy's Cross"
+   ],
+   "rule": "The Cobblers Wife"
+  },
+  {
+   "time": "14:45",
+   "course": "Musselburgh",
+   "path": "/racing/racecards/2026-11-04/musselburgh/racecard/946931/hibernian-fc-emerald-club-handicap",
+   "picks": [
+    "Cavallo Pazzo",
+    "Ablon",
+    "Empirestateofmind"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:53",
+   "course": "Nottingham",
+   "path": "/racing/racecards/2026-11-04/nottingham/racecard/946938/conference-and-events-at-nottingham-racecourse-handicap-gbbplus-race-div-2",
+   "picks": [
+    "Borjina",
+    "Deedaydiva",
+    "Beach Point"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:00",
+   "course": "Kempton",
+   "path": "/racing/racecards/2026-11-04/kempton/racecard/946941/unibets-new-var-goal-guarantee-handicap",
+   "picks": [
+    "Snooker McCrew",
+    "Palliser",
+    "Blue Celestial"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:05",
+   "course": "Chepstow",
+   "path": "/racing/racecards/2026-11-04/chepstow/racecard/946953/dragonbet-handicap-chase-gbb-race",
+   "picks": [
+    "Mr Mcwhinny",
+    "Rangatira Jack",
+    "Bahtiyar"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:10",
+   "course": "Wexford",
+   "path": "/racing/racecards/2026-11-04/wexford/racecard/946901/michael-hickey-memorial-chase-listed",
+   "picks": [
+    "The Big Westerner",
+    "Bossofthebrownies",
+    "The Enabler"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:17",
+   "course": "Musselburgh",
+   "path": "/racing/racecards/2026-11-04/musselburgh/racecard/946932/nairns-oatcakes-handicap",
+   "picks": [
+    "Rhoscolyn",
+    "Dandy Magic",
+    "Quest For Fun"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:23",
+   "course": "Nottingham",
+   "path": "/racing/racecards/2026-11-04/nottingham/racecard/946939/watch-racing-tv-now-handicap",
+   "picks": [
+    "Mertoun",
+    "Venetian Lion",
+    "Susie Sioux"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:30",
+   "course": "Kempton",
+   "path": "/racing/racecards/2026-11-04/kempton/racecard/946942/unibetbritish-ebf-fillies-novice-stakes-gbbgbbplus-race-div-1",
+   "picks": [
+    "Valentia Light",
+    "Cloak Of Power",
+    "Red Curry"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:40",
+   "course": "Chepstow",
+   "path": "/racing/racecards/2026-11-04/chepstow/racecard/946954/floyds-turfcare-weed-solutions-handicap-hurdle",
+   "picks": [
+    "Isabella Islay",
+    "V Power",
+    "Gimarias"
+   ],
+   "rule": "Highbury Hill"
+  },
+  {
+   "time": "15:45",
+   "course": "Wexford",
+   "path": "/racing/racecards/2026-11-04/wexford/racecard/946902/racingtvcomfreetrial-beginners-chase",
+   "picks": [
+    "Mode Avion",
+    "The Big Clubman",
+    "Fierce Handay"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:50",
+   "course": "Musselburgh",
+   "path": "/racing/racecards/2026-11-04/musselburgh/racecard/946933/thank-you-for-the-fun-gweedore-handicap",
+   "picks": [
+    "Wobwobwob",
+    "Jkr Cobbler",
+    "Vince Le Prince"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:55",
+   "course": "Nottingham",
+   "path": "/racing/racecards/2026-11-04/nottingham/racecard/946940/racingtvcom-handicap",
+   "picks": [
+    "Look Back Smiling",
+    "Launch Time",
+    "Just Queen High"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:00",
+   "course": "Kempton",
+   "path": "/racing/racecards/2026-11-04/kempton/racecard/946943/unibetbritish-ebf-fillies-novice-stakes-gbbgbbplus-race-div-2",
+   "picks": [
+    "Light Of The Stars",
+    "El Ghanema",
+    "You're Sensational"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:05",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-04/dundalk/racecard/946911/christmas-party-nights-at-dundalk-stadium-claiming-race",
+   "picks": [
+    "Apache Outlaw",
+    "Saint Acclaim",
+    "Go Athletico"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:10",
+   "course": "Chepstow",
+   "path": "/racing/racecards/2026-11-04/chepstow/racecard/946955/dunraven-open-nh-flat-race-gbb-race",
+   "picks": [
+    "Uncle Cc",
+    "Don't Panic",
+    "Mirage D'ainay"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:20",
+   "course": "Wexford",
+   "path": "/racing/racecards/2026-11-04/wexford/racecard/946903/thank-you-to-all-our-sponsors-supporters-in-2026-c-g-proam-flat-race",
+   "picks": [
+    "Hartford",
+    "Prince Malinas",
+    "Ants Fantasy"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:30",
+   "course": "Kempton",
+   "path": "/racing/racecards/2026-11-04/kempton/racecard/946944/british-ebf-future-stayers-maiden-stakes-gbbgbbplus-race",
+   "picks": [
+    "Silken Warrior",
+    "Unerring",
+    "Basics"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:40",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-04/dundalk/racecard/946912/celebrate-your-special-occasion-at-dundalk-stadium-median-auction-maiden",
+   "picks": [
+    "Monologue",
+    "Always Magic",
+    "Red Lily"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:00",
+   "course": "Kempton",
+   "path": "/racing/racecards/2026-11-04/kempton/racecard/946945/bet-20-pound-get-20-pound-with-unibet-handicap",
+   "picks": [
+    "Force And Valour",
+    "Colombier",
+    "Cosi Bello"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:15",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-04/dundalk/racecard/946913/irishinjuredjockeyscom-handicap",
+   "picks": [
+    "Caffu Zafeen",
+    "By The Lake",
+    "Coincidental Glory"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:30",
+   "course": "Kempton",
+   "path": "/racing/racecards/2026-11-04/kempton/racecard/946946/try-unibets-new-racing-bet-builder-fillies-handicap",
+   "picks": [
+    "Amelia's Joy",
+    "Miracleoftheandes",
+    "Phoenix Moon"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:45",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-04/dundalk/racecard/946914/book-online-at-dundalkstadiumcom-maiden",
+   "picks": [
+    "Elmakaya",
+    "Otsana",
+    "Justiciar"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:00",
+   "course": "Kempton",
+   "path": "/racing/racecards/2026-11-04/kempton/racecard/946947/unibet-3-uniboosts-a-day-handicap",
+   "picks": [
+    "The Coffee Pod",
+    "Invincible Speed",
+    "Monsieur Patat"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:15",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-04/dundalk/racecard/946915/bet-on-the-best-night-out-at-dundalk-stadium-nursery-handicap",
+   "picks": [
+    "Littlepacer",
+    "Mutamarid Lsk",
+    "Closefield Beau"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:30",
+   "course": "Kempton",
+   "path": "/racing/racecards/2026-11-04/kempton/racecard/946948/try-unibets-smartview-racecards-handicap",
+   "picks": [
+    "Ataturk",
+    "Super Hit",
+    "Goldfinder"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:45",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-04/dundalk/racecard/946916/book-your-christmas-party-at-dundalk-stadium-handicap-0-60",
+   "picks": [
+    "Final Boss",
+    "Iff In Doubt",
+    "Carrigans Grove"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:15",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-04/dundalk/racecard/946917/now-racing-every-wednesday-at-dundalk-handicap-0-60",
+   "picks": [
+    "Dancing Steve",
+    "Star Mind",
+    "Suerte"
+   ],
+   "rule": null
+  }
+ ]
+}

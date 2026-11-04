@@ -1,0 +1,476 @@
+{
+ "date": "2026-11-04",
+ "updated": "2026-11-04T01:09:36+00:00",
+ "races": [
+  {
+   "time": "12:05",
+   "course": "Musselburgh",
+   "country": "Scotland",
+   "picks": [
+    "Fear And Fast",
+    "Albegone",
+    "Alnofoor"
+   ]
+  },
+  {
+   "time": "12:15",
+   "course": "Nottingham",
+   "country": "England",
+   "picks": [
+    "Chevere",
+    "Christmas Is Comin",
+    "Apricot"
+   ]
+  },
+  {
+   "time": "12:20",
+   "course": "Chepstow",
+   "country": "Wales",
+   "picks": [
+    "Gingerbred",
+    "Roe And Co",
+    "Ballynaheer"
+   ]
+  },
+  {
+   "time": "12:35",
+   "course": "Musselburgh",
+   "country": "Scotland",
+   "picks": [
+    "True Heart",
+    "Sequoiadendron",
+    "So Farhh"
+   ]
+  },
+  {
+   "time": "12:45",
+   "course": "Nottingham",
+   "country": "England",
+   "picks": [
+    "Sergeant Mayer",
+    "Maharajas Express",
+    "Sonic Si"
+   ]
+  },
+  {
+   "time": "12:51",
+   "course": "Chepstow",
+   "country": "Wales",
+   "picks": [
+    "Red Acres Max",
+    "Cool Customer",
+    "New Rules"
+   ]
+  },
+  {
+   "time": "13:00",
+   "course": "Wexford",
+   "country": "Eire",
+   "picks": [
+    "Palinca",
+    "Zara's Dream",
+    "Dooks"
+   ]
+  },
+  {
+   "time": "13:10",
+   "course": "Musselburgh",
+   "country": "Scotland",
+   "picks": [
+    "Kartini",
+    "Flying Moonlight",
+    "Naturalia"
+   ]
+  },
+  {
+   "time": "13:20",
+   "course": "Nottingham",
+   "country": "England",
+   "picks": [
+    "Shaffron",
+    "Pole Star",
+    "Hello Friend"
+   ]
+  },
+  {
+   "time": "13:25",
+   "course": "Chepstow",
+   "country": "Wales",
+   "picks": [
+    "Order On Time",
+    "St James's Finest",
+    "Moonrise Monarch"
+   ]
+  },
+  {
+   "time": "13:33",
+   "course": "Wexford",
+   "country": "Eire",
+   "picks": [
+    "Euro Agent",
+    "Le Roi Du Livet",
+    "Hey Now"
+   ]
+  },
+  {
+   "time": "13:42",
+   "course": "Musselburgh",
+   "country": "Scotland",
+   "picks": [
+    "Gemini Man",
+    "West Sleekburn Lad",
+    "Alpine Sierra"
+   ]
+  },
+  {
+   "time": "13:50",
+   "course": "Nottingham",
+   "country": "England",
+   "picks": [
+    "Indhaar",
+    "Marquetry",
+    "Temple"
+   ]
+  },
+  {
+   "time": "13:58",
+   "course": "Chepstow",
+   "country": "Wales",
+   "picks": [
+    "A Sight To Sea",
+    "Jerry The Dreamer",
+    "The Lightmaker"
+   ]
+  },
+  {
+   "time": "14:05",
+   "course": "Wexford",
+   "country": "Eire",
+   "picks": [
+    "Mcallister",
+    "Walking Saint",
+    "Lucky Valley"
+   ]
+  },
+  {
+   "time": "14:15",
+   "course": "Musselburgh",
+   "country": "Scotland",
+   "picks": [
+    "Aighear",
+    "Storm On Jura",
+    "Neddies Boy"
+   ]
+  },
+  {
+   "time": "14:20",
+   "course": "Nottingham",
+   "country": "England",
+   "picks": [
+    "Love You Back",
+    "Selection",
+    "Lady Hornblower"
+   ]
+  },
+  {
+   "time": "14:25",
+   "course": "Kempton",
+   "country": "England",
+   "picks": [
+    "Mister Mojito",
+    "Mythical Composer",
+    "Panama Black"
+   ]
+  },
+  {
+   "time": "14:30",
+   "course": "Chepstow",
+   "country": "Wales",
+   "picks": [
+    "Rula Bula",
+    "Desertmore News",
+    "Tour Ovalie"
+   ]
+  },
+  {
+   "time": "14:37",
+   "course": "Wexford",
+   "country": "Eire",
+   "picks": [
+    "Ardera Gun",
+    "The Cobblers Wife",
+    "Spellacy's Cross"
+   ]
+  },
+  {
+   "time": "14:45",
+   "course": "Musselburgh",
+   "country": "Scotland",
+   "picks": [
+    "Cavallo Pazzo",
+    "Ablon",
+    "Empirestateofmind"
+   ]
+  },
+  {
+   "time": "14:53",
+   "course": "Nottingham",
+   "country": "England",
+   "picks": [
+    "Borjina",
+    "Deedaydiva",
+    "Beach Point"
+   ]
+  },
+  {
+   "time": "15:00",
+   "course": "Kempton",
+   "country": "England",
+   "picks": [
+    "Snooker McCrew",
+    "Palliser",
+    "Blue Celestial"
+   ]
+  },
+  {
+   "time": "15:05",
+   "course": "Chepstow",
+   "country": "Wales",
+   "picks": [
+    "Mr Mcwhinny",
+    "Rangatira Jack",
+    "Bahtiyar"
+   ]
+  },
+  {
+   "time": "15:10",
+   "course": "Wexford",
+   "country": "Eire",
+   "picks": [
+    "The Big Westerner",
+    "Bossofthebrownies",
+    "The Enabler"
+   ]
+  },
+  {
+   "time": "15:17",
+   "course": "Musselburgh",
+   "country": "Scotland",
+   "picks": [
+    "Rhoscolyn",
+    "Dandy Magic",
+    "Quest For Fun"
+   ]
+  },
+  {
+   "time": "15:23",
+   "course": "Nottingham",
+   "country": "England",
+   "picks": [
+    "Mertoun",
+    "Venetian Lion",
+    "Susie Sioux"
+   ]
+  },
+  {
+   "time": "15:30",
+   "course": "Kempton",
+   "country": "England",
+   "picks": [
+    "Valentia Light",
+    "Cloak Of Power",
+    "Red Curry"
+   ]
+  },
+  {
+   "time": "15:40",
+   "course": "Chepstow",
+   "country": "Wales",
+   "picks": [
+    "Isabella Islay",
+    "V Power",
+    "Gimarias"
+   ]
+  },
+  {
+   "time": "15:45",
+   "course": "Wexford",
+   "country": "Eire",
+   "picks": [
+    "Mode Avion",
+    "The Big Clubman",
+    "Fierce Handay"
+   ]
+  },
+  {
+   "time": "15:50",
+   "course": "Musselburgh",
+   "country": "Scotland",
+   "picks": [
+    "Wobwobwob",
+    "Jkr Cobbler",
+    "Vince Le Prince"
+   ]
+  },
+  {
+   "time": "15:55",
+   "course": "Nottingham",
+   "country": "England",
+   "picks": [
+    "Look Back Smiling",
+    "Launch Time",
+    "Just Queen High"
+   ]
+  },
+  {
+   "time": "16:00",
+   "course": "Kempton",
+   "country": "England",
+   "picks": [
+    "Light Of The Stars",
+    "El Ghanema",
+    "You're Sensational"
+   ]
+  },
+  {
+   "time": "16:05",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Apache Outlaw",
+    "Saint Acclaim",
+    "Go Athletico"
+   ]
+  },
+  {
+   "time": "16:10",
+   "course": "Chepstow",
+   "country": "Wales",
+   "picks": [
+    "Uncle Cc",
+    "Don't Panic",
+    "Mirage D'ainay"
+   ]
+  },
+  {
+   "time": "16:20",
+   "course": "Wexford",
+   "country": "Eire",
+   "picks": [
+    "Hartford",
+    "Prince Malinas",
+    "Ants Fantasy"
+   ]
+  },
+  {
+   "time": "16:30",
+   "course": "Kempton",
+   "country": "England",
+   "picks": [
+    "Silken Warrior",
+    "Unerring",
+    "Basics"
+   ]
+  },
+  {
+   "time": "16:40",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Monologue",
+    "Always Magic",
+    "Red Lily"
+   ]
+  },
+  {
+   "time": "17:00",
+   "course": "Kempton",
+   "country": "England",
+   "picks": [
+    "Force And Valour",
+    "Colombier",
+    "Cosi Bello"
+   ]
+  },
+  {
+   "time": "17:15",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Caffu Zafeen",
+    "By The Lake",
+    "Coincidental Glory"
+   ]
+  },
+  {
+   "time": "17:30",
+   "course": "Kempton",
+   "country": "England",
+   "picks": [
+    "Amelia's Joy",
+    "Miracleoftheandes",
+    "Phoenix Moon"
+   ]
+  },
+  {
+   "time": "17:45",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Elmakaya",
+    "Otsana",
+    "Justiciar"
+   ]
+  },
+  {
+   "time": "18:00",
+   "course": "Kempton",
+   "country": "England",
+   "picks": [
+    "The Coffee Pod",
+    "Invincible Speed",
+    "Monsieur Patat"
+   ]
+  },
+  {
+   "time": "18:15",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Littlepacer",
+    "Mutamarid Lsk",
+    "Closefield Beau"
+   ]
+  },
+  {
+   "time": "18:30",
+   "course": "Kempton",
+   "country": "England",
+   "picks": [
+    "Ataturk",
+    "Super Hit",
+    "Goldfinder"
+   ]
+  },
+  {
+   "time": "18:45",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Final Boss",
+    "Iff In Doubt",
+    "Carrigans Grove"
+   ]
+  },
+  {
+   "time": "19:15",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Dancing Steve",
+    "Star Mind",
+    "Suerte"
+   ]
+  }
+ ]
+}
