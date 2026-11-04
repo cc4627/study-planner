@@ -10,7 +10,19 @@
     "Fear And Fast",
     "Albegone",
     "Alnofoor"
-   ]
+   ],
+   "pos": [
+    5,
+    2,
+    1
+   ],
+   "sp": [
+    12.0,
+    11.0,
+    2.5
+   ],
+   "field": 11,
+   "hcap": true
   },
   {
    "time": "12:15",
@@ -20,7 +32,19 @@
     "Chevere",
     "Christmas Is Comin",
     "Apricot"
-   ]
+   ],
+   "pos": [
+    1,
+    4,
+    2
+   ],
+   "sp": [
+    1.364,
+    5.0,
+    10.0
+   ],
+   "field": 4,
+   "hcap": false
   },
   {
    "time": "12:20",
@@ -30,7 +54,19 @@
     "Gingerbred",
     "Roe And Co",
     "Ballynaheer"
-   ]
+   ],
+   "pos": [
+    1,
+    2,
+    "DNF"
+   ],
+   "sp": [
+    1.909,
+    5.5,
+    10.0
+   ],
+   "field": 5,
+   "hcap": true
   },
   {
    "time": "12:35",
@@ -40,7 +76,19 @@
     "True Heart",
     "Sequoiadendron",
     "So Farhh"
-   ]
+   ],
+   "pos": [
+    3,
+    6,
+    1
+   ],
+   "sp": [
+    3.0,
+    4.5,
+    6.0
+   ],
+   "field": 8,
+   "hcap": false
   },
   {
    "time": "12:45",
@@ -50,7 +98,19 @@
     "Sergeant Mayer",
     "Maharajas Express",
     "Sonic Si"
-   ]
+   ],
+   "pos": [
+    4,
+    3,
+    10
+   ],
+   "sp": [
+    23.0,
+    4.5,
+    15.0
+   ],
+   "field": 10,
+   "hcap": true
   },
   {
    "time": "12:51",
@@ -60,7 +120,19 @@
     "Red Acres Max",
     "Cool Customer",
     "New Rules"
-   ]
+   ],
+   "pos": [
+    2,
+    3,
+    1
+   ],
+   "sp": [
+    1.833,
+    7.0,
+    4.5
+   ],
+   "field": 14,
+   "hcap": false
   },
   {
    "time": "13:00",
@@ -70,7 +142,19 @@
     "Palinca",
     "Zara's Dream",
     "Melody D'Arc"
-   ]
+   ],
+   "pos": [
+    1,
+    2,
+    11
+   ],
+   "sp": [
+    1.333,
+    4.333,
+    51.0
+   ],
+   "field": 14,
+   "hcap": false
   },
   {
    "time": "13:10",
@@ -80,7 +164,19 @@
     "Kartini",
     "Flying Moonlight",
     "Naturalia"
-   ]
+   ],
+   "pos": [
+    2,
+    1,
+    4
+   ],
+   "sp": [
+    4.0,
+    3.25,
+    5.5
+   ],
+   "field": 11,
+   "hcap": true
   },
   {
    "time": "13:20",
@@ -90,7 +186,19 @@
     "Shaffron",
     "Pole Star",
     "Hello Friend"
-   ]
+   ],
+   "pos": [
+    13,
+    1,
+    2
+   ],
+   "sp": [
+    6.0,
+    7.0,
+    6.5
+   ],
+   "field": 13,
+   "hcap": true
   },
   {
    "time": "13:25",
@@ -100,7 +208,19 @@
     "Order On Time",
     "St James's Finest",
     "Moonrise Monarch"
-   ]
+   ],
+   "pos": [
+    2,
+    1,
+    6
+   ],
+   "sp": [
+    1.5,
+    3.5,
+    17.0
+   ],
+   "field": 13,
+   "hcap": false
   },
   {
    "time": "13:33",
@@ -110,7 +230,19 @@
     "Euro Agent",
     "Le Roi Du Livet",
     "Hey Now"
-   ]
+   ],
+   "pos": [
+    3,
+    5,
+    4
+   ],
+   "sp": [
+    4.5,
+    6.0,
+    6.5
+   ],
+   "field": 8,
+   "hcap": false
   },
   {
    "time": "13:42",
@@ -120,7 +252,19 @@
     "Gemini Man",
     "West Sleekburn Lad",
     "Alpine Sierra"
-   ]
+   ],
+   "pos": [
+    2,
+    9,
+    5
+   ],
+   "sp": [
+    4.333,
+    11.0,
+    4.0
+   ],
+   "field": 10,
+   "hcap": true
   },
   {
    "time": "13:50",
@@ -130,7 +274,19 @@
     "Indhaar",
     "Marquetry",
     "Temple"
-   ]
+   ],
+   "pos": [
+    1,
+    6,
+    7
+   ],
+   "sp": [
+    3.75,
+    15.0,
+    4.333
+   ],
+   "field": 10,
+   "hcap": false
   },
   {
    "time": "13:58",
@@ -140,7 +296,19 @@
     "A Sight To Sea",
     "Jerry The Dreamer",
     "The Lightmaker"
-   ]
+   ],
+   "pos": [
+    1,
+    8,
+    2
+   ],
+   "sp": [
+    1.571,
+    15.0,
+    5.5
+   ],
+   "field": 12,
+   "hcap": false
   },
   {
    "time": "14:05",
@@ -150,7 +318,19 @@
     "Mcallister",
     "Walking Saint",
     "Lucky Valley"
-   ]
+   ],
+   "pos": [
+    9,
+    1,
+    3
+   ],
+   "sp": [
+    3.0,
+    4.333,
+    29.0
+   ],
+   "field": 14,
+   "hcap": false
   },
   {
    "time": "14:15",
@@ -160,7 +340,19 @@
     "Storm On Jura",
     "Neddies Boy",
     "Quercus Robur"
-   ]
+   ],
+   "pos": [
+    5,
+    7,
+    4
+   ],
+   "sp": [
+    4.0,
+    21.0,
+    11.0
+   ],
+   "field": 11,
+   "hcap": true
   },
   {
    "time": "14:20",
@@ -170,7 +362,19 @@
     "Love You Back",
     "Selection",
     "Lady Hornblower"
-   ]
+   ],
+   "pos": [
+    9,
+    4,
+    2
+   ],
+   "sp": [
+    7.0,
+    11.0,
+    19.0
+   ],
+   "field": 9,
+   "hcap": true
   },
   {
    "time": "14:25",
@@ -180,7 +384,19 @@
     "Mister Mojito",
     "Mythical Composer",
     "Panama Black"
-   ]
+   ],
+   "pos": [
+    1,
+    3,
+    6
+   ],
+   "sp": [
+    9.0,
+    3.0,
+    41.0
+   ],
+   "field": 12,
+   "hcap": true
   },
   {
    "time": "14:30",
@@ -190,7 +406,19 @@
     "Rula Bula",
     "Desertmore News",
     "Tour Ovalie"
-   ]
+   ],
+   "pos": [
+    "DNF",
+    "NR",
+    1
+   ],
+   "sp": [
+    2.75,
+    null,
+    4.333
+   ],
+   "field": 4,
+   "hcap": true
   },
   {
    "time": "14:37",
@@ -200,7 +428,19 @@
     "Ardera Gun",
     "The Cobblers Wife",
     "Spellacy's Cross"
-   ]
+   ],
+   "pos": [
+    4,
+    2,
+    3
+   ],
+   "sp": [
+    3.75,
+    3.25,
+    8.0
+   ],
+   "field": 13,
+   "hcap": true
   },
   {
    "time": "14:45",
@@ -210,7 +450,19 @@
     "Cavallo Pazzo",
     "Ablon",
     "Empirestateofmind"
-   ]
+   ],
+   "pos": [
+    6,
+    9,
+    2
+   ],
+   "sp": [
+    8.5,
+    15.0,
+    4.0
+   ],
+   "field": 10,
+   "hcap": true
   },
   {
    "time": "14:53",
@@ -220,7 +472,19 @@
     "Borjina",
     "Deedaydiva",
     "Beach Point"
-   ]
+   ],
+   "pos": [
+    4,
+    9,
+    6
+   ],
+   "sp": [
+    4.5,
+    5.0,
+    8.0
+   ],
+   "field": 9,
+   "hcap": true
   },
   {
    "time": "15:00",
@@ -230,7 +494,19 @@
     "Snooker McCrew",
     "Palliser",
     "Blue Celestial"
-   ]
+   ],
+   "pos": [
+    1,
+    2,
+    5
+   ],
+   "sp": [
+    4.0,
+    5.5,
+    8.5
+   ],
+   "field": 14,
+   "hcap": true
   },
   {
    "time": "15:05",
@@ -240,7 +516,19 @@
     "Mr Mcwhinny",
     "Rangatira Jack",
     "Two To Tango"
-   ]
+   ],
+   "pos": [
+    "DNF",
+    "DNF",
+    2
+   ],
+   "sp": [
+    5.5,
+    7.0,
+    7.5
+   ],
+   "field": 8,
+   "hcap": true
   },
   {
    "time": "15:10",
@@ -250,7 +538,19 @@
     "The Big Westerner",
     "Bossofthebrownies",
     "Sandor Clegane"
-   ]
+   ],
+   "pos": [
+    1,
+    2,
+    3
+   ],
+   "sp": [
+    1.333,
+    4.5,
+    10.0
+   ],
+   "field": 4,
+   "hcap": false
   },
   {
    "time": "15:17",
@@ -260,7 +560,19 @@
     "Rhoscolyn",
     "Dandy Magic",
     "Quest For Fun"
-   ]
+   ],
+   "pos": [
+    8,
+    6,
+    5
+   ],
+   "sp": [
+    7.0,
+    11.0,
+    6.5
+   ],
+   "field": 12,
+   "hcap": true
   },
   {
    "time": "15:23",
@@ -270,7 +582,19 @@
     "Mertoun",
     "Venetian Lion",
     "Susie Sioux"
-   ]
+   ],
+   "pos": [
+    12,
+    1,
+    6
+   ],
+   "sp": [
+    15.0,
+    2.25,
+    23.0
+   ],
+   "field": 14,
+   "hcap": true
   },
   {
    "time": "15:30",
@@ -280,7 +604,19 @@
     "Valentia Light",
     "Cloak Of Power",
     "Red Curry"
-   ]
+   ],
+   "pos": [
+    1,
+    4,
+    3
+   ],
+   "sp": [
+    5.0,
+    8.0,
+    4.0
+   ],
+   "field": 13,
+   "hcap": false
   },
   {
    "time": "15:40",
@@ -290,7 +626,19 @@
     "Isabella Islay",
     "V Power",
     "Gimarias"
-   ]
+   ],
+   "pos": [
+    7,
+    6,
+    2
+   ],
+   "sp": [
+    21.0,
+    13.0,
+    7.0
+   ],
+   "field": 17,
+   "hcap": true
   },
   {
    "time": "15:45",
@@ -300,7 +648,19 @@
     "Mode Avion",
     "The Big Clubman",
     "Fierce Handay"
-   ]
+   ],
+   "pos": [
+    3,
+    1,
+    4
+   ],
+   "sp": [
+    3.75,
+    2.375,
+    10.0
+   ],
+   "field": 9,
+   "hcap": false
   },
   {
    "time": "15:50",
@@ -310,7 +670,19 @@
     "Wobwobwob",
     "Jkr Cobbler",
     "Vince Le Prince"
-   ]
+   ],
+   "pos": [
+    6,
+    9,
+    4
+   ],
+   "sp": [
+    5.5,
+    12.0,
+    5.0
+   ],
+   "field": 12,
+   "hcap": true
   },
   {
    "time": "15:55",
@@ -320,7 +692,19 @@
     "Look Back Smiling",
     "Launch Time",
     "Just Queen High"
-   ]
+   ],
+   "pos": [
+    3,
+    10,
+    8
+   ],
+   "sp": [
+    7.5,
+    7.0,
+    7.5
+   ],
+   "field": 15,
+   "hcap": true
   },
   {
    "time": "16:00",
@@ -330,7 +714,19 @@
     "Light Of The Stars",
     "El Ghanema",
     "You're Sensational"
-   ]
+   ],
+   "pos": [
+    1,
+    4,
+    3
+   ],
+   "sp": [
+    2.0,
+    3.25,
+    12.0
+   ],
+   "field": 12,
+   "hcap": false
   },
   {
    "time": "16:05",
@@ -340,7 +736,19 @@
     "Apache Outlaw",
     "Saint Acclaim",
     "Go Athletico"
-   ]
+   ],
+   "pos": [
+    1,
+    3,
+    2
+   ],
+   "sp": [
+    2.1,
+    3.25,
+    4.5
+   ],
+   "field": 8,
+   "hcap": false
   },
   {
    "time": "16:10",
@@ -350,7 +758,19 @@
     "Uncle Cc",
     "Don't Panic",
     "Smoke And Fire"
-   ]
+   ],
+   "pos": [
+    2,
+    1,
+    8
+   ],
+   "sp": [
+    4.0,
+    3.5,
+    10.0
+   ],
+   "field": 13,
+   "hcap": false
   },
   {
    "time": "16:20",
@@ -360,7 +780,19 @@
     "Hartford",
     "Prince Malinas",
     "Ants Fantasy"
-   ]
+   ],
+   "pos": [
+    2,
+    4,
+    6
+   ],
+   "sp": [
+    1.571,
+    4.5,
+    26.0
+   ],
+   "field": 7,
+   "hcap": false
   },
   {
    "time": "16:30",
@@ -370,7 +802,19 @@
     "Silken Warrior",
     "Basics",
     "Is This The Horse"
-   ]
+   ],
+   "pos": [
+    3,
+    5,
+    12
+   ],
+   "sp": [
+    3.0,
+    9.5,
+    19.0
+   ],
+   "field": 13,
+   "hcap": false
   },
   {
    "time": "16:40",
@@ -380,7 +824,19 @@
     "Monologue",
     "Always Magic",
     "Red Lily"
-   ]
+   ],
+   "pos": [
+    4,
+    7,
+    6
+   ],
+   "sp": [
+    5.0,
+    3.75,
+    3.5
+   ],
+   "field": 11,
+   "hcap": false
   },
   {
    "time": "17:00",
@@ -390,7 +846,19 @@
     "Force And Valour",
     "Colombier",
     "Cosi Bello"
-   ]
+   ],
+   "pos": [
+    8,
+    1,
+    2
+   ],
+   "sp": [
+    15.0,
+    3.25,
+    2.75
+   ],
+   "field": 9,
+   "hcap": true
   },
   {
    "time": "17:15",
@@ -400,7 +868,19 @@
     "Caffu Zafeen",
     "By The Lake",
     "Coincidental Glory"
-   ]
+   ],
+   "pos": [
+    1,
+    8,
+    4
+   ],
+   "sp": [
+    4.333,
+    17.0,
+    13.0
+   ],
+   "field": 9,
+   "hcap": true
   },
   {
    "time": "17:30",
