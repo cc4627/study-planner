@@ -125,6 +125,8 @@ h1{margin:6px 0 0;font:700 clamp(30px,7vw,48px)/.95 var(--display);text-transfor
 .mk small{font:500 12px/1 var(--mono);color:var(--muted);white-space:nowrap;margin-left:4px}
 .mk div.double{background:color-mix(in srgb,var(--gold) 10%,transparent);margin:0 -12px;padding-inline:12px}
 .mk div.double > i{color:var(--gold)}
+.mk div.acca{background:color-mix(in srgb,var(--s1) 9%,transparent)}
+.mk div.acca > i{color:var(--s1)}
 .hit{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 var(--body)}
 .hit.ok{background:var(--gain);color:var(--card)}
 .hit.no{border:1.5px solid var(--loss);color:var(--loss)}
