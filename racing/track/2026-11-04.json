@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "updated": "2026-11-04T10:38:36+00:00",
+ "updated": "2026-11-04T17:28:45+00:00",
  "races": [
   {
    "time": "12:05",
@@ -503,8 +503,8 @@
    "path": "/racing/racecards/2026-11-04/dundalk/racecard/946916/book-your-christmas-party-at-dundalk-stadium-handicap-0-60",
    "picks": [
     "Final Boss",
-    "Iff In Doubt",
-    "Carrigans Grove"
+    "Carrigans Grove",
+    "Dandyville"
    ],
    "rule": null
   },
