@@ -60,6 +60,16 @@ h1{margin:6px 0 0;font:clamp(26px,6vw,38px)/1.05 var(--font);text-wrap:balance}
 .nav:disabled{opacity:.35;cursor:default}
 .pill{min-height:44px;padding:0 14px;border:2px solid var(--edge);background:var(--surface);border-radius:999px;font:12px/1 var(--font);text-transform:uppercase}
 
+.dbl{background:var(--surface);border:2px solid var(--c4);border-radius:12px;padding:10px 14px 12px;display:grid;gap:8px}
+.dbl h2{margin:0;font:12px/1 var(--font);text-transform:uppercase;color:var(--c4)}
+.dbl ol{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.dbl li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+.dbl li b{display:block;font:18px/1.2 var(--font)}
+.dbl li span{display:block;font:13px/1.3 var(--font);color:var(--muted);overflow-wrap:anywhere}
+.dbl .sum{font:14px/1.35 var(--font);color:var(--ink);font-variant-numeric:tabular-nums}
+.dbl .sum small{color:var(--muted);font-size:12px}
+.dbl{border-color:var(--c3)}
+.dbl h2{color:var(--c3)}
 .tray{background:var(--surface);border:2px solid var(--edge);border-radius:12px;padding:10px 12px;display:grid;gap:8px}
 .hint{font:12px/1.35 var(--font);color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
@@ -121,6 +131,8 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
     </div>
   </header>
 
+  <section class="dbl" id="dbl" aria-label="Daily double" hidden></section>
+
   <section class="tray" id="tray" aria-label="Courses" hidden>
     <span class="hint">Tap a course to show only its races</span>
     <div class="chips" id="chips"></div>
@@ -168,7 +180,7 @@ function render(){
 
   var box=$('#races');
   if(!day||!day.races||!day.races.length){
-    $('#tray').hidden=true;$('#stat').textContent='';
+    $('#tray').hidden=true;$('#dbl').hidden=true;$('#stat').textContent='';
     box.innerHTML='<div class="empty" style="grid-column:1/-1"><b>'+(dates.length?'No races on this day':'No picks yet')+'</b>'+
       (dates.length?'Use the arrows to see another day.':'Picks appear here each morning, at about 10am, once the daily job is running.')+'</div>';
     return;
@@ -196,6 +208,7 @@ function render(){
       (tri.length?'<br>8+ runner tricasts: '+tri.filter(isAny).length+' of '+tri.length+' any order <i>'+eur(pl.any)+' est.</i> · '+
         tri.filter(isExact).length+' exact <i>'+eur(pl.exact)+' est.</i>':''):'');
 
+  renderDouble();
   $('#tray').hidden=courses.length<2;
   $('#chips').innerHTML='<button class="chip all" type="button" data-c="" aria-pressed="'+(!course)+'">All <em>'+day.races.length+'</em></button>'+
     courses.map(function(c){return '<button class="chip" type="button" data-c="'+esc(c)+'" style="--k:'+colourOf(c)+'" aria-pressed="'+(course===c)+'">'+esc(c)+' <em>'+counts[c]+'</em></button>';}).join('');
@@ -236,6 +249,27 @@ function money(ran,tri,isAny,isExact){
     if(isExact(r))o.exact+=0.8/harville(pr,[0,1,2]);
   });
   return o;
+}
+
+/* The day's double: the two top picks with the best win chances (chosen before either race), €1 at the
+   starting prices. A non-runner leg is void, leaving a single on the other. */
+function renderDouble(){
+  var d=day.double,box=$('#dbl');
+  var legs=d&&d.legs?d.legs.map(function(k){return day.races.filter(function(r){return r.time===k[0]&&r.course===k[1];})[0];}).filter(Boolean):[];
+  if(legs.length<2){box.hidden=true;return;}
+  var done=legs.every(function(r){return r.pos&&r.pos.length;}),lost=legs.some(function(r){return r.pos&&typeof r.pos[0]==='number'&&r.pos[0]!==1||r.pos&&r.pos[0]==='DNF';});
+  var pl=null;
+  if(lost)pl=-1;
+  else if(done){pl=legs.reduce(function(a,r){return r.pos[0]==='NR'?a:a*(r.sp&&r.sp[0]||1);},1)-1;}
+  box.hidden=false;
+  box.innerHTML='<h2>Daily double · €1</h2><ol>'+legs.map(function(r){
+    var p=r.pos&&r.pos[0];
+    return '<li><div><b>'+esc(r.picks[0])+' to win · '+Math.round(r.p*100)+'%'+(r.sp&&r.sp[0]?' · SP '+r.sp[0].toFixed(2):'')+'</b>'+
+      '<span>'+esc(r.time)+' '+esc(r.course)+'</span></div>'+finishBadge(p)+'</li>';
+  }).join('')+'</ol>'+
+  '<div class="sum">Both win: '+Math.round(d.p*100)+'% · fair price '+(1/d.p).toFixed(2)+
+  (pl!=null?' · <b>'+(pl>0?'Landed ':'Lost ')+eur(pl)+'</b>':'')+
+  '<br><small>Settled at the starting prices, multiplied. Chosen just after midnight from the morning forecast.</small></div>';
 }
 
 /* Where a pick finished: '1st', '2nd'... or DNF (fell, pulled up) / NR (didn't run). Nothing until the race is run. */

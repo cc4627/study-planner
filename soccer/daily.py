@@ -5,8 +5,9 @@ Usage: python daily.py [CACHE_DIR]   (CACHE_DIR keeps last season's files betwee
 For each match in football-data.co.uk's fixtures: the bookmakers' favourite and its chance (from the average
 odds, margin removed); goals over/under 2.5 and both teams to score (from the odds); and the corners and
 yellow-cards calls: the expected count and the likelier side of the league's usual line, with its chance.
-Each day's two most confident corner calls make the corner double. Once a match is played, its score, total
-corners and total yellow cards are added. Writes soccer/picks/YYYY-MM-DD.json and picks/index.json.
+Each day's two most confident corner calls make the corner double; the two most confident calls with real
+odds (result or goals, from two matches) make the daily double; and each match's favourite with its goals
+call makes a match double. Once a match is played, its score, total corners and total yellow cards are added. Writes soccer/picks/YYYY-MM-DD.json and picks/index.json.
 Paper only; no bets are placed.
 """
 import json
@@ -43,7 +44,7 @@ def result_pick(m):
     inv = [1 / m['oh'], 1 / m['od'], 1 / m['oa']]
     p = [x / sum(inv) for x in inv]
     i = max(range(3), key=lambda k: p[k])
-    return {'side': 'HDA'[i], 'p': round(p[i], 3)}
+    return {'side': 'HDA'[i], 'p': round(p[i], 3), 'odds': (m['oh'], m['od'], m['oa'])[i]}
 
 
 def count_call(tr, m, model):
@@ -60,11 +61,19 @@ def count_call(tr, m, model):
     return {'exp': round(mean, 1), 'line': line, 'side': side, 'p': round(p, 3)}
 
 
-def odds_calls(m):
+def odds_calls(m, pick):
+    """Goals over/under 2.5 and both-to-score calls, and the match double: the favourite with the goals call,
+    its chance from the score grid (the two are linked) and the two average prices multiplied."""
     c = G.calls(m)
     if not c:
-        return None, None
-    return ({'side': c['goals'][0], 'p': round(c['goals'][1], 3)}, {'side': c['btts'][0], 'p': round(c['btts'][1], 3)})
+        return None, None, None
+    side = c['goals'][0]
+    goals = {'side': side, 'p': round(c['goals'][1], 3), 'odds': m['over'] if side == 'over' else m['under']}
+    btts = {'side': c['btts'][0], 'p': round(c['btts'][1], 3)}
+    combo = None
+    if pick and pick.get('odds') and goals['odds']:
+        combo = {'p': round(G.joint(c['rates'], pick['side'], side), 3), 'odds': round(pick['odds'] * goals['odds'], 2)}
+    return goals, btts, combo
 
 
 def started(day, entry, now):
@@ -97,6 +106,29 @@ def choose_double(doc, day, now):
         return old if old else None
     a, b = sorted(cand, key=lambda e: -e['corners']['p'])[:2]
     return {'legs': [[a['home'], a['away']], [b['home'], b['away']]], 'p': round(a['corners']['p'] * b['corners']['p'], 3)}
+
+
+def best_leg(e):
+    """A match's most confident call that has real odds: the result pick or the goals call."""
+    legs = [(k, e[k]) for k in ('pick', 'goals') if e.get(k) and e[k].get('odds')]
+    return max(legs, key=lambda kv: kv[1]['p']) if legs else None
+
+
+def choose_daily(doc, day, now):
+    """The day's double: the two most confident real-odds calls from two different matches, kept as they were
+    once either match has kicked off."""
+    by_key = {(e['home'], e['away']): e for e in doc['matches']}
+    old = doc.get('daily')
+    if old and any(started(day, by_key.get((l['home'], l['away']), {}), now) for l in old['legs']
+                   if (l['home'], l['away']) in by_key):
+        return old
+    cand = [(e, best_leg(e)) for e in doc['matches'] if not started(day, e, now)]
+    cand = [(e, leg) for e, leg in cand if leg]
+    if len(cand) < 2:
+        return old if old else None
+    (a, la), (b, lb) = sorted(cand, key=lambda x: -x[1][1]['p'])[:2]
+    return {'legs': [{'home': a['home'], 'away': a['away'], 'kind': la[0]}, {'home': b['home'], 'away': b['away'], 'kind': lb[0]}],
+            'p': round(la[1]['p'] * lb[1]['p'], 3), 'odds': round(la[1]['odds'] * lb[1]['odds'], 2)}
 
 
 def main():
@@ -158,14 +190,16 @@ def main():
             key = (m['home'], m['away'])
             if key in keep and started(day, keep[key], now):
                 continue  # kicked off: the pick stays as it was
-            goals, btts = odds_calls(m)
+            pick = result_pick(m)
+            goals, btts, combo = odds_calls(m, pick)
             keep[key] = {'time': m['time'], 'div': m['div'], 'league': fd.LEAGUES[m['div']], 'home': m['home'],
-                         'away': m['away'], 'pick': result_pick(m), 'goals': goals, 'btts': btts,
+                         'away': m['away'], 'pick': pick, 'goals': goals, 'btts': btts, 'combo': combo,
                          'corners': count_call(trackers['corners'], m, models.get('corners')),
                          'cards': count_call(trackers['cards'], m, models.get('cards'))}
         doc['matches'] = list(keep.values())
         doc['updated'] = stamp
         doc['double'] = choose_double(doc, day, now)
+        doc['daily'] = choose_daily(doc, day, now)
         write(day, doc)
         print(f'{day}: {len(ms)} fixtures, {len(doc["matches"])} matches on the page')
 

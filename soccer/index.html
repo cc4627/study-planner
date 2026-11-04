@@ -52,7 +52,8 @@ a{color:var(--focus)}
 .eyebrow{font:12px/1 var(--font);text-transform:uppercase;color:var(--muted)}
 .eyebrow a{color:var(--muted)}
 h1{margin:6px 0 0;font:clamp(26px,6vw,38px)/1.05 var(--font);text-wrap:balance}
-.stat{margin:6px 0 0;font:13px/1.3 var(--font);color:var(--muted);font-variant-numeric:tabular-nums}
+.stat{margin:6px 0 0;font:13px/1.45 var(--font);color:var(--muted);font-variant-numeric:tabular-nums}
+.stat i{font-style:normal;color:var(--ink)}
 .navs{display:flex;gap:8px;align-items:center}
 .nav{width:44px;height:44px;border-radius:10px;border:2px solid var(--edge);background:var(--surface);display:grid;place-items:center;padding:0}
 .nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
@@ -67,6 +68,9 @@ h1{margin:6px 0 0;font:clamp(26px,6vw,38px)/1.05 var(--font);text-wrap:balance}
 .dbl li span{display:block;font:13px/1.3 var(--font);color:var(--muted);overflow-wrap:anywhere}
 .dbl .sum{font:14px/1.35 var(--font);color:var(--ink);font-variant-numeric:tabular-nums}
 .dbl .sum small{color:var(--muted);font-size:12px}
+#daily{border-color:var(--c3)}
+#daily h2{color:var(--c3)}
+.money{font-variant-numeric:tabular-nums}
 
 .tray{background:var(--surface);border:2px solid var(--edge);border-radius:12px;padding:10px 12px;display:grid;gap:8px}
 .hint{font:12px/1.35 var(--font);color:var(--muted)}
@@ -130,6 +134,8 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
     </div>
   </header>
 
+  <section class="dbl" id="daily" aria-label="Daily double" hidden></section>
+
   <section class="dbl" id="dbl" aria-label="Corner double" hidden></section>
 
   <section class="tray" id="tray" aria-label="Leagues" hidden>
@@ -143,7 +149,7 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
     Corners and yellow cards: models of each side's recent corners and shots, cards and fouls, the referee and the match odds,
     fitted on 2021–24 and tested on later seasons. <b>Fair</b> = 1 ÷ chance: a bet is only
     worth it at a bigger price than that. Fixtures and results from football-data.co.uk; results can take a day or two to appear.
-    A guide, not a tip; no bets are placed.
+    Doubles: €1 at the average bookmaker prices (result and goals only, where the data has real odds); the match double multiplies the two single prices, though bookmakers sell same-match doubles as bet builders at their own price. A guide, not a tip; no bets are placed.
     Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
     <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
 </main>
@@ -196,6 +202,26 @@ function bttsHit(m){
   var both=m.ft[0]>0&&m.ft[1]>0;return m.btts.side==='yes'?both:!both;
 }
 function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+var eur=function(x){return (x>=0?'+':'−')+'€'+Math.abs(x).toFixed(2);};
+/* Match double: the favourite with the goals call, at the two average prices multiplied. */
+function comboHit(m){
+  var a=pickHit(m),b=goalsHit(m);
+  return a==null||b==null?null:a&&b;
+}
+function comboPL(m){var h=comboHit(m);return h==null?null:h?m.combo.odds-1:-1;}
+function legOf(l){return day.matches.filter(function(m){return m.home===l.home&&m.away===l.away;})[0];}
+function legText(m,kind){
+  if(kind==='pick')return m.pick.side==='D'?'Draw: '+m.home+' v '+m.away:pickName(m)+' to win';
+  return cap(m.goals.side)+' 2.5 goals';
+}
+function legHit(m,kind){return kind==='pick'?pickHit(m):goalsHit(m);}
+function legBet(m,kind){return kind==='pick'?m.pick:m.goals;}
+function dailyPL(){
+  var d=day.daily;if(!d)return null;
+  var hits=d.legs.map(function(l){var m=legOf(l);return m?legHit(m,l.kind):null;});
+  if(hits.indexOf(false)>=0)return -1;
+  return hits[0]&&hits[1]?d.odds-1:null;
+}
 function row(label,text,p,hit,shown){
   return '<li><i>'+label+'</i><span>'+text+' <small>'+pct(p)+' · fair '+fair(p)+'</small></span>'+badge(hit,shown)+'</li>';
 }
@@ -235,10 +261,16 @@ function render(){
   var parts=[['favourite',tally(pickHit)],['goals',tally(goalsHit)],['both score',tally(bttsHit)],['corners',tally(cornerHit)],['cards',tally(cardHit)]]
     .filter(function(x){return x[1].length;}).map(function(x){return x[0]+' '+right(x[1]);});
   var up=day.updated?new Date(day.updated):null;
+  var cps=ms.filter(function(m){return m.combo;}).map(comboPL).filter(function(x){return x!=null;});
+  var cpl=cps.reduce(function(a,b){return a+b;},0),dpl=dailyPL();
+  var money=[];
+  if(cps.length)money.push('€1 match doubles: '+cps.filter(function(x){return x>0;}).length+' of '+cps.length+' landed <i>'+eur(cpl)+'</i>');
+  if(dpl!=null)money.push('daily double <i>'+eur(dpl)+'</i>');
   $('#stat').innerHTML=esc(ms.length+' match'+(ms.length===1?'':'es')+
     (!parts.length&&up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''))+
-    (parts.length?'<br>Calls right: '+esc(parts.join(' · ')):'');
+    (parts.length?'<br>Calls right: '+esc(parts.join(' · ')):'')+(money.length?'<br>'+money.join(' · '):'');
 
+  renderDaily();
   renderDouble(ms);
 
   $('#tray').hidden=leagues.length<2;
@@ -260,6 +292,8 @@ function render(){
         (m.btts?row('Both score',cap(m.btts.side),m.btts.p,bttsHit(m),''):'')+
         (c?row('Corners',cornerText(c),c.p,cornerHit(m),m.cn!=null?String(m.cn):''):'')+
         (m.cards?row('Cards',cornerText(m.cards)+' yellow',m.cards.p,cardHit(m),m.yc!=null?String(m.yc):''):'')+
+        (m.combo?'<li><i>Double</i><span>'+esc(legText(m,'pick'))+' &amp; '+esc(legText(m,'goals').toLowerCase())+' <small>'+pct(m.combo.p)+
+          ' · pays '+m.combo.odds.toFixed(2)+'</small></span>'+(comboHit(m)==null?'':'<em class="badge'+(comboHit(m)?' ok':'')+'">'+eur(comboPL(m))+'</em>')+'</li>':'')+
       '</ul></article>';
   }).join('');
 }
@@ -278,6 +312,23 @@ function renderDouble(ms){
   }).join('')+'</ol>'+
   '<div class="sum">Both come in: '+pct(d.p)+' · fair price '+fair(d.p)+(result?' · <b>'+result+'</b>':'')+
   '<br><small>Only worth backing if your bookmaker pays more than '+fair(d.p)+' for the double.</small></div>';
+}
+
+function renderDaily(){
+  var d=day.daily,box=$('#daily');
+  var legs=d&&d.legs?d.legs.map(function(l){return {l:l,m:legOf(l)};}).filter(function(x){return x.m&&legBet(x.m,x.l.kind);}):[];
+  if(legs.length<2){box.hidden=true;return;}
+  var pl=dailyPL();
+  box.hidden=false;
+  box.innerHTML='<h2>Daily double · €1</h2><ol>'+legs.map(function(x){
+    var b=legBet(x.m,x.l.kind),h=legHit(x.m,x.l.kind);
+    return '<li><div><b>'+esc(legText(x.m,x.l.kind))+' · '+pct(b.p)+' @ '+b.odds.toFixed(2)+'</b>'+
+      '<span>'+esc(x.m.time||'')+' '+esc(x.m.home)+' v '+esc(x.m.away)+' · '+esc(x.m.league)+'</span></div>'+
+      (h==null?'':'<em class="badge'+(h?' ok':'')+'">'+(x.m.ft?x.m.ft[0]+'–'+x.m.ft[1]:'')+' '+(h?'✓':'✗')+'</em>')+'</li>';
+  }).join('')+'</ol>'+
+  '<div class="sum">Both come in: '+pct(d.p)+' · pays '+d.odds.toFixed(2)+' · €1 returns €'+d.odds.toFixed(2)+
+  (pl!=null?' · <b class="money">'+(pl>0?'Landed ':'Lost ')+eur(pl)+'</b>':'')+
+  '<br><small>The two most confident calls with real bookmaker odds (result or goals over/under), at the average prices.</small></div>';
 }
 
 function show(k){

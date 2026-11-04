@@ -70,3 +70,19 @@ def calls(m):
     pb = (1 - math.exp(-lh)) * (1 - math.exp(-la))
     return {'goals': ('over', po) if po >= 0.5 else ('under', 1 - po),
             'btts': ('yes', pb) if pb >= 0.5 else ('no', 1 - pb), 'rates': (lh, la)}
+
+
+def joint(rates_, result_side, goals_side):
+    """Chance of a result ('H', 'D' or 'A') and a goals side ('over'/'under' 2.5) together, from the score grid.
+    The two are linked (a strong favourite winning makes goals likelier), so this isn't just the two chances
+    multiplied."""
+    lh, la = rates_
+    ph, pa = _pois(lh), _pois(la)
+    p = 0.0
+    for i in range(MAX):
+        for j in range(MAX):
+            res = 'H' if i > j else 'A' if j > i else 'D'
+            over = i + j > 2.5
+            if res == result_side and over == (goals_side == 'over'):
+                p += ph[i] * pa[j]
+    return p

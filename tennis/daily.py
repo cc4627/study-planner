@@ -43,6 +43,20 @@ def score(m):
     return ' '.join(f'{a}-{b}' for a, b in m['sets'])
 
 
+def choose_double(doc, day, now):
+    """The day's two most confident picks from two matches, kept as they were once either has started."""
+    by_id = {e['id']: e for e in doc['matches']}
+    begun = lambda e: 'winner' in e or day < now.date() or (day == now.date() and e['time'] <= now.strftime('%H:%M'))
+    old = doc.get('double')
+    if old and any(begun(by_id[i]) for i in old['legs'] if i in by_id):
+        return old
+    cand = [e for e in doc['matches'] if not begun(e) and not e.get('new')]
+    if len(cand) < 2:
+        return old
+    a, b = sorted(cand, key=lambda e: -e['p'])[:2]
+    return {'legs': [a['id'], b['id']], 'p': round(a['p'] * b['p'], 3)}
+
+
 def main():
     cache = sys.argv[1] if len(sys.argv) > 1 else None
     now = datetime.now(LONDON)
@@ -104,6 +118,7 @@ def main():
         # drop draw slots picked before both players were known (older runs listed them as TBD)
         doc['matches'] = [e for e in keep.values() if 'winner' in e or 'TBD' not in (e['p1'], e['p2'])]
         doc['updated'] = stamp
+        doc['double'] = choose_double(doc, day, now)
         write(day, doc)
         print(f'{day}: {len(entries)} scheduled matches picked, {len(doc["matches"])} on the page')
 
