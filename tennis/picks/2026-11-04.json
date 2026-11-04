@@ -1,0 +1,102 @@
+{
+ "date": "2026-11-04",
+ "matches": [
+  {
+   "id": "186722",
+   "time": "17:50",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Round 2",
+   "p1": "Despina Papamichail",
+   "p2": "Renata Zarazua",
+   "pick": 2,
+   "p": 0.696,
+   "new": false
+  },
+  {
+   "id": "186485",
+   "time": "17:50",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 2",
+   "p1": "Thiago Agustin Tirante",
+   "p2": "Jan-Lennard Struff",
+   "pick": 2,
+   "p": 0.66,
+   "new": false
+  },
+  {
+   "id": "186723",
+   "time": "18:00",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Round 2",
+   "p1": "Julia Grabher",
+   "p2": "Julia Riera",
+   "pick": 1,
+   "p": 0.66,
+   "new": false
+  },
+  {
+   "id": "186732",
+   "time": "18:00",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Round 2",
+   "p1": "Alice Tubello",
+   "p2": "Marina Bassols Ribera",
+   "pick": 1,
+   "p": 0.58,
+   "new": false
+  },
+  {
+   "id": "186480",
+   "time": "18:00",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 2",
+   "p1": "Alex Michelsen",
+   "p2": "Carlos Alcaraz",
+   "pick": 2,
+   "p": 0.906,
+   "new": false
+  },
+  {
+   "id": "186724",
+   "time": "19:30",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Round 2",
+   "p1": "Leyre Romero Gormaz",
+   "p2": "Solana Sierra",
+   "pick": 2,
+   "p": 0.53,
+   "new": false
+  },
+  {
+   "id": "186491",
+   "time": "19:30",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 2",
+   "p1": "Arthur Fils",
+   "p2": "Tomas Machac",
+   "pick": 1,
+   "p": 0.772,
+   "new": false
+  },
+  {
+   "id": "186726",
+   "time": "22:00",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Round 2",
+   "p1": "Jazmin Ortenzi",
+   "p2": "Bianca Andreescu",
+   "pick": 2,
+   "p": 0.826,
+   "new": false
+  }
+ ],
+ "updated": "2026-11-04T17:42:31+00:00"
+}
