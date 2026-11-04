@@ -1,0 +1,158 @@
+/* Form guide: a scoreboard header, a ledger strip of how the picks did, the day's doubles as betting slips,
+   then a dense racecard of time / where / picks. One accent (turf green) for wins; gold marks the slips. */
+:root{
+  --paper:#EDF1EE; --card:#FFFFFF; --ink:#0F1C17; --muted:#5A6A64; --rule:#D3DDD8; --rule2:#B8C7C0;
+  --turf:#1E6A49; --gain:#1E6A49; --loss:#A63A2C; --gold:#B7862A; --tint:#E3EBE6;
+  --s1:#2F55B8; --s2:#B4561C; --s3:#1E7A55; --s4:#7E3FA0; --s5:#0E6F86; --s6:#9A6A0A; --s7:#B42A63; --s8:#4D5A63;
+  --display:'Barlow Condensed','Arial Narrow','Roboto Condensed',sans-serif;
+  --body:'Barlow','Segoe UI',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1411; --card:#131E1A; --ink:#E5EEEA; --muted:#93A69F; --rule:#22312B; --rule2:#344740;
+    --turf:#5CC496; --gain:#5CC496; --loss:#EE8A7C; --gold:#E2B65A; --tint:#18251F;
+    --s1:#8FA8FF; --s2:#F39A62; --s3:#5CC496; --s4:#CC9BEF; --s5:#5CC8DF; --s6:#E8C05A; --s7:#F38BB6; --s8:#A3B1B9;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1411; --card:#131E1A; --ink:#E5EEEA; --muted:#93A69F; --rule:#22312B; --rule2:#344740;
+  --turf:#5CC496; --gain:#5CC496; --loss:#EE8A7C; --gold:#E2B65A; --tint:#18251F;
+  --s1:#8FA8FF; --s2:#F39A62; --s3:#5CC496; --s4:#CC9BEF; --s5:#5CC8DF; --s6:#E8C05A; --s7:#F38BB6; --s8:#A3B1B9;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.45 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:18px calc(92px + env(safe-area-inset-bottom,0px));
+}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--turf)}
+:focus-visible{outline:3px solid var(--turf);outline-offset:2px}
+[hidden]{display:none!important}
+.app{max-width:1180px;margin:0 auto;display:grid;gap:16px}
+.num,.odds{font-family:var(--mono);font-style:normal;font-variant-numeric:tabular-nums}
+
+/* Header: sport and date like a scoreboard */
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 16px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+.eyebrow{margin:0;font:600 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:8px;align-items:center}
+.eyebrow .live{display:inline-flex;align-items:center;gap:6px;color:var(--turf)}
+.eyebrow .live::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+h1{margin:6px 0 0;font:700 clamp(30px,7vw,48px)/.95 var(--display);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+.daynav{display:flex;gap:6px;align-items:center}
+.daynav button{min-width:44px;height:44px;border-radius:8px;border:1.5px solid var(--rule2);background:var(--card);display:grid;place-items:center;padding:0 12px}
+.daynav button:disabled{opacity:.35;cursor:default}
+.daynav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.daynav .today{font:600 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase}
+
+/* Ledger: one tile per measure, the € beside the count */
+.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));background:var(--card);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.tile{padding:10px 12px 11px;display:grid;gap:2px;min-width:0;box-shadow:1px 0 0 var(--rule),0 1px 0 var(--rule)}
+.tile .k{font:600 11px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font:700 30px/1 var(--display);font-variant-numeric:tabular-nums}
+.tile .v small{font:600 17px/1 var(--display);color:var(--muted);margin-left:2px}
+.tile .pl{font:500 13px/1.2 var(--mono)}
+.tile .pl.say{font:400 12px/1.3 var(--body);color:var(--muted)}
+.gain{color:var(--gain)} .loss{color:var(--loss)} .est{color:var(--muted);font:500 11px/1 var(--body);margin-left:4px;letter-spacing:.04em}
+
+/* Slips: the day's doubles, drawn like a betting slip with a torn top edge */
+.slips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:12px}
+.slip{position:relative;background:var(--card);border:1px solid var(--rule2);border-radius:4px 4px 10px 10px;padding:14px 14px 12px;display:grid;gap:10px;min-width:0}
+.slip::before{content:"";position:absolute;inset:-1px -1px auto;height:6px;background:radial-gradient(circle at 6px -2px,var(--paper) 5px,transparent 5.5px) 0 0/12px 6px repeat-x}
+.slip header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.slip h2{margin:0;font:700 18px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+.slip .stake{font:500 12px/1 var(--mono);color:var(--muted)}
+.slip ol{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.leg{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:start}
+.leg .box{width:20px;height:20px;border-radius:5px;border:1.5px solid var(--rule2);display:grid;place-items:center;font:700 13px/1 var(--body);margin-top:1px}
+.leg.ok .box{background:var(--gain);border-color:var(--gain);color:var(--card)}
+.leg.no .box{border-color:var(--loss);color:var(--loss)}
+.leg b{display:block;font:600 16px/1.25 var(--body);overflow-wrap:anywhere}
+.leg span{display:block;font:400 13px/1.3 var(--body);color:var(--muted);overflow-wrap:anywhere}
+.leg .odds{font-size:14px;padding-top:2px}
+.slip footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 12px;padding-top:10px;border-top:1px dashed var(--rule2);font-size:13px;color:var(--muted)}
+.slip footer .ret{font:600 18px/1 var(--mono);color:var(--ink)}
+.slip footer .ret.gain{color:var(--gain)} .slip footer .ret.loss{color:var(--loss)}
+.slip .note{margin:0;font-size:12px;color:var(--muted)}
+.stamp{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;padding:4px 7px;border-radius:4px;border:1.5px solid currentColor}
+.slip.corner h2{color:var(--s4)}
+
+/* Filters: one row of chips that scrolls sideways on its own when there are many */
+.filters{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin}
+.chip{--k:var(--ink);flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 12px;border-radius:999px;border:1.5px solid var(--rule2);background:var(--card);font:500 14px/1 var(--body);white-space:nowrap}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--k)}
+.chip.all::before{display:none}
+.chip em{font:500 11px/1 var(--mono);font-style:normal;color:var(--muted)}
+.chip[aria-pressed="true"]{border-color:var(--k);background:color-mix(in srgb,var(--k) 14%,var(--card))}
+.chip.all[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.chip.all[aria-pressed="true"] em{color:var(--card)}
+
+/* Cards: time on the left like a racecard, the picks or markets to the right */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:12px}
+.card{--k:var(--s8);background:var(--card);border:1px solid var(--rule);border-radius:10px;display:grid;grid-template-columns:64px minmax(0,1fr);overflow:hidden;min-width:0}
+.card.gone{opacity:.62}
+.card .when{background:color-mix(in srgb,var(--k) 12%,var(--card));border-right:3px solid var(--k);padding:10px 6px;display:grid;align-content:start;justify-items:center;gap:4px}
+.card .when b{font:700 22px/1 var(--display);font-variant-numeric:tabular-nums}
+.card .when span{font:600 10px/1.1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
+.card .body{padding:9px 12px 11px;display:grid;gap:7px;min-width:0}
+.card .where{margin:0;font:600 12px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--k);overflow-wrap:anywhere}
+
+/* Racing: the three picks with where they finished */
+.runners{margin:0;padding:0;list-style:none;display:grid;gap:4px}
+.runners li{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:8px;align-items:center;font:500 15px/1.3 var(--body)}
+.runners li:first-child{font:600 17px/1.3 var(--body)}
+.runners i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.pos{font:600 12px/1 var(--mono);font-style:normal;padding:4px 7px;border-radius:5px;border:1.5px solid var(--rule2);color:var(--muted);white-space:nowrap}
+.pos.win{background:var(--gain);border-color:var(--gain);color:var(--card)}
+.pos.place{border-color:var(--gain);color:var(--gain)}
+
+/* Soccer: fixture line and a small table of markets */
+.fixture{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center;font:600 16px/1.2 var(--body)}
+.fixture span:last-child{text-align:right}
+.fixture .score{font:700 20px/1 var(--display);padding:4px 8px;border-radius:5px;background:var(--tint);font-variant-numeric:tabular-nums}
+.fixture .vs{font:600 12px/1 var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.mk{display:grid}
+.mk div{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:8px;align-items:center;padding:6px 0;border-top:1px solid var(--rule);font-size:14px;line-height:1.3}
+.mk div > i{font:600 10px/1.15 var(--body);font-style:normal;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.mk div > span{overflow-wrap:anywhere;min-width:0}
+.mk small{font:500 12px/1 var(--mono);color:var(--muted);white-space:nowrap;margin-left:4px}
+.mk div.double{background:color-mix(in srgb,var(--gold) 10%,transparent);margin:0 -12px;padding-inline:12px}
+.mk div.double > i{color:var(--gold)}
+.hit{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 var(--body)}
+.hit.ok{background:var(--gain);color:var(--card)}
+.hit.no{border:1.5px solid var(--loss);color:var(--loss)}
+.money{font:600 12px/1 var(--mono);white-space:nowrap}
+
+/* Tennis: two players with a win-chance bar */
+.players{display:grid;gap:5px}
+.player{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center;font:500 15px/1.25 var(--body)}
+.player.pick{font-weight:600}
+.player .num{font-size:12px;color:var(--muted)}
+.bar{height:6px;border-radius:3px;background:var(--rule);overflow:hidden;display:flex}
+.bar i{display:block;background:var(--k)}
+.meta{font-size:12px;color:var(--muted)}
+.tag{font:600 10px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule2);border-radius:4px;padding:2px 4px}
+
+.empty{border:1.5px dashed var(--rule2);border-radius:10px;padding:28px 18px;text-align:center;color:var(--muted);background:var(--card);grid-column:1/-1}
+.empty b{display:block;color:var(--ink);font:700 22px/1.1 var(--display);text-transform:uppercase;margin-bottom:6px}
+.foot{margin:6px 0 0;font-size:12px;line-height:1.5;color:var(--muted);max-width:70ch}
+
+/* Bottom tabs, one per sport */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+  background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--rule2);
+  padding:6px max(10px,env(safe-area-inset-left,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-right,0px))}
+.tabs a{display:grid;justify-items:center;align-content:center;gap:3px;min-height:52px;border-radius:10px;color:var(--muted);text-decoration:none;font:600 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase}
+.tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tabs a[aria-current="page"]{color:var(--ink);background:var(--tint)}
+.tabs a[aria-current="page"] svg{color:var(--turf)}
+
+@media (prefers-reduced-motion: no-preference){
+  .card,.slip,.tile{animation:rise .35s ease both}
+  @keyframes rise{from{transform:translateY(4px)}to{transform:none}}
+}
