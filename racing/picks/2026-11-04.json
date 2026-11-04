@@ -1,6 +1,6 @@
 {
  "date": "2026-11-04",
- "updated": "2026-11-04T17:29:58+00:00",
+ "updated": "2026-11-04T17:55:30+00:00",
  "races": [
   {
    "time": "12:05",
@@ -910,7 +910,8 @@
     "The Coffee Pod",
     "Invincible Speed",
     "Monsieur Patat"
-   ]
+   ],
+   "p": 0.252
   },
   {
    "time": "18:15",
@@ -920,7 +921,8 @@
     "Littlepacer",
     "Mutamarid Lsk",
     "Closefield Beau"
-   ]
+   ],
+   "p": 0.349
   },
   {
    "time": "18:30",
@@ -930,7 +932,8 @@
     "Ataturk",
     "Super Hit",
     "Goldfinder"
-   ]
+   ],
+   "p": 0.13
   },
   {
    "time": "18:45",
@@ -940,7 +943,8 @@
     "Final Boss",
     "Carrigans Grove",
     "Dandyville"
-   ]
+   ],
+   "p": 0.247
   },
   {
    "time": "19:15",
@@ -950,7 +954,21 @@
     "Dancing Steve",
     "Star Mind",
     "Suerte"
-   ]
+   ],
+   "p": 0.213
   }
- ]
+ ],
+ "double": {
+  "legs": [
+   [
+    "18:15",
+    "Dundalk"
+   ],
+   [
+    "18:00",
+    "Kempton"
+   ]
+  ],
+  "p": 0.088
+ }
 }
