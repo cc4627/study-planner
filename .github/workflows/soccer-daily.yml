@@ -1,0 +1,46 @@
+name: Soccer picks
+
+# Settles past picks (score and corners) and writes picks for the coming matches from football-data.co.uk's
+# free fixtures and season files, then commits soccer/picks/. Runs four times a day; scheduled runs only
+# happen from the default branch. Paper only; no bets are placed.
+on:
+  schedule:
+    - cron: '23 6 * * *'
+    - cron: '23 11 * * *'
+    - cron: '53 16 * * *'
+    - cron: '41 22 * * *'
+  workflow_dispatch:
+  push:
+    paths: ['soccer/daily.py', 'soccer/fd.py', 'soccer/stats.py', 'soccer/goals.py', '.github/workflows/soccer-daily.yml']
+
+permissions:
+  contents: write
+
+concurrency: soccer-data
+
+jobs:
+  picks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:  # the branch tip, so a run queued behind another sees its push
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy
+      - id: season
+        run: echo "code=$(python -c "import sys; sys.path.insert(0,'soccer'); import fd; print(fd.season_code(fd.today_uk()))")" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        with:
+          path: soccer/.cache
+          key: fd-past-v1-${{ steps.season.outputs.code }}
+      - name: Settle and pick
+        run: python soccer/daily.py soccer/.cache
+      - name: Commit picks
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add soccer/picks
+          git diff --cached --quiet || (git commit -m "Update soccer picks" && git pull --rebase && git push)

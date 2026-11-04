@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Soccer Picks</title>
+<meta name="description" content="Each day's matches: the favourite, goals, both to score, corners and yellow cards, and the day's corner double.">
+<meta name="theme-color" content="#D9EAFB">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Carlito&display=swap">
+</head>
+<body>
+<style>
+/* Same look as the Study Week Planner: light-blue board, Calibri regular, 2px outlined boxes. */
+:root{
+  --bg:#D9EAFB; --surface:#FFFFFF; --ink:#101C26; --muted:#4F6476; --line:#BCD2E8; --edge:#7F9DBA;
+  --focus:#3B4CCA; --good:#177A4F;
+  --c1:#3B4CCA; --c2:#B84A17; --c3:#177A4F; --c4:#8A3FA8; --c5:#0E7490; --c6:#A16207; --c7:#BE185D; --c8:#4D5B68;
+  --font:'Calibri','Carlito','Segoe UI',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F2133; --surface:#16293C; --ink:#E8EEF3; --muted:#9DB1C3; --line:#2B4258; --edge:#5C7A96;
+    --focus:#9AA6FF; --good:#53C894;
+    --c1:#9AA6FF; --c2:#FF9A68; --c3:#53C894; --c4:#D29BF0; --c5:#5CC8E0; --c6:#F2C04E; --c7:#F48FB8; --c8:#A4B2BE;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F2133; --surface:#16293C; --ink:#E8EEF3; --muted:#9DB1C3; --line:#2B4258; --edge:#5C7A96;
+  --focus:#9AA6FF; --good:#53C894;
+  --c1:#9AA6FF; --c2:#FF9A68; --c3:#53C894; --c4:#D29BF0; --c5:#5CC8E0; --c6:#F2C04E; --c7:#F48FB8; --c8:#A4B2BE;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+*,*::before,*::after{font-weight:400!important;letter-spacing:normal!important}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 var(--font);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:20px 40px;
+}
+.app{max-width:1240px;margin:0 auto;display:grid;gap:14px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+a{color:var(--focus)}
+
+.top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
+.eyebrow{font:12px/1 var(--font);text-transform:uppercase;color:var(--muted)}
+.eyebrow a{color:var(--muted)}
+h1{margin:6px 0 0;font:clamp(26px,6vw,38px)/1.05 var(--font);text-wrap:balance}
+.stat{margin:6px 0 0;font:13px/1.3 var(--font);color:var(--muted);font-variant-numeric:tabular-nums}
+.navs{display:flex;gap:8px;align-items:center}
+.nav{width:44px;height:44px;border-radius:10px;border:2px solid var(--edge);background:var(--surface);display:grid;place-items:center;padding:0}
+.nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.nav:disabled{opacity:.35;cursor:default}
+.pill{min-height:44px;padding:0 14px;border:2px solid var(--edge);background:var(--surface);border-radius:999px;font:12px/1 var(--font);text-transform:uppercase}
+
+.dbl{background:var(--surface);border:2px solid var(--c4);border-radius:12px;padding:10px 14px 12px;display:grid;gap:8px}
+.dbl h2{margin:0;font:12px/1 var(--font);text-transform:uppercase;color:var(--c4)}
+.dbl ol{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.dbl li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+.dbl li b{display:block;font:18px/1.2 var(--font)}
+.dbl li span{display:block;font:13px/1.3 var(--font);color:var(--muted);overflow-wrap:anywhere}
+.dbl .sum{font:14px/1.35 var(--font);color:var(--ink);font-variant-numeric:tabular-nums}
+.dbl .sum small{color:var(--muted);font-size:12px}
+
+.tray{background:var(--surface);border:2px solid var(--edge);border-radius:12px;padding:10px 12px;display:grid;gap:8px}
+.hint{font:12px/1.35 var(--font);color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  --k:var(--c8);
+  display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:6px 12px 6px 10px;
+  border-radius:9px;border:2px solid var(--k);
+  background:color-mix(in srgb,var(--k) 10%,var(--surface));font:14px/1.1 var(--font);
+}
+.chip em{font:11px/1 var(--font);font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{box-shadow:0 0 0 2px var(--k);background:color-mix(in srgb,var(--k) 24%,var(--surface))}
+.chip.all{--k:var(--ink)}
+
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:10px}
+.m{
+  --k:var(--c8);
+  border-radius:9px;border:2px solid var(--k);
+  background:color-mix(in srgb,var(--k) 11%,var(--surface));
+  padding:8px 12px 10px;display:grid;gap:6px;min-width:0;
+}
+.m.gone{opacity:.6}
+.mh{display:flex;align-items:baseline;gap:8px;min-width:0}
+.mh b{font:20px/1 var(--font);font-variant-numeric:tabular-nums}
+.mh span{font:12px/1.15 var(--font);text-transform:uppercase;color:var(--k);overflow-wrap:anywhere}
+.teams{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font:17px/1.25 var(--font);overflow-wrap:anywhere}
+.teams i{font-style:normal;color:var(--muted)}
+.score{font:15px/1 var(--font);font-variant-numeric:tabular-nums;padding:4px 8px;border-radius:7px;border:2px solid var(--k);background:var(--surface)}
+.m ul{margin:0;padding:0;list-style:none;display:grid;gap:3px}
+.m li{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:6px;align-items:center;font:15px/1.3 var(--font)}
+.m li > i{font:11px/1 var(--font);font-style:normal;text-transform:uppercase;color:var(--muted)}
+.m li small{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.badge{font:12px/1 var(--font);font-style:normal;padding:3px 7px;border-radius:999px;border:2px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.badge.ok{background:var(--good);border-color:var(--good);color:var(--surface)}
+
+.empty{border:2px dashed var(--edge);border-radius:12px;padding:24px 18px;text-align:center;color:var(--muted);background:var(--surface)}
+.empty b{display:block;color:var(--ink);font:18px/1.2 var(--font);margin-bottom:6px}
+.foot{margin:0;text-align:center;font:12px/1.4 var(--font);color:var(--muted)}
+[hidden]{display:none!important}
+/* Sports tabs along the bottom: Racing, Soccer, Tennis */
+body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;display:grid;grid-template-columns:repeat(3,1fr);
+  background:var(--surface);border-top:2px solid var(--edge);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabs a{display:grid;justify-items:center;align-content:center;gap:4px;min-height:58px;padding:7px 4px;color:var(--muted);
+  text-decoration:none;font:12px/1 var(--font);text-transform:uppercase}
+.tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tabs a[aria-current="page"]{color:var(--focus);box-shadow:inset 0 3px 0 var(--focus)}
+</style>
+
+<main class="app">
+  <header class="top">
+    <div>
+      <div class="eyebrow" id="eyebrow">Soccer</div>
+      <h1 id="title">&nbsp;</h1>
+      <p class="stat" id="stat"></p>
+    </div>
+    <div class="navs">
+      <button class="pill" id="today" type="button" hidden>Today</button>
+      <button class="nav" id="prev" type="button" aria-label="Previous day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="nav" id="next" type="button" aria-label="Next day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </header>
+
+  <section class="dbl" id="dbl" aria-label="Corner double" hidden></section>
+
+  <section class="tray" id="tray" aria-label="Leagues" hidden>
+    <span class="hint">Tap a league to show only its matches</span>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <section class="list" id="list" aria-label="Matches"></section>
+
+  <p class="foot">Result: the bookmakers' favourite, from the average odds with their margin taken out. Goals and both to score: from the match odds.
+    Corners and yellow cards: models of each side's recent corners and shots, cards and fouls, the referee and the match odds,
+    fitted on 2021–24 and tested on later seasons. <b>Fair</b> = 1 ÷ chance: a bet is only
+    worth it at a bigger price than that. Fixtures and results from football-data.co.uk; results can take a day or two to appear.
+    A guide, not a tip; no bets are placed.
+    Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
+    <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
+</main>
+
+<nav class="tabs" aria-label="Sports">
+  <a href="../racing/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4v7a6 6 0 0 0 12 0V4"/><path d="M4 4h4M16 4h4"/></svg>Racing</a>
+  <a href="../soccer/" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.6l4.1 3-1.6 4.8h-5l-1.6-4.8z"/></svg>Soccer</a>
+  <a href="../tennis/"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M6 5.3a9.5 9.5 0 0 1 0 13.4M18 5.3a9.5 9.5 0 0 0 0 13.4"/></svg>Tennis</a>
+</nav>
+
+<script>
+(function(){
+'use strict';
+var $=function(s){return document.querySelector(s);};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
+var pad=function(n){return String(n).padStart(2,'0');};
+var keyOf=function(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());};
+var fromKey=function(k){var p=String(k).split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);};
+var getJSON=function(u){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});};
+var pct=function(p){return Math.round(p*100)+'%';};
+var fair=function(p){return p>0?(1/p).toFixed(2):'–';};
+
+var dates=[],cur=null,day=null,league=null;
+var today=keyOf(new Date());
+
+function nowLondon(){
+  try{return new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date());}
+  catch(e){var d=new Date();return pad(d.getHours())+':'+pad(d.getMinutes());}
+}
+/* Did the result pick / corner call come in? null until the match is settled. */
+function pickHit(m){
+  if(!m.ft||!m.pick)return null;
+  var r=m.ft[0]>m.ft[1]?'H':m.ft[0]<m.ft[1]?'A':'D';
+  return r===m.pick.side;
+}
+function cornerHit(m){
+  if(m.cn==null||!m.corners)return null;
+  return m.corners.side==='over'?m.cn>m.corners.line:m.cn<m.corners.line;
+}
+function cardHit(m){
+  if(m.yc==null||!m.cards)return null;
+  return m.cards.side==='over'?m.yc>m.cards.line:m.yc<m.cards.line;
+}
+function goalsHit(m){
+  if(!m.ft||!m.goals)return null;
+  var over=m.ft[0]+m.ft[1]>2.5;return m.goals.side==='over'?over:!over;
+}
+function bttsHit(m){
+  if(!m.ft||!m.btts)return null;
+  var both=m.ft[0]>0&&m.ft[1]>0;return m.btts.side==='yes'?both:!both;
+}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+function row(label,text,p,hit,shown){
+  return '<li><i>'+label+'</i><span>'+text+' <small>'+pct(p)+' · fair '+fair(p)+'</small></span>'+badge(hit,shown)+'</li>';
+}
+function pickName(m){
+  if(!m.pick)return '';
+  return m.pick.side==='H'?m.home:m.pick.side==='A'?m.away:'Draw';
+}
+function cornerText(c){return (c.side==='over'?'Over ':'Under ')+c.line;}
+function badge(hit,text){
+  if(hit==null)return '';
+  return '<em class="badge'+(hit?' ok':'')+'">'+esc(text)+' '+(hit?'✓':'✗')+'</em>';
+}
+
+function render(){
+  var i=dates.indexOf(cur);
+  $('#prev').disabled=i<=0;
+  $('#next').disabled=i<0||i>=dates.length-1;
+  $('#today').hidden=cur===today||dates.indexOf(today)<0;
+  $('#title').textContent=cur?fromKey(cur).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}):'Soccer picks';
+  $('#eyebrow').textContent=cur===today?'Today · Soccer':'Soccer';
+
+  var box=$('#list');
+  if(!day||!day.matches||!day.matches.length){
+    $('#tray').hidden=true;$('#dbl').hidden=true;$('#stat').textContent='';
+    box.innerHTML='<div class="empty" style="grid-column:1/-1"><b>'+(dates.length?'No matches on this day':'No picks yet')+'</b>'+
+      (dates.length?'Use the arrows to see another day.':'Picks appear here a day or two before each match.')+'</div>';
+    return;
+  }
+  var ms=day.matches;
+  var counts={};ms.forEach(function(m){counts[m.league]=(counts[m.league]||0)+1;});
+  var leagues=Object.keys(counts).sort();
+  var colourOf=function(l){return 'var(--c'+(leagues.indexOf(l)%8+1)+')';};
+  if(league&&!counts[league])league=null;
+
+  var tally=function(fn){return ms.map(fn).filter(function(x){return x!=null;});};
+  var right=function(a){return a.filter(Boolean).length+'/'+a.length;};
+  var parts=[['favourite',tally(pickHit)],['goals',tally(goalsHit)],['both score',tally(bttsHit)],['corners',tally(cornerHit)],['cards',tally(cardHit)]]
+    .filter(function(x){return x[1].length;}).map(function(x){return x[0]+' '+right(x[1]);});
+  var up=day.updated?new Date(day.updated):null;
+  $('#stat').innerHTML=esc(ms.length+' match'+(ms.length===1?'':'es')+
+    (!parts.length&&up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''))+
+    (parts.length?'<br>Calls right: '+esc(parts.join(' · ')):'');
+
+  renderDouble(ms);
+
+  $('#tray').hidden=leagues.length<2;
+  $('#chips').innerHTML='<button class="chip all" type="button" data-l="" aria-pressed="'+(!league)+'">All <em>'+ms.length+'</em></button>'+
+    leagues.map(function(l){return '<button class="chip" type="button" data-l="'+esc(l)+'" style="--k:'+colourOf(l)+'" aria-pressed="'+(league===l)+'">'+esc(l)+' <em>'+counts[l]+'</em></button>';}).join('');
+
+  var now=cur===today?nowLondon():null;
+  var shown=ms.filter(function(m){return !league||m.league===league;});
+  var done=function(m){return m.ft||(now&&m.time&&m.time<now);};
+  if(now)shown=shown.filter(function(m){return !done(m);}).concat(shown.filter(done));
+  box.innerHTML=shown.map(function(m){
+    var c=m.corners;
+    return '<article class="m'+(now&&done(m)?' gone':'')+'" style="--k:'+colourOf(m.league)+'">'+
+      '<div class="mh"><b>'+esc(m.time||'')+'</b><span>'+esc(m.league)+'</span></div>'+
+      '<div class="teams"><span>'+esc(m.home)+' <i>v</i> '+esc(m.away)+'</span>'+(m.ft?'<span class="score">'+m.ft[0]+'–'+m.ft[1]+'</span>':'')+'</div>'+
+      '<ul>'+
+        (m.pick?'<li><i>Result</i><span>'+esc(pickName(m))+' <small>'+pct(m.pick.p)+'</small></span>'+badge(pickHit(m),'')+'</li>':'')+
+        (m.goals?row('Goals',cap(m.goals.side)+' 2.5',m.goals.p,goalsHit(m),m.ft?String(m.ft[0]+m.ft[1]):''):'')+
+        (m.btts?row('Both score',cap(m.btts.side),m.btts.p,bttsHit(m),''):'')+
+        (c?row('Corners',cornerText(c),c.p,cornerHit(m),m.cn!=null?String(m.cn):''):'')+
+        (m.cards?row('Cards',cornerText(m.cards)+' yellow',m.cards.p,cardHit(m),m.yc!=null?String(m.yc):''):'')+
+      '</ul></article>';
+  }).join('');
+}
+
+function renderDouble(ms){
+  var d=day.double,box=$('#dbl');
+  if(!d||!d.legs||d.legs.length<2){box.hidden=true;return;}
+  var legs=d.legs.map(function(k){return ms.filter(function(m){return m.home===k[0]&&m.away===k[1];})[0];}).filter(Boolean);
+  if(legs.length<2||!legs[0].corners||!legs[1].corners){box.hidden=true;return;}
+  var hits=legs.map(cornerHit);
+  var result=hits.indexOf(false)>=0?'Lost':hits[0]&&hits[1]?'Landed':null;
+  box.hidden=false;
+  box.innerHTML='<h2>Corner double</h2><ol>'+legs.map(function(m,j){
+    return '<li><div><b>'+cornerText(m.corners)+' corners · '+pct(m.corners.p)+'</b>'+
+      '<span>'+esc(m.time||'')+' '+esc(m.home)+' v '+esc(m.away)+' · '+esc(m.league)+'</span></div>'+badge(hits[j],m.cn!=null?String(m.cn):'')+'</li>';
+  }).join('')+'</ol>'+
+  '<div class="sum">Both come in: '+pct(d.p)+' · fair price '+fair(d.p)+(result?' · <b>'+result+'</b>':'')+
+  '<br><small>Only worth backing if your bookmaker pays more than '+fair(d.p)+' for the double.</small></div>';
+}
+
+function show(k){
+  cur=k;day=null;render();
+  if(!k)return;
+  getJSON('picks/'+k+'.json').then(function(d){if(cur===k){day=d;render();}}).catch(function(){if(cur===k)render();});
+}
+
+$('#prev').addEventListener('click',function(){var i=dates.indexOf(cur);if(i>0)show(dates[i-1]);});
+$('#next').addEventListener('click',function(){var i=dates.indexOf(cur);if(i>=0&&i<dates.length-1)show(dates[i+1]);});
+$('#today').addEventListener('click',function(){show(today);});
+$('#chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;league=b.dataset.l||null;render();});
+
+getJSON('picks/index.json').then(function(ix){
+  dates=(ix&&ix.dates)||[];
+  var next=dates.filter(function(d){return d>=today;})[0];
+  show(dates.indexOf(today)>=0?today:next||dates[dates.length-1]||null);
+}).catch(function(){dates=[];show(null);});
+})();
+</script>
+</body>
+</html>

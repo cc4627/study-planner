@@ -1,0 +1,44 @@
+name: Tennis picks
+
+# Settles past picks and picks today's and tomorrow's ATP and WTA singles matches from ESPN's free scores
+# feed, then commits tennis/picks/. Runs four times a day; scheduled runs only happen from the default
+# branch. Paper only; no bets are placed.
+on:
+  schedule:
+    - cron: '43 5 * * *'
+    - cron: '43 11 * * *'
+    - cron: '43 17 * * *'
+    - cron: '43 23 * * *'
+  workflow_dispatch:
+  push:
+    paths: ['tennis/daily.py', 'tennis/elo.py', 'tennis/espn.py', '.github/workflows/tennis-daily.yml']
+
+permissions:
+  contents: write
+
+concurrency: tennis-data
+
+jobs:
+  picks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:  # the branch tip, so a run queued behind another sees its push
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: tennis/.cache
+          key: tennis-espn-v1-${{ github.run_id }}
+          restore-keys: tennis-espn-v1-
+      - name: Settle and pick
+        run: python tennis/daily.py tennis/.cache
+      - name: Commit picks
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add tennis/picks
+          git diff --cached --quiet || (git commit -m "Update tennis picks" && git pull --rebase && git push)
