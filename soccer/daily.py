@@ -3,9 +3,10 @@
 Usage: python daily.py [CACHE_DIR]   (CACHE_DIR keeps last season's files between runs)
 
 For each match in football-data.co.uk's fixtures: the bookmakers' favourite and its chance (from the average
-odds, margin removed), and the corners call: expected corners and the likelier side of the league's usual
-line, with its chance. Each day's two most confident corner calls make the corner double. Once a match is
-played, its score and total corners are added. Writes soccer/picks/YYYY-MM-DD.json and picks/index.json.
+odds, margin removed); goals over/under 2.5 and both teams to score (from the odds); and the corners and
+yellow-cards calls: the expected count and the likelier side of the league's usual line, with its chance.
+Each day's two most confident corner calls make the corner double. Once a match is played, its score, total
+corners and total yellow cards are added. Writes soccer/picks/YYYY-MM-DD.json and picks/index.json.
 Paper only; no bets are placed.
 """
 import json
@@ -16,8 +17,9 @@ from zoneinfo import ZoneInfo
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import corners as C  # noqa: E402
 import fd  # noqa: E402
+import goals as G  # noqa: E402
+import stats as S  # noqa: E402
 
 LONDON = ZoneInfo('Europe/London')
 PICKS = os.path.join(HERE, 'picks')
@@ -44,17 +46,25 @@ def result_pick(m):
     return {'side': 'HDA'[i], 'p': round(p[i], 3)}
 
 
-def corner_call(tr, m, model):
+def count_call(tr, m, model):
+    """Expected corners or cards, the league's usual line, and the likelier side with its chance."""
     f = tr.features(m)
     if not f or not model:
         return None
-    mean = sum(C.expected(f, model))
+    mean = sum(S.expected(f, model))
     line = model['lines'].get(m['div'])
     if line is None:
         avg = tr.league_avg(m['div'])
-        line = C.main_line(avg['hc'] + avg['ac'])
-    side, p = C.call(mean, line, model['k'])
+        line = S.main_line(avg['h'] + avg['a'])
+    side, p = S.call(mean, line, model['k'])
     return {'exp': round(mean, 1), 'line': line, 'side': side, 'p': round(p, 3)}
+
+
+def odds_calls(m):
+    c = G.calls(m)
+    if not c:
+        return None, None
+    return ({'side': c['goals'][0], 'p': round(c['goals'][1], 3)}, {'side': c['btts'][0], 'p': round(c['btts'][1], 3)})
 
 
 def started(day, entry, now):
@@ -95,19 +105,22 @@ def main():
     today = now.date()
     cur = fd.season_code(today)
     prev = fd.season_code(date(today.year - 1 if today.month >= 7 else today.year - 2, 9, 1))
-    model = load_model()
-    print(f'model: {"loaded" if model else "missing (corners left out)"}')
+    models = load_model() or {}
+    if 'beta_home' in models:  # an older corners-only model file
+        models = {'corners': models}
+    print('models:', ', '.join(models) or 'none (corners and cards left out)')
 
     hist = []
     for code, c in ((prev, cache), (cur, None)):
         for div in fd.LEAGUES:
             hist += [(m, code) for m in fd.season(div, code, c)]
     hist.sort(key=lambda x: (x[0]['date'], x[0]['time'], x[0]['div']))
-    tr = C.Tracker()
+    trackers = {s: S.Tracker(s) for s in S.STATS}
     results = {}
     for m, code in hist:
-        if fd.played(m):
+        for tr in trackers.values():
             tr.update(m, code)
+        if fd.played(m):
             results[(m['date'], m['home'], m['away'])] = m
     print(f'{len(results)} played matches read ({prev} and {cur})')
 
@@ -124,6 +137,8 @@ def main():
             if m and 'ft' not in e:
                 e['ft'] = [int(m['hg']), int(m['ag'])]
                 e['cn'] = int(m['hc'] + m['ac'])
+                if m.get('hy') is not None and m.get('ay') is not None:
+                    e['yc'] = int(m['hy'] + m['ay'])
                 changed = True
                 settled += 1
         if changed:
@@ -143,8 +158,11 @@ def main():
             key = (m['home'], m['away'])
             if key in keep and started(day, keep[key], now):
                 continue  # kicked off: the pick stays as it was
+            goals, btts = odds_calls(m)
             keep[key] = {'time': m['time'], 'div': m['div'], 'league': fd.LEAGUES[m['div']], 'home': m['home'],
-                         'away': m['away'], 'pick': result_pick(m), 'corners': corner_call(tr, m, model)}
+                         'away': m['away'], 'pick': result_pick(m), 'goals': goals, 'btts': btts,
+                         'corners': count_call(trackers['corners'], m, models.get('corners')),
+                         'cards': count_call(trackers['cards'], m, models.get('cards'))}
         doc['matches'] = list(keep.values())
         doc['updated'] = stamp
         doc['double'] = choose_double(doc, day, now)

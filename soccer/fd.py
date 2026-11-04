@@ -97,6 +97,8 @@ def row(r, div=None):
         'home': r['HomeTeam'].strip(), 'away': r['AwayTeam'].strip(),
         'hg': num(r.get('FTHG')), 'ag': num(r.get('FTAG')),
         'hc': num(r.get('HC')), 'ac': num(r.get('AC')), 'hs': num(r.get('HS')), 'as': num(r.get('AS')),
+        'hy': num(r.get('HY')), 'ay': num(r.get('AY')), 'hf': num(r.get('HF')), 'af': num(r.get('AF')),
+        'ref': (r.get('Referee') or '').strip() or None,
         'oh': odds('AvgH', 'BbAvH', 'B365H'), 'od': odds('AvgD', 'BbAvD', 'B365D'), 'oa': odds('AvgA', 'BbAvA', 'B365A'),
         'over': odds('Avg>2.5', 'BbAv>2.5', 'B365>2.5'), 'under': odds('Avg<2.5', 'BbAv<2.5', 'B365<2.5'),
     }

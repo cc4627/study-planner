@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Soccer Picks</title>
-<meta name="description" content="Each day's matches: the favourite, a corners over/under call and the day's corner double.">
+<meta name="description" content="Each day's matches: the favourite, goals, both to score, corners and yellow cards, and the day's corner double.">
 <meta name="theme-color" content="#D9EAFB">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,7 +96,7 @@ h1{margin:6px 0 0;font:clamp(26px,6vw,38px)/1.05 var(--font);text-wrap:balance}
 .teams i{font-style:normal;color:var(--muted)}
 .score{font:15px/1 var(--font);font-variant-numeric:tabular-nums;padding:4px 8px;border-radius:7px;border:2px solid var(--k);background:var(--surface)}
 .m ul{margin:0;padding:0;list-style:none;display:grid;gap:3px}
-.m li{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:6px;align-items:center;font:15px/1.3 var(--font)}
+.m li{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:6px;align-items:center;font:15px/1.3 var(--font)}
 .m li > i{font:11px/1 var(--font);font-style:normal;text-transform:uppercase;color:var(--muted)}
 .m li small{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
 .badge{font:12px/1 var(--font);font-style:normal;padding:3px 7px;border-radius:999px;border:2px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -139,8 +139,9 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
 
   <section class="list" id="list" aria-label="Matches"></section>
 
-  <p class="foot">Result: the bookmakers' favourite, from the average odds with their margin taken out. Corners: a model of each side's recent
-    corners and shots and the match odds, fitted on 2021–24 and tested on later seasons. <b>Fair</b> = 1 ÷ chance: a bet is only
+  <p class="foot">Result: the bookmakers' favourite, from the average odds with their margin taken out. Goals and both to score: from the match odds.
+    Corners and yellow cards: models of each side's recent corners and shots, cards and fouls, the referee and the match odds,
+    fitted on 2021–24 and tested on later seasons. <b>Fair</b> = 1 ÷ chance: a bet is only
     worth it at a bigger price than that. Fixtures and results from football-data.co.uk; results can take a day or two to appear.
     A guide, not a tip; no bets are placed.
     Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
@@ -182,6 +183,22 @@ function cornerHit(m){
   if(m.cn==null||!m.corners)return null;
   return m.corners.side==='over'?m.cn>m.corners.line:m.cn<m.corners.line;
 }
+function cardHit(m){
+  if(m.yc==null||!m.cards)return null;
+  return m.cards.side==='over'?m.yc>m.cards.line:m.yc<m.cards.line;
+}
+function goalsHit(m){
+  if(!m.ft||!m.goals)return null;
+  var over=m.ft[0]+m.ft[1]>2.5;return m.goals.side==='over'?over:!over;
+}
+function bttsHit(m){
+  if(!m.ft||!m.btts)return null;
+  var both=m.ft[0]>0&&m.ft[1]>0;return m.btts.side==='yes'?both:!both;
+}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+function row(label,text,p,hit,shown){
+  return '<li><i>'+label+'</i><span>'+text+' <small>'+pct(p)+' · fair '+fair(p)+'</small></span>'+badge(hit,shown)+'</li>';
+}
 function pickName(m){
   if(!m.pick)return '';
   return m.pick.side==='H'?m.home:m.pick.side==='A'?m.away:'Draw';
@@ -213,13 +230,14 @@ function render(){
   var colourOf=function(l){return 'var(--c'+(leagues.indexOf(l)%8+1)+')';};
   if(league&&!counts[league])league=null;
 
-  var rp=ms.map(pickHit).filter(function(x){return x!=null;});
-  var cc=ms.map(cornerHit).filter(function(x){return x!=null;});
-  var right=function(a){return a.filter(Boolean).length+' of '+a.length;};
+  var tally=function(fn){return ms.map(fn).filter(function(x){return x!=null;});};
+  var right=function(a){return a.filter(Boolean).length+'/'+a.length;};
+  var parts=[['favourite',tally(pickHit)],['goals',tally(goalsHit)],['both score',tally(bttsHit)],['corners',tally(cornerHit)],['cards',tally(cardHit)]]
+    .filter(function(x){return x[1].length;}).map(function(x){return x[0]+' '+right(x[1]);});
   var up=day.updated?new Date(day.updated):null;
-  $('#stat').textContent=ms.length+' match'+(ms.length===1?'':'es')+
-    (rp.length?' · favourite won '+right(rp):'')+(cc.length?' · corner calls right '+right(cc):'')+
-    (!rp.length&&!cc.length&&up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):'');
+  $('#stat').innerHTML=esc(ms.length+' match'+(ms.length===1?'':'es')+
+    (!parts.length&&up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''))+
+    (parts.length?'<br>Calls right: '+esc(parts.join(' · ')):'');
 
   renderDouble(ms);
 
@@ -238,7 +256,10 @@ function render(){
       '<div class="teams"><span>'+esc(m.home)+' <i>v</i> '+esc(m.away)+'</span>'+(m.ft?'<span class="score">'+m.ft[0]+'–'+m.ft[1]+'</span>':'')+'</div>'+
       '<ul>'+
         (m.pick?'<li><i>Result</i><span>'+esc(pickName(m))+' <small>'+pct(m.pick.p)+'</small></span>'+badge(pickHit(m),'')+'</li>':'')+
-        (c?'<li><i>Corners</i><span>'+cornerText(c)+' <small>'+pct(c.p)+' · fair '+fair(c.p)+'</small></span>'+badge(cornerHit(m),m.cn!=null?String(m.cn):'')+'</li>':'')+
+        (m.goals?row('Goals',cap(m.goals.side)+' 2.5',m.goals.p,goalsHit(m),m.ft?String(m.ft[0]+m.ft[1]):''):'')+
+        (m.btts?row('Both score',cap(m.btts.side),m.btts.p,bttsHit(m),''):'')+
+        (c?row('Corners',cornerText(c),c.p,cornerHit(m),m.cn!=null?String(m.cn):''):'')+
+        (m.cards?row('Cards',cornerText(m.cards)+' yellow',m.cards.p,cardHit(m),m.yc!=null?String(m.yc):''):'')+
       '</ul></article>';
   }).join('');
 }
