@@ -179,9 +179,18 @@ function render(){
   if(course&&!counts[course])course=null;
   var up=day.updated?new Date(day.updated):null;
   var run=day.races.filter(function(r){return r.pos&&r.pos.length;});
-  var won=run.filter(function(r){return r.pos[0]===1;}).length;
-  $('#stat').textContent=day.races.length+' races · '+courses.length+' meeting'+(courses.length===1?'':'s')+
-    (run.length?' · top pick won '+won+' of '+run.length:(up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''));
+  /* Top pick: races where it ran. Tricast: races of 8+ runners with all three picks running, landing when the
+     three picks fill the first three places (any order), or exactly as predicted. */
+  var ran=run.filter(function(r){return r.pos[0]!=='NR';});
+  var won=ran.filter(function(r){return r.pos[0]===1;}).length;
+  var placed=ran.filter(function(r){return typeof r.pos[0]==='number'&&r.pos[0]<=3;}).length;
+  var tri=run.filter(function(r){return (r.field||0)>=8&&r.pos.length>=3&&r.pos.slice(0,3).indexOf('NR')<0;});
+  var triAny=tri.filter(function(r){return r.pos.slice(0,3).every(function(x){return typeof x==='number'&&x<=3;});}).length;
+  var triExact=tri.filter(function(r){return r.pos[0]===1&&r.pos[1]===2&&r.pos[2]===3;}).length;
+  $('#stat').innerHTML=esc(day.races.length+' races · '+courses.length+' meeting'+(courses.length===1?'':'s')+
+    (!run.length&&up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''))+
+    (ran.length?'<br>Top pick won '+won+' of '+ran.length+' · top pick 1st–3rd '+placed+' of '+ran.length+
+      (tri.length?'<br>8+ runner tricasts: '+triAny+' of '+tri.length+' in any order, '+triExact+' in exact order':''):'');
 
   $('#tray').hidden=courses.length<2;
   $('#chips').innerHTML='<button class="chip all" type="button" data-c="" aria-pressed="'+(!course)+'">All <em>'+day.races.length+'</em></button>'+
