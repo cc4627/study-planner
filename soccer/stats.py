@@ -45,6 +45,7 @@ class Tracker:
         self.league = {}
         self.team = {}
         self.refs = {}
+        self.div_of = {}  # each side's league, for European matches between leagues
 
     def league_avg(self, div):
         L = self.league.get(div)
@@ -75,6 +76,23 @@ class Tracker:
         fa = [1.0, math.log(r(a, 'f')), math.log(r(h, 'a')), math.log(r(a, 'xf', 'wx')), math.log(r(h, 'xa', 'wx')), -sup, -abs(sup), goals, ref]
         return fh, fa, L['h'], L['a']
 
+    def features_cross(self, m):
+        """Features for a match between sides from different leagues (a European tie): each side's expected count
+        starts from its own league's average for that venue. A side not in the domestic files gets the average
+        of all the leagues."""
+        avgs = [a for a in (self.league_avg(d) for d in self.league) if a]
+        if not avgs:
+            return None
+        mean = lambda key: sum(a[key] for a in avgs) / len(avgs)
+        lh = self.league_avg(self.div_of.get(m['home'], ''))
+        la = self.league_avg(self.div_of.get(m['away'], ''))
+        h, a = m['home'], m['away']
+        sup, goals = market(m)
+        r = self._ratio
+        fh = [1.0, math.log(r(h, 'f')), math.log(r(a, 'a')), math.log(r(h, 'xf', 'wx')), math.log(r(a, 'xa', 'wx')), sup, -abs(sup), goals, 0.0]
+        fa = [1.0, math.log(r(a, 'f')), math.log(r(h, 'a')), math.log(r(a, 'xf', 'wx')), math.log(r(h, 'xa', 'wx')), -sup, -abs(sup), goals, 0.0]
+        return fh, fa, (lh or {}).get('h') or mean('h'), (la or {}).get('a') or mean('a')
+
     def _side(self, team, season):
         t = self.team.get(team)
         if t is None:
@@ -91,6 +109,7 @@ class Tracker:
         hv, av = m.get(k['h']), m.get(k['a'])
         if hv is None or av is None:
             return
+        self.div_of[m['home']] = self.div_of[m['away']] = m['div']
         hx, ax = m.get(k['xh']), m.get(k['xa'])
         L = self.league.setdefault(m['div'], dict(w=0.0, h=0.0, a=0.0, wx=0.0, xh=0.0, xa=0.0))
         avg = self.league_avg(m['div'])
