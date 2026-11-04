@@ -1,0 +1,76 @@
+date,time,course,winner,top1,top1_sp,top1_ret,top3_hit,rule,rule_sp,rule_ret
+2026-10-30,13:15,Newmarket,Fiorella Princess,Fenlander,4.333,-1.0,0,,,
+2026-10-30,13:20,Wetherby,Florida Dreams,Le Beau Madrik,1.182,-1.0,1,,,
+2026-10-30,13:30,Down Royal,Lost Features,The Ducks Walk,9.5,-1.0,0,Mister Vic,19.0,-1.0
+2026-10-30,13:37,Uttoxeter,Merry Wood,Merry Wood,2.0,1.0,1,,,
+2026-10-30,13:45,Newmarket,Siena Storm,Siena Storm,2.375,1.375,1,,,
+2026-10-30,13:50,Wetherby,Nate Of Spades,Nate Of Spades,2.0,1.0,1,,,
+2026-10-30,14:00,Down Royal,Ash Hobbs,Ash Hobbs,5.0,4.0,1,,,
+2026-10-30,14:10,Uttoxeter,Las Canals,Kosasiempre,6.0,-1.0,0,Fine Thing,51.0,-1.0
+2026-10-30,14:20,Newmarket,Aegean Prince,Aegean Prince,1.909,0.909,1,,,
+2026-10-30,14:25,Wetherby,Washington,Service Minimum,5.0,-1.0,0,Spot On Soph,7.0,-1.0
+2026-10-30,14:35,Down Royal,Heads Up,Mange Tout,,,0,,,
+2026-10-30,14:45,Uttoxeter,Nevershedatear,Kally Des Bruyeres,4.5,-1.0,0,,,
+2026-10-30,14:55,Newmarket,Devil's Brigade,Sail On Sailor,11.0,-1.0,0,,,
+2026-10-30,15:00,Wetherby,Charles Darnay,Charles Darnay,3.75,2.75,1,,,
+2026-10-30,15:10,Down Royal,Claude,Farrokh,5.5,-1.0,0,,,
+2026-10-30,15:20,Uttoxeter,Chico Magnifica,Chico Magnifica,1.909,0.909,1,Keep Under Wraps,41.0,-1.0
+2026-10-30,15:30,Newmarket,Venetian Storm,Carbine Country,2.1,-1.0,1,,,
+2026-10-30,15:35,Wetherby,Crebilly,Kingston Narcissus,2.375,-1.0,1,,,
+2026-10-30,15:45,Down Royal,Matin Midi Et Soir,Ballyfad,,,1,,,
+2026-10-30,15:55,Uttoxeter,Hello Charlie,Lou Prince,1.667,-1.0,1,,,
+2026-10-30,16:05,Newmarket,Church Wedding,Amused,5.0,-1.0,0,,,
+2026-10-30,16:10,Wetherby,Lillistar,Noonetellsmenothin,4.333,-1.0,0,Bright Legend,3.75,-1.0
+2026-10-30,16:15,Newcastle,Golspie,Alembic,3.5,-1.0,1,,,
+2026-10-30,16:20,Down Royal,Premier Division,Premier Division,1.444,0.444,1,,,
+2026-10-30,16:45,Newcastle,Petula,Keogie,6.5,-1.0,0,,,
+2026-10-30,17:15,Newcastle,Lady Caroline Lamb,Pequenita,2.625,-1.0,0,,,
+2026-10-30,17:30,Dundalk,Southern Boulevard,Southern Boulevard,1.833,0.833,1,,,
+2026-10-30,17:45,Newcastle,Tactical Blitz,Ennoble,4.0,-1.0,0,,,
+2026-10-30,18:00,Dundalk,Jordan Breeze,One Cool Bear,6.0,-1.0,1,,,
+2026-10-30,18:15,Newcastle,Elyam,Elyam,2.875,1.875,1,,,
+2026-10-30,18:30,Dundalk,City House,Mehman,5.0,-1.0,0,,,
+2026-10-30,18:45,Newcastle,Camino Del Ray,Poppeye,,,0,,,
+2026-10-30,19:00,Dundalk,Wearing Stars,Wearing Stars,3.25,2.25,1,,,
+2026-10-30,19:15,Newcastle,Sugar Baby,Massimo Blue,2.75,-1.0,0,,,
+2026-10-30,19:30,Dundalk,Son Of Beauty,Suir Monad,5.0,-1.0,0,,,
+2026-10-30,19:45,Newcastle,Concert Boy,Yaajooz,4.0,-1.0,0,,,
+2026-10-30,20:00,Dundalk,Go Out,Go Out,4.0,3.0,1,,,
+2026-10-30,20:20,Newcastle,Cavallo Pazzo,Cavallo Pazzo,3.125,2.125,1,,,
+2026-10-30,20:30,Dundalk,Not Just Any Eagle,Serenity Blue,2.625,-1.0,1,,,
+2026-11-03,12:00,Fairyhouse,Look Sport,Speculateur,5.5,-1.0,0,,,
+2026-11-03,12:18,Warwick,Un Sens A La Vie,Loriko,3.0,-1.0,1,,,
+2026-11-03,12:35,Fairyhouse,Ceroc,Schiehallion,6.0,-1.0,1,,,
+2026-11-03,12:44,Sedgefield,Jeteye,Jeteye,2.0,1.0,1,,,
+2026-11-03,12:53,Warwick,Thisonesforyou,Changing Lanes,2.625,-1.0,0,,,
+2026-11-03,13:02,Lingfield,Moves Like Gold,Burk Flight,2.75,-1.0,0,,,
+2026-11-03,13:10,Fairyhouse,Espritroyale,Sir Benji,2.875,-1.0,1,,,
+2026-11-03,13:19,Sedgefield,Jambearee,Moment Of Light,1.222,-1.0,1,,,
+2026-11-03,13:28,Warwick,Trigg,Trigg,1.833,0.833,1,,,
+2026-11-03,13:37,Lingfield,The Perfect Poet,The Perfect Poet,1.8,0.8,1,,,
+2026-11-03,13:45,Fairyhouse,Bud Fox,Bon Bon Fizz,2.75,-1.0,0,,,
+2026-11-03,13:54,Sedgefield,Roxy Russet,Roxy Russet,2.25,1.25,1,,,
+2026-11-03,14:03,Warwick,Woodstock City,Lucy The Wire,3.75,-1.0,1,A Good Yomp,12.0,-1.0
+2026-11-03,14:12,Lingfield,Chosen Hero,Everest,8.0,-1.0,0,Everest,8.0,-1.0
+2026-11-03,14:20,Fairyhouse,Quinta Do Lago,Quinta Do Lago,2.75,1.75,1,,,
+2026-11-03,14:29,Sedgefield,Applejack Poet,Treaty Boy,4.0,-1.0,1,,,
+2026-11-03,14:38,Warwick,Court In A Storm,Playful Fox,2.5,-1.0,1,,,
+2026-11-03,14:47,Lingfield,Superstylin,Anariza,6.0,-1.0,0,,,
+2026-11-03,14:55,Fairyhouse,My Good Pal,Another Challenge,3.25,-1.0,0,Kayla's Friend,51.0,-1.0
+2026-11-03,15:04,Sedgefield,Character Testing,Cadillac Ranch,5.0,-1.0,1,Character Testing,4.333,3.333
+2026-11-03,15:13,Warwick,I Love You Sivola,Bahtiyar,3.5,-1.0,1,,,
+2026-11-03,15:22,Lingfield,Cooler Than Me,Market House,5.5,-1.0,1,Cooler Than Me,3.5,2.5
+2026-11-03,15:30,Fairyhouse,King Of The Greys,Goin',5.5,-1.0,1,Dusky Night,10.0,-1.0
+2026-11-03,15:39,Sedgefield,Luckie Devil,Curious Mrs Fox,4.333,-1.0,0,Rock Armour,29.0,-1.0
+2026-11-03,15:48,Warwick,Ballymoreen,Ballymoreen,4.0,3.0,1,Kentucky River,7.5,-1.0
+2026-11-03,15:57,Lingfield,Onewayortother,Onewayortother,8.5,7.5,1,,,
+2026-11-03,16:04,Fairyhouse,Mickey Cohen,Moonshine Girl,8.0,-1.0,0,Mickey Cohen,8.5,7.5
+2026-11-03,16:30,Wolverhampton,Mini Mac,Mini Mac,1.727,0.727,1,,,
+2026-11-03,17:00,Wolverhampton,Oppenheimer,Oppenheimer,1.4,0.4,1,,,
+2026-11-03,17:30,Wolverhampton,Wabil,Amandari,3.0,-1.0,0,,,
+2026-11-03,18:00,Wolverhampton,Red Blue Point,Red Blue Point,1.364,0.364,1,,,
+2026-11-03,18:30,Wolverhampton,Honour Your Dreams,Sam's Xpress,2.375,-1.0,0,,,
+2026-11-03,19:00,Wolverhampton,Um Wadi,Rogue Citation,6.0,-1.0,0,,,
+2026-11-03,19:30,Wolverhampton,Woodstock,Lipsink,23.0,-1.0,1,,,
+2026-11-03,20:00,Wolverhampton,Saxophonic,Saxophonic,2.75,1.75,1,,,
+2026-11-03,20:30,Wolverhampton,Barachiel,Caraway,4.0,-1.0,1,,,
