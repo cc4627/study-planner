@@ -66,11 +66,15 @@ def rule_pick():
 
 
 def merge_write(path, key, items, extra):
-    """Write items to a day file, keeping entries from an earlier run today that this run couldn't read."""
+    """Write items to a day file, keeping entries from an earlier run today that this run couldn't read (and the
+    day's double)."""
     if os.path.exists(path):
         with open(path, encoding='utf-8') as f:
-            seen = {key(r) for r in items}
-            items += [r for r in json.load(f).get('races', []) if key(r) not in seen]
+            prev = json.load(f)
+        seen = {key(r) for r in items}
+        items += [r for r in prev.get('races', []) if key(r) not in seen]
+        if prev.get('double'):
+            extra = dict(extra, double=prev['double'])
     items.sort(key=lambda r: (r['time'], r['course']))
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(dict(extra, races=items), f, indent=1, ensure_ascii=False)
@@ -109,7 +113,9 @@ def build(day, now):
             continue
         order = sorted(range(len(rs)), key=lambda i: -p[i])
         picks = [rs[i]['name'] for i in order[:3]]
-        races.append({'time': r['time'], 'course': r['course'], 'country': r['country'], 'picks': picks})
+        chance = p[order[0]] / sum(p) if sum(p) else None  # the top pick's win chance, for choosing the day's double
+        races.append({'time': r['time'], 'course': r['course'], 'country': r['country'], 'picks': picks,
+                      'p': round(chance, 3) if chance else None})
         track.append({'time': r['time'], 'course': r['course'], 'path': path, 'picks': picks, 'rule': rule(r)})
 
     if sl.SEEN_OTHER:
@@ -122,9 +128,25 @@ def build(day, now):
     stamp = {'date': str(day), 'updated': datetime.now(timezone.utc).isoformat(timespec='seconds')}
     key = lambda r: (r['time'], r['course'])
     merge_write(os.path.join(HERE, f'{day}.json'), key, races, stamp)
+    set_double(os.path.join(HERE, f'{day}.json'), now)
     os.makedirs(TRACK, exist_ok=True)
     merge_write(os.path.join(TRACK, f'{day}.json'), key, track, stamp)
     print(f'{day}: {len(races)} races')
+
+
+def set_double(path, now):
+    """The day's double: the two top picks with the best win chances, kept as they were once either race is off."""
+    with open(path, encoding='utf-8') as f:
+        doc = json.load(f)
+    clock = now.strftime('%H:%M')
+    old = doc.get('double')
+    if not (old and any(t <= clock for t, _ in old['legs'])):
+        cand = [r for r in doc['races'] if r.get('p') and r['time'] > clock]
+        if len(cand) >= 2:
+            a, b = sorted(cand, key=lambda r: -r['p'])[:2]
+            doc['double'] = {'legs': [[a['time'], a['course']], [b['time'], b['course']]], 'p': round(a['p'] * b['p'], 3)}
+            with open(path, 'w', encoding='utf-8') as f:
+                json.dump(doc, f, indent=1, ensure_ascii=False)
 
 
 def write_index():

@@ -134,7 +134,9 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
     </div>
   </header>
 
-    <section class="tray" id="tray" aria-label="Tournaments" hidden>
+    <section class="dbl" id="dbl" aria-label="Daily double" hidden></section>
+
+  <section class="tray" id="tray" aria-label="Tournaments" hidden>
     <span class="hint">Tap a tournament to show only its matches</span>
     <div class="chips" id="chips"></div>
   </section>
@@ -185,7 +187,7 @@ function render(){
 
   var box=$('#list');
   if(!day||!day.matches||!day.matches.length){
-    $('#tray').hidden=true;$('#stat').textContent='';
+    $('#tray').hidden=true;$('#dbl').hidden=true;$('#stat').textContent='';
     box.innerHTML='<div class="empty" style="grid-column:1/-1"><b>'+(dates.length?'No matches on this day':'No picks yet')+'</b>'+
       (dates.length?'Use the arrows to see another day.':'Picks appear here once the day\'s order of play is out.')+'</div>';
     return;
@@ -201,6 +203,7 @@ function render(){
   $('#stat').textContent=ms.length+' match'+(ms.length===1?'':'es')+
     (done.length?' · pick won '+done.filter(Boolean).length+' of '+done.length:(up?' · updated '+up.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''));
 
+  renderDouble(ms);
   $('#tray').hidden=evs.length<2;
   $('#chips').innerHTML='<button class="chip all" type="button" data-l="" aria-pressed="'+(!ev)+'">All <em>'+ms.length+'</em></button>'+
     evs.map(function(l){return '<button class="chip" type="button" data-l="'+esc(l)+'" style="--k:'+colourOf(l)+'" aria-pressed="'+(ev===l)+'">'+esc(l)+' <em>'+counts[l]+'</em></button>';}).join('');
@@ -222,6 +225,24 @@ function render(){
       row(1)+row(2)+(m.score?'<div class="pl"><small>'+esc(m.score)+'</small></div>':'')+
     '</article>';
   }).join('');
+}
+
+/* The day's two most confident picks from two matches. The free feed has no odds, so only the chance and
+   fair price are shown, not a € result. */
+function renderDouble(ms){
+  var d=day.double,box=$('#dbl');
+  var legs=d&&d.legs?d.legs.map(function(id){return ms.filter(function(m){return m.id===id;})[0];}).filter(Boolean):[];
+  if(legs.length<2){box.hidden=true;return;}
+  var hits=legs.map(hit);
+  var res=hits.indexOf(false)>=0?'Lost':hits[0]&&hits[1]?'Landed':null;
+  box.hidden=false;
+  box.innerHTML='<h2>Daily double</h2><ol>'+legs.map(function(m,j){
+    return '<li><div><b>'+esc(m.pick===1?m.p1:m.p2)+' to win · '+pct(m.p)+'</b>'+
+      '<span>'+esc(m.time)+' v '+esc(m.pick===1?m.p2:m.p1)+' · '+esc(m.tour+' '+m.event)+'</span></div>'+
+      (hits[j]==null?'':'<em class="badge'+(hits[j]?' ok':'')+'">'+(hits[j]?'✓':'✗')+'</em>')+'</li>';
+  }).join('')+'</ol>'+
+  '<div class="sum">Both win: '+pct(d.p)+' · fair price '+fair(d.p)+(res?' · <b>'+res+'</b>':'')+
+  '<br><small>No odds in the free scores feed, so no € result: worth backing only if your bookmaker pays more than '+fair(d.p)+'.</small></div>';
 }
 
 function show(k){
