@@ -1,0 +1,43 @@
+name: Soccer backtest
+
+# Fits the corners model on 2021/22-2023/24 and tests it once on 2024/25 onwards, using football-data.co.uk's
+# free season files (past seasons kept in the Actions cache), then commits soccer/BACKTEST.md and
+# soccer/model.json. Paper only.
+on:
+  push:
+    paths: ['soccer/backtest.py', 'soccer/corners.py', '.github/workflows/soccer-backtest.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: soccer-data
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:  # the branch tip, so a run queued behind another sees its push
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy
+      - id: season
+        run: echo "code=$(python -c "import sys; sys.path.insert(0,'soccer'); import fd; print(fd.season_code(fd.today_uk()))")" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        with:
+          path: soccer/.cache
+          key: fd-past-v1-${{ steps.season.outputs.code }}
+      - name: Backtest
+        run: |
+          rm -f soccer/.cache/mmz4281_${{ steps.season.outputs.code }}_*  # the current season changes: fetch it fresh
+          python soccer/backtest.py soccer/.cache --out soccer/BACKTEST.md --model soccer/model.json
+      - name: Commit report and model
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add soccer/BACKTEST.md soccer/model.json
+          git diff --cached --quiet || (git commit -m "Update soccer corners backtest" && git pull --rebase && git push)
