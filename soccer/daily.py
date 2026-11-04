@@ -5,7 +5,8 @@ Usage: python daily.py [CACHE_DIR]   (CACHE_DIR keeps last season's files betwee
 For each match in football-data.co.uk's fixtures: the bookmakers' favourite and its chance (from the average
 odds, margin removed); goals over/under 2.5 and both teams to score (from the odds); and the corners and
 yellow-cards calls: the expected count and the likelier side of the league's usual line, with its chance.
-Each day's two most confident corner calls make the corner double; the two most confident calls with real
+Champions, Europa and Conference League ties come from ESPN's free feed (soccer/europe.py), each side's corners
+and cards starting from its own league. Each day's two most confident corner calls make the corner double; the two most confident calls with real
 odds (result or goals, from two matches) make the daily double; and each match's favourite with its goals
 call makes a match double. Once a match is played, its score, total corners and total yellow cards are added. Writes soccer/picks/YYYY-MM-DD.json and picks/index.json.
 Paper only; no bets are placed.
@@ -18,6 +19,7 @@ from zoneinfo import ZoneInfo
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+import europe  # noqa: E402
 import fd  # noqa: E402
 import goals as G  # noqa: E402
 import stats as S  # noqa: E402
@@ -27,6 +29,7 @@ PICKS = os.path.join(HERE, 'picks')
 MODEL = os.path.join(HERE, 'model.json')
 KEEP_DAYS = 60
 SETTLE_DAYS = 21
+EURO_AHEAD = 3  # days of Champions, Europa and Conference League fixtures to pick ahead
 
 
 def load_model():
@@ -47,14 +50,18 @@ def result_pick(m):
     return {'side': 'HDA'[i], 'p': round(p[i], 3), 'odds': (m['oh'], m['od'], m['oa'])[i]}
 
 
-def count_call(tr, m, model):
-    """Expected corners or cards, the league's usual line, and the likelier side with its chance."""
-    f = tr.features(m)
+def count_call(tr, m, model, cross=False):
+    """Expected corners or cards, the league's usual line, and the likelier side with its chance. A European tie
+    (cross=True) starts each side from its own league and uses the line nearest the two leagues' average."""
+    f = tr.features_cross(m) if cross else tr.features(m)
     if not f or not model:
         return None
     mean = sum(S.expected(f, model))
-    line = model['lines'].get(m['div'])
-    if line is None:
+    line = None if cross else model['lines'].get(m['div'])
+    if cross:
+        totals = [model['avg_total'][d] for d in (tr.div_of.get(m['home']), tr.div_of.get(m['away'])) if d in model.get('avg_total', {})]
+        line = S.main_line(sum(totals) / len(totals) if totals else f[2] + f[3])
+    elif line is None:
         avg = tr.league_avg(m['div'])
         line = S.main_line(avg['h'] + avg['a'])
     side, p = S.call(mean, line, model['k'])
@@ -64,6 +71,8 @@ def count_call(tr, m, model):
 def odds_calls(m, pick):
     """Goals over/under 2.5 and both-to-score calls, and the match double: the favourite with the goals call,
     its chance from the score grid (the two are linked) and the two average prices multiplied."""
+    if not (m.get('over') and m.get('under')):
+        return None, None, None  # without the goals market the goal rates would rest on a guess
     c = G.calls(m)
     if not c:
         return None, None, None
@@ -177,8 +186,39 @@ def main():
             write(day, doc)
     print(f'settled {settled} matches')
 
+    # European ties: settle from ESPN, then pick the coming ones
+    known = set(trackers['corners'].div_of) | set(trackers['cards'].div_of)
+    euro_settled = 0
+    for k in range(3, -1, -1):
+        day = today - timedelta(days=k)
+        doc = read(day)
+        open_euro = doc and any(e['div'] in ('UCL', 'UEL', 'UECL') and 'ft' not in e for e in doc['matches'])
+        if not open_euro:
+            continue
+        played_ = {(m['home'], m['away']): m for m in europe.matches(day) if m['hg'] is not None}
+        for e in doc['matches']:
+            m = played_.get((e['home'], e['away']))
+            if m and 'ft' not in e:
+                e['ft'] = [int(m['hg']), int(m['ag'])]
+                if m['hc'] is not None and m['ac'] is not None:
+                    e['cn'] = int(m['hc'] + m['ac'])
+                if m['hy'] is not None and m['ay'] is not None:
+                    e['yc'] = int(m['hy'] + m['ay'])
+                euro_settled += 1
+        write(day, doc)
+    euro = []
+    for k in range(EURO_AHEAD + 1):
+        for m in europe.matches(today + timedelta(days=k)):
+            if m['state'] != 'pre':
+                continue
+            look = dict(m, home=europe.to_fd(m['home'], known) or m['home'], away=europe.to_fd(m['away'], known) or m['away'])
+            m['_look'] = look
+            euro.append(m)
+    unmatched = sorted({t for m in euro for t, f in ((m['home'], m['_look']['home']), (m['away'], m['_look']['away'])) if t == f and t not in known})
+    print(f'European: {euro_settled} settled, {len(euro)} coming; not in the domestic files: {", ".join(unmatched) or "none"}')
+
     # Picks for the coming matches
-    fx = [m for m in fd.fixtures() if m['date'] >= today]
+    fx = [m for m in fd.fixtures() if m['date'] >= today] + euro
     by_day = {}
     for m in fx:
         by_day.setdefault(m['date'], []).append(m)
@@ -192,10 +232,12 @@ def main():
                 continue  # kicked off: the pick stays as it was
             pick = result_pick(m)
             goals, btts, combo = odds_calls(m, pick)
-            keep[key] = {'time': m['time'], 'div': m['div'], 'league': fd.LEAGUES[m['div']], 'home': m['home'],
+            cross = '_look' in m
+            look = m.get('_look', m)
+            keep[key] = {'time': m['time'], 'div': m['div'], 'league': m.get('league') or fd.LEAGUES[m['div']], 'home': m['home'],
                          'away': m['away'], 'pick': pick, 'goals': goals, 'btts': btts, 'combo': combo,
-                         'corners': count_call(trackers['corners'], m, models.get('corners')),
-                         'cards': count_call(trackers['cards'], m, models.get('cards'))}
+                         'corners': count_call(trackers['corners'], look, models.get('corners'), cross),
+                         'cards': count_call(trackers['cards'], look, models.get('cards'), cross)}
         doc['matches'] = list(keep.values())
         doc['updated'] = stamp
         doc['double'] = choose_double(doc, day, now)
