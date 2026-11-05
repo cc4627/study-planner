@@ -28,18 +28,18 @@ Log loss 0.6404 (a coin toss scores 0.6931; lower is better).
 
 ## First set, total games and the match acca
 
-From one game-by-game model per match (tennis/games.py), its hold rates tuned to the games in even matches before 2025-07-01 (ATP 0.500, WTA 0.500). 13436 test matches played out in full (no retirements or walkovers).
+From one game-by-game model per match (tennis/games.py), its hold rates tuned to the games in even matches before 2025-07-01 (ATP 0.790, WTA 0.650). 13436 test matches played out in full (no retirements or walkovers).
 
 | Call | Model expected | Came in | Price needed to break even |
 |---|---|---|---|
 | Pick wins the first set | 61.1% | 60.0% | 1.67 |
-| Total games over/under | 57.7% | 48.3% | 2.07 |
-| Match acca (all three) | 24.5% | 20.4% | 4.90 |
+| Total games over/under | 54.1% | 50.6% | 1.98 |
+| Match acca (all three) | 26.7% | 25.6% | 3.91 |
 
 | Games call given | Calls | Came in |
 |---|---|---|
-| 50%-55% | 3701 | 48.9% |
-| 55%-60% | 4674 | 48.1% |
-| 60%-65% | 4895 | 47.3% |
-| 65%-70% | 89 | 64.0% |
-| 70%-100% | 77 | 74.0% |
+| 50%-55% | 10856 | 49.2% |
+| 55%-60% | 1777 | 53.7% |
+| 60%-65% | 444 | 62.6% |
+| 65%-70% | 224 | 56.7% |
+| 70%-100% | 135 | 74.8% |
