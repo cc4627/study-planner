@@ -15,6 +15,7 @@ from datetime import date
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import elo as E  # noqa: E402
 import espn  # noqa: E402
+import games as G  # noqa: E402
 
 START = date(2024, 1, 1)
 TEST_FROM = '2025-07-01'
@@ -27,13 +28,33 @@ def main():
     hist = espn.history(START, date.today(), cache)
     rating = E.Elo()
     res = []
+    close = {'ATP': [], 'WTA': []}
+    tuned = False
     for m in hist:
         a, b = m['p1']['id'], m['p2']['id']
         if m['start'] >= TEST_FROM:
+            if not tuned:  # tune the games model on the months before the test, once
+                for tour, gs in close.items():
+                    if len(gs) >= 100:
+                        G.calibrate(sum(gs) / len(gs), tour)
+                tuned = True
             p1 = rating.p(a, b, E.bo5(m))
             pick, p = (1, p1) if p1 >= 0.5 else (2, 1 - p1)
-            res.append(dict(m=m, p=p, hit=pick == m['winner'], known=min(rating.played(a), rating.played(b)) >= 10,
-                            ll=E.logloss(p if pick == m['winner'] else 1 - p)))
+            r = dict(m=m, p=p, hit=pick == m['winner'], known=min(rating.played(a), rating.played(b)) >= 10,
+                     ll=E.logloss(p if pick == m['winner'] else 1 - p))
+            bo = 5 if E.bo5(m) else 3
+            full, first, games = G.summary(m, bo)
+            if full:
+                c = G.quick(p, m['tour'].upper(), bo)
+                gl = c['games']
+                r.update(first_p=c['first'], first_hit=first == pick, games_p=gl['p'],
+                         games_hit=(games > gl['line']) == (gl['side'] == 'over'), acca_p=c['acca'])
+                r['acca_hit'] = r['hit'] and r['first_hit'] and r['games_hit']
+            res.append(r)
+        elif not E.bo5(m):
+            full, _, g = G.summary(m)
+            if full and abs(rating.p(a, b) - 0.5) < 0.1:
+                close[m['tour'].upper()].append(g)
         w, l = (a, b) if m['winner'] == 1 else (b, a)
         rating.update(w, l)
 
@@ -76,6 +97,23 @@ def main():
         dh = sum(doubles) / len(doubles)
         L += ['', f"**Each day's two most confident picks as a double:** came in on {dh:.1%} of {len(doubles)} days; "
               f'it pays only if the bookmaker offers more than {1 / dh:.2f} for it.']
+    full = [x for x in res if 'acca_p' in x]
+    if full:
+        mean = lambda k: sum(x[k] for x in full) / len(full)
+        L += ['', '## First set, total games and the match acca', '',
+              f"From one game-by-game model per match (tennis/games.py), its hold rates tuned to the games in even "
+              f"matches before {TEST_FROM} (ATP {G.HOLD['ATP']:.3f}, WTA {G.HOLD['WTA']:.3f}). {len(full)} test matches "
+              "played out in full (no retirements or walkovers).", '',
+              '| Call | Model expected | Came in | Price needed to break even |', '|---|---|---|---|']
+        for name, pk, hk in (('Pick wins the first set', 'first_p', 'first_hit'), ('Total games over/under', 'games_p', 'games_hit'),
+                             ('Match acca (all three)', 'acca_p', 'acca_hit')):
+            hit = mean(hk)
+            L.append(f'| {name} | {mean(pk):.1%} | {hit:.1%} | {1 / hit:.2f} |')
+        L += ['', '| Games call given | Calls | Came in |', '|---|---|---|']
+        for lo, hi in ((0.5, 0.55), (0.55, 0.6), (0.6, 0.65), (0.65, 0.7), (0.7, 1.01)):
+            xs = [x for x in full if lo <= x['games_p'] < hi]
+            if len(xs) >= 30:
+                L.append(f"| {lo:.0%}-{min(hi, 1):.0%} | {len(xs)} | {sum(x['games_hit'] for x in xs) / len(xs):.1%} |")
     return finish(L, out_path)
 
 

@@ -4,7 +4,7 @@ name: Tennis backtest
 # past days kept in the Actions cache) and checks every pick since July 2025, then commits tennis/BACKTEST.md.
 on:
   push:
-    paths: ['tennis/backtest.py', 'tennis/elo.py', 'tennis/espn.py', '.github/workflows/tennis-backtest.yml']
+    paths: ['tennis/backtest.py', 'tennis/elo.py', 'tennis/espn.py', 'tennis/games.py', '.github/workflows/tennis-backtest.yml']
   workflow_dispatch:
 
 permissions:

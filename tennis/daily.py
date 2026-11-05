@@ -3,7 +3,8 @@
 Usage: python daily.py [CACHE_DIR]
 
 Elo ratings are rebuilt from every result since January 2024 (ESPN's free scoreboard feed). Each scheduled
-match gets the higher-rated player as the pick, with their chance of winning. Once played, the winner and
+match gets the higher-rated player as the pick, with their chance of winning, plus the first-set and total-games
+calls and the chance of all three together (tennis/games.py). Once played, the winner and
 score are added. Writes tennis/picks/YYYY-MM-DD.json (UK dates) and picks/index.json. Paper only.
 """
 import json
@@ -16,6 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import elo as E  # noqa: E402
 import espn  # noqa: E402
+import games as G  # noqa: E402
 
 LONDON = ZoneInfo('Europe/London')
 PICKS = os.path.join(HERE, 'picks')
@@ -65,10 +67,19 @@ def main():
     fresh = espn.around([today, today + timedelta(days=1)])
     seen.update({k: m for k, m in fresh.items() if m['state'] == 'post' and m['winner'] and m['sets']})
     rating = E.Elo()
+    close = {'ATP': [], 'WTA': []}  # games in even best-of-3 matches over the last year, to tune the games model
+    year_ago = (today - timedelta(days=365)).isoformat()
     for m in sorted(seen.values(), key=lambda m: (m['start'], m['id'])):
         if m['state'] == 'post' and m['winner'] and m['sets']:
+            if m['start'] >= year_ago and not E.bo5(m):
+                full, _, g = G.summary(m)
+                if full and abs(rating.p(m['p1']['id'], m['p2']['id']) - 0.5) < 0.1:
+                    close[m['tour'].upper()].append(g)
             w, l = (m['p1']['id'], m['p2']['id']) if m['winner'] == 1 else (m['p2']['id'], m['p1']['id'])
             rating.update(w, l)
+    for tour, gs in close.items():
+        if len(gs) >= 100:
+            print(f'{tour}: even matches average {sum(gs) / len(gs):.1f} games; hold rate set to {G.calibrate(sum(gs) / len(gs), tour)}')
     print(f'{len(seen)} results rated; {len(fresh)} matches on today\'s and tomorrow\'s boards')
     known = {**seen, **fresh}
 
@@ -85,6 +96,8 @@ def main():
             if m and m['state'] == 'post' and m['winner'] and 'winner' not in e:
                 e['winner'] = m['winner']
                 e['score'] = score(m) if m['sets'] else 'w/o'
+                if m['sets']:
+                    e['sets'] = [list(x) for x in m['sets']]
                 changed = True
                 settled += 1
         if changed:
@@ -102,10 +115,14 @@ def main():
             continue
         p1 = rating.p(m['p1']['id'], m['p2']['id'], E.bo5(m))
         pick, p = (1, p1) if p1 >= 0.5 else (2, 1 - p1)
+        bo = 5 if E.bo5(m) else 3
+        c = G.calls(p, m['tour'].upper(), bo)
         by_day.setdefault(t.date(), []).append({
             'id': m['id'], 'time': t.strftime('%H:%M'), 'tour': m['tour'].upper(), 'event': m['event'], 'round': m['round'],
-            'p1': m['p1']['name'], 'p2': m['p2']['name'], 'pick': pick, 'p': round(p, 3),
+            'p1': m['p1']['name'], 'p2': m['p2']['name'], 'pick': pick, 'p': round(p, 3), 'bo': bo,
             'new': min(rating.played(m['p1']['id']), rating.played(m['p2']['id'])) < 5,
+            'first': round(c['first'], 3), 'games': {k: (round(v, 3) if k == 'p' else v) for k, v in c['games'].items()},
+            'acca': round(c['acca'], 4),
         })
     for day, entries in sorted(by_day.items()):
         doc = read(day) or {'date': str(day), 'matches': []}
