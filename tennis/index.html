@@ -31,7 +31,9 @@
   <section class="cards" id="cards" aria-label="Matches"></section>
   <p class="foot">Pick: the player with the higher Elo rating, built from every ATP and WTA singles result since January 2024 on ESPN's
     free scores feed; the bar splits the match between the two. Fair = 1 ÷ chance, the price a bet has to beat to be worth it. The feed
-    has no odds, so the double shows its chance and fair price, not a € result. "New" marks a player with few rated matches. A guide,
+    has no odds, so the double shows its chance and fair price, not a € result. First set and total games come from a
+    game-by-game model of each match tuned to real game totals; the match acca (winner, first set and games together) is priced at
+    the fair price of their joint chance, so its € figure is an estimate. "New" marks a player with few rated matches. A guide,
     not a tip; no bets are placed. Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
     <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
 </main>
@@ -48,6 +50,20 @@
 'use strict';
 var hit=function(m){return m.winner==null?null:m.winner===m.pick;};
 var label=function(m){return m.tour+' '+m.event;};
+var cap=function(s){return s.charAt(0).toUpperCase()+s.slice(1);};
+var sum=function(a){return a.reduce(function(x,y){return x+y;},0);};
+var big=function(x){return x.toLocaleString('en-GB',{maximumFractionDigits:2,minimumFractionDigits:2});};
+/* Once played, from the set scores (the first number is always the first-listed player's games). */
+var firstHit=function(m){return m.sets&&m.sets.length&&m.first!=null?((m.sets[0][0]>m.sets[0][1]?1:2)===m.pick):null;};
+var games=function(m){return m.sets?m.sets.reduce(function(a,s){return a+s[0]+s[1];},0):null;};
+var gamesHit=function(m){var g=games(m);return g==null||!m.games?null:(g>m.games.line)===(m.games.side==='over');};
+/* Match acca: winner, first set and games together, at the fair price for their joint chance (no odds in the feed). */
+var accaPL=function(m){
+  if(m.acca==null)return null;
+  var a=hit(m),b=firstHit(m),c=gamesHit(m);
+  if(a===false||b===false||c===false)return -1;
+  return a&&b&&c?1/m.acca-1:null;
+};
 
 SportsPage({
   name:'Tennis picks',
@@ -63,9 +79,12 @@ SportsPage({
         '<div class="tile"><span class="k">Tournaments</span><b class="v">'+Object.keys(ev).length+'</b><span class="pl">&nbsp;</span></div>'+
         '<div class="tile"><span class="k">Results</span><b class="v">0<small>/'+ms.length+'</small></b><span class="pl say">as they finish</span></div>';
     }
-    var strong=done.filter(function(m){return m.p>=0.7;});
+    var t=function(fn){return ms.map(fn).filter(function(x){return x!=null;});};
+    var fs=t(firstHit),gs=t(gamesHit),acs=t(accaPL);
     return H.tile('Pick won',done.filter(hit).length,done.length,null)+
-      (strong.length?H.tile('Picks at 70%+',strong.filter(hit).length,strong.length,null):'')+
+      (fs.length?H.tile('First set',fs.filter(Boolean).length,fs.length,null):'')+
+      (gs.length?H.tile('Games',gs.filter(Boolean).length,gs.length,null):'')+
+      (acs.length?H.tile('Match accas',acs.filter(function(x){return x>0;}).length,acs.length,sum(acs),true):'')+
       '<div class="tile"><span class="k">Still to play</span><b class="v">'+(ms.length-done.length)+'</b><span class="pl">&nbsp;</span></div>';
   },
   slips:function(d,ms,H){
@@ -90,11 +109,18 @@ SportsPage({
         '<span class="num">'+H.pct(pp)+(isPick?' · fair '+H.fair(pp):'')+'</span>'+
         (won?(isPick?H.hit(true,'Pick won'):'<em class="pos" title="Won">W</em>'):(m.winner!=null&&isPick?H.hit(false,'Pick lost'):'<span></span>'))+'</div>';
     };
+    var me=m.pick===1?m.p1:m.p2,g=games(m),ap=accaPL(m);
+    var mk=m.games?'<div class="mk">'+
+      '<div><i>First set</i><span>'+H.esc(me)+'<small>'+H.pct(m.first)+' · fair '+H.fair(m.first)+'</small></span>'+H.hit(firstHit(m))+'</div>'+
+      '<div><i>Games</i><span>'+cap(m.games.side)+' '+m.games.line+(g!=null?' ('+g+')':'')+'<small>'+H.pct(m.games.p)+' · fair '+H.fair(m.games.p)+'</small></span>'+H.hit(gamesHit(m))+'</div>'+
+      '<div class="double acca"><i>Acca</i><span>All 3 calls<small>'+H.pct(m.acca)+' · pays '+big(1/m.acca)+' est.</small></span>'+
+        (ap==null?'<span></span>':'<span class="money '+H.cls(ap)+'">'+(ap>0?'+€'+big(ap):'−€1.00')+'</span>')+'</div>'+
+      '</div>':'';
     return '<article class="card'+(gone?' gone':'')+'" style="--k:'+H.colour(label(m))+'">'+
       '<div class="when"><b>'+H.esc(m.time)+'</b><span>'+H.esc(m.round||'')+'</span></div>'+
       '<div class="body"><p class="where">'+H.esc(label(m))+'</p>'+
       '<div class="players">'+row(1)+'<div class="bar" aria-hidden="true"><i style="width:'+Math.round(p1*100)+'%"></i></div>'+row(2)+'</div>'+
-      (m.score?'<p class="meta" style="margin:0">'+H.esc(m.score)+'</p>':'')+
+      (m.score?'<p class="meta" style="margin:0">'+H.esc(m.score)+'</p>':'')+mk+
       '</div></article>';
   }
 });

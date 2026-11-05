@@ -11,7 +11,7 @@ on:
     - cron: '43 23 * * *'
   workflow_dispatch:
   push:
-    paths: ['tennis/daily.py', 'tennis/elo.py', 'tennis/espn.py', '.github/workflows/tennis-daily.yml']
+    paths: ['tennis/daily.py', 'tennis/elo.py', 'tennis/espn.py', 'tennis/games.py', '.github/workflows/tennis-daily.yml']
 
 permissions:
   contents: write
