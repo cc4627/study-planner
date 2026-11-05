@@ -101,8 +101,8 @@ def main():
     if full:
         mean = lambda k: sum(x[k] for x in full) / len(full)
         L += ['', '## First set, total games and the match acca', '',
-              f"From one game-by-game model per match (tennis/games.py), its hold rates tuned to the games in even "
-              f"matches before {TEST_FROM} (ATP {G.HOLD['ATP']:.3f}, WTA {G.HOLD['WTA']:.3f}). {len(full)} test matches "
+              f"From one game-by-game model per match (tennis/games.py), its set-to-set swing tuned to the games in even "
+              f"matches before {TEST_FROM} (ATP {G.SWING['ATP']:.3f}, WTA {G.SWING['WTA']:.3f}). {len(full)} test matches "
               "played out in full (no retirements or walkovers).", '',
               '| Call | Model expected | Came in | Price needed to break even |', '|---|---|---|---|']
         for name, pk, hk in (('Pick wins the first set', 'first_p', 'first_hit'), ('Total games over/under', 'games_p', 'games_hit'),
