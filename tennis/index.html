@@ -48,7 +48,9 @@
 <script>
 (function(){
 'use strict';
-var hit=function(m){return m.winner==null?null:m.winner===m.pick;};
+/* A walkover is void, as bookmakers settle it: no hit or miss, and it drops out of the counts. */
+var wo=function(m){return m.score==='w/o';};
+var hit=function(m){return m.winner==null||wo(m)?null:m.winner===m.pick;};
 var label=function(m){return m.tour+' '+m.event;};
 var cap=function(s){return s.charAt(0).toUpperCase()+s.slice(1);};
 var sum=function(a){return a.reduce(function(x,y){return x+y;},0);};
@@ -72,7 +74,7 @@ SportsPage({
   groupOf:label,
   over:function(m,now){return m.winner!=null||(!!now&&m.time<now);},
   ledger:function(d,ms,H){
-    var done=ms.filter(function(m){return m.winner!=null;});
+    var done=ms.filter(function(m){return m.winner!=null&&!wo(m);});
     if(!done.length){
       var ev={};ms.forEach(function(m){ev[label(m)]=1;});
       return '<div class="tile"><span class="k">Matches</span><b class="v">'+ms.length+'</b><span class="pl">&nbsp;</span></div>'+
@@ -85,7 +87,7 @@ SportsPage({
       (fs.length?H.tile('First set',fs.filter(Boolean).length,fs.length,null):'')+
       (gs.length?H.tile('Games',gs.filter(Boolean).length,gs.length,null):'')+
       (acs.length?H.tile('Match accas',acs.filter(function(x){return x>0;}).length,acs.length,sum(acs),true):'')+
-      '<div class="tile"><span class="k">Still to play</span><b class="v">'+(ms.length-done.length)+'</b><span class="pl">&nbsp;</span></div>';
+      '<div class="tile"><span class="k">Still to play</span><b class="v">'+ms.filter(function(m){return m.winner==null;}).length+'</b><span class="pl">&nbsp;</span></div>';
   },
   slips:function(d,ms,H){
     var dbl=d.double;
