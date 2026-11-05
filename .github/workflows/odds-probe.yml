@@ -1,0 +1,30 @@
+name: Tennis odds probe
+
+# Temporary: robots.txt and page layout of tennisexplorer.com before reading its odds daily.
+on:
+  push:
+    paths: ['.github/workflows/odds-probe.yml']
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe
+        shell: python
+        run: |
+          import re, html, time, urllib.request
+          UA = {'User-Agent': 'study-planner/1.0 (+https://github.com/cc4627/study-planner)'}
+          def get(url):
+              time.sleep(1.5)
+              with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
+                  return r.read().decode('utf-8', 'replace')
+          print('==== robots.txt'); print(get('https://www.tennisexplorer.com/robots.txt')[:3000])
+          page = get('https://www.tennisexplorer.com/matches/?type=all&year=2026&month=11&day=05')
+          i = page.find('Alcaraz')
+          print('==== matches page around Alcaraz'); print(page[max(0, i - 1500):i + 1800])
+          d = get('https://www.tennisexplorer.com/match-detail/?id=3370211')
+          i = d.find('22.5 games')
+          print('==== detail around 22.5 games'); print(d[max(0, i - 300):i + 2500])
+          j = d.find('Average odds', i)
+          print('==== first average after it'); print(d[max(0, j - 200):j + 600])
