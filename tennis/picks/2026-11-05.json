@@ -19,7 +19,23 @@
     "side": "over",
     "p": 0.548
    },
-   "acca": 0.1591
+   "acca": 0.1591,
+   "winner": 2,
+   "score": "3-6 6-4 2-6",
+   "sets": [
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     2,
+     6
+    ]
+   ]
   },
   {
    "id": "186640",
@@ -39,7 +55,23 @@
     "side": "over",
     "p": 0.527
    },
-   "acca": 0.1711
+   "acca": 0.1711,
+   "winner": 2,
+   "score": "7-6 1-6 3-6",
+   "sets": [
+    [
+     7,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     6
+    ]
+   ]
   },
   {
    "id": "186639",
@@ -59,7 +91,19 @@
     "side": "under",
     "p": 0.565
    },
-   "acca": 0.4997
+   "acca": 0.4997,
+   "winner": 2,
+   "score": "6-7 4-6",
+   "sets": [
+    [
+     6,
+     7
+    ],
+    [
+     4,
+     6
+    ]
+   ]
   },
   {
    "id": "186681",
@@ -79,7 +123,19 @@
     "side": "over",
     "p": 0.549
    },
-   "acca": 0.156
+   "acca": 0.156,
+   "winner": 2,
+   "score": "4-6 1-6",
+   "sets": [
+    [
+     4,
+     6
+    ],
+    [
+     1,
+     6
+    ]
+   ]
   },
   {
    "id": "186683",
@@ -99,7 +155,23 @@
     "side": "under",
     "p": 0.601
    },
-   "acca": 0.5508
+   "acca": 0.5508,
+   "winner": 1,
+   "score": "6-3 4-6 6-2",
+   "sets": [
+    [
+     6,
+     3
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     6,
+     2
+    ]
+   ]
   },
   {
    "id": "186590",
@@ -119,7 +191,19 @@
     "side": "over",
     "p": 0.532
    },
-   "acca": 0.1698
+   "acca": 0.1698,
+   "winner": 2,
+   "score": "6-7 0-6",
+   "sets": [
+    [
+     6,
+     7
+    ],
+    [
+     0,
+     6
+    ]
+   ]
   },
   {
    "id": "186591",
@@ -159,7 +243,19 @@
     "side": "under",
     "p": 0.503
    },
-   "acca": 0.3828
+   "acca": 0.3828,
+   "winner": 1,
+   "score": "7-6 6-4",
+   "sets": [
+    [
+     7,
+     6
+    ],
+    [
+     6,
+     4
+    ]
+   ]
   },
   {
    "id": "186677",
@@ -362,26 +458,6 @@
    "acca": 0.1543
   },
   {
-   "id": "186495",
-   "time": "16:00",
-   "tour": "ATP",
-   "event": "Rolex Paris Masters",
-   "round": "Round 3",
-   "p1": "Jan-Lennard Struff",
-   "p2": "Casper Ruud",
-   "pick": 2,
-   "p": 0.542,
-   "bo": 3,
-   "new": false,
-   "first": 0.528,
-   "games": {
-    "line": 22.5,
-    "side": "over",
-    "p": 0.537
-   },
-   "acca": 0.1538
-  },
-  {
    "id": "186727",
    "time": "17:00",
    "tour": "WTA",
@@ -439,7 +515,29 @@
     "side": "under",
     "p": 0.698
    },
-   "acca": 0.6751
+   "acca": 0.6751,
+   "winner": 2,
+   "score": "w/o"
+  },
+  {
+   "id": "186503",
+   "time": "18:00",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Round 3",
+   "p1": "Arthur Fils",
+   "p2": "Taylor Fritz",
+   "pick": 1,
+   "p": 0.526,
+   "bo": 3,
+   "new": false,
+   "first": 0.518,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.538
+   },
+   "acca": 0.1515
   },
   {
    "id": "186730",
@@ -482,27 +580,27 @@
    "acca": 0.5055
   },
   {
-   "id": "186503",
+   "id": "186495",
    "time": "19:30",
    "tour": "ATP",
    "event": "Rolex Paris Masters",
    "round": "Round 3",
-   "p1": "Arthur Fils",
-   "p2": "Taylor Fritz",
-   "pick": 1,
-   "p": 0.526,
+   "p1": "Jan-Lennard Struff",
+   "p2": "Casper Ruud",
+   "pick": 2,
+   "p": 0.542,
    "bo": 3,
    "new": false,
-   "first": 0.518,
+   "first": 0.528,
    "games": {
     "line": 22.5,
     "side": "over",
-    "p": 0.538
+    "p": 0.537
    },
-   "acca": 0.1515
+   "acca": 0.1538
   }
  ],
- "updated": "2026-11-05T00:06:06+00:00",
+ "updated": "2026-11-05T12:21:39+00:00",
  "double": {
   "legs": [
    "186502",

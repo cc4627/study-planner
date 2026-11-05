@@ -28,7 +28,7 @@ Log loss 0.6404 (a coin toss scores 0.6931; lower is better).
 
 ## First set, total games and the match acca
 
-From one game-by-game model per match (tennis/games.py), its hold rates tuned to the games in even matches before 2025-07-01 (ATP 0.790, WTA 0.650). 13436 test matches played out in full (no retirements or walkovers).
+From one game-by-game model per match (tennis/games.py), its set-to-set swing tuned to the games in even matches before 2025-07-01 (ATP 0.136, WTA 0.142). 13436 test matches played out in full (no retirements or walkovers).
 
 | Call | Model expected | Came in | Price needed to break even |
 |---|---|---|---|

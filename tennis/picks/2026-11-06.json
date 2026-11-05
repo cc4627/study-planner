@@ -2,6 +2,46 @@
  "date": "2026-11-06",
  "matches": [
   {
+   "id": "186687",
+   "time": "05:00",
+   "tour": "WTA",
+   "event": "Angola Ladies Open",
+   "round": "Quarterfinal",
+   "p1": "Ksenia Zaytseva",
+   "p2": "Gina Feistel",
+   "pick": 1,
+   "p": 0.627,
+   "bo": 3,
+   "new": false,
+   "first": 0.586,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.533
+   },
+   "acca": 0.1696
+  },
+  {
+   "id": "186688",
+   "time": "05:00",
+   "tour": "WTA",
+   "event": "Angola Ladies Open",
+   "round": "Quarterfinal",
+   "p1": "Anna Blinkova",
+   "p2": "Yasmine Kabbaj",
+   "pick": 1,
+   "p": 0.722,
+   "bo": 3,
+   "new": false,
+   "first": 0.653,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.504
+   },
+   "acca": 0.4
+  },
+  {
    "id": "186689",
    "time": "05:00",
    "tour": "WTA",
@@ -62,8 +102,28 @@
    "acca": 0.1712
   },
   {
+   "id": "186636",
+   "time": "06:00",
+   "tour": "WTA",
+   "event": "Prudential Hong Kong Tennis Open",
+   "round": "Quarterfinal",
+   "p1": "Zeynep Sonmez",
+   "p2": "Claire Liu",
+   "pick": 1,
+   "p": 0.527,
+   "bo": 3,
+   "new": false,
+   "first": 0.518,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.549
+   },
+   "acca": 0.1574
+  },
+  {
    "id": "186635",
-   "time": "05:00",
+   "time": "10:30",
    "tour": "WTA",
    "event": "Prudential Hong Kong Tennis Open",
    "round": "Quarterfinal",
@@ -82,12 +142,12 @@
    "acca": 0.1589
   }
  ],
- "updated": "2026-11-05T00:06:06+00:00",
+ "updated": "2026-11-05T12:21:39+00:00",
  "double": {
   "legs": [
    "186689",
-   "186597"
+   "186688"
   ],
-  "p": 0.508
+  "p": 0.566
  }
 }

@@ -1,0 +1,501 @@
+{
+ "date": "2026-11-05",
+ "updated": "2026-11-05T10:38:36+00:00",
+ "races": [
+  {
+   "time": "12:33",
+   "course": "Plumpton",
+   "path": "/racing/racecards/2026-11-05/plumpton/racecard/947079/download-the-star-sports-app-novices-handicap-chase-gbb-race",
+   "picks": [
+    "Soomaroy",
+    "Crest Of Stars",
+    "Bond Broker"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:42",
+   "course": "Newbury",
+   "path": "/racing/racecards/2026-11-05/newbury/racecard/947092/olbg-conditional-jockeys-handicap-hurdle",
+   "picks": [
+    "Cave Bridge",
+    "Treasure Planet",
+    "Dakota Star"
+   ],
+   "rule": "Dakota Star"
+  },
+  {
+   "time": "12:50",
+   "course": "Clonmel",
+   "path": "/racing/racecards/2026-11-05/clonmel/racecard/946904/irish-stallion-farms-ebf-maiden-hurdle",
+   "picks": [
+    "Unflinching",
+    "Midtown Manhattan",
+    "Young Doran"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:59",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-05/newcastle/racecard/947086/sky-sports-racing-sky-415-maiden-hurdle-gbb-race",
+   "picks": [
+    "Brace For Landing",
+    "Spreadsheet Guru",
+    "Ludois"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:08",
+   "course": "Plumpton",
+   "path": "/racing/racecards/2026-11-05/plumpton/racecard/947080/bet-on-course-with-star-sports-novices-handicap-chase-gbb-race",
+   "picks": [
+    "Klic Boum",
+    "Marlacoo",
+    "Sweet Caryline"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:17",
+   "course": "Newbury",
+   "path": "/racing/racecards/2026-11-05/newbury/racecard/947093/csp-maiden-hurdle-gbb-race",
+   "picks": [
+    "Presley",
+    "Merlin Allen",
+    "Moments Away"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:25",
+   "course": "Clonmel",
+   "path": "/racing/racecards/2026-11-05/clonmel/racecard/946905/connollys-red-mills-irish-ebf-auction-median-maiden-hurdle",
+   "picks": [
+    "Rokanako",
+    "Highland Call",
+    "Carleys Lilly"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:34",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-05/newcastle/racecard/947087/racing-at-the-heart-of-our-community-handicap-hurdle",
+   "picks": [
+    "Aire Spray",
+    "Seeyainthesuninn",
+    "Letterston Lady"
+   ],
+   "rule": "Got A Dream"
+  },
+  {
+   "time": "13:43",
+   "course": "Plumpton",
+   "path": "/racing/racecards/2026-11-05/plumpton/racecard/947081/star-sports-we-believe-in-bookmaking-ebf-mares-national-hunt-maiden-hurdle-gbb-race",
+   "picks": [
+    "Jenny France",
+    "Lady Litigator",
+    "Safari"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:52",
+   "course": "Newbury",
+   "path": "/racing/racecards/2026-11-05/newbury/racecard/947094/grahame-church-memorial-mares-novices-hurdle-gbb-race",
+   "picks": [
+    "Nan's Choice",
+    "Royal Response",
+    "Princess Day"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:57",
+   "course": "Chelmsford City",
+   "path": "/racing/racecards/2026-11-05/chelmsford-city/racecard/947568/midnite-built-different-handicap-div-1",
+   "picks": [
+    "Labiche",
+    "Jenson Benson",
+    "Far Far Out"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:00",
+   "course": "Clonmel",
+   "path": "/racing/racecards/2026-11-05/clonmel/racecard/946906/clonmel-oil-service-station-handicap-hurdle",
+   "picks": [
+    "Nelson Muntz",
+    "Zoffman",
+    "Hopeful Hero"
+   ],
+   "rule": "Hopeful Hero"
+  },
+  {
+   "time": "14:07",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-05/newcastle/racecard/947088/free-digital-racecard-at-raceday-readycom-handicap-hurdle",
+   "picks": [
+    "Thorneylands",
+    "Presentandcorrect",
+    "Bold Light"
+   ],
+   "rule": "Bogha Baiste"
+  },
+  {
+   "time": "14:15",
+   "course": "Plumpton",
+   "path": "/racing/racecards/2026-11-05/plumpton/racecard/947082/call-star-sports-on-08000-521-321-handicap-chase-gbb-race",
+   "picks": [
+    "Ferret Jeeter",
+    "Melton Mossy",
+    "Diplomatic Ash"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:20",
+   "course": "Southwell",
+   "path": "/racing/racecards/2026-11-05/southwell/racecard/947569/all-weather-championship-is-back-handicap",
+   "picks": [
+    "Macanudo",
+    "Fletcher's Flight",
+    "Ten Cuidado"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:25",
+   "course": "Newbury",
+   "path": "/racing/racecards/2026-11-05/newbury/racecard/947095/pertemps-network-handicap-hurdle-gbb-race",
+   "picks": [
+    "Kilwaughter",
+    "Splendid Fellow",
+    "Western Monkey"
+   ],
+   "rule": "Kilwaughter"
+  },
+  {
+   "time": "14:30",
+   "course": "Chelmsford City",
+   "path": "/racing/racecards/2026-11-05/chelmsford-city/racecard/947106/midnite-built-different-handicap-div-2",
+   "picks": [
+    "Power Of Prayer",
+    "Eighty Eight",
+    "Wellwhatshappenin"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:35",
+   "course": "Clonmel",
+   "path": "/racing/racecards/2026-11-05/clonmel/racecard/946907/ta-morris-memorial-irish-ebf-mares-chase-listed",
+   "picks": [
+    "A Snow White Park",
+    "Jolie Jewel",
+    "Bynx"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:40",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-05/newcastle/racecard/947565/get-raceday-ready-novices-handicap-chase-gbb-race",
+   "picks": [
+    "Halpha Soleil",
+    "Looking Splendid",
+    "Nice One Eric"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:47",
+   "course": "Plumpton",
+   "path": "/racing/racecards/2026-11-05/plumpton/racecard/947083/starsportsbet-juvenile-hurdle-gbb-race",
+   "picks": [
+    "Central Command",
+    "Barbury Boy",
+    "Pantile's Gift"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:53",
+   "course": "Southwell",
+   "path": "/racing/racecards/2026-11-05/southwell/racecard/947098/midnite-a-next-generation-betting-app-handicap-gbbplus-race",
+   "picks": [
+    "Optician",
+    "Oneforthegutter",
+    "Lady Magu"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:58",
+   "course": "Newbury",
+   "path": "/racing/racecards/2026-11-05/newbury/racecard/947096/check-out-the-betvictor-betbuilder-novices-hurdle-gbb-race",
+   "picks": [
+    "Percy De Courcy",
+    "Sappingirl",
+    "Coolnav"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:05",
+   "course": "Chelmsford City",
+   "path": "/racing/racecards/2026-11-05/chelmsford-city/racecard/947107/all-weather-championship-is-back-nursery",
+   "picks": [
+    "Chaise Longue",
+    "Queens Bandit",
+    "Wild Orchid"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:10",
+   "course": "Clonmel",
+   "path": "/racing/racecards/2026-11-05/clonmel/racecard/946908/clonmel-oil-chase-grade-2",
+   "picks": [
+    "Il Etait Temps",
+    "Kappa Jy Pyke",
+    "Blaze The Way"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:15",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-05/newcastle/racecard/947566/equine-products-national-hunt-trainers-league-handicap-chase",
+   "picks": [
+    "Treaty Boy",
+    "Empty Nest",
+    "Tom Creen"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:22",
+   "course": "Plumpton",
+   "path": "/racing/racecards/2026-11-05/plumpton/racecard/947084/star-sports-handicap-chase-gbb-race",
+   "picks": [
+    "Bel Ombre",
+    "Kdeux Saint Fray",
+    "Rip Wheeler"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:28",
+   "course": "Southwell",
+   "path": "/racing/racecards/2026-11-05/southwell/racecard/947099/awc-finals-day-at-newcastle-26th-march-handicap",
+   "picks": [
+    "Lillie Margot",
+    "Signcastle City",
+    "Ey Up He's A Star"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:33",
+   "course": "Newbury",
+   "path": "/racing/racecards/2026-11-05/newbury/racecard/947097/british-horse-society-open-nh-flat-race-gbb-race-div-1",
+   "picks": [
+    "Wordfromhome",
+    "Block Flight",
+    "Manu Du Noyer"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:40",
+   "course": "Chelmsford City",
+   "path": "/racing/racecards/2026-11-05/chelmsford-city/racecard/947108/midnite-aint-your-grandads-bookie-handicap-gbbplus-race",
+   "picks": [
+    "Charging Thunder",
+    "Mr Freedom",
+    "Must Believe"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:45",
+   "course": "Clonmel",
+   "path": "/racing/racecards/2026-11-05/clonmel/racecard/946909/prior-park-service-station-clonmel-handicap-chase-0-100",
+   "picks": [
+    "Dontcavein",
+    "Courtbrack Boy",
+    "Stily"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:50",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-05/newcastle/racecard/947091/attheracescommarketmovers-junior-nh-flat-race-gbb-race",
+   "picks": [
+    "That Guy",
+    "Albatross The Ace",
+    "Coronation Hill"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:55",
+   "course": "Plumpton",
+   "path": "/racing/racecards/2026-11-05/plumpton/racecard/947085/starsportsbetcouk-handicap-hurdle",
+   "picks": [
+    "Ez Tiger",
+    "Crest of Arms",
+    "Basilette"
+   ],
+   "rule": "Crest of Arms"
+  },
+  {
+   "time": "16:00",
+   "course": "Southwell",
+   "path": "/racing/racecards/2026-11-05/southwell/racecard/947100/awc-season-14-has-begun-ebf-novice-stakes-gbb-race",
+   "picks": [
+    "Fenaroli",
+    "Bombora",
+    "Harrow On The Hill"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:05",
+   "course": "Newbury",
+   "path": "/racing/racecards/2026-11-05/newbury/racecard/947567/betvictor-open-nh-flat-race-gbb-race-div-2",
+   "picks": [
+    "Newgrove",
+    "Treble Three",
+    "Geissler"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:15",
+   "course": "Chelmsford City",
+   "path": "/racing/racecards/2026-11-05/chelmsford-city/racecard/947109/awc-season-14-has-begun-handicap",
+   "picks": [
+    "Havana Touch",
+    "Bajan Bandit",
+    "The Hare Rail"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:20",
+   "course": "Clonmel",
+   "path": "/racing/racecards/2026-11-05/clonmel/racecard/946910/racingtvcomfreetrial-flat-race",
+   "picks": [
+    "Distraction",
+    "Red Seagull",
+    "River Cartwright"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:30",
+   "course": "Southwell",
+   "path": "/racing/racecards/2026-11-05/southwell/racecard/947101/aw-trials-day-lingfield-2nd-jan-2027-fillies-handicap",
+   "picks": [
+    "Enola Grey",
+    "Lady Mariko",
+    "Diamondinthedark"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:45",
+   "course": "Chelmsford City",
+   "path": "/racing/racecards/2026-11-05/chelmsford-city/racecard/947110/juddmonte-ebf-restricted-novice-stakes-gbb-race",
+   "picks": [
+    "Galimix",
+    "Tough Decision",
+    "Pien De Dane"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:00",
+   "course": "Southwell",
+   "path": "/racing/racecards/2026-11-05/southwell/racecard/947102/midnite-its-actually-pretty-good-nursery",
+   "picks": [
+    "Pride's Queen",
+    "Commander Keith",
+    "Thai Baht"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:15",
+   "course": "Chelmsford City",
+   "path": "/racing/racecards/2026-11-05/chelmsford-city/racecard/947111/awc-finals-day-at-newcastle-26th-march-nursery",
+   "picks": [
+    "Marhaba Ya Tayib",
+    "National Pride",
+    "Potters Margot"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:30",
+   "course": "Southwell",
+   "path": "/racing/racecards/2026-11-05/southwell/racecard/947103/make-the-move-to-midnite-restricted-maiden-fillies-stakes-gbb-race",
+   "picks": [
+    "Hoya Bella",
+    "Celestial Fire",
+    "Classic Bellini"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:45",
+   "course": "Chelmsford City",
+   "path": "/racing/racecards/2026-11-05/chelmsford-city/racecard/947112/aw-trials-day-lingfield-2nd-jan-2027-novice-stakes-gbb-race",
+   "picks": [
+    "Baandee",
+    "Missmisfortune",
+    "Two Steps Twice"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:00",
+   "course": "Southwell",
+   "path": "/racing/racecards/2026-11-05/southwell/racecard/947104/midnite-built-for-2026-not-2006-handicap-div-1",
+   "picks": [
+    "Style King",
+    "Modern Times",
+    "Fair Y Isle"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:15",
+   "course": "Chelmsford City",
+   "path": "/racing/racecards/2026-11-05/chelmsford-city/racecard/947113/midnite-its-actually-pretty-good-handicap",
+   "picks": [
+    "Far Too Fizzy",
+    "Fuseboard",
+    "Preferred"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:30",
+   "course": "Southwell",
+   "path": "/racing/racecards/2026-11-05/southwell/racecard/947105/midnite-built-for-2026-not-2006-handicap-div-2",
+   "picks": [
+    "Prince Of Pillo",
+    "Maldevious",
+    "Straight Ahead"
+   ],
+   "rule": null
+  }
+ ]
+}
