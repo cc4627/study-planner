@@ -11,7 +11,15 @@
    "p2": "Antonia Ruzic",
    "pick": 1,
    "p": 0.538,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.525,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.613
+   },
+   "acca": 0.1927
   },
   {
    "id": "186640",
@@ -23,7 +31,15 @@
    "p2": "Alexandra Shubladze",
    "pick": 2,
    "p": 0.647,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.599,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.592
+   },
+   "acca": 0.2141
   },
   {
    "id": "186639",
@@ -35,7 +51,15 @@
    "p2": "Zeynep Sonmez",
    "pick": 2,
    "p": 0.813,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.723,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.502
+   },
+   "acca": 0.4475
   },
   {
    "id": "186681",
@@ -47,7 +71,15 @@
    "p2": "Ksenia Zaytseva",
    "pick": 1,
    "p": 0.518,
-   "new": true
+   "bo": 3,
+   "new": true,
+   "first": 0.512,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.614
+   },
+   "acca": 0.1877
   },
   {
    "id": "186683",
@@ -59,7 +91,15 @@
    "p2": "Li Zongyu",
    "pick": 1,
    "p": 0.852,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.757,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.541
+   },
+   "acca": 0.4991
   },
   {
    "id": "186590",
@@ -71,7 +111,15 @@
    "p2": "Magda Linette",
    "pick": 2,
    "p": 0.63,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.588,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.597
+   },
+   "acca": 0.2115
   },
   {
    "id": "186591",
@@ -83,7 +131,15 @@
    "p2": "Zhibek Kulambayeva",
    "pick": 1,
    "p": 0.575,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.55,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.609
+   },
+   "acca": 0.201
   },
   {
    "id": "186496",
@@ -95,7 +151,15 @@
    "p2": "Quentin Halys",
    "pick": 1,
    "p": 0.697,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.635,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.511
+   },
+   "acca": 0.1802
   },
   {
    "id": "186677",
@@ -107,7 +171,15 @@
    "p2": "Tiphanie Lemaitre",
    "pick": 1,
    "p": 0.587,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.558,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.607
+   },
+   "acca": 0.2034
   },
   {
    "id": "186630",
@@ -119,7 +191,15 @@
    "p2": "Alexandra Eala",
    "pick": 2,
    "p": 0.652,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.603,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.59
+   },
+   "acca": 0.2149
   },
   {
    "id": "186585",
@@ -131,7 +211,15 @@
    "p2": "Lucrezia Stefanini",
    "pick": 2,
    "p": 0.617,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.579,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.6
+   },
+   "acca": 0.2092
   },
   {
    "id": "186497",
@@ -143,7 +231,15 @@
    "p2": "Arthur Rinderknech",
    "pick": 1,
    "p": 0.758,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.679,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.52
+   },
+   "acca": 0.4284
   },
   {
    "id": "186676",
@@ -155,7 +251,15 @@
    "p2": "Noma Noha Akugue",
    "pick": 2,
    "p": 0.746,
-   "new": true
+   "bo": 3,
+   "new": true,
+   "first": 0.671,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.547
+   },
+   "acca": 0.2232
   },
   {
    "id": "186641",
@@ -167,7 +271,15 @@
    "p2": "Mary Stoiana",
    "pick": 1,
    "p": 0.724,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.654,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.56
+   },
+   "acca": 0.2223
   },
   {
    "id": "186588",
@@ -179,7 +291,15 @@
    "p2": "Vaishnavi Adkar",
    "pick": 1,
    "p": 0.787,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.703,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.519
+   },
+   "acca": 0.2226
   },
   {
    "id": "186498",
@@ -191,7 +311,15 @@
    "p2": "Tomas Martin Etcheverry",
    "pick": 1,
    "p": 0.566,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.544,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.547
+   },
+   "acca": 0.1654
   },
   {
    "id": "186499",
@@ -203,7 +331,15 @@
    "p2": "Luca Van Assche",
    "pick": 1,
    "p": 0.808,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.72,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.556
+   },
+   "acca": 0.486
   },
   {
    "id": "186494",
@@ -215,7 +351,15 @@
    "p2": "Ignacio Buse",
    "pick": 1,
    "p": 0.546,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.53,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.55
+   },
+   "acca": 0.1618
   },
   {
    "id": "186495",
@@ -227,7 +371,15 @@
    "p2": "Casper Ruud",
    "pick": 2,
    "p": 0.542,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.528,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.55
+   },
+   "acca": 0.1612
   },
   {
    "id": "186727",
@@ -239,7 +391,15 @@
    "p2": "Renata Zarazua",
    "pick": 2,
    "p": 0.513,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.508,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.615
+   },
+   "acca": 0.1864
   },
   {
    "id": "186728",
@@ -251,7 +411,15 @@
    "p2": "Leyre Romero Gormaz",
    "pick": 2,
    "p": 0.559,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.539,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.611
+   },
+   "acca": 0.1974
   },
   {
    "id": "186502",
@@ -263,7 +431,15 @@
    "p2": "Carlos Alcaraz",
    "pick": 2,
    "p": 0.928,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.836,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.701
+   },
+   "acca": 0.6742
   },
   {
    "id": "186730",
@@ -275,7 +451,15 @@
    "p2": "Alice Tubello",
    "pick": 1,
    "p": 0.509,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.506,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.615
+   },
+   "acca": 0.1853
   },
   {
    "id": "186729",
@@ -287,7 +471,15 @@
    "p2": "Bianca Andreescu",
    "pick": 2,
    "p": 0.817,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.727,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.506
+   },
+   "acca": 0.4532
   },
   {
    "id": "186503",
@@ -299,10 +491,18 @@
    "p2": "Taylor Fritz",
    "pick": 1,
    "p": 0.526,
-   "new": false
+   "bo": 3,
+   "new": false,
+   "first": 0.517,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.551
+   },
+   "acca": 0.1582
   }
  ],
- "updated": "2026-11-04T23:41:35+00:00",
+ "updated": "2026-11-05T00:03:44+00:00",
  "double": {
   "legs": [
    "186502",

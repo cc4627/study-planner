@@ -1,0 +1,93 @@
+{
+ "date": "2026-11-06",
+ "matches": [
+  {
+   "id": "186689",
+   "time": "05:00",
+   "tour": "WTA",
+   "event": "Angola Ladies Open",
+   "round": "Quarterfinal",
+   "p1": "Sofya Lansere",
+   "p2": "Martyna Kubka",
+   "pick": 2,
+   "p": 0.784,
+   "bo": 3,
+   "new": false,
+   "first": 0.7,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.521
+   },
+   "acca": 0.2228
+  },
+  {
+   "id": "186592",
+   "time": "05:00",
+   "tour": "WTA",
+   "event": "Chennai Open",
+   "round": "Quarterfinal",
+   "p1": "Janice Tjen",
+   "p2": "Polina Kudermetova",
+   "pick": 2,
+   "p": 0.516,
+   "bo": 3,
+   "new": false,
+   "first": 0.511,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.615
+   },
+   "acca": 0.1873
+  },
+  {
+   "id": "186597",
+   "time": "05:00",
+   "tour": "WTA",
+   "event": "Chennai Open",
+   "round": "Quarterfinal",
+   "p1": "Robin Montgomery",
+   "p2": "Maaya Rajeshwaran Revathi",
+   "pick": 1,
+   "p": 0.648,
+   "bo": 3,
+   "new": false,
+   "first": 0.6,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.592
+   },
+   "acca": 0.2143
+  },
+  {
+   "id": "186635",
+   "time": "05:00",
+   "tour": "WTA",
+   "event": "Prudential Hong Kong Tennis Open",
+   "round": "Quarterfinal",
+   "p1": "Aliaksandra Sasnovich",
+   "p2": "Maria Sakkari",
+   "pick": 2,
+   "p": 0.536,
+   "bo": 3,
+   "new": false,
+   "first": 0.524,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.613
+   },
+   "acca": 0.1923
+  }
+ ],
+ "updated": "2026-11-05T00:03:44+00:00",
+ "double": {
+  "legs": [
+   "186689",
+   "186597"
+  ],
+  "p": 0.508
+ }
+}
