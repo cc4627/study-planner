@@ -4,7 +4,8 @@ Usage: python daily.py [CACHE_DIR]
 
 Elo ratings are rebuilt from every result since January 2024 (ESPN's free scoreboard feed). Each scheduled
 match gets the higher-rated player as the pick, with their chance of winning, plus the first-set and total-games
-calls and the chance of all three together (tennis/games.py). Once played, the winner and
+calls and the chance of all three together (tennis/games.py), and bookmaker prices from tennisexplorer.com
+(tennis/odds.py). Once played, the winner and
 score are added. Writes tennis/picks/YYYY-MM-DD.json (UK dates) and picks/index.json. Paper only.
 """
 import json
@@ -18,6 +19,7 @@ sys.path.insert(0, HERE)
 import elo as E  # noqa: E402
 import espn  # noqa: E402
 import games as G  # noqa: E402
+import odds as O  # noqa: E402
 
 LONDON = ZoneInfo('Europe/London')
 PICKS = os.path.join(HERE, 'picks')
@@ -57,6 +59,54 @@ def choose_double(doc, day, now):
         return old
     a, b = sorted(cand, key=lambda e: -e['p'])[:2]
     return {'legs': [a['id'], b['id']], 'p': round(a['p'] * b['p'], 3)}
+
+
+MAX_DETAIL = 40  # match pages read per run for total-games prices
+
+
+def attach_odds(today):
+    """Bookmaker prices from tennisexplorer.com: both players' win prices on every picked match (kept as they
+    were once the match is played), and the over/under price at the pick's games line, read once per match."""
+    lists = {}
+    for day, kinds in ((today - timedelta(days=1), ('results',)), (today, ('results', 'matches')), (today + timedelta(days=1), ('matches',)),
+                       (today + timedelta(days=2), ('matches',))):
+        rows = []
+        for kind in kinds:
+            try:
+                rows += O.day_list(day, kind)
+            except Exception as err:
+                print(f'  ! odds list {kind} {day}: {err!r}')
+        lists[day] = rows
+    details = matched = 0
+    for k in (-1, 0, 1):
+        day = today + timedelta(days=k)
+        doc = read(day)
+        if not doc:
+            continue
+        pool = lists.get(day, []) + lists.get(day + timedelta(days=1), [])  # the site's dates are Central European
+        changed = False
+        for e in doc['matches']:
+            row, swapped = O.find(e, pool)
+            if not row:
+                continue
+            matched += 1
+            if row['o1'] and row['o2'] and ('winner' not in e or not e.get('odds')):
+                o = [row['o2'], row['o1']] if swapped else [row['o1'], row['o2']]
+                if e.get('odds') != o:
+                    e['odds'], changed = o, True
+            if row['id'] and e.get('games') and 'gp' not in e and details < MAX_DETAIL:
+                details += 1
+                try:
+                    prices = O.games_prices(row['id'])
+                except Exception as err:
+                    print(f'  ! games prices {row["id"]}: {err!r}')
+                    prices = {}
+                pr = prices.get(float(e['games']['line']))
+                if pr:
+                    e['gp'], changed = {'over': pr[0], 'under': pr[1]}, True
+        if changed:
+            write(day, doc)
+    print(f'odds: {sum(len(v) for v in lists.values())} listed, {matched} picks matched, {details} match pages read')
 
 
 def main():
@@ -138,6 +188,11 @@ def main():
         doc['double'] = choose_double(doc, day, now)
         write(day, doc)
         print(f'{day}: {len(entries)} scheduled matches picked, {len(doc["matches"])} on the page')
+
+    try:
+        attach_odds(today)
+    except Exception as err:  # odds are extra: never lose the picks over them
+        print(f'  ! odds: {err!r}')
 
     dates = sorted(n[:-5] for n in os.listdir(PICKS) if n[:4].isdigit() and n.endswith('.json')) if os.path.isdir(PICKS) else []
     for old in dates[:-KEEP_DAYS]:

@@ -30,10 +30,11 @@
   <nav class="filters" id="filters" aria-label="Tournaments" hidden></nav>
   <section class="cards" id="cards" aria-label="Matches"></section>
   <p class="foot">Pick: the player with the higher Elo rating, built from every ATP and WTA singles result since January 2024 on ESPN's
-    free scores feed; the bar splits the match between the two. Fair = 1 ÷ chance, the price a bet has to beat to be worth it. The feed
-    has no odds, so the double shows its chance and fair price, not a € result. First set and total games come from a
-    game-by-game model of each match tuned to real game totals; the match acca (winner, first set and games together) is priced at
-    the fair price of their joint chance, so its € figure is an estimate. "New" marks a player with few rated matches. A guide,
+    free scores feed; the bar splits the match between the two. First set and total games come from a game-by-game model of each
+    match tuned to real game totals. Prices marked @ are bookmaker odds (average over/under for games) from tennisexplorer.com; the
+    € figures use them, and the fair price (1 ÷ chance) where there are none, marked est. First-set prices and the match acca
+    (winner, first set and games together) use the fair price, so their € figures are estimates. "New" marks a player with few
+    rated matches. A guide,
     not a tip; no bets are placed. Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
     <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
 </main>
@@ -59,7 +60,12 @@ var big=function(x){return x.toLocaleString('en-GB',{maximumFractionDigits:2,min
 var firstHit=function(m){return m.sets&&m.sets.length&&m.first!=null?((m.sets[0][0]>m.sets[0][1]?1:2)===m.pick):null;};
 var games=function(m){return m.sets?m.sets.reduce(function(a,s){return a+s[0]+s[1];},0):null;};
 var gamesHit=function(m){var g=games(m);return g==null||!m.games?null:(g>m.games.line)===(m.games.side==='over');};
-/* Match acca: winner, first set and games together, at the fair price for their joint chance (no odds in the feed). */
+/* Prices: bookmaker odds from tennisexplorer.com where found (winner, games), else the fair price 1 ÷ chance. */
+var pickOdds=function(m){return m.odds?m.odds[m.pick-1]:null;};
+var gamesOdds=function(m){return m.gp&&m.games?m.gp[m.games.side]:null;};
+/* €1 singles once played: real odds where there are any, fair price otherwise (est.). */
+var single=function(h,odds,p){return h==null?null:{pl:h?(odds||1/p)-1:-1,est:!odds};};
+/* Match acca: winner, first set and games together, at the fair price for their joint chance (no bet builder prices). */
 var accaPL=function(m){
   if(m.acca==null)return null;
   var a=hit(m),b=firstHit(m),c=gamesHit(m);
@@ -82,10 +88,15 @@ SportsPage({
         '<div class="tile"><span class="k">Results</span><b class="v">0<small>/'+ms.length+'</small></b><span class="pl say">as they finish</span></div>';
     }
     var t=function(fn){return ms.map(fn).filter(function(x){return x!=null;});};
-    var fs=t(firstHit),gs=t(gamesHit),acs=t(accaPL);
-    return H.tile('Pick won',done.filter(hit).length,done.length,null)+
-      (fs.length?H.tile('First set',fs.filter(Boolean).length,fs.length,null):'')+
-      (gs.length?H.tile('Games',gs.filter(Boolean).length,gs.length,null):'')+
+    var acs=t(accaPL);
+    var money=function(fn){var xs=t(fn);return {n:xs.length,won:xs.filter(function(x){return x.pl>0;}).length,
+      pl:sum(xs.map(function(x){return x.pl;})),est:xs.some(function(x){return x.est;})};};
+    var w=money(function(m){return single(hit(m),pickOdds(m),m.p);});
+    var f=money(function(m){return single(firstHit(m),null,m.first);});
+    var g=money(function(m){return m.games?single(gamesHit(m),gamesOdds(m),m.games.p):null;});
+    return H.tile('Pick won',w.won,w.n,w.pl,w.est)+
+      (f.n?H.tile('First set',f.won,f.n,f.pl,true):'')+
+      (g.n?H.tile('Games',g.won,g.n,g.pl,g.est):'')+
       (acs.length?H.tile('Match accas',acs.filter(function(x){return x>0;}).length,acs.length,sum(acs),true):'')+
       '<div class="tile"><span class="k">Still to play</span><b class="v">'+ms.filter(function(m){return m.winner==null;}).length+'</b><span class="pl">&nbsp;</span></div>';
   },
@@ -101,20 +112,20 @@ SportsPage({
         return H.leg(st[j],H.esc(me)+' to win',H.esc(m.time+' v '+them+' · '+label(m))+' · '+H.pct(m.p),'');
       }).join('')+'</ol>'+
       '<footer><span>Both '+H.pct(dbl.p)+'</span>'+(res?'<span class="stamp '+(res==='Landed'?'gain':'loss')+'">'+res+'</span>':'<span class="ret">fair '+H.fair(dbl.p)+'</span>')+'</footer>'+
-      '<p class="note">The day\'s two most confident picks. No odds in the free feed: worth backing only if your bookmaker pays more than '+H.fair(dbl.p)+'.</p></article>';
+      '<p class="note">The day\'s two most confident picks. Worth backing only if your bookmaker pays more than '+H.fair(dbl.p)+' for the double.</p></article>';
   },
   card:function(m,H,gone){
     var p1=m.pick===1?m.p:1-m.p,h=hit(m);
     var row=function(n){
       var isPick=m.pick===n,won=m.winner===n,pp=n===1?p1:1-p1;
       return '<div class="player'+(isPick?' pick':'')+'"><span>'+H.esc(n===1?m.p1:m.p2)+(isPick&&m.new?' <span class="tag">new</span>':'')+'</span>'+
-        '<span class="num">'+H.pct(pp)+(isPick?' · fair '+H.fair(pp):'')+'</span>'+
+        '<span class="num">'+H.pct(pp)+(m.odds?' · @'+m.odds[n-1].toFixed(2):isPick?' · fair '+H.fair(pp):'')+'</span>'+
         (won?(isPick?H.hit(true,'Pick won'):'<em class="pos" title="Won">W</em>'):(m.winner!=null&&isPick?H.hit(false,'Pick lost'):'<span></span>'))+'</div>';
     };
     var me=m.pick===1?m.p1:m.p2,g=games(m),ap=accaPL(m);
     var mk=m.games?'<div class="mk">'+
       '<div><i>First set</i><span>'+H.esc(me)+'<small>'+H.pct(m.first)+' · fair '+H.fair(m.first)+'</small></span>'+H.hit(firstHit(m))+'</div>'+
-      '<div><i>Games</i><span>'+cap(m.games.side)+' '+m.games.line+(g!=null?' ('+g+')':'')+'<small>'+H.pct(m.games.p)+' · fair '+H.fair(m.games.p)+'</small></span>'+H.hit(gamesHit(m))+'</div>'+
+      '<div><i>Games</i><span>'+cap(m.games.side)+' '+m.games.line+(g!=null?' ('+g+')':'')+'<small>'+H.pct(m.games.p)+(gamesOdds(m)?' · @'+gamesOdds(m).toFixed(2):' · fair '+H.fair(m.games.p))+'</small></span>'+H.hit(gamesHit(m))+'</div>'+
       '<div class="double acca"><i>Acca</i><span>All 3 calls<small>'+H.pct(m.acca)+' · pays '+big(1/m.acca)+' est.</small></span>'+
         (ap==null?'<span></span>':'<span class="money '+H.cls(ap)+'">'+(ap>0?'+€'+big(ap):'−€1.00')+'</span>')+'</div>'+
       '</div>':'';
