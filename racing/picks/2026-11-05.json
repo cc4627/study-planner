@@ -1,0 +1,514 @@
+{
+ "date": "2026-11-05",
+ "updated": "2026-11-05T00:51:42+00:00",
+ "races": [
+  {
+   "time": "12:33",
+   "course": "Plumpton",
+   "country": "England",
+   "picks": [
+    "Soomaroy",
+    "Crest Of Stars",
+    "Bond Broker"
+   ],
+   "p": 0.396
+  },
+  {
+   "time": "12:42",
+   "course": "Newbury",
+   "country": "England",
+   "picks": [
+    "Cave Bridge",
+    "Treasure Planet",
+    "Dakota Star"
+   ],
+   "p": 0.126
+  },
+  {
+   "time": "12:50",
+   "course": "Clonmel",
+   "country": "Eire",
+   "picks": [
+    "Unflinching",
+    "Midtown Manhattan",
+    "Young Doran"
+   ],
+   "p": 0.252
+  },
+  {
+   "time": "12:59",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Brace For Landing",
+    "Spreadsheet Guru",
+    "Ludois"
+   ],
+   "p": 0.39
+  },
+  {
+   "time": "13:08",
+   "course": "Plumpton",
+   "country": "England",
+   "picks": [
+    "Klic Boum",
+    "Marlacoo",
+    "Sweet Caryline"
+   ],
+   "p": 0.334
+  },
+  {
+   "time": "13:17",
+   "course": "Newbury",
+   "country": "England",
+   "picks": [
+    "Presley",
+    "Merlin Allen",
+    "Moments Away"
+   ],
+   "p": 0.32
+  },
+  {
+   "time": "13:25",
+   "course": "Clonmel",
+   "country": "Eire",
+   "picks": [
+    "Rokanako",
+    "Highland Call",
+    "Carleys Lilly"
+   ],
+   "p": 0.379
+  },
+  {
+   "time": "13:34",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Aire Spray",
+    "Seeyainthesuninn",
+    "Letterston Lady"
+   ],
+   "p": 0.211
+  },
+  {
+   "time": "13:43",
+   "course": "Plumpton",
+   "country": "England",
+   "picks": [
+    "Jenny France",
+    "Lady Litigator",
+    "Safari"
+   ],
+   "p": 0.438
+  },
+  {
+   "time": "13:52",
+   "course": "Newbury",
+   "country": "England",
+   "picks": [
+    "Nan's Choice",
+    "Royal Response",
+    "Princess Day"
+   ],
+   "p": 0.377
+  },
+  {
+   "time": "13:57",
+   "course": "Chelmsford City",
+   "country": "England",
+   "picks": [
+    "Labiche",
+    "Jenson Benson",
+    "Far Far Out"
+   ],
+   "p": 0.156
+  },
+  {
+   "time": "14:00",
+   "course": "Clonmel",
+   "country": "Eire",
+   "picks": [
+    "Nelson Muntz",
+    "Zoffman",
+    "Hopeful Hero"
+   ],
+   "p": 0.234
+  },
+  {
+   "time": "14:07",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Thorneylands",
+    "Presentandcorrect",
+    "Bold Light"
+   ],
+   "p": 0.266
+  },
+  {
+   "time": "14:15",
+   "course": "Plumpton",
+   "country": "England",
+   "picks": [
+    "Ferret Jeeter",
+    "Melton Mossy",
+    "Diplomatic Ash"
+   ],
+   "p": 0.46
+  },
+  {
+   "time": "14:20",
+   "course": "Southwell",
+   "country": "England",
+   "picks": [
+    "Macanudo",
+    "Fletcher's Flight",
+    "Ten Cuidado"
+   ],
+   "p": 0.241
+  },
+  {
+   "time": "14:25",
+   "course": "Newbury",
+   "country": "England",
+   "picks": [
+    "Kilwaughter",
+    "Splendid Fellow",
+    "Western Monkey"
+   ],
+   "p": 0.114
+  },
+  {
+   "time": "14:30",
+   "course": "Chelmsford City",
+   "country": "England",
+   "picks": [
+    "Power Of Prayer",
+    "Eighty Eight",
+    "Taskheer"
+   ],
+   "p": 0.239
+  },
+  {
+   "time": "14:35",
+   "course": "Clonmel",
+   "country": "Eire",
+   "picks": [
+    "Dinoblue",
+    "A Snow White Park",
+    "Jolie Jewel"
+   ],
+   "p": 0.813
+  },
+  {
+   "time": "14:40",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Halpha Soleil",
+    "Looking Splendid",
+    "Nice One Eric"
+   ],
+   "p": 0.302
+  },
+  {
+   "time": "14:47",
+   "course": "Plumpton",
+   "country": "England",
+   "picks": [
+    "Central Command",
+    "Barbury Boy",
+    "Pantile's Gift"
+   ],
+   "p": 0.371
+  },
+  {
+   "time": "14:53",
+   "course": "Southwell",
+   "country": "England",
+   "picks": [
+    "Optician",
+    "Oneforthegutter",
+    "Lady Magu"
+   ],
+   "p": 0.239
+  },
+  {
+   "time": "14:58",
+   "course": "Newbury",
+   "country": "England",
+   "picks": [
+    "Percy De Courcy",
+    "Sappingirl",
+    "Coolnav"
+   ],
+   "p": 0.315
+  },
+  {
+   "time": "15:05",
+   "course": "Chelmsford City",
+   "country": "England",
+   "picks": [
+    "Chaise Longue",
+    "Queens Bandit",
+    "Wild Orchid"
+   ],
+   "p": 0.226
+  },
+  {
+   "time": "15:10",
+   "course": "Clonmel",
+   "country": "Eire",
+   "picks": [
+    "Il Etait Temps",
+    "Kappa Jy Pyke",
+    "Blaze The Way"
+   ],
+   "p": 0.745
+  },
+  {
+   "time": "15:15",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Treaty Boy",
+    "Empty Nest",
+    "Tom Creen"
+   ],
+   "p": 0.354
+  },
+  {
+   "time": "15:22",
+   "course": "Plumpton",
+   "country": "England",
+   "picks": [
+    "Bel Ombre",
+    "Kdeux Saint Fray",
+    "Rip Wheeler"
+   ],
+   "p": 0.406
+  },
+  {
+   "time": "15:28",
+   "course": "Southwell",
+   "country": "England",
+   "picks": [
+    "Lillie Margot",
+    "Signcastle City",
+    "Ey Up He's A Star"
+   ],
+   "p": 0.147
+  },
+  {
+   "time": "15:33",
+   "course": "Newbury",
+   "country": "England",
+   "picks": [
+    "Wordfromhome",
+    "Block Flight",
+    "Manu Du Noyer"
+   ],
+   "p": 0.234
+  },
+  {
+   "time": "15:40",
+   "course": "Chelmsford City",
+   "country": "England",
+   "picks": [
+    "Charging Thunder",
+    "Mr Freedom",
+    "Must Believe"
+   ],
+   "p": 0.309
+  },
+  {
+   "time": "15:45",
+   "course": "Clonmel",
+   "country": "Eire",
+   "picks": [
+    "Dontcavein",
+    "Courtbrack Boy",
+    "Stily"
+   ],
+   "p": 0.186
+  },
+  {
+   "time": "15:50",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "That Guy",
+    "Albatross The Ace",
+    "Coronation Hill"
+   ],
+   "p": 0.28
+  },
+  {
+   "time": "15:55",
+   "course": "Plumpton",
+   "country": "England",
+   "picks": [
+    "Ez Tiger",
+    "Crest of Arms",
+    "Basilette"
+   ],
+   "p": 0.318
+  },
+  {
+   "time": "16:00",
+   "course": "Southwell",
+   "country": "England",
+   "picks": [
+    "Fenaroli",
+    "Bombora",
+    "Harrow On The Hill"
+   ],
+   "p": 0.338
+  },
+  {
+   "time": "16:05",
+   "course": "Newbury",
+   "country": "England",
+   "picks": [
+    "Newgrove",
+    "Treble Three",
+    "Geissler"
+   ],
+   "p": 0.187
+  },
+  {
+   "time": "16:15",
+   "course": "Chelmsford City",
+   "country": "England",
+   "picks": [
+    "Havana Touch",
+    "Bajan Bandit",
+    "The Hare Rail"
+   ],
+   "p": 0.251
+  },
+  {
+   "time": "16:20",
+   "course": "Clonmel",
+   "country": "Eire",
+   "picks": [
+    "Distraction",
+    "Red Seagull",
+    "River Cartwright"
+   ],
+   "p": 0.291
+  },
+  {
+   "time": "16:30",
+   "course": "Southwell",
+   "country": "England",
+   "picks": [
+    "Enola Grey",
+    "Lady Mariko",
+    "Diamondinthedark"
+   ],
+   "p": 0.185
+  },
+  {
+   "time": "16:45",
+   "course": "Chelmsford City",
+   "country": "England",
+   "picks": [
+    "Galimix",
+    "Tough Decision",
+    "Pien De Dane"
+   ],
+   "p": 0.306
+  },
+  {
+   "time": "17:00",
+   "course": "Southwell",
+   "country": "England",
+   "picks": [
+    "Pride's Queen",
+    "Commander Keith",
+    "Thai Baht"
+   ],
+   "p": 0.174
+  },
+  {
+   "time": "17:15",
+   "course": "Chelmsford City",
+   "country": "England",
+   "picks": [
+    "Marhaba Ya Tayib",
+    "National Pride",
+    "Potters Margot"
+   ],
+   "p": 0.201
+  },
+  {
+   "time": "17:30",
+   "course": "Southwell",
+   "country": "England",
+   "picks": [
+    "Hoya Bella",
+    "Celestial Fire",
+    "Classic Bellini"
+   ],
+   "p": 0.266
+  },
+  {
+   "time": "17:45",
+   "course": "Chelmsford City",
+   "country": "England",
+   "picks": [
+    "Baandee",
+    "Missmisfortune",
+    "Two Steps Twice"
+   ],
+   "p": 0.544
+  },
+  {
+   "time": "18:00",
+   "course": "Southwell",
+   "country": "England",
+   "picks": [
+    "Style King",
+    "Modern Times",
+    "Fair Y Isle"
+   ],
+   "p": 0.193
+  },
+  {
+   "time": "18:15",
+   "course": "Chelmsford City",
+   "country": "England",
+   "picks": [
+    "Far Too Fizzy",
+    "Fuseboard",
+    "Preferred"
+   ],
+   "p": 0.181
+  },
+  {
+   "time": "18:30",
+   "course": "Southwell",
+   "country": "England",
+   "picks": [
+    "Prince Of Pillo",
+    "Maldevious",
+    "Straight Ahead"
+   ],
+   "p": 0.239
+  }
+ ],
+ "double": {
+  "legs": [
+   [
+    "14:35",
+    "Clonmel"
+   ],
+   [
+    "15:10",
+    "Clonmel"
+   ]
+  ],
+  "p": 0.606
+ }
+}
