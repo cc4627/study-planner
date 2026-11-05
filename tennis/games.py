@@ -1,27 +1,20 @@
 """First-set winner, total games and the match acca for a tennis match, from one game-by-game model.
 
-Each player holds serve with a set chance, either side of the tour's usual hold rate and spread just enough
-that the model's match-win chance equals the Elo pick's. Real sets are more one-sided than steady chances
-would make them (form and momentum swing), so in each set the gap between the two players shifts one way
-or the other by a "swing", tuned so that even matches average as many games as they really do. Exact sums
-over every way a set and a match can go then give the joint chance of (match winner, first-set winner,
-total games), so the acca of all three calls on a match is priced as one bet rather than three.
+Each player holds serve with a fixed chance; the two chances sit either side of the tour's usual hold rate,
+spread just enough that the model's match-win chance equals the Elo pick's. From that, exact sums over every
+way a set and a match can go give the joint chance of (match winner, first-set winner, total games), so the
+acca of all three calls on a match is priced as one bet rather than three independent ones.
 Sets go to a tiebreak at 6-6; the player who received last serves first in the next set.
 """
 from functools import lru_cache
 
-HOLD = {'ATP': 0.79, 'WTA': 0.65}   # tour-wide service hold rates
-SWING = {'ATP': 0.0, 'WTA': 0.0}    # set-to-set shift in the hold gap, set by calibrate()
+HOLD = {'ATP': 0.79, 'WTA': 0.65}         # tour-wide service hold rates
 LINES = {('ATP', 3): 22.5, ('WTA', 3): 21.5, ('ATP', 5): 38.5, ('WTA', 5): 38.5}
-
-
-def _clip(h):
-    return round(min(max(h, 0.05), 0.98), 4)
 
 
 @lru_cache(maxsize=None)
 def _set(ha, hb, a_serves):
-    """((a won the set, games in the set), chance) pairs for a set from 0-0 with steady hold chances."""
+    """{(a won the set, games in the set): chance} for a set from 0-0."""
     out = {}
 
     def go(ga, gb, server_a, p):
@@ -44,25 +37,12 @@ def _set(ha, hb, a_serves):
     return tuple(out.items())
 
 
-@lru_cache(maxsize=None)
-def _set_mix(base, d, swing, a_serves):
-    """A set where the hold gap d swings by +/- swing (half the time each way)."""
-    if swing <= 0:
-        return _set(_clip(base + d), _clip(base - d), a_serves)
-    out = {}
-    for s in (swing, -swing):
-        for k, p in _set(_clip(base + d + s), _clip(base - d - s), a_serves):
-            out[k] = out.get(k, 0.0) + 0.5 * p
-    return tuple(out.items())
-
-
-def joint(base, d, swing=0.0, best_of=3):
+def joint(ha, hb, best_of=3):
     """{(a won the match, a won the first set, total games): chance}, the first server chosen at random."""
-    base, d, swing = round(base, 4), round(d, 4), round(swing, 4)
     need = best_of // 2 + 1
     states = {}
     for a_first in (True, False):
-        for (won, g), p in _set_mix(base, d, swing, a_first):
+        for (won, g), p in _set(ha, hb, a_first):
             next_a = (not a_first) if g % 2 == 1 else a_first
             key = (1 if won else 0, 0 if won else 1, g, won, next_a)
             states[key] = states.get(key, 0.0) + 0.5 * p
@@ -74,7 +54,7 @@ def joint(base, d, swing=0.0, best_of=3):
                 k = (sa == need, first, games)
                 out[k] = out.get(k, 0.0) + p
                 continue
-            for (won, g), q in _set_mix(base, d, swing, a_serves):
+            for (won, g), q in _set(ha, hb, a_serves):
                 next_a = (not a_serves) if g % 2 == 1 else a_serves
                 k = (sa + won, sb + (not won), games + g, first, next_a)
                 nxt[k] = nxt.get(k, 0.0) + p * q
@@ -83,23 +63,25 @@ def joint(base, d, swing=0.0, best_of=3):
 
 
 def fit(p_match, tour='ATP', best_of=3):
-    """The hold gap d that gives A the stated chance of winning the match."""
-    base, swing = HOLD.get(tour, 0.72), SWING.get(tour, 0.0)
-    lo, hi = -0.45, 0.45
-    for _ in range(28):
+    """(hold A, hold B) about the tour's hold rate that give A the stated chance of winning the match."""
+    base = HOLD.get(tour, 0.72)
+    lo, hi = -0.35, 0.35
+    for _ in range(30):
         d = (lo + hi) / 2
-        pw = sum(p for (won, _, _), p in joint(base, d, swing, best_of).items() if won)
+        ha, hb = min(max(base + d, 0.2), 0.98), min(max(base - d, 0.2), 0.98)
+        pw = sum(p for (won, _, _), p in joint(round(ha, 4), round(hb, 4), best_of).items() if won)
         if pw < p_match:
             lo = d
         else:
             hi = d
-    return (lo + hi) / 2
+    d = (lo + hi) / 2
+    return round(min(max(base + d, 0.2), 0.98), 4), round(min(max(base - d, 0.2), 0.98), 4)
 
 
 def calls(p_pick, tour='ATP', best_of=3):
     """For the picked player (match chance p_pick): first-set chance, the games call and the acca's chance."""
-    d = fit(p_pick, tour, best_of)
-    dist = joint(HOLD.get(tour, 0.72), d, SWING.get(tour, 0.0), best_of)
+    ha, hb = fit(p_pick, tour, best_of)
+    dist = joint(ha, hb, best_of)
     line = LINES.get((tour, best_of), 22.5)
     first = sum(p for (_, f, _), p in dist.items() if f)
     over = sum(p for (_, _, g), p in dist.items() if g > line)
@@ -108,25 +90,21 @@ def calls(p_pick, tour='ATP', best_of=3):
     return {'first': first, 'games': {'line': line, 'side': side, 'p': over if side == 'over' else 1 - over}, 'acca': acca}
 
 
-def expected_games(base, d=0.0, swing=0.0, best_of=3):
-    return sum(p * g for (_, _, g), p in joint(base, d, swing, best_of).items())
+def expected_games(ha, hb, best_of=3):
+    return sum(p * g for (_, _, g), p in joint(ha, hb, best_of).items())
 
 
 def calibrate(avg_close, tour, best_of=3):
-    """Set the tour's swing so an even match averages avg_close games, as close matches really do."""
-    base = HOLD.get(tour, 0.72)
-    lo, hi = 0.0, 0.45
-    if expected_games(base, 0.0, 0.0, best_of) <= avg_close:
-        SWING[tour] = 0.0
-        return 0.0
-    for _ in range(22):
-        mid = (lo + hi) / 2
-        if expected_games(base, 0.0, mid, best_of) > avg_close:
+    """Set the tour's hold rate so an even match averages avg_close games, as close matches really do."""
+    lo, hi = 0.5, 0.95
+    for _ in range(25):
+        mid = round((lo + hi) / 2, 4)
+        if expected_games(mid, mid, best_of) < avg_close:
             lo = mid
         else:
             hi = mid
-    SWING[tour] = round((lo + hi) / 2, 4)
-    return SWING[tour]
+    HOLD[tour] = round((lo + hi) / 2, 4)
+    return HOLD[tour]
 
 
 def summary(m, best_of=3):
@@ -141,10 +119,10 @@ def summary(m, best_of=3):
 
 
 @lru_cache(maxsize=None)
-def _calls_at(p_grid, tour, best_of, hold, swing):
+def _calls_at(p_grid, tour, best_of, hold):
     return calls(p_grid, tour, best_of)
 
 
 def quick(p_pick, tour='ATP', best_of=3):
     """calls() with the chance rounded to the nearest half percent, for scoring many matches."""
-    return _calls_at(round(round(p_pick * 200) / 200, 3), tour, best_of, HOLD.get(tour), SWING.get(tour))
+    return _calls_at(round(round(p_pick * 200) / 200, 3), tour, best_of, HOLD.get(tour))
