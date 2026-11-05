@@ -1,0 +1,43 @@
+name: Tennis odds probe
+
+# Temporary: reads one tennisexplorer.com results page to see what match odds it lists for 5 Nov.
+on:
+  push:
+    paths: ['.github/workflows/odds-probe.yml']
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe
+        shell: python
+        run: |
+          import re, html, urllib.request
+          UA = {'User-Agent': 'study-planner/1.0 (+https://github.com/cc4627/study-planner)'}
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
+                  return r.status, r.read().decode('utf-8', 'replace')
+          names = ['Wang Xin', 'Ruzic', 'Shubladze', 'Pridankina', 'Sonmez', 'Stojsavljevic', 'Kroitor', 'Zaytseva', 'Blinkova',
+                   'Li Zon', 'Linette', 'Uchijima', 'Paul T', 'Halys', 'Alcaraz', 'Berrettini']
+          try:
+              s, page = get('https://www.tennisexplorer.com/results/?type=all&year=2026&month=11&day=05')
+          except Exception as e:
+              print('results page ERR', e); raise SystemExit
+          print('status', s, len(page), 'bytes')
+          rows = re.findall(r'<tr[^>]*>(.*?)</tr>', page, re.S)
+          detail = None
+          for i, r in enumerate(rows):
+              text = ' | '.join(x.strip() for x in re.sub(r'<[^>]+>', '|', r).split('|') if x.strip())
+              if any(n in html.unescape(text) for n in names):
+                  nxt = rows[i + 1] if i + 1 < len(rows) else ''
+                  text2 = ' | '.join(x.strip() for x in re.sub(r'<[^>]+>', '|', nxt).split('|') if x.strip())
+                  print('ROW:', html.unescape(text)[:220]); print('   +', html.unescape(text2)[:160])
+                  m = re.search(r'href="(/match-detail/\?id=\d+)"', r + nxt)
+                  if m and 'Paul' in text: detail = m.group(1)
+          if detail:
+              s, d = get('https://www.tennisexplorer.com' + detail)
+              t = re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', d)))
+              print('DETAIL', detail, s, len(d))
+              for k in ('Home/Away', 'Over/Under', 'Asian handicap', 'Set betting', 'First set', 'Total'):
+                  i = t.find(k); print(' ', k, '->', t[i:i + 300] if i >= 0 else 'not found')
