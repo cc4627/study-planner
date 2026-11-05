@@ -1,18 +1,18 @@
 {
  "date": "2026-11-05",
- "updated": "2026-11-05T01:25:43+00:00",
+ "updated": "2026-11-05T10:38:36+00:00",
  "double": {
   "legs": [
    [
-    "14:35",
+    "15:10",
     "Clonmel"
    ],
    [
-    "15:10",
-    "Clonmel"
+    "17:45",
+    "Chelmsford City"
    ]
   ],
-  "p": 0.606
+  "p": 0.405
  },
  "races": [
   {
@@ -46,7 +46,7 @@
     "Midtown Manhattan",
     "Young Doran"
    ],
-   "p": 0.252
+   "p": 0.289
   },
   {
    "time": "12:59",
@@ -90,7 +90,7 @@
     "Highland Call",
     "Carleys Lilly"
    ],
-   "p": 0.379
+   "p": 0.391
   },
   {
    "time": "13:34",
@@ -156,7 +156,7 @@
     "Presentandcorrect",
     "Bold Light"
    ],
-   "p": 0.266
+   "p": 0.298
   },
   {
    "time": "14:15",
@@ -198,20 +198,20 @@
    "picks": [
     "Power Of Prayer",
     "Eighty Eight",
-    "Taskheer"
+    "Wellwhatshappenin"
    ],
-   "p": 0.239
+   "p": 0.265
   },
   {
    "time": "14:35",
    "course": "Clonmel",
    "country": "Eire",
    "picks": [
-    "Dinoblue",
     "A Snow White Park",
-    "Jolie Jewel"
+    "Jolie Jewel",
+    "Bynx"
    ],
-   "p": 0.813
+   "p": 0.523
   },
   {
    "time": "14:40",
@@ -233,7 +233,7 @@
     "Barbury Boy",
     "Pantile's Gift"
    ],
-   "p": 0.371
+   "p": 0.388
   },
   {
    "time": "14:53",
@@ -299,7 +299,7 @@
     "Kdeux Saint Fray",
     "Rip Wheeler"
    ],
-   "p": 0.406
+   "p": 0.44
   },
   {
    "time": "15:28",
@@ -310,7 +310,7 @@
     "Signcastle City",
     "Ey Up He's A Star"
    ],
-   "p": 0.147
+   "p": 0.16
   },
   {
    "time": "15:33",
@@ -343,7 +343,7 @@
     "Courtbrack Boy",
     "Stily"
    ],
-   "p": 0.186
+   "p": 0.199
   },
   {
    "time": "15:50",
@@ -365,7 +365,7 @@
     "Crest of Arms",
     "Basilette"
    ],
-   "p": 0.318
+   "p": 0.367
   },
   {
    "time": "16:00",
@@ -442,7 +442,7 @@
     "Commander Keith",
     "Thai Baht"
    ],
-   "p": 0.174
+   "p": 0.184
   },
   {
    "time": "17:15",
@@ -453,7 +453,7 @@
     "National Pride",
     "Potters Margot"
    ],
-   "p": 0.201
+   "p": 0.213
   },
   {
    "time": "17:30",
