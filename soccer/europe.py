@@ -18,6 +18,10 @@ BASE = 'https://site.api.espn.com/apis/site/v2/sports/soccer'
 UA = {'User-Agent': 'study-planner/1.0 (+https://github.com/cc4627/study-planner)'}
 COMPS = {'uefa.champions': ('UCL', 'Champions League'), 'uefa.europa': ('UEL', 'Europa League'),
          'uefa.europa.conf': ('UECL', 'Conference League')}
+# ESPN's slug for each football-data league, to fill in fixtures football-data hasn't listed yet.
+DOMESTIC = {'E0': 'eng.1', 'E1': 'eng.2', 'E2': 'eng.3', 'E3': 'eng.4', 'EC': 'eng.5', 'SC0': 'sco.1', 'SC1': 'sco.2',
+            'SC2': 'sco.3', 'SC3': 'sco.4', 'D1': 'ger.1', 'D2': 'ger.2', 'I1': 'ita.1', 'I2': 'ita.2', 'SP1': 'esp.1',
+            'SP2': 'esp.2', 'F1': 'fra.1', 'F2': 'fra.2', 'N1': 'ned.1', 'B1': 'bel.1', 'P1': 'por.1', 'T1': 'tur.1', 'G1': 'gre.1'}
 LONDON = ZoneInfo('Europe/London')
 PAUSE = 1.0
 _last = [0.0]
@@ -38,6 +42,9 @@ ALIASES = {
     'olympique lyonnais': 'Lyon', 'lyon': 'Lyon', 'olympique de marseille': 'Marseille', 'as monaco': 'Monaco',
     'lille osc': 'Lille', 'ogc nice': 'Nice', 'stade rennais': 'Rennes', 'rangers': 'Rangers', 'celtic': 'Celtic',
     'fenerbahce': 'Fenerbahce', 'besiktas': 'Besiktas', 'galatasaray': 'Galatasaray', 'as roma': 'Roma', 'ss lazio': 'Lazio',
+    'queens park rangers': 'QPR', 'sheffield wednesday': 'Sheffield Weds', 'west bromwich albion': 'West Brom',
+    'brighton & hove albion': 'Brighton', 'west ham united': 'West Ham', 'fc cologne': 'FC Koln', 'cologne': 'FC Koln',
+    'hamburg sv': 'Hamburg', "queen's park": 'Queens Park', 'fortuna sittard': 'For Sittard',
 }
 
 
@@ -136,14 +143,16 @@ def _odds(comp):
     return out
 
 
-def matches(day):
-    """Every European match on a UK date, in the same shape as fd.row(), plus state and ESPN's team names."""
+def matches(day, comps=None, cards=True):
+    """Every match on a UK date in the given competitions ({slug: (code, name)}, the European ones by default), in
+    the same shape as fd.row(), plus state and ESPN's team names. cards=False skips the match reports that
+    played matches need for their yellow cards."""
     out = []
-    for slug, (code, name) in COMPS.items():
+    for slug, (code, name) in (COMPS if comps is None else comps).items():
         j = _get(f'{BASE}/{slug}/scoreboard?dates={day:%Y%m%d}') or {}
         for e in j.get('events', []):
             try:
-                m = _match(slug, code, name, e, day)
+                m = _match(slug, code, name, e, day, cards)
             except Exception as err:  # one odd event shouldn't lose the night
                 print(f'  ! {slug} {e.get("id")}: {err!r}')
                 continue
@@ -152,7 +161,7 @@ def matches(day):
     return out
 
 
-def _match(slug, code, name, e, day):
+def _match(slug, code, name, e, day, cards=True):
     """One ESPN event as a match dict, or None if it isn't a complete fixture on this UK date."""
     comp = (e.get('competitions') or [{}])[0]
     teams = {t.get('homeAway'): t for t in comp.get('competitors') or []}
@@ -173,7 +182,7 @@ def _match(slug, code, name, e, day):
          'hs': None, 'as': None, 'hf': None, 'af': None, 'ref': None,
          'oh': None, 'od': None, 'oa': None, 'over': None, 'under': None}
     m.update({k: v for k, v in _odds(comp).items() if v})
-    if post and (m['hy'] is None or m['ay'] is None) and e.get('id'):
+    if cards and post and (m['hy'] is None or m['ay'] is None) and e.get('id'):
         m['hy'], m['ay'] = _yellows(slug, e['id'], m['home'], m['away'])
     return m if m['home'] and m['away'] else None
 

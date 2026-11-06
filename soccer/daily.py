@@ -6,7 +6,8 @@ For each match in football-data.co.uk's fixtures: the bookmakers' favourite and 
 odds, margin removed); goals over/under 2.5 and both teams to score (from the odds); and the corners and
 yellow-cards calls: the expected count and the likelier side of the league's usual line, with its chance.
 Champions, Europa and Conference League ties come from ESPN's free feed (soccer/europe.py), each side's corners
-and cards starting from its own league. Each day's two most confident corner calls make the corner double; the two most confident calls with real
+and cards starting from its own league; so do today's and tomorrow's domestic fixtures in any league football-data
+hasn't listed yet. Each day's two most confident corner calls make the corner double; the two most confident calls with real
 odds (result or goals, from two matches) make the daily double; and each match's favourite with its goals
 call makes a match double. Once a match is played, its score, total corners and total yellow cards are added. Writes soccer/picks/YYYY-MM-DD.json and picks/index.json.
 Paper only; no bets are placed.
@@ -30,6 +31,7 @@ MODEL = os.path.join(HERE, 'model.json')
 KEEP_DAYS = 60
 SETTLE_DAYS = 21
 EURO_AHEAD = 3  # days of Champions, Europa and Conference League fixtures to pick ahead
+DOMESTIC_AHEAD = 1  # days ahead (today and tomorrow) to fill in from ESPN when football-data hasn't listed a league's fixtures
 
 
 def load_model():
@@ -83,6 +85,41 @@ def odds_calls(m, pick):
     if pick and pick.get('odds') and goals['odds']:
         combo = {'p': round(G.joint(c['rates'], pick['side'], side), 3), 'odds': round(pick['odds'] * goals['odds'], 2)}
     return goals, btts, combo
+
+
+def espn_fill(fx, today, div_of):
+    """Domestic fixtures football-data hasn't listed yet (its fixture list can lag, often by a day before the weekend),
+    from ESPN's free feed: each side matched to its name in the league's season file, with DraftKings odds where
+    ESPN has them. Only for a league and day with no football-data fixtures, so its own average odds win when listed."""
+    have = {(m['date'], m['div']) for m in fx}
+    teams = {}
+    for t, d in div_of.items():
+        teams.setdefault(d, set()).add(t)
+    out, missed = [], set()
+    for k in range(DOMESTIC_AHEAD + 1):
+        day = today + timedelta(days=k)
+        comps = {europe.DOMESTIC[d]: (d, fd.LEAGUES[d]) for d in fd.LEAGUES if d in europe.DOMESTIC and (day, d) not in have}
+        if not comps:
+            continue
+        try:
+            got = europe.matches(day, comps, cards=False)
+        except Exception as err:
+            print(f'  ! ESPN domestic fixtures for {day}: {err!r}')
+            continue
+        for m in got:
+            if m['state'] != 'pre':
+                continue
+            known = teams.get(m['div'], set())
+            h, a = europe.to_fd(m['home'], known), europe.to_fd(m['away'], known)
+            if not h or not a or h == a:
+                missed.update(f"{t} ({m['div']})" for t, f in ((m['home'], h), (m['away'], a)) if not f)
+                continue
+            out.append(dict(m, home=h, away=a))
+    by = {}
+    for m in out:
+        by[str(m['date'])] = by.get(str(m['date']), 0) + 1
+    print(f'ESPN filled in {len(out)} domestic fixtures {by or ""}; names not matched: {", ".join(sorted(missed)) or "none"}')
+    return out
 
 
 def started(day, entry, now):
@@ -227,7 +264,12 @@ def main():
     print(f'European: {euro_settled} settled, {len(euro)} coming; not in the domestic files: {", ".join(unmatched) or "none"}')
 
     # Picks for the coming matches
-    fx = [m for m in fd.fixtures() if m['date'] >= today] + euro
+    fx = [m for m in fd.fixtures() if m['date'] >= today]
+    days = {}
+    for m in fx:
+        days[str(m['date'])] = days.get(str(m['date']), 0) + 1
+    print(f'football-data fixtures: {days or "none"}')
+    fx += espn_fill(fx, today, {**trackers['corners'].div_of, **trackers['cards'].div_of}) + euro
     by_day = {}
     for m in fx:
         by_day.setdefault(m['date'], []).append(m)
