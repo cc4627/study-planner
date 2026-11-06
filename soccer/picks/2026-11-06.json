@@ -343,7 +343,11 @@
    "league": "Bundesliga",
    "home": "Hamburg",
    "away": "M'gladbach",
-   "pick": null,
+   "pick": {
+    "side": "H",
+    "p": 0.389,
+    "odds": 2.45
+   },
    "goals": null,
    "btts": null,
    "combo": null,
@@ -351,13 +355,13 @@
     "exp": 10.3,
     "line": 9.5,
     "side": "over",
-    "p": 0.574
+    "p": 0.572
    },
    "cards": {
     "exp": 4.5,
     "line": 3.5,
     "side": "over",
-    "p": 0.658
+    "p": 0.652
    }
   },
   {
@@ -731,7 +735,7 @@
    }
   }
  ],
- "updated": "2026-11-06T00:29:14+00:00",
+ "updated": "2026-11-06T00:32:07+00:00",
  "double": {
   "legs": [
    [
