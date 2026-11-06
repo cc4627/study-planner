@@ -1,0 +1,402 @@
+{
+ "date": "2026-11-06",
+ "updated": "2026-11-06T00:23:11+00:00",
+ "races": [
+  {
+   "time": "12:25",
+   "course": "Hexham",
+   "path": "/racing/racecards/2026-11-06/hexham/racecard/947281/sidgwick-memorial-conditional-jockeys-handicap-chase-gbb-race",
+   "picks": [
+    "Imperfectlyperfect",
+    "Ask A Sainte",
+    "Ghasham"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:40",
+   "course": "Aintree",
+   "path": "/racing/racecards/2026-11-06/aintree/racecard/947288/bet-10-to-get-40-betmgm-novices-hurdle-gbb-race",
+   "picks": [
+    "Risky Obsession",
+    "Watery Borren",
+    "Aqua Bleu"
+   ],
+   "rule": null
+  },
+  {
+   "time": "12:50",
+   "course": "Fontwell",
+   "path": "/racing/racecards/2026-11-06/fontwell/racecard/947275/ksr-lighting-maiden-hurdle-gbb-race",
+   "picks": [
+    "The Mad Poet",
+    "Smokehouse",
+    "Galante De Vassy"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:00",
+   "course": "Hexham",
+   "path": "/racing/racecards/2026-11-06/hexham/racecard/947282/sky-sports-racing-sky-415-mares-novices-hurdle-gbb-race",
+   "picks": [
+    "Kamille Au Kanada",
+    "Just A Poet",
+    "Luna Marquesa"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:15",
+   "course": "Aintree",
+   "path": "/racing/racecards/2026-11-06/aintree/racecard/947289/download-the-betmgm-app-novices-limited-handicap-chase-gbb-race",
+   "picks": [
+    "Barnpark",
+    "Off The Jury",
+    "Stride On"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:25",
+   "course": "Fontwell",
+   "path": "/racing/racecards/2026-11-06/fontwell/racecard/947276/opc-home-guard-remembrance-handicap-chase",
+   "picks": [
+    "Sea Warrior",
+    "Mutley Crew",
+    "Ahanaglogh"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:35",
+   "course": "Hexham",
+   "path": "/racing/racecards/2026-11-06/hexham/racecard/947283/carpetgallopcouk-handicap-chase",
+   "picks": [
+    "C'mon So",
+    "Walk Tall",
+    "Defence Witness"
+   ],
+   "rule": null
+  },
+  {
+   "time": "13:50",
+   "course": "Aintree",
+   "path": "/racing/racecards/2026-11-06/aintree/racecard/947290/read-meg-nicholls-blog-at-betmgmcouk-handicap-hurdle",
+   "picks": [
+    "Lyssenko",
+    "All In You",
+    "Dedicated Hero"
+   ],
+   "rule": "All In You"
+  },
+  {
+   "time": "14:00",
+   "course": "Fontwell",
+   "path": "/racing/racecards/2026-11-06/fontwell/racecard/947277/my-laces-cost-more-than-your-shoes-handicap-hurdle",
+   "picks": [
+    "I Love You Sivola",
+    "Mild Magic",
+    "Stamina Chope"
+   ],
+   "rule": "Path Of Stars"
+  },
+  {
+   "time": "14:10",
+   "course": "Hexham",
+   "path": "/racing/racecards/2026-11-06/hexham/racecard/947284/carpetgallopcouk-handicap-chase-gbb-race",
+   "picks": [
+    "Ruby Island",
+    "Scarface",
+    "Hombre De Guerra"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:25",
+   "course": "Aintree",
+   "path": "/racing/racecards/2026-11-06/aintree/racecard/947291/betmgm-future-stars-silver-bowl-chasing-excellence-novices-chase-gbb-race",
+   "picks": [
+    "Klimt Madrik",
+    "Royal Infantry",
+    "Intosomethinggood"
+   ],
+   "rule": null
+  },
+  {
+   "time": "14:35",
+   "course": "Fontwell",
+   "path": "/racing/racecards/2026-11-06/fontwell/racecard/947278/gary-wrights-big-40th-birthday-celebration-handicap-hurdle",
+   "picks": [
+    "Donnie Azoff",
+    "Motazzen",
+    "So You Know"
+   ],
+   "rule": "Lynx De Thaix"
+  },
+  {
+   "time": "14:45",
+   "course": "Hexham",
+   "path": "/racing/racecards/2026-11-06/hexham/racecard/947285/carpetgallopcouk-handicap-hurdle",
+   "picks": [
+    "Kool Raoul",
+    "High Dancer",
+    "Titanium Ring"
+   ],
+   "rule": "Hopeless Dancer"
+  },
+  {
+   "time": "14:53",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-06/newcastle/racecard/947713/midnite-a-next-generation-betting-app-handicap-gbbplus-race",
+   "picks": [
+    "Sovereign View",
+    "Black Chiffon",
+    "Twisting Physics"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:00",
+   "course": "Aintree",
+   "path": "/racing/racecards/2026-11-06/aintree/racecard/947292/betmgm-haldon-gold-cup-handicap-chase-grade-2-limited-handicap-gbb-race",
+   "picks": [
+    "Mirabad",
+    "JPR One",
+    "Rubaud"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:10",
+   "course": "Fontwell",
+   "path": "/racing/racecards/2026-11-06/fontwell/racecard/947279/mercedes-benz-of-chichester-handicap-chase",
+   "picks": [
+    "Ted The Thief",
+    "Hard Stare",
+    "Steal The Moves"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:20",
+   "course": "Hexham",
+   "path": "/racing/racecards/2026-11-06/hexham/racecard/947286/carpetgallopcouk-maiden-hurdle-gbb-race",
+   "picks": [
+    "Boy Aaron",
+    "Elusive Dreams",
+    "Jeu De Maine"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:28",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-06/newcastle/racecard/947295/all-weather-championship-is-back-ebf-fillies-novice-stakes-gbbgbbplus-race",
+   "picks": [
+    "Endless Quest",
+    "Maneater",
+    "Malika"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:35",
+   "course": "Aintree",
+   "path": "/racing/racecards/2026-11-06/aintree/racecard/947293/betmgm-handicap-chase-premier-handicap-gbb-race",
+   "picks": [
+    "Here Comes Georgie",
+    "Montregard",
+    "Leave Of Absence"
+   ],
+   "rule": null
+  },
+  {
+   "time": "15:43",
+   "course": "Fontwell",
+   "path": "/racing/racecards/2026-11-06/fontwell/racecard/947280/weddings-at-fontwell-park-novices-limited-handicap-hurdle",
+   "picks": [
+    "Winston's Oath",
+    "Mystical Mabel",
+    "Wistmans Prince"
+   ],
+   "rule": "Eyeeye"
+  },
+  {
+   "time": "15:52",
+   "course": "Hexham",
+   "path": "/racing/racecards/2026-11-06/hexham/racecard/947287/debra-corner-happy-birthday-handicap-hurdle",
+   "picks": [
+    "Crafty Gael",
+    "Lady Phoebe",
+    "Robert d'Ores"
+   ],
+   "rule": "Lady Phoebe"
+  },
+  {
+   "time": "16:00",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-06/newcastle/racecard/947296/awc-finals-day-at-newcastle-26th-march-nursery",
+   "picks": [
+    "Miss You Nights",
+    "Printing Money",
+    "Sankhum Galaxy"
+   ],
+   "rule": null
+  },
+  {
+   "time": "16:05",
+   "course": "Aintree",
+   "path": "/racing/racecards/2026-11-06/aintree/racecard/947294/gamble-responsibly-at-betmgm-handicap-hurdle",
+   "picks": [
+    "Mia Sunshine",
+    "Knight Templar",
+    "Quaviste"
+   ],
+   "rule": "Limier D'arthel"
+  },
+  {
+   "time": "16:30",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-06/newcastle/racecard/947297/awc-season-14-has-begun-nursery",
+   "picks": [
+    "Northern Viola",
+    "Beauty For Love",
+    "Bella Lucia"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:00",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-06/newcastle/racecard/947298/aw-trials-day-lingfield-2nd-jan-2027-ebf-maiden-fillies-stakes-gbb-race",
+   "picks": [
+    "Mobilizing",
+    "Capricious Star",
+    "Lizzie Bennet"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:15",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-06/dundalk/racecard/947467/bar-1-betting-your-first-for-football-maiden",
+   "picks": [
+    "Grande Cuvee",
+    "Emiza",
+    "Otsana"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:30",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-06/newcastle/racecard/947299/midnite-built-for-2026-not-2006-handicap",
+   "picks": [
+    "Go Victor",
+    "Speeding Bullet",
+    "Simba's Pride"
+   ],
+   "rule": null
+  },
+  {
+   "time": "17:45",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-06/dundalk/racecard/947468/irish-stallion-farms-ebf-fillies-maiden",
+   "picks": [
+    "Sensational Filly",
+    "Ladies Gossip",
+    "Corsican Night"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:00",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-06/newcastle/racecard/947300/all-weather-championship-season-14-has-begun-handicap",
+   "picks": [
+    "Oxford Circus",
+    "Archangel Josepi",
+    "Cloch Nua"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:15",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-06/dundalk/racecard/947469/bar-1-betting-acca-boost-apprentice-handicap",
+   "picks": [
+    "Baila Conmigo",
+    "Pralognan",
+    "Storm Eric"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:30",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-06/newcastle/racecard/947301/make-the-move-to-midnite-handicap-div-1",
+   "picks": [
+    "Blazing Son",
+    "Tactical Blitz",
+    "Educating Rita"
+   ],
+   "rule": null
+  },
+  {
+   "time": "18:45",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-06/dundalk/racecard/947470/irish-stallion-farms-ebf-cooley-fillies-stakes-fillies-and-mares-listed",
+   "picks": [
+    "Dancing Saxon",
+    "Suzie Songs",
+    "Leading Dancer"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:00",
+   "course": "Newcastle",
+   "path": "/racing/racecards/2026-11-06/newcastle/racecard/947302/make-the-move-to-midnite-handicap-div-2",
+   "picks": [
+    "Ellie's De Vega",
+    "Battenburg Belle",
+    "Marianne Mozart"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:15",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-06/dundalk/racecard/947471/irish-stallion-farms-ebf-c-g-maiden",
+   "picks": [
+    "On Just Terms",
+    "Drive On There",
+    "Muscogee Nation"
+   ],
+   "rule": null
+  },
+  {
+   "time": "19:45",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-06/dundalk/racecard/947472/bar-1-betting-2up-early-payout-handicap",
+   "picks": [
+    "Daler",
+    "Boston Benjamin",
+    "Exquisite Acclaim"
+   ],
+   "rule": null
+  },
+  {
+   "time": "20:15",
+   "course": "Dundalk",
+   "path": "/racing/racecards/2026-11-06/dundalk/racecard/947473/bar-1-betting-bet-builder-boost-handicap-0-60",
+   "picks": [
+    "Polanco",
+    "Una Matata",
+    "Jazzy Dancer"
+   ],
+   "rule": null
+  }
+ ]
+}
