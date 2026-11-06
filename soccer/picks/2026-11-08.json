@@ -1,0 +1,2181 @@
+{
+ "date": "2026-11-08",
+ "matches": [
+  {
+   "time": "10:30",
+   "div": "T1",
+   "league": "Super Lig",
+   "home": "Rizespor",
+   "away": "Erzurumspor",
+   "pick": {
+    "side": "H",
+    "p": 0.481,
+    "odds": 1.91
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.516,
+    "odds": 1.8
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.541
+   },
+   "combo": {
+    "p": 0.3,
+    "odds": 3.44
+   },
+   "corners": {
+    "exp": 9.2,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.563
+   },
+   "cards": {
+    "exp": 3.8,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.659
+   }
+  },
+  {
+   "time": "11:15",
+   "div": "N1",
+   "league": "Eredivisie",
+   "home": "Heerenveen",
+   "away": "Feyenoord",
+   "pick": {
+    "side": "A",
+    "p": 0.551,
+    "odds": 1.69
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.684,
+    "odds": 1.36
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.659
+   },
+   "combo": {
+    "p": 0.426,
+    "odds": 2.3
+   },
+   "corners": {
+    "exp": 10.5,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.524
+   },
+   "cards": {
+    "exp": 2.7,
+    "line": 2.5,
+    "side": "over",
+    "p": 0.512
+   }
+  },
+  {
+   "time": "11:30",
+   "div": "I1",
+   "league": "Serie A",
+   "home": "Napoli",
+   "away": "Lazio",
+   "pick": {
+    "side": "H",
+    "p": 0.417,
+    "odds": 2.25
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.546,
+    "odds": 1.71
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.577
+   },
+   "combo": {
+    "p": 0.271,
+    "odds": 3.85
+   },
+   "corners": {
+    "exp": 9.5,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.523
+   },
+   "cards": {
+    "exp": 3.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.774
+   }
+  },
+  {
+   "time": "12:30",
+   "div": "D2",
+   "league": "2. Bundesliga",
+   "home": "Bochum",
+   "away": "Karlsruhe",
+   "pick": {
+    "side": "H",
+    "p": 0.514,
+    "odds": 1.79
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.609,
+    "odds": 1.52
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.608
+   },
+   "combo": {
+    "p": 0.364,
+    "odds": 2.72
+   },
+   "corners": {
+    "exp": 10.6,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.515
+   },
+   "cards": {
+    "exp": 4.0,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.63
+   }
+  },
+  {
+   "time": "12:30",
+   "div": "D2",
+   "league": "2. Bundesliga",
+   "home": "Heidenheim",
+   "away": "Hannover",
+   "pick": {
+    "side": "H",
+    "p": 0.455,
+    "odds": 2.02
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.651,
+    "odds": 1.42
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.654
+   },
+   "combo": {
+    "p": 0.34,
+    "odds": 2.87
+   },
+   "corners": {
+    "exp": 11.2,
+    "line": 10.5,
+    "side": "over",
+    "p": 0.556
+   },
+   "cards": {
+    "exp": 3.9,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.648
+   }
+  },
+  {
+   "time": "12:30",
+   "div": "D2",
+   "league": "2. Bundesliga",
+   "home": "Magdeburg",
+   "away": "St Pauli",
+   "pick": {
+    "side": "H",
+    "p": 0.398,
+    "odds": 2.3
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.579,
+    "odds": 1.6
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.604
+   },
+   "combo": {
+    "p": 0.27,
+    "odds": 3.68
+   },
+   "corners": {
+    "exp": 10.4,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.542
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.595
+   }
+  },
+  {
+   "time": "12:30",
+   "div": "B1",
+   "league": "Belgian Pro League",
+   "home": "Club Brugge",
+   "away": "Anderlecht",
+   "pick": {
+    "side": "H",
+    "p": 0.624,
+    "odds": 1.48
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.678,
+    "odds": 1.37
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.623
+   },
+   "combo": {
+    "p": 0.478,
+    "odds": 2.03
+   },
+   "corners": {
+    "exp": 10.7,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.503
+   },
+   "cards": {
+    "exp": 3.6,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.511
+   }
+  },
+  {
+   "time": "13:00",
+   "div": "SP1",
+   "league": "La Liga",
+   "home": "Elche",
+   "away": "Betis",
+   "pick": {
+    "side": "A",
+    "p": 0.451,
+    "odds": 2.07
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.576,
+    "odds": 1.62
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.595
+   },
+   "combo": {
+    "p": 0.306,
+    "odds": 3.35
+   },
+   "corners": {
+    "exp": 9.7,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.504
+   },
+   "cards": {
+    "exp": 4.3,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.566
+   }
+  },
+  {
+   "time": "13:00",
+   "div": "T1",
+   "league": "Super Lig",
+   "home": "Corum",
+   "away": "Fenerbahce",
+   "pick": {
+    "side": "A",
+    "p": 0.534,
+    "odds": 1.72
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.589,
+    "odds": 1.58
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.584
+   },
+   "combo": {
+    "p": 0.369,
+    "odds": 2.72
+   },
+   "corners": {
+    "exp": 9.7,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.504
+   },
+   "cards": {
+    "exp": 3.9,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.655
+   }
+  },
+  {
+   "time": "13:30",
+   "div": "N1",
+   "league": "Eredivisie",
+   "home": "Twente",
+   "away": "Ajax",
+   "pick": {
+    "side": "H",
+    "p": 0.417,
+    "odds": 2.23
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.651,
+    "odds": 1.43
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.659
+   },
+   "combo": {
+    "p": 0.309,
+    "odds": 3.19
+   },
+   "corners": {
+    "exp": 10.3,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.545
+   },
+   "cards": {
+    "exp": 2.9,
+    "line": 2.5,
+    "side": "over",
+    "p": 0.561
+   }
+  },
+  {
+   "time": "14:00",
+   "div": "F1",
+   "league": "Ligue 1",
+   "home": "Rennes",
+   "away": "Lille",
+   "pick": {
+    "side": "H",
+    "p": 0.442,
+    "odds": 2.11
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.591,
+    "odds": 1.58
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.608
+   },
+   "combo": {
+    "p": 0.306,
+    "odds": 3.33
+   },
+   "corners": {
+    "exp": 9.8,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.516
+   },
+   "cards": {
+    "exp": 3.9,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.548
+   }
+  },
+  {
+   "time": "14:00",
+   "div": "E0",
+   "league": "Premier League",
+   "home": "Brighton",
+   "away": "Brentford",
+   "pick": {
+    "side": "H",
+    "p": 0.493,
+    "odds": 1.9
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.594,
+    "odds": 1.57
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.601
+   },
+   "combo": {
+    "p": 0.342,
+    "odds": 2.98
+   },
+   "corners": {
+    "exp": 10.0,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.584
+   },
+   "cards": {
+    "exp": 3.5,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.528
+   }
+  },
+  {
+   "time": "14:00",
+   "div": "E0",
+   "league": "Premier League",
+   "home": "Crystal Palace",
+   "away": "Liverpool",
+   "pick": {
+    "side": "A",
+    "p": 0.598,
+    "odds": 1.57
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.607,
+    "odds": 1.54
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.574
+   },
+   "combo": {
+    "p": 0.422,
+    "odds": 2.42
+   },
+   "corners": {
+    "exp": 10.4,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.541
+   },
+   "cards": {
+    "exp": 3.5,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.546
+   }
+  },
+  {
+   "time": "14:00",
+   "div": "E0",
+   "league": "Premier League",
+   "home": "Ipswich",
+   "away": "Bournemouth",
+   "pick": {
+    "side": "A",
+    "p": 0.494,
+    "odds": 1.9
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.559,
+    "odds": 1.67
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.572
+   },
+   "combo": {
+    "p": 0.328,
+    "odds": 3.17
+   },
+   "corners": {
+    "exp": 9.5,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.642
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.584
+   }
+  },
+  {
+   "time": "14:00",
+   "div": "E0",
+   "league": "Premier League",
+   "home": "Sunderland",
+   "away": "Chelsea",
+   "pick": {
+    "side": "A",
+    "p": 0.485,
+    "odds": 1.93
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.527,
+    "odds": 1.77
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.548
+   },
+   "combo": {
+    "p": 0.307,
+    "odds": 3.42
+   },
+   "corners": {
+    "exp": 10.0,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.579
+   },
+   "cards": {
+    "exp": 4.5,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.656
+   }
+  },
+  {
+   "time": "14:00",
+   "div": "I1",
+   "league": "Serie A",
+   "home": "Genoa",
+   "away": "Milan",
+   "pick": {
+    "side": "A",
+    "p": 0.521,
+    "odds": 1.8
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.544,
+    "odds": 1.72
+   },
+   "btts": {
+    "side": "no",
+    "p": 0.523
+   },
+   "combo": {
+    "p": 0.232,
+    "odds": 3.1
+   },
+   "corners": {
+    "exp": 8.9,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.602
+   },
+   "cards": {
+    "exp": 3.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.784
+   }
+  },
+  {
+   "time": "14:00",
+   "div": "I1",
+   "league": "Serie A",
+   "home": "Monza",
+   "away": "Atalanta",
+   "pick": {
+    "side": "A",
+    "p": 0.457,
+    "odds": 2.06
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.607,
+    "odds": 1.54
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.619
+   },
+   "combo": {
+    "p": 0.323,
+    "odds": 3.17
+   },
+   "corners": {
+    "exp": 9.3,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.545
+   },
+   "cards": {
+    "exp": 3.0,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.815
+   }
+  },
+  {
+   "time": "14:00",
+   "div": "I2",
+   "league": "Serie B",
+   "home": "Virtus Entella",
+   "away": "Modena",
+   "pick": {
+    "side": "A",
+    "p": 0.387,
+    "odds": 2.36
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.545,
+    "odds": 1.7
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.506
+   },
+   "combo": {
+    "p": 0.18,
+    "odds": 4.01
+   },
+   "corners": {
+    "exp": 8.8,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.617
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.748
+   }
+  },
+  {
+   "time": "14:30",
+   "div": "D1",
+   "league": "Bundesliga",
+   "home": "FC Koln",
+   "away": "Leverkusen",
+   "pick": {
+    "side": "A",
+    "p": 0.525,
+    "odds": 1.78
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.672,
+    "odds": 1.39
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.656
+   },
+   "combo": {
+    "p": 0.403,
+    "odds": 2.47
+   },
+   "corners": {
+    "exp": 10.4,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.584
+   },
+   "cards": {
+    "exp": 3.9,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.54
+   }
+  },
+  {
+   "time": "15:00",
+   "div": "B1",
+   "league": "Belgian Pro League",
+   "home": "Gent",
+   "away": "Kortrijk",
+   "pick": {
+    "side": "H",
+    "p": 0.645,
+    "odds": 1.43
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.549,
+    "odds": 1.69
+   },
+   "btts": {
+    "side": "no",
+    "p": 0.503
+   },
+   "combo": {
+    "p": 0.419,
+    "odds": 2.42
+   },
+   "corners": {
+    "exp": 10.0,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.589
+   },
+   "cards": {
+    "exp": 3.5,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.539
+   }
+  },
+  {
+   "time": "15:00",
+   "div": "G1",
+   "league": "Greek Super League",
+   "home": "AEK",
+   "away": "Levadeiakos",
+   "pick": {
+    "side": "H",
+    "p": 0.776,
+    "odds": 1.18
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.575,
+    "odds": 1.61
+   },
+   "btts": {
+    "side": "no",
+    "p": 0.596
+   },
+   "combo": {
+    "p": 0.512,
+    "odds": 1.9
+   },
+   "corners": {
+    "exp": 9.4,
+    "line": 8.5,
+    "side": "over",
+    "p": 0.587
+   },
+   "cards": {
+    "exp": 4.3,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.569
+   }
+  },
+  {
+   "time": "15:00",
+   "div": "G1",
+   "league": "Greek Super League",
+   "home": "Asteras Tripolis",
+   "away": "Kalamata",
+   "pick": {
+    "side": "H",
+    "p": 0.462,
+    "odds": 1.97
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.534,
+    "odds": 1.74
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.505
+   },
+   "combo": {
+    "p": 0.204,
+    "odds": 3.43
+   },
+   "corners": {
+    "exp": 8.8,
+    "line": 8.5,
+    "side": "over",
+    "p": 0.51
+   },
+   "cards": {
+    "exp": 4.7,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.51
+   }
+  },
+  {
+   "time": "15:00",
+   "div": "SC0",
+   "league": "Scottish Prem",
+   "home": "Hearts",
+   "away": "Falkirk",
+   "pick": {
+    "side": "H",
+    "p": 0.603,
+    "odds": 1.54
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.613,
+    "odds": 1.52
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.577
+   },
+   "combo": {
+    "p": 0.427,
+    "odds": 2.34
+   },
+   "corners": {
+    "exp": 10.9,
+    "line": 10.5,
+    "side": "over",
+    "p": 0.52
+   },
+   "cards": {
+    "exp": 4.3,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.615
+   }
+  },
+  {
+   "time": "15:15",
+   "div": "SP1",
+   "league": "La Liga",
+   "home": "Sociedad",
+   "away": "Vallecano",
+   "pick": {
+    "side": "H",
+    "p": 0.563,
+    "odds": 1.66
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.603,
+    "odds": 1.55
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.585
+   },
+   "combo": {
+    "p": 0.395,
+    "odds": 2.57
+   },
+   "corners": {
+    "exp": 10.5,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.586
+   },
+   "cards": {
+    "exp": 4.3,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.563
+   }
+  },
+  {
+   "time": "15:15",
+   "div": "SP2",
+   "league": "La Liga 2",
+   "home": "Girona",
+   "away": "Almeria",
+   "pick": {
+    "side": "H",
+    "p": 0.456,
+    "odds": 2.01
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.535,
+    "odds": 1.74
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.561
+   },
+   "combo": {
+    "p": 0.293,
+    "odds": 3.5
+   },
+   "corners": {
+    "exp": 9.2,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.559
+   },
+   "cards": {
+    "exp": 5.6,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.652
+   }
+  },
+  {
+   "time": "15:30",
+   "div": "G1",
+   "league": "Greek Super League",
+   "home": "Iraklis",
+   "away": "Panathinaikos",
+   "pick": {
+    "side": "A",
+    "p": 0.683,
+    "odds": 1.33
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.556,
+    "odds": 1.67
+   },
+   "btts": {
+    "side": "no",
+    "p": 0.524
+   },
+   "combo": {
+    "p": 0.446,
+    "odds": 2.22
+   },
+   "corners": {
+    "exp": 8.8,
+    "line": 8.5,
+    "side": "over",
+    "p": 0.51
+   },
+   "cards": {
+    "exp": 4.4,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.547
+   }
+  },
+  {
+   "time": "15:30",
+   "div": "P1",
+   "league": "Primeira Liga",
+   "home": "Estoril",
+   "away": "Maritimo",
+   "pick": {
+    "side": "H",
+    "p": 0.453,
+    "odds": 2.04
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.505,
+    "odds": 1.84
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.538
+   },
+   "combo": {
+    "p": 0.278,
+    "odds": 3.75
+   },
+   "corners": {
+    "exp": 9.2,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.679
+   },
+   "cards": {
+    "exp": 4.4,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.718
+   }
+  },
+  {
+   "time": "15:30",
+   "div": "P1",
+   "league": "Primeira Liga",
+   "home": "Santa Clara",
+   "away": "Gil Vicente",
+   "pick": {
+    "side": "H",
+    "p": 0.421,
+    "odds": 2.2
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.625,
+    "odds": 1.49
+   },
+   "btts": {
+    "side": "no",
+    "p": 0.564
+   },
+   "combo": {
+    "p": 0.224,
+    "odds": 3.28
+   },
+   "corners": {
+    "exp": 8.6,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.741
+   },
+   "cards": {
+    "exp": 4.9,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.64
+   }
+  },
+  {
+   "time": "15:30",
+   "div": "T1",
+   "league": "Super Lig",
+   "home": "Alanyaspor",
+   "away": "Trabzonspor",
+   "pick": {
+    "side": "A",
+    "p": 0.564,
+    "odds": 1.63
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.559,
+    "odds": 1.66
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.547
+   },
+   "combo": {
+    "p": 0.374,
+    "odds": 2.71
+   },
+   "corners": {
+    "exp": 9.3,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.553
+   },
+   "cards": {
+    "exp": 4.0,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.629
+   }
+  },
+  {
+   "time": "15:45",
+   "div": "N1",
+   "league": "Eredivisie",
+   "home": "AZ Alkmaar",
+   "away": "Groningen",
+   "pick": {
+    "side": "H",
+    "p": 0.613,
+    "odds": 1.52
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.673,
+    "odds": 1.38
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.623
+   },
+   "combo": {
+    "p": 0.468,
+    "odds": 2.1
+   },
+   "corners": {
+    "exp": 10.7,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.508
+   },
+   "cards": {
+    "exp": 2.8,
+    "line": 2.5,
+    "side": "over",
+    "p": 0.531
+   }
+  },
+  {
+   "time": "15:45",
+   "div": "N1",
+   "league": "Eredivisie",
+   "home": "Cambuur",
+   "away": "PSV Eindhoven",
+   "pick": {
+    "side": "A",
+    "p": 0.68,
+    "odds": 1.36
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.744,
+    "odds": 1.25
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.655
+   },
+   "combo": {
+    "p": 0.553,
+    "odds": 1.7
+   },
+   "corners": {
+    "exp": 10.3,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.543
+   },
+   "cards": {
+    "exp": 3.1,
+    "line": 2.5,
+    "side": "over",
+    "p": 0.587
+   }
+  },
+  {
+   "time": "16:00",
+   "div": "SC0",
+   "league": "Scottish Prem",
+   "home": "Celtic",
+   "away": "Kilmarnock",
+   "pick": {
+    "side": "H",
+    "p": 0.804,
+    "odds": 1.15
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.748,
+    "odds": 1.25
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.553
+   },
+   "combo": {
+    "p": 0.651,
+    "odds": 1.44
+   },
+   "corners": {
+    "exp": 12.1,
+    "line": 10.5,
+    "side": "over",
+    "p": 0.649
+   },
+   "cards": {
+    "exp": 3.3,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.57
+   }
+  },
+  {
+   "time": "16:15",
+   "div": "F1",
+   "league": "Ligue 1",
+   "home": "Angers",
+   "away": "Nice",
+   "pick": {
+    "side": "A",
+    "p": 0.466,
+    "odds": 2.0
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.552,
+    "odds": 1.69
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.573
+   },
+   "combo": {
+    "p": 0.305,
+    "odds": 3.38
+   },
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.526
+   },
+   "cards": {
+    "exp": 3.2,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.592
+   }
+  },
+  {
+   "time": "16:15",
+   "div": "F1",
+   "league": "Ligue 1",
+   "home": "Brest",
+   "away": "Lyon",
+   "pick": {
+    "side": "A",
+    "p": 0.387,
+    "odds": 2.41
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.509,
+    "odds": 1.83
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.55
+   },
+   "combo": {
+    "p": 0.236,
+    "odds": 4.41
+   },
+   "corners": {
+    "exp": 9.5,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.527
+   },
+   "cards": {
+    "exp": 3.8,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.521
+   }
+  },
+  {
+   "time": "16:15",
+   "div": "F1",
+   "league": "Ligue 1",
+   "home": "Le Havre",
+   "away": "Lorient",
+   "pick": {
+    "side": "A",
+    "p": 0.378,
+    "odds": 2.47
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.527,
+    "odds": 1.77
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.522
+   },
+   "combo": {
+    "p": 0.17,
+    "odds": 4.37
+   },
+   "corners": {
+    "exp": 9.4,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.54
+   },
+   "cards": {
+    "exp": 3.8,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.521
+   }
+  },
+  {
+   "time": "16:15",
+   "div": "F1",
+   "league": "Ligue 1",
+   "home": "Le Mans",
+   "away": "Monaco",
+   "pick": {
+    "side": "A",
+    "p": 0.546,
+    "odds": 1.71
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.592,
+    "odds": 1.57
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.583
+   },
+   "combo": {
+    "p": 0.378,
+    "odds": 2.68
+   },
+   "corners": {
+    "exp": 9.0,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.591
+   },
+   "cards": {
+    "exp": 3.8,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.517
+   }
+  },
+  {
+   "time": "16:15",
+   "div": "I2",
+   "league": "Serie B",
+   "home": "Carrarese",
+   "away": "Sampdoria",
+   "pick": {
+    "side": "H",
+    "p": 0.384,
+    "odds": 2.38
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.512,
+    "odds": 1.81
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.533
+   },
+   "combo": {
+    "p": 0.168,
+    "odds": 4.31
+   },
+   "corners": {
+    "exp": 9.7,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.5
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.764
+   }
+  },
+  {
+   "time": "16:30",
+   "div": "D1",
+   "league": "Bundesliga",
+   "home": "Freiburg",
+   "away": "Union Berlin",
+   "pick": {
+    "side": "H",
+    "p": 0.628,
+    "odds": 1.49
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.587,
+    "odds": 1.59
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.54
+   },
+   "combo": {
+    "p": 0.431,
+    "odds": 2.37
+   },
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.517
+   },
+   "cards": {
+    "exp": 3.5,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.529
+   }
+  },
+  {
+   "time": "16:30",
+   "div": "G1",
+   "league": "Greek Super League",
+   "home": "OFI Crete",
+   "away": "Atromitos",
+   "pick": {
+    "side": "H",
+    "p": 0.451,
+    "odds": 2.02
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.52,
+    "odds": 1.78
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.518
+   },
+   "combo": {
+    "p": 0.194,
+    "odds": 3.6
+   },
+   "corners": {
+    "exp": 8.7,
+    "line": 8.5,
+    "side": "over",
+    "p": 0.503
+   },
+   "cards": {
+    "exp": 5.2,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.585
+   }
+  },
+  {
+   "time": "16:30",
+   "div": "E0",
+   "league": "Premier League",
+   "home": "Man United",
+   "away": "Aston Villa",
+   "pick": {
+    "side": "H",
+    "p": 0.44,
+    "odds": 2.13
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.602,
+    "odds": 1.55
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.617
+   },
+   "combo": {
+    "p": 0.308,
+    "odds": 3.3
+   },
+   "corners": {
+    "exp": 10.2,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.563
+   },
+   "cards": {
+    "exp": 4.9,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.719
+   }
+  },
+  {
+   "time": "17:00",
+   "div": "I1",
+   "league": "Serie A",
+   "home": "Inter",
+   "away": "Como",
+   "pick": {
+    "side": "H",
+    "p": 0.504,
+    "odds": 1.86
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.641,
+    "odds": 1.46
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.637
+   },
+   "combo": {
+    "p": 0.37,
+    "odds": 2.72
+   },
+   "corners": {
+    "exp": 9.6,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.518
+   },
+   "cards": {
+    "exp": 3.0,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.819
+   }
+  },
+  {
+   "time": "17:30",
+   "div": "B1",
+   "league": "Belgian Pro League",
+   "home": "St. Gilloise",
+   "away": "Genk",
+   "pick": {
+    "side": "H",
+    "p": 0.576,
+    "odds": 1.6
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.595,
+    "odds": 1.56
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.573
+   },
+   "combo": {
+    "p": 0.401,
+    "odds": 2.5
+   },
+   "corners": {
+    "exp": 10.2,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.555
+   },
+   "cards": {
+    "exp": 3.6,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.509
+   }
+  },
+  {
+   "time": "17:30",
+   "div": "SP1",
+   "league": "La Liga",
+   "home": "Celta",
+   "away": "Levante",
+   "pick": {
+    "side": "H",
+    "p": 0.504,
+    "odds": 1.86
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.503,
+    "odds": 1.85
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.518
+   },
+   "combo": {
+    "p": 0.206,
+    "odds": 3.44
+   },
+   "corners": {
+    "exp": 9.1,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.576
+   },
+   "cards": {
+    "exp": 4.0,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.636
+   }
+  },
+  {
+   "time": "17:30",
+   "div": "SP1",
+   "league": "La Liga",
+   "home": "Villarreal",
+   "away": "Getafe",
+   "pick": {
+    "side": "H",
+    "p": 0.657,
+    "odds": 1.42
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.532,
+    "odds": 1.75
+   },
+   "btts": {
+    "side": "no",
+    "p": 0.528
+   },
+   "combo": {
+    "p": 0.417,
+    "odds": 2.48
+   },
+   "corners": {
+    "exp": 10.1,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.543
+   },
+   "cards": {
+    "exp": 4.5,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.534
+   }
+  },
+  {
+   "time": "17:30",
+   "div": "SP2",
+   "league": "La Liga 2",
+   "home": "Las Palmas",
+   "away": "Eldense",
+   "pick": {
+    "side": "H",
+    "p": 0.429,
+    "odds": 2.13
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.527,
+    "odds": 1.76
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.56
+   },
+   "combo": {
+    "p": 0.272,
+    "odds": 3.75
+   },
+   "corners": {
+    "exp": 9.6,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.509
+   },
+   "cards": {
+    "exp": 5.3,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.606
+   }
+  },
+  {
+   "time": "17:30",
+   "div": "SP2",
+   "league": "La Liga 2",
+   "home": "Sp Gijon",
+   "away": "Valladolid",
+   "pick": {
+    "side": "H",
+    "p": 0.398,
+    "odds": 2.3
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.552,
+    "odds": 1.68
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.5
+   },
+   "combo": {
+    "p": 0.187,
+    "odds": 3.86
+   },
+   "corners": {
+    "exp": 9.2,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.566
+   },
+   "cards": {
+    "exp": 5.5,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.643
+   }
+  },
+  {
+   "time": "18:00",
+   "div": "P1",
+   "league": "Primeira Liga",
+   "home": "Guimaraes",
+   "away": "Porto",
+   "pick": {
+    "side": "A",
+    "p": 0.568,
+    "odds": 1.63
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.513,
+    "odds": 1.81
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.508
+   },
+   "combo": {
+    "p": 0.352,
+    "odds": 2.95
+   },
+   "corners": {
+    "exp": 9.0,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.696
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.759
+   }
+  },
+  {
+   "time": "18:00",
+   "div": "T1",
+   "league": "Super Lig",
+   "home": "Besiktas",
+   "away": "Genclerbirligi",
+   "pick": {
+    "side": "H",
+    "p": 0.765,
+    "odds": 1.21
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.68,
+    "odds": 1.36
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.523
+   },
+   "combo": {
+    "p": 0.577,
+    "odds": 1.65
+   },
+   "corners": {
+    "exp": 10.4,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.578
+   },
+   "cards": {
+    "exp": 3.9,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.65
+   }
+  },
+  {
+   "time": "18:15",
+   "div": "B1",
+   "league": "Belgian Pro League",
+   "home": "St Truiden",
+   "away": "Waregem",
+   "pick": {
+    "side": "H",
+    "p": 0.524,
+    "odds": 1.76
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.599,
+    "odds": 1.55
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.596
+   },
+   "combo": {
+    "p": 0.368,
+    "odds": 2.73
+   },
+   "corners": {
+    "exp": 10.6,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.514
+   },
+   "cards": {
+    "exp": 3.5,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.539
+   }
+  },
+  {
+   "time": "18:30",
+   "div": "D1",
+   "league": "Bundesliga",
+   "home": "Hoffenheim",
+   "away": "Schalke 04",
+   "pick": {
+    "side": "H",
+    "p": 0.589,
+    "odds": 1.59
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.638,
+    "odds": 1.47
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.605
+   },
+   "combo": {
+    "p": 0.431,
+    "odds": 2.34
+   },
+   "corners": {
+    "exp": 10.3,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.573
+   },
+   "cards": {
+    "exp": 3.5,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.539
+   }
+  },
+  {
+   "time": "18:30",
+   "div": "I2",
+   "league": "Serie B",
+   "home": "Vicenza",
+   "away": "Cremonese",
+   "pick": {
+    "side": "A",
+    "p": 0.387,
+    "odds": 2.37
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.518,
+    "odds": 1.79
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.529
+   },
+   "combo": {
+    "p": 0.17,
+    "odds": 4.24
+   },
+   "corners": {
+    "exp": 9.5,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.53
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.76
+   }
+  },
+  {
+   "time": "19:00",
+   "div": "N1",
+   "league": "Eredivisie",
+   "home": "Utrecht",
+   "away": "Nijmegen",
+   "pick": {
+    "side": "H",
+    "p": 0.39,
+    "odds": 2.38
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.636,
+    "odds": 1.46
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.649
+   },
+   "combo": {
+    "p": 0.283,
+    "odds": 3.47
+   },
+   "corners": {
+    "exp": 10.5,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.524
+   },
+   "cards": {
+    "exp": 3.3,
+    "line": 2.5,
+    "side": "over",
+    "p": 0.631
+   }
+  },
+  {
+   "time": "19:00",
+   "div": "G1",
+   "league": "Greek Super League",
+   "home": "Olympiakos",
+   "away": "PAOK",
+   "pick": {
+    "side": "H",
+    "p": 0.587,
+    "odds": 1.55
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.536,
+    "odds": 1.73
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.518
+   },
+   "combo": {
+    "p": 0.376,
+    "odds": 2.68
+   },
+   "corners": {
+    "exp": 9.3,
+    "line": 8.5,
+    "side": "over",
+    "p": 0.569
+   },
+   "cards": {
+    "exp": 4.8,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.52
+   }
+  },
+  {
+   "time": "19:45",
+   "div": "F1",
+   "league": "Ligue 1",
+   "home": "Lens",
+   "away": "Marseille",
+   "pick": {
+    "side": "H",
+    "p": 0.43,
+    "odds": 2.17
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.64,
+    "odds": 1.46
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.65
+   },
+   "combo": {
+    "p": 0.316,
+    "odds": 3.17
+   },
+   "corners": {
+    "exp": 9.7,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.505
+   },
+   "cards": {
+    "exp": 3.7,
+    "line": 3.5,
+    "side": "under",
+    "p": 0.503
+   }
+  },
+  {
+   "time": "19:45",
+   "div": "I1",
+   "league": "Serie A",
+   "home": "Fiorentina",
+   "away": "Juventus",
+   "pick": {
+    "side": "A",
+    "p": 0.455,
+    "odds": 2.06
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.535,
+    "odds": 1.75
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.561
+   },
+   "combo": {
+    "p": 0.292,
+    "odds": 3.6
+   },
+   "corners": {
+    "exp": 9.5,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.52
+   },
+   "cards": {
+    "exp": 3.4,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.742
+   }
+  },
+  {
+   "time": "20:00",
+   "div": "SP1",
+   "league": "La Liga",
+   "home": "Ath Madrid",
+   "away": "Barcelona",
+   "pick": {
+    "side": "A",
+    "p": 0.518,
+    "odds": 1.81
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.718,
+    "odds": 1.31
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.696
+   },
+   "combo": {
+    "p": 0.415,
+    "odds": 2.37
+   },
+   "corners": {
+    "exp": 9.6,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.514
+   },
+   "cards": {
+    "exp": 3.7,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.689
+   }
+  },
+  {
+   "time": "20:30",
+   "div": "P1",
+   "league": "Primeira Liga",
+   "home": "Estrela",
+   "away": "Benfica",
+   "pick": {
+    "side": "A",
+    "p": 0.75,
+    "odds": 1.24
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.661,
+    "odds": 1.41
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.519
+   },
+   "combo": {
+    "p": 0.555,
+    "odds": 1.75
+   },
+   "corners": {
+    "exp": 9.5,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.639
+   },
+   "cards": {
+    "exp": 4.1,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.767
+   }
+  },
+  {
+   "time": "20:30",
+   "div": "P1",
+   "league": "Primeira Liga",
+   "home": "Rio Ave",
+   "away": "Sp Braga",
+   "pick": {
+    "side": "A",
+    "p": 0.61,
+    "odds": 1.52
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.528,
+    "odds": 1.76
+   },
+   "btts": {
+    "side": "no",
+    "p": 0.501
+   },
+   "combo": {
+    "p": 0.385,
+    "odds": 2.68
+   },
+   "corners": {
+    "exp": 9.1,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.684
+   },
+   "cards": {
+    "exp": 4.0,
+    "line": 5.5,
+    "side": "under",
+    "p": 0.786
+   }
+  }
+ ],
+ "updated": "2026-11-06T12:05:44+00:00",
+ "double": {
+  "legs": [
+   [
+    "Santa Clara",
+    "Gil Vicente"
+   ],
+   [
+    "Guimaraes",
+    "Porto"
+   ]
+  ],
+  "p": 0.516
+ },
+ "daily": {
+  "legs": [
+   {
+    "home": "Celtic",
+    "away": "Kilmarnock",
+    "kind": "pick"
+   },
+   {
+    "home": "AEK",
+    "away": "Levadeiakos",
+    "kind": "pick"
+   }
+  ],
+  "p": 0.624,
+  "odds": 1.36
+ }
+}

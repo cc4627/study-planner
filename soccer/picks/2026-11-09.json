@@ -1,0 +1,45 @@
+{
+ "date": "2026-11-09",
+ "matches": [
+  {
+   "time": "19:30",
+   "div": "SP2",
+   "league": "La Liga 2",
+   "home": "Sabadell",
+   "away": "Sociedad B",
+   "pick": {
+    "side": "H",
+    "p": 0.547,
+    "odds": 1.67
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.534,
+    "odds": 1.74
+   },
+   "btts": {
+    "side": "no",
+    "p": 0.524
+   },
+   "combo": {
+    "p": 0.238,
+    "odds": 2.91
+   },
+   "corners": {
+    "exp": 9.4,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.538
+   },
+   "cards": {
+    "exp": 5.2,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.593
+   }
+  }
+ ],
+ "updated": "2026-11-06T12:05:44+00:00",
+ "double": null,
+ "daily": null
+}

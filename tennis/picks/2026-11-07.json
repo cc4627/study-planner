@@ -1,0 +1,35 @@
+{
+ "date": "2026-11-07",
+ "matches": [
+  {
+   "id": "186644",
+   "time": "06:00",
+   "tour": "WTA",
+   "event": "Prudential Hong Kong Tennis Open",
+   "round": "Semifinal",
+   "p1": "Alexandra Shubladze",
+   "p2": "Claire Liu",
+   "pick": 1,
+   "p": 0.571,
+   "bo": 3,
+   "new": false,
+   "first": 0.548,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.544
+   },
+   "acca": 0.1636,
+   "odds": [
+    1.83,
+    1.94
+   ],
+   "gp": {
+    "over": 1.84,
+    "under": 1.86
+   }
+  }
+ ],
+ "updated": "2026-11-06T12:28:34+00:00",
+ "double": null
+}

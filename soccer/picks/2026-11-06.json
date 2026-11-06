@@ -9,27 +9,27 @@
    "away": "Kasimpasa",
    "pick": {
     "side": "H",
-    "p": 0.372,
-    "odds": 2.55
+    "p": 0.375,
+    "odds": 2.46
    },
    "goals": {
     "side": "over",
-    "p": 0.51,
-    "odds": 1.833
+    "p": 0.517,
+    "odds": 1.8
    },
    "btts": {
     "side": "yes",
-    "p": 0.551
+    "p": 0.557
    },
    "combo": {
-    "p": 0.229,
-    "odds": 4.67
+    "p": 0.232,
+    "odds": 4.43
    },
    "corners": {
     "exp": 9.5,
     "line": 9.5,
     "side": "under",
-    "p": 0.53
+    "p": 0.529
    },
    "cards": {
     "exp": 4.6,
@@ -46,23 +46,33 @@
    "away": "Cottbus",
    "pick": {
     "side": "H",
-    "p": 0.483,
-    "odds": 1.952
+    "p": 0.482,
+    "odds": 1.91
    },
-   "goals": null,
-   "btts": null,
-   "combo": null,
+   "goals": {
+    "side": "over",
+    "p": 0.641,
+    "odds": 1.45
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.641
+   },
+   "combo": {
+    "p": 0.356,
+    "odds": 2.77
+   },
    "corners": {
-    "exp": 11.0,
+    "exp": 11.2,
     "line": 10.5,
     "side": "over",
-    "p": 0.533
+    "p": 0.552
    },
    "cards": {
-    "exp": 4.3,
+    "exp": 4.2,
     "line": 4.5,
     "side": "under",
-    "p": 0.579
+    "p": 0.591
    }
   },
   {
@@ -73,33 +83,33 @@
    "away": "Greuther Furth",
    "pick": {
     "side": "H",
-    "p": 0.497,
-    "odds": 1.909
+    "p": 0.478,
+    "odds": 1.93
    },
    "goals": {
     "side": "over",
-    "p": 0.594,
-    "odds": 1.571
+    "p": 0.576,
+    "odds": 1.61
    },
    "btts": {
     "side": "yes",
-    "p": 0.6
+    "p": 0.59
    },
    "combo": {
-    "p": 0.346,
-    "odds": 3.0
+    "p": 0.326,
+    "odds": 3.11
    },
    "corners": {
-    "exp": 11.1,
+    "exp": 11.0,
     "line": 10.5,
     "side": "over",
-    "p": 0.537
+    "p": 0.536
    },
    "cards": {
-    "exp": 3.5,
+    "exp": 3.6,
     "line": 4.5,
     "side": "under",
-    "p": 0.718
+    "p": 0.714
    }
   },
   {
@@ -110,23 +120,33 @@
    "away": "Zwolle",
    "pick": {
     "side": "A",
-    "p": 0.412,
-    "odds": 2.3
+    "p": 0.451,
+    "odds": 2.06
    },
-   "goals": null,
-   "btts": null,
-   "combo": null,
+   "goals": {
+    "side": "over",
+    "p": 0.574,
+    "odds": 1.62
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.594
+   },
+   "combo": {
+    "p": 0.305,
+    "odds": 3.34
+   },
    "corners": {
     "exp": 10.8,
     "line": 10.5,
     "side": "over",
-    "p": 0.504
+    "p": 0.506
    },
    "cards": {
-    "exp": 2.9,
+    "exp": 2.8,
     "line": 2.5,
     "side": "over",
-    "p": 0.557
+    "p": 0.538
    }
   },
   {
@@ -137,27 +157,27 @@
    "away": "Annecy",
    "pick": {
     "side": "H",
-    "p": 0.386,
-    "odds": 2.45
+    "p": 0.388,
+    "odds": 2.36
    },
    "goals": {
     "side": "under",
-    "p": 0.584,
-    "odds": 1.606
+    "p": 0.589,
+    "odds": 1.58
    },
    "btts": {
     "side": "no",
-    "p": 0.525
+    "p": 0.529
    },
    "combo": {
-    "p": 0.194,
-    "odds": 3.93
+    "p": 0.197,
+    "odds": 3.73
    },
    "corners": {
     "exp": 9.3,
     "line": 8.5,
     "side": "over",
-    "p": 0.574
+    "p": 0.573
    },
    "cards": {
     "exp": 3.9,
@@ -172,21 +192,35 @@
    "league": "Ligue 2",
    "home": "Dijon",
    "away": "Red Star",
-   "pick": null,
-   "goals": null,
-   "btts": null,
-   "combo": null,
+   "pick": {
+    "side": "A",
+    "p": 0.374,
+    "odds": 2.45
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.565,
+    "odds": 1.64
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.594
+   },
+   "combo": {
+    "p": 0.25,
+    "odds": 4.02
+   },
    "corners": {
     "exp": 9.6,
     "line": 8.5,
     "side": "over",
-    "p": 0.606
+    "p": 0.612
    },
    "cards": {
     "exp": 4.2,
     "line": 3.5,
     "side": "over",
-    "p": 0.603
+    "p": 0.594
    }
   },
   {
@@ -197,27 +231,27 @@
    "away": "Guingamp",
    "pick": {
     "side": "A",
-    "p": 0.395,
-    "odds": 2.4
+    "p": 0.393,
+    "odds": 2.32
    },
    "goals": {
     "side": "over",
-    "p": 0.557,
-    "odds": 1.667
+    "p": 0.564,
+    "odds": 1.64
    },
    "btts": {
     "side": "yes",
-    "p": 0.588
+    "p": 0.593
    },
    "combo": {
-    "p": 0.26,
-    "odds": 4.0
+    "p": 0.261,
+    "odds": 3.8
    },
    "corners": {
     "exp": 9.6,
     "line": 8.5,
     "side": "over",
-    "p": 0.605
+    "p": 0.606
    },
    "cards": {
     "exp": 4.1,
@@ -234,21 +268,21 @@
    "away": "Reims",
    "pick": {
     "side": "A",
-    "p": 0.492,
-    "odds": 1.909
+    "p": 0.489,
+    "odds": 1.87
    },
    "goals": {
     "side": "under",
-    "p": 0.51,
-    "odds": 1.833
+    "p": 0.507,
+    "odds": 1.83
    },
    "btts": {
     "side": "yes",
-    "p": 0.517
+    "p": 0.519
    },
    "combo": {
-    "p": 0.204,
-    "odds": 3.5
+    "p": 0.202,
+    "odds": 3.42
    },
    "corners": {
     "exp": 9.2,
@@ -260,7 +294,7 @@
     "exp": 4.0,
     "line": 3.5,
     "side": "over",
-    "p": 0.562
+    "p": 0.561
    }
   },
   {
@@ -271,21 +305,21 @@
    "away": "Metz",
    "pick": {
     "side": "H",
-    "p": 0.47,
-    "odds": 2.0
+    "p": 0.481,
+    "odds": 1.9
    },
    "goals": {
     "side": "over",
-    "p": 0.554,
-    "odds": 1.69
+    "p": 0.56,
+    "odds": 1.66
    },
    "btts": {
     "side": "yes",
-    "p": 0.572
+    "p": 0.575
    },
    "combo": {
-    "p": 0.316,
-    "odds": 3.38
+    "p": 0.323,
+    "odds": 3.15
    },
    "corners": {
     "exp": 9.8,
@@ -294,10 +328,10 @@
     "p": 0.629
    },
    "cards": {
-    "exp": 4.1,
+    "exp": 4.0,
     "line": 3.5,
     "side": "over",
-    "p": 0.575
+    "p": 0.573
    }
   },
   {
@@ -308,33 +342,33 @@
    "away": "Sochaux",
    "pick": {
     "side": "H",
-    "p": 0.569,
-    "odds": 1.667
+    "p": 0.574,
+    "odds": 1.59
    },
    "goals": {
     "side": "under",
-    "p": 0.51,
-    "odds": 1.833
+    "p": 0.508,
+    "odds": 1.83
    },
    "btts": {
     "side": "no",
     "p": 0.515
    },
    "combo": {
-    "p": 0.235,
-    "odds": 3.06
+    "p": 0.236,
+    "odds": 2.91
    },
    "corners": {
     "exp": 9.5,
     "line": 8.5,
     "side": "over",
-    "p": 0.601
+    "p": 0.602
    },
    "cards": {
     "exp": 3.8,
     "line": 3.5,
     "side": "over",
-    "p": 0.526
+    "p": 0.525
    }
   },
   {
@@ -345,23 +379,33 @@
    "away": "M'gladbach",
    "pick": {
     "side": "H",
-    "p": 0.389,
-    "odds": 2.45
+    "p": 0.403,
+    "odds": 2.33
    },
-   "goals": null,
-   "btts": null,
-   "combo": null,
+   "goals": {
+    "side": "over",
+    "p": 0.568,
+    "odds": 1.65
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.595
+   },
+   "combo": {
+    "p": 0.269,
+    "odds": 3.84
+   },
    "corners": {
-    "exp": 10.3,
+    "exp": 10.4,
     "line": 9.5,
     "side": "over",
-    "p": 0.572
+    "p": 0.579
    },
    "cards": {
-    "exp": 4.5,
+    "exp": 4.4,
     "line": 3.5,
     "side": "over",
-    "p": 0.652
+    "p": 0.643
    }
   },
   {
@@ -372,21 +416,21 @@
    "away": "Eibar",
    "pick": {
     "side": "H",
-    "p": 0.587,
-    "odds": 1.606
+    "p": 0.581,
+    "odds": 1.625
    },
    "goals": {
     "side": "over",
-    "p": 0.594,
-    "odds": 1.571
+    "p": 0.592,
+    "odds": 1.588
    },
    "btts": {
     "side": "yes",
-    "p": 0.568
+    "p": 0.567
    },
    "combo": {
-    "p": 0.407,
-    "odds": 2.52
+    "p": 0.403,
+    "odds": 2.58
    },
    "corners": {
     "exp": 9.6,
@@ -398,7 +442,7 @@
     "exp": 4.9,
     "line": 4.5,
     "side": "over",
-    "p": 0.542
+    "p": 0.543
    }
   },
   {
@@ -409,33 +453,33 @@
    "away": "Dunfermline",
    "pick": {
     "side": "A",
-    "p": 0.356,
-    "odds": 2.65
+    "p": 0.367,
+    "odds": 2.47
    },
    "goals": {
     "side": "under",
-    "p": 0.567,
-    "odds": 1.645
+    "p": 0.568,
+    "odds": 1.63
    },
    "btts": {
     "side": "no",
-    "p": 0.509
+    "p": 0.51
    },
    "combo": {
-    "p": 0.175,
-    "odds": 4.36
+    "p": 0.18,
+    "odds": 4.03
    },
    "corners": {
     "exp": 9.0,
     "line": 10.5,
     "side": "under",
-    "p": 0.694
+    "p": 0.696
    },
    "cards": {
-    "exp": 4.1,
+    "exp": 4.0,
     "line": 3.5,
     "side": "over",
-    "p": 0.582
+    "p": 0.574
    }
   },
   {
@@ -446,21 +490,21 @@
    "away": "Palermo",
    "pick": {
     "side": "A",
-    "p": 0.421,
-    "odds": 2.25
+    "p": 0.424,
+    "odds": 2.17
    },
    "goals": {
     "side": "over",
-    "p": 0.575,
-    "odds": 1.625
+    "p": 0.574,
+    "odds": 1.62
    },
    "btts": {
     "side": "yes",
-    "p": 0.598
+    "p": 0.597
    },
    "combo": {
-    "p": 0.289,
-    "odds": 3.66
+    "p": 0.29,
+    "odds": 3.52
    },
    "corners": {
     "exp": 9.7,
@@ -472,7 +516,7 @@
     "exp": 3.8,
     "line": 5.5,
     "side": "under",
-    "p": 0.818
+    "p": 0.819
    }
   },
   {
@@ -483,33 +527,33 @@
    "away": "Beveren",
    "pick": {
     "side": "H",
-    "p": 0.525,
-    "odds": 1.8
+    "p": 0.481,
+    "odds": 1.93
    },
    "goals": {
     "side": "over",
-    "p": 0.575,
-    "odds": 1.625
+    "p": 0.579,
+    "odds": 1.61
    },
    "btts": {
     "side": "yes",
-    "p": 0.577
+    "p": 0.591
    },
    "combo": {
-    "p": 0.354,
-    "odds": 2.93
+    "p": 0.329,
+    "odds": 3.11
    },
    "corners": {
     "exp": 10.8,
     "line": 10.5,
     "side": "over",
-    "p": 0.504
+    "p": 0.506
    },
    "cards": {
     "exp": 3.3,
     "line": 3.5,
     "side": "under",
-    "p": 0.585
+    "p": 0.578
    }
   },
   {
@@ -520,21 +564,21 @@
    "away": "Strasbourg",
    "pick": {
     "side": "H",
-    "p": 0.463,
-    "odds": 2.05
+    "p": 0.429,
+    "odds": 2.19
    },
    "goals": {
     "side": "over",
-    "p": 0.581,
-    "odds": 1.625
+    "p": 0.573,
+    "odds": 1.63
    },
    "btts": {
     "side": "yes",
     "p": 0.597
    },
    "combo": {
-    "p": 0.316,
-    "odds": 3.33
+    "p": 0.289,
+    "odds": 3.57
    },
    "corners": {
     "exp": 9.0,
@@ -543,10 +587,10 @@
     "p": 0.586
    },
    "cards": {
-    "exp": 3.6,
+    "exp": 3.7,
     "line": 3.5,
     "side": "under",
-    "p": 0.512
+    "p": 0.502
    }
   },
   {
@@ -557,33 +601,33 @@
    "away": "Udinese",
    "pick": {
     "side": "H",
-    "p": 0.422,
-    "odds": 2.2
+    "p": 0.415,
+    "odds": 2.27
    },
    "goals": {
     "side": "over",
-    "p": 0.537,
-    "odds": 1.769
+    "p": 0.524,
+    "odds": 1.79
    },
    "btts": {
     "side": "yes",
-    "p": 0.569
+    "p": 0.559
    },
    "combo": {
-    "p": 0.27,
-    "odds": 3.89
+    "p": 0.263,
+    "odds": 4.06
    },
    "corners": {
     "exp": 9.6,
     "line": 9.5,
     "side": "under",
-    "p": 0.512
+    "p": 0.513
    },
    "cards": {
     "exp": 2.9,
     "line": 4.5,
     "side": "under",
-    "p": 0.825
+    "p": 0.824
    }
   },
   {
@@ -593,34 +637,34 @@
    "home": "Derby",
    "away": "Bolton",
    "pick": {
-    "side": "H",
-    "p": 0.384,
-    "odds": 2.5
+    "side": "A",
+    "p": 0.375,
+    "odds": 2.49
    },
    "goals": {
     "side": "over",
-    "p": 0.569,
-    "odds": 1.667
+    "p": 0.557,
+    "odds": 1.68
    },
    "btts": {
     "side": "yes",
-    "p": 0.597
+    "p": 0.588
    },
    "combo": {
-    "p": 0.255,
-    "odds": 4.17
+    "p": 0.246,
+    "odds": 4.18
    },
    "corners": {
     "exp": 10.8,
     "line": 10.5,
     "side": "over",
-    "p": 0.507
+    "p": 0.504
    },
    "cards": {
     "exp": 3.7,
     "line": 3.5,
-    "side": "under",
-    "p": 0.504
+    "side": "over",
+    "p": 0.5
    }
   },
   {
@@ -631,33 +675,33 @@
    "away": "Alaves",
    "pick": {
     "side": "H",
-    "p": 0.5,
-    "odds": 1.909
+    "p": 0.507,
+    "odds": 1.86
    },
    "goals": {
     "side": "under",
-    "p": 0.56,
-    "odds": 1.69
+    "p": 0.574,
+    "odds": 1.63
    },
    "btts": {
     "side": "no",
-    "p": 0.528
+    "p": 0.544
    },
    "combo": {
-    "p": 0.231,
-    "odds": 3.23
+    "p": 0.241,
+    "odds": 3.03
    },
    "corners": {
     "exp": 8.9,
     "line": 9.5,
     "side": "under",
-    "p": 0.596
+    "p": 0.598
    },
    "cards": {
     "exp": 4.5,
     "line": 4.5,
     "side": "under",
-    "p": 0.533
+    "p": 0.536
    }
   },
   {
@@ -668,21 +712,21 @@
    "away": "Coventry",
    "pick": {
     "side": "H",
-    "p": 0.555,
-    "odds": 1.714
+    "p": 0.565,
+    "odds": 1.67
    },
    "goals": {
     "side": "over",
-    "p": 0.551,
-    "odds": 1.714
+    "p": 0.553,
+    "odds": 1.69
    },
    "btts": {
     "side": "yes",
-    "p": 0.545
+    "p": 0.542
    },
    "combo": {
-    "p": 0.363,
-    "odds": 2.94
+    "p": 0.372,
+    "odds": 2.82
    },
    "corners": {
     "exp": 10.0,
@@ -691,10 +735,10 @@
     "p": 0.587
    },
    "cards": {
-    "exp": 3.7,
+    "exp": 4.1,
     "line": 3.5,
     "side": "over",
-    "p": 0.5
+    "p": 0.575
    }
   },
   {
@@ -705,37 +749,37 @@
    "away": "Arouca",
    "pick": {
     "side": "H",
-    "p": 0.44,
-    "odds": 2.15
+    "p": 0.413,
+    "odds": 2.25
    },
    "goals": {
     "side": "under",
-    "p": 0.545,
-    "odds": 1.714
+    "p": 0.565,
+    "odds": 1.65
    },
    "btts": {
-    "side": "yes",
-    "p": 0.5
+    "side": "no",
+    "p": 0.512
    },
    "combo": {
-    "p": 0.2,
-    "odds": 3.69
+    "p": 0.196,
+    "odds": 3.71
    },
    "corners": {
     "exp": 8.9,
     "line": 10.5,
     "side": "under",
-    "p": 0.708
+    "p": 0.71
    },
    "cards": {
     "exp": 4.8,
     "line": 5.5,
     "side": "under",
-    "p": 0.654
+    "p": 0.644
    }
   }
  ],
- "updated": "2026-11-06T00:33:39+00:00",
+ "updated": "2026-11-06T12:05:44+00:00",
  "double": {
   "legs": [
    [
@@ -747,13 +791,13 @@
     "Dunfermline"
    ]
   ],
-  "p": 0.491
+  "p": 0.494
  },
  "daily": {
   "legs": [
    {
-    "home": "Dresden",
-    "away": "Greuther Furth",
+    "home": "Braunschweig",
+    "away": "Cottbus",
     "kind": "goals"
    },
    {
@@ -762,7 +806,7 @@
     "kind": "goals"
    }
   ],
-  "p": 0.353,
-  "odds": 2.47
+  "p": 0.379,
+  "odds": 2.3
  }
 }
