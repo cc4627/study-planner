@@ -95,7 +95,7 @@ def espn_fill(fx, today, div_of):
     teams = {}
     for t, d in div_of.items():
         teams.setdefault(d, set()).add(t)
-    out, missed = [], set()
+    out, missed, used = [], set(), set()
     for k in range(DOMESTIC_AHEAD + 1):
         day = today + timedelta(days=k)
         comps = {europe.DOMESTIC[d]: (d, fd.LEAGUES[d]) for d in fd.LEAGUES if d in europe.DOMESTIC and (day, d) not in have}
@@ -115,10 +115,13 @@ def espn_fill(fx, today, div_of):
                 missed.update(f"{t} ({m['div']})" for t, f in ((m['home'], h), (m['away'], a)) if not f)
                 continue
             out.append(dict(m, home=h, away=a))
+            used.update((h, a))
     by = {}
     for m in out:
         by[str(m['date'])] = by.get(str(m['date']), 0) + 1
     print(f'ESPN filled in {len(out)} domestic fixtures {by or ""}; names not matched: {", ".join(sorted(missed)) or "none"}')
+    for d in sorted({x.rsplit('(', 1)[1].rstrip(')') for x in missed}):  # the league's names left over, to add an alias
+        print(f'  {d} names with no ESPN match: {", ".join(sorted(teams.get(d, set()) - used))}')
     return out
 
 
