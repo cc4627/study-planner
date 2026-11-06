@@ -9,7 +9,8 @@ Champions, Europa and Conference League ties come from ESPN's free feed (soccer/
 and cards starting from its own league; so do today's and tomorrow's domestic fixtures in any league football-data
 hasn't listed yet. Each day's two most confident corner calls make the corner double; the two most confident calls with real
 odds (result or goals, from two matches) make the daily double; and each match's favourite with its goals
-call makes a match double. Once a match is played, its score, total corners and total yellow cards are added. Writes soccer/picks/YYYY-MM-DD.json and picks/index.json.
+call makes a match double. Once a match is played, its score, total corners and total yellow cards are added
+(from ESPN the same evening, until football-data's results are in). Writes soccer/picks/YYYY-MM-DD.json and picks/index.json.
 Paper only; no bets are placed.
 """
 import json
@@ -31,6 +32,7 @@ MODEL = os.path.join(HERE, 'model.json')
 KEEP_DAYS = 60
 SETTLE_DAYS = 21
 EURO_AHEAD = 3  # days of Champions, Europa and Conference League fixtures to pick ahead
+ESPN_SETTLE_DAYS = 2  # days back to settle domestic matches from ESPN while football-data's results catch up
 DOMESTIC_AHEAD = 1  # days ahead (today and tomorrow) to fill in from ESPN when football-data hasn't listed a league's fixtures
 
 
@@ -87,14 +89,64 @@ def odds_calls(m, pick):
     return goals, btts, combo
 
 
+def league_teams(div_of):
+    """{league: set of team names} from each side's latest league in the season files."""
+    teams = {}
+    for t, d in div_of.items():
+        teams.setdefault(d, set()).add(t)
+    return teams
+
+
+def espn_settle(today, now, teams):
+    """Scores, corners and yellow cards from ESPN for domestic matches that have kicked off in the last few days
+    and that football-data hasn't posted a result for yet (it can take a day or two). Its own results, settled
+    first, win whenever they're in."""
+    settled = 0
+    for k in range(ESPN_SETTLE_DAYS, -1, -1):
+        day = today - timedelta(days=k)
+        doc = read(day)
+        if not doc:
+            continue
+        open_ = [e for e in doc['matches'] if e['div'] in europe.DOMESTIC and 'ft' not in e and started(day, e, now)]
+        if not open_:
+            continue
+        comps = {europe.DOMESTIC[d]: (d, fd.LEAGUES[d]) for d in sorted({e['div'] for e in open_})}
+        try:
+            got = europe.matches(day, comps)
+        except Exception as err:
+            print(f'  ! ESPN domestic results for {day}: {err!r}')
+            continue
+        played_ = {}
+        for m in got:
+            if m['hg'] is None:
+                continue
+            known = teams.get(m['div'], set())
+            h, a = europe.to_fd(m['home'], known), europe.to_fd(m['away'], known)
+            if h and a:
+                played_[(h, a)] = m
+        changed = False
+        for e in open_:
+            m = played_.get((e['home'], e['away']))
+            if not m:
+                continue
+            e['ft'] = [int(m['hg']), int(m['ag'])]
+            if m['hc'] is not None and m['ac'] is not None:
+                e['cn'] = int(m['hc'] + m['ac'])
+            if m['hy'] is not None and m['ay'] is not None:
+                e['yc'] = int(m['hy'] + m['ay'])
+            settled += 1
+            changed = True
+        if changed:
+            write(day, doc)
+    print(f'ESPN settled {settled} domestic matches football-data has no result for yet')
+
+
 def espn_fill(fx, today, div_of):
     """Domestic fixtures football-data hasn't listed yet (its fixture list can lag, often by a day before the weekend),
     from ESPN's free feed: each side matched to its name in the league's season file, with DraftKings odds where
     ESPN has them. Only for a league and day with no football-data fixtures, so its own average odds win when listed."""
     have = {(m['date'], m['div']) for m in fx}
-    teams = {}
-    for t, d in div_of.items():
-        teams.setdefault(d, set()).add(t)
+    teams = league_teams(div_of)
     out, missed, used = [], set(), set()
     for k in range(DOMESTIC_AHEAD + 1):
         day = today + timedelta(days=k)
@@ -225,6 +277,8 @@ def main():
         if changed:
             write(day, doc)
     print(f'settled {settled} matches')
+    div_of = {**trackers['corners'].div_of, **trackers['cards'].div_of}
+    espn_settle(today, now, league_teams(div_of))
 
     # European ties: settle from ESPN, then pick the coming ones
     known = set(trackers['corners'].div_of) | set(trackers['cards'].div_of)
@@ -272,7 +326,7 @@ def main():
     for m in fx:
         days[str(m['date'])] = days.get(str(m['date']), 0) + 1
     print(f'football-data fixtures: {days or "none"}')
-    fx += espn_fill(fx, today, {**trackers['corners'].div_of, **trackers['cards'].div_of}) + euro
+    fx += espn_fill(fx, today, div_of) + euro
     by_day = {}
     for m in fx:
         by_day.setdefault(m['date'], []).append(m)
