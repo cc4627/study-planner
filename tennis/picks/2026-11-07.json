@@ -2,30 +2,6 @@
  "date": "2026-11-07",
  "matches": [
   {
-   "id": "186594",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Chennai Open",
-   "round": "Semifinal",
-   "p1": "Janice Tjen",
-   "p2": "Robin Montgomery",
-   "pick": 2,
-   "p": 0.509,
-   "bo": 3,
-   "new": false,
-   "first": 0.506,
-   "games": {
-    "line": 21.5,
-    "side": "over",
-    "p": 0.549
-   },
-   "acca": 0.1545,
-   "odds": [
-    1.6,
-    1.84
-   ]
-  },
-  {
    "id": "186644",
    "time": "06:00",
    "tour": "WTA",
@@ -45,21 +21,309 @@
    },
    "acca": 0.1636,
    "odds": [
-    1.84,
-    1.94
+    1.95,
+    1.83
    ],
    "gp": {
-    "over": 1.77,
-    "under": 1.94
+    "over": 1.78,
+    "under": 1.93
    }
+  },
+  {
+   "id": "186643",
+   "time": "08:00",
+   "tour": "WTA",
+   "event": "Prudential Hong Kong Tennis Open",
+   "round": "Semifinal",
+   "p1": "Maria Sakkari",
+   "p2": "Alexandra Eala",
+   "pick": 2,
+   "p": 0.607,
+   "bo": 3,
+   "new": false,
+   "first": 0.572,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.538
+   },
+   "acca": 0.1677,
+   "odds": [
+    2.08,
+    1.72
+   ],
+   "gp": {
+    "over": 1.78,
+    "under": 1.93
+   }
+  },
+  {
+   "id": "186688",
+   "time": "10:00",
+   "tour": "WTA",
+   "event": "Angola Ladies Open",
+   "round": "Quarterfinal",
+   "p1": "Anna Blinkova",
+   "p2": "Yasmine Kabbaj",
+   "pick": 1,
+   "p": 0.722,
+   "bo": 3,
+   "new": false,
+   "first": 0.653,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.504
+   },
+   "acca": 0.4,
+   "odds": [
+    1.09,
+    6.82
+   ],
+   "gp": {
+    "over": 2.85,
+    "under": 1.35
+   }
+  },
+  {
+   "id": "187452",
+   "time": "10:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Qualifying 1st Round",
+   "p1": "Nikoloz Basilashvili",
+   "p2": "Francesco Passaro",
+   "pick": 1,
+   "p": 0.697,
+   "bo": 3,
+   "new": false,
+   "first": 0.634,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.504
+   },
+   "acca": 0.383
+  },
+  {
+   "id": "187453",
+   "time": "10:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Qualifying 1st Round",
+   "p1": "Mika Brunold",
+   "p2": "Borna Gojo",
+   "pick": 2,
+   "p": 0.723,
+   "bo": 3,
+   "new": false,
+   "first": 0.654,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.515
+   },
+   "acca": 0.4075
+  },
+  {
+   "id": "187446",
+   "time": "11:30",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Qualifying 1st Round",
+   "p1": "Damir Dzumhur",
+   "p2": "Inaki Montes-De La Torre",
+   "pick": 1,
+   "p": 0.617,
+   "bo": 3,
+   "new": true,
+   "first": 0.579,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.523
+   },
+   "acca": 0.162
+  },
+  {
+   "id": "187447",
+   "time": "11:30",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Qualifying 1st Round",
+   "p1": "Olle Wallin",
+   "p2": "Lorenzo Sonego",
+   "pick": 2,
+   "p": 0.63,
+   "bo": 3,
+   "new": true,
+   "first": 0.588,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.52
+   },
+   "acca": 0.1631
+  },
+  {
+   "id": "186684",
+   "time": "12:30",
+   "tour": "WTA",
+   "event": "Angola Ladies Open",
+   "round": "Semifinal",
+   "p1": "Sofya Lansere",
+   "p2": "Noma Noha Akugue",
+   "pick": 2,
+   "p": 0.701,
+   "bo": 3,
+   "new": false,
+   "first": 0.637,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.506
+   },
+   "acca": 0.1737,
+   "odds": [
+    3.04,
+    1.34
+   ]
+  },
+  {
+   "id": "186594",
+   "time": "12:30",
+   "tour": "WTA",
+   "event": "Chennai Open",
+   "round": "Semifinal",
+   "p1": "Janice Tjen",
+   "p2": "Robin Montgomery",
+   "pick": 2,
+   "p": 0.509,
+   "bo": 3,
+   "new": false,
+   "first": 0.506,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.549
+   },
+   "acca": 0.1545,
+   "odds": [
+    1.58,
+    2.32
+   ],
+   "gp": {
+    "over": 1.74,
+    "under": 1.97
+   }
+  },
+  {
+   "id": "187449",
+   "time": "13:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Qualifying 1st Round",
+   "p1": "Viktor Durasovic",
+   "p2": "Aleksandr Shevchenko",
+   "pick": 2,
+   "p": 0.779,
+   "bo": 3,
+   "new": false,
+   "first": 0.696,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.544
+   },
+   "acca": 0.4633
+  },
+  {
+   "id": "187451",
+   "time": "13:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Qualifying 1st Round",
+   "p1": "Karl Friberg",
+   "p2": "Toby Samuel",
+   "pick": 2,
+   "p": 0.746,
+   "bo": 3,
+   "new": true,
+   "first": 0.67,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.525
+   },
+   "acca": 0.4288
+  },
+  {
+   "id": "186504",
+   "time": "13:30",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Semifinal",
+   "p1": "Luca Van Assche",
+   "p2": "Ben Shelton",
+   "pick": 2,
+   "p": 0.792,
+   "bo": 3,
+   "new": false,
+   "first": 0.706,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.552
+   },
+   "acca": 0.4766
+  },
+  {
+   "id": "187448",
+   "time": "14:30",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Qualifying 1st Round",
+   "p1": "Jacob Fearnley",
+   "p2": "Arthur Nagel",
+   "pick": 1,
+   "p": 0.678,
+   "bo": 3,
+   "new": true,
+   "first": 0.621,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.504
+   },
+   "acca": 0.1661
+  },
+  {
+   "id": "187450",
+   "time": "14:30",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Qualifying 1st Round",
+   "p1": "Adrian Mannarino",
+   "p2": "Jan Simonsson",
+   "pick": 1,
+   "p": 0.788,
+   "bo": 3,
+   "new": true,
+   "first": 0.703,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.549
+   },
+   "acca": 0.4724
   }
  ],
- "updated": "2026-11-06T14:06:06+00:00",
+ "updated": "2026-11-06T18:30:42+00:00",
  "double": {
   "legs": [
-   "186644",
-   "186594"
+   "186504",
+   "187449"
   ],
-  "p": 0.291
+  "p": 0.617
  }
 }
