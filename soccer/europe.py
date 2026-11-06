@@ -45,6 +45,8 @@ ALIASES = {
     'queens park rangers': 'QPR', 'sheffield wednesday': 'Sheffield Weds', 'west bromwich albion': 'West Brom',
     'brighton & hove albion': 'Brighton', 'west ham united': 'West Ham', 'fc cologne': 'FC Koln', 'cologne': 'FC Koln',
     'hamburg sv': 'Hamburg', "queen's park": 'Queens Park', 'fortuna sittard': 'For Sittard',
+    'istanbul basaksehir': 'Buyuksehyr', 'oh leuven': 'Oud-Heverlee Leuven', 'deportivo': 'La Coruna',
+    'deportivo la coruna': 'La Coruna', 'amed sfk': 'Amedspor',
 }
 
 
@@ -78,6 +80,21 @@ def _decimal(ml):
         return round(1 + v / 100, 3)
     if v <= -100:
         return round(1 + 100 / -v, 3)
+    return None
+
+
+def _fractional(node):
+    """Decimal price from a bookmaker-style {'summary': '29/20', 'value': 2.45} entry (bet365's layout on ESPN)."""
+    node = node if isinstance(node, dict) else {}
+    s = str(node.get('summary') or '').strip().upper()
+    if s in ('EVS', 'EVENS', 'EVEN'):
+        return 2.0
+    if '/' in s:
+        try:
+            a, b = (float(x) for x in s.split('/', 1))
+            return round(1 + a / b, 3) if a > 0 and b > 0 else None
+        except ValueError:
+            return None
     return None
 
 
@@ -120,9 +137,10 @@ def _odds(comp):
         if not isinstance(o, dict):
             continue  # ESPN sometimes lists an empty slot
         ml = o.get('moneyline') or {}
-        out['oh'] = _decimal((o.get('homeTeamOdds') or {}).get('moneyLine')) or _decimal(_price(ml.get('home')))
-        out['oa'] = _decimal((o.get('awayTeamOdds') or {}).get('moneyLine')) or _decimal(_price(ml.get('away')))
-        out['od'] = _decimal((o.get('drawOdds') or {}).get('moneyLine')) or _decimal(_price(ml.get('draw')))
+        ho, ao, do = (o.get(k) or {} for k in ('homeTeamOdds', 'awayTeamOdds', 'drawOdds'))
+        out['oh'] = _decimal(ho.get('moneyLine')) or _decimal(_price(ml.get('home'))) or _fractional(ho)
+        out['oa'] = _decimal(ao.get('moneyLine')) or _decimal(_price(ml.get('away'))) or _fractional(ao)
+        out['od'] = _decimal(do.get('moneyLine')) or _decimal(_price(ml.get('draw'))) or _fractional(do)
         tot = o.get('total') or {}
         line = o.get('overUnder')
         if line in (None, ''):
