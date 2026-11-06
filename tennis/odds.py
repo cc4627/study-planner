@@ -42,12 +42,19 @@ def _num(s):
         return None
 
 
-def day_list(day, kind):
+def list_path(day, kind, typ='all'):
+    return f'/{kind}/?type={typ}&year={day.year}&month={day.month:02d}&day={day.day:02d}'
+
+
+def day_list(day, kind, typ='all'):
     """Matches on tennisexplorer's 'matches' (kind='matches') or 'results' list for a date:
     [{'p1': 'Paul T.', 'p2': 'Halys Q.', 'o1': 1.30, 'o2': 3.50, 'id': '3370211'}]."""
-    page = _get(f'/{kind}/?type=all&year={day.year}&month={day.month:02d}&day={day.day:02d}')
-    if not page:
-        return []
+    page = _get(list_path(day, kind, typ))
+    return parse_list(page) if page else []
+
+
+def parse_list(page):
+    """The singles rows of a match or results list page, as day_list() returns them."""
     rows = {}
     for rid, b, body in re.findall(r'<tr id="r(\d+)(b?)"[^>]*>(.*?)</tr>', page, re.S):
         rows.setdefault(rid, {})['b' if b else 'a'] = body
