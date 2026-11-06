@@ -1342,6 +1342,43 @@
   },
   {
    "time": "15:15",
+   "div": "SP1",
+   "league": "La Liga",
+   "home": "Espanol",
+   "away": "La Coruna",
+   "pick": {
+    "side": "H",
+    "p": 0.414,
+    "odds": 2.3
+   },
+   "goals": {
+    "side": "under",
+    "p": 0.537,
+    "odds": 1.769
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.511
+   },
+   "combo": {
+    "p": 0.187,
+    "odds": 4.07
+   },
+   "corners": {
+    "exp": 9.7,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.502
+   },
+   "cards": {
+    "exp": 4.7,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.505
+   }
+  },
+  {
+   "time": "15:15",
    "div": "SP2",
    "league": "La Liga 2",
    "home": "Cadiz",
@@ -1452,6 +1489,56 @@
    }
   },
   {
+   "time": "16:00",
+   "div": "T1",
+   "league": "Super Lig",
+   "home": "Galatasaray",
+   "away": "Amedspor",
+   "pick": {
+    "side": "H",
+    "p": 0.654,
+    "odds": 1.426
+   },
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.6,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.511
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.593
+   }
+  },
+  {
+   "time": "16:00",
+   "div": "T1",
+   "league": "Super Lig",
+   "home": "Goztep",
+   "away": "Buyuksehyr",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.5,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.531
+   },
+   "cards": {
+    "exp": 4.3,
+    "line": 4.5,
+    "side": "under",
+    "p": 0.567
+   }
+  },
+  {
    "time": "16:15",
    "div": "I2",
    "league": "Serie B",
@@ -1523,6 +1610,43 @@
     "line": 4.5,
     "side": "under",
     "p": 0.752
+   }
+  },
+  {
+   "time": "17:15",
+   "div": "B1",
+   "league": "Belgian Pro League",
+   "home": "Oud-Heverlee Leuven",
+   "away": "Mechelen",
+   "pick": {
+    "side": "H",
+    "p": 0.416,
+    "odds": 2.25
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.529,
+    "odds": 1.741
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.563
+   },
+   "combo": {
+    "p": 0.262,
+    "odds": 3.92
+   },
+   "corners": {
+    "exp": 10.6,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.511
+   },
+   "cards": {
+    "exp": 4.2,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.598
    }
   },
   {
@@ -2069,6 +2193,43 @@
   },
   {
    "time": "19:45",
+   "div": "B1",
+   "league": "Belgian Pro League",
+   "home": "RAAL La Louviere",
+   "away": "Cercle Brugge",
+   "pick": {
+    "side": "A",
+    "p": 0.372,
+    "odds": 2.5
+   },
+   "goals": {
+    "side": "over",
+    "p": 0.505,
+    "odds": 1.833
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.548
+   },
+   "combo": {
+    "p": 0.225,
+    "odds": 4.58
+   },
+   "corners": {
+    "exp": 10.4,
+    "line": 10.5,
+    "side": "under",
+    "p": 0.538
+   },
+   "cards": {
+    "exp": 4.0,
+    "line": 3.5,
+    "side": "over",
+    "p": 0.561
+   }
+  },
+  {
+   "time": "19:45",
    "div": "I1",
    "league": "Serie A",
    "home": "Roma",
@@ -2230,7 +2391,7 @@
    }
   }
  ],
- "updated": "2026-11-06T00:29:14+00:00",
+ "updated": "2026-11-06T00:33:39+00:00",
  "double": {
   "legs": [
    [
