@@ -46,7 +46,7 @@ ALIASES = {
     'brighton & hove albion': 'Brighton', 'west ham united': 'West Ham', 'fc cologne': 'FC Koln', 'cologne': 'FC Koln',
     'hamburg sv': 'Hamburg', "queen's park": 'Queens Park', 'fortuna sittard': 'For Sittard',
     'istanbul basaksehir': 'Buyuksehyr', 'oh leuven': 'Oud-Heverlee Leuven', 'deportivo': 'La Coruna',
-    'deportivo la coruna': 'La Coruna', 'amed sfk': 'Amedspor',
+    'deportivo la coruna': 'La Coruna', 'amed sfk': 'Amedspor', 'rc celta fortuna': 'Celta B', 'celta fortuna': 'Celta B',
 }
 
 
@@ -229,8 +229,11 @@ def to_fd(name, known):
     n = _norm(name)
     if n in by_norm:
         return by_norm[n]
-    for kn, k in by_norm.items():
-        if kn and (kn in n.split() or n in kn.split() or (len(kn) > 4 and (kn in n or n in kn))):
-            return k
-    close = difflib.get_close_matches(n, list(by_norm), n=1, cutoff=0.82)
+    # One name inside the other ('cercle brugge ksv' holds both 'brugge' and 'cercle brugge'): take the longest,
+    # so the answer doesn't depend on the order of the set.
+    hits = [(len(kn), kn, k) for kn, k in by_norm.items()
+            if kn and (kn in n.split() or n in kn.split() or (len(kn) > 4 and (kn in n or n in kn)))]
+    if hits:
+        return max(hits)[2]
+    close = difflib.get_close_matches(n, sorted(by_norm), n=1, cutoff=0.82)
     return by_norm[close[0]] if close else None
