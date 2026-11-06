@@ -2,6 +2,30 @@
  "date": "2026-11-07",
  "matches": [
   {
+   "id": "186594",
+   "time": "05:00",
+   "tour": "WTA",
+   "event": "Chennai Open",
+   "round": "Semifinal",
+   "p1": "Janice Tjen",
+   "p2": "Robin Montgomery",
+   "pick": 2,
+   "p": 0.509,
+   "bo": 3,
+   "new": false,
+   "first": 0.506,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.549
+   },
+   "acca": 0.1545,
+   "odds": [
+    1.6,
+    1.84
+   ]
+  },
+  {
    "id": "186644",
    "time": "06:00",
    "tour": "WTA",
@@ -21,15 +45,21 @@
    },
    "acca": 0.1636,
    "odds": [
-    1.86,
-    1.91
+    1.84,
+    1.94
    ],
    "gp": {
     "over": 1.77,
-    "under": 1.92
+    "under": 1.94
    }
   }
  ],
- "updated": "2026-11-06T13:22:16+00:00",
- "double": null
+ "updated": "2026-11-06T14:06:06+00:00",
+ "double": {
+  "legs": [
+   "186644",
+   "186594"
+  ],
+  "p": 0.291
+ }
 }
