@@ -326,6 +326,29 @@
   },
   {
    "time": "13:00",
+   "div": "SP2",
+   "league": "La Liga 2",
+   "home": "Burgos",
+   "away": "Celta B",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.3,
+    "line": 9.5,
+    "side": "under",
+    "p": 0.556
+   },
+   "cards": {
+    "exp": 5.6,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.655
+   }
+  },
+  {
+   "time": "13:00",
    "div": "F2",
    "league": "Ligue 2",
    "home": "Clermont",
@@ -2159,43 +2182,6 @@
    "div": "B1",
    "league": "Belgian Pro League",
    "home": "RAAL La Louviere",
-   "away": "Club Brugge",
-   "pick": {
-    "side": "A",
-    "p": 0.372,
-    "odds": 2.5
-   },
-   "goals": {
-    "side": "over",
-    "p": 0.505,
-    "odds": 1.833
-   },
-   "btts": {
-    "side": "yes",
-    "p": 0.548
-   },
-   "combo": {
-    "p": 0.225,
-    "odds": 4.58
-   },
-   "corners": {
-    "exp": 10.5,
-    "line": 10.5,
-    "side": "under",
-    "p": 0.524
-   },
-   "cards": {
-    "exp": 3.8,
-    "line": 3.5,
-    "side": "over",
-    "p": 0.532
-   }
-  },
-  {
-   "time": "19:45",
-   "div": "B1",
-   "league": "Belgian Pro League",
-   "home": "RAAL La Louviere",
    "away": "Cercle Brugge",
    "pick": {
     "side": "A",
@@ -2391,7 +2377,7 @@
    }
   }
  ],
- "updated": "2026-11-06T00:33:39+00:00",
+ "updated": "2026-11-06T00:38:02+00:00",
  "double": {
   "legs": [
    [
