@@ -2,138 +2,6 @@
  "date": "2026-11-06",
  "matches": [
   {
-   "id": "186687",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Angola Ladies Open",
-   "round": "Quarterfinal",
-   "p1": "Ksenia Zaytseva",
-   "p2": "Gina Feistel",
-   "pick": 1,
-   "p": 0.627,
-   "bo": 3,
-   "new": false,
-   "first": 0.586,
-   "games": {
-    "line": 21.5,
-    "side": "over",
-    "p": 0.533
-   },
-   "acca": 0.1696,
-   "odds": [
-    1.65,
-    2.08
-   ]
-  },
-  {
-   "id": "186688",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Angola Ladies Open",
-   "round": "Quarterfinal",
-   "p1": "Anna Blinkova",
-   "p2": "Yasmine Kabbaj",
-   "pick": 1,
-   "p": 0.722,
-   "bo": 3,
-   "new": false,
-   "first": 0.653,
-   "games": {
-    "line": 21.5,
-    "side": "under",
-    "p": 0.504
-   },
-   "acca": 0.4,
-   "odds": [
-    1.02,
-    10.07
-   ]
-  },
-  {
-   "id": "186689",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Angola Ladies Open",
-   "round": "Quarterfinal",
-   "p1": "Sofya Lansere",
-   "p2": "Martyna Kubka",
-   "pick": 2,
-   "p": 0.784,
-   "bo": 3,
-   "new": false,
-   "first": 0.7,
-   "games": {
-    "line": 21.5,
-    "side": "under",
-    "p": 0.542
-   },
-   "acca": 0.4654,
-   "odds": [
-    2.76,
-    1.39
-   ],
-   "gp": {
-    "over": 2.1,
-    "under": 1.64
-   }
-  },
-  {
-   "id": "186592",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Chennai Open",
-   "round": "Quarterfinal",
-   "p1": "Janice Tjen",
-   "p2": "Polina Kudermetova",
-   "pick": 2,
-   "p": 0.516,
-   "bo": 3,
-   "new": false,
-   "first": 0.511,
-   "games": {
-    "line": 21.5,
-    "side": "over",
-    "p": 0.549
-   },
-   "acca": 0.1557,
-   "odds": [
-    1.52,
-    2.49
-   ],
-   "gp": {
-    "over": 1.85,
-    "under": 1.87
-   }
-  },
-  {
-   "id": "186597",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "Chennai Open",
-   "round": "Quarterfinal",
-   "p1": "Robin Montgomery",
-   "p2": "Maaya Rajeshwaran Revathi",
-   "pick": 1,
-   "p": 0.648,
-   "bo": 3,
-   "new": false,
-   "first": 0.6,
-   "games": {
-    "line": 21.5,
-    "side": "over",
-    "p": 0.526
-   },
-   "acca": 0.1712,
-   "odds": [
-    1.15,
-    5.18
-   ],
-   "gp": {
-    "over": 2.44,
-    "under": 1.47
-   }
-  },
-  {
    "id": "186636",
    "time": "06:00",
    "tour": "WTA",
@@ -151,14 +19,98 @@
     "side": "over",
     "p": 0.549
    },
-   "acca": 0.1574,
+   "acca": 0.1575,
    "odds": [
-    1.75,
-    1.98
+    1.97,
+    1.82
    ],
    "gp": {
-    "over": 1.76,
-    "under": 1.95
+    "over": 1.77,
+    "under": 1.96
+   }
+  },
+  {
+   "id": "186637",
+   "time": "08:30",
+   "tour": "WTA",
+   "event": "Prudential Hong Kong Tennis Open",
+   "round": "Quarterfinal",
+   "p1": "Sorana Cirstea",
+   "p2": "Alexandra Shubladze",
+   "pick": 1,
+   "p": 0.714,
+   "bo": 3,
+   "new": false,
+   "first": 0.647,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.5
+   },
+   "acca": 0.392,
+   "odds": [
+    1.34,
+    3.24
+   ],
+   "gp": {
+    "over": 2.06,
+    "under": 1.69
+   }
+  },
+  {
+   "id": "186592",
+   "time": "09:30",
+   "tour": "WTA",
+   "event": "Chennai Open",
+   "round": "Quarterfinal",
+   "p1": "Janice Tjen",
+   "p2": "Polina Kudermetova",
+   "pick": 2,
+   "p": 0.516,
+   "bo": 3,
+   "new": false,
+   "first": 0.511,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.549
+   },
+   "acca": 0.1558,
+   "odds": [
+    1.5,
+    2.55
+   ],
+   "gp": {
+    "over": 1.88,
+    "under": 1.83
+   }
+  },
+  {
+   "id": "186689",
+   "time": "10:30",
+   "tour": "WTA",
+   "event": "Angola Ladies Open",
+   "round": "Quarterfinal",
+   "p1": "Sofya Lansere",
+   "p2": "Martyna Kubka",
+   "pick": 2,
+   "p": 0.784,
+   "bo": 3,
+   "new": false,
+   "first": 0.7,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.542
+   },
+   "acca": 0.4655,
+   "odds": [
+    2.57,
+    1.47
+   ],
+   "gp": {
+    "over": 1.89,
+    "under": 1.81
    }
   },
   {
@@ -179,23 +131,375 @@
     "side": "over",
     "p": 0.548
    },
-   "acca": 0.1589,
+   "acca": 0.1588,
    "odds": [
-    2.18,
+    2.19,
     1.66
    ],
    "gp": {
     "over": 1.8,
-    "under": 1.91
+    "under": 1.92
+   }
+  },
+  {
+   "id": "186687",
+   "time": "11:00",
+   "tour": "WTA",
+   "event": "Angola Ladies Open",
+   "round": "Quarterfinal",
+   "p1": "Ksenia Zaytseva",
+   "p2": "Gina Feistel",
+   "pick": 1,
+   "p": 0.627,
+   "bo": 3,
+   "new": false,
+   "first": 0.585,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.533
+   },
+   "acca": 0.1696,
+   "odds": [
+    1.77,
+    1.97
+   ],
+   "gp": {
+    "over": 1.87,
+    "under": 1.82
+   }
+  },
+  {
+   "id": "186597",
+   "time": "11:00",
+   "tour": "WTA",
+   "event": "Chennai Open",
+   "round": "Quarterfinal",
+   "p1": "Robin Montgomery",
+   "p2": "Maaya Rajeshwaran Revathi",
+   "pick": 1,
+   "p": 0.648,
+   "bo": 3,
+   "new": false,
+   "first": 0.6,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.526
+   },
+   "acca": 0.1712,
+   "odds": [
+    1.16,
+    5.14
+   ],
+   "gp": {
+    "over": 2.42,
+    "under": 1.49
+   }
+  },
+  {
+   "id": "186686",
+   "time": "12:00",
+   "tour": "WTA",
+   "event": "Angola Ladies Open",
+   "round": "Quarterfinal",
+   "p1": "Justina Mikulskyte",
+   "p2": "Noma Noha Akugue",
+   "pick": 2,
+   "p": 0.7,
+   "bo": 3,
+   "new": false,
+   "first": 0.636,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.507
+   },
+   "acca": 0.1737,
+   "odds": [
+    5.29,
+    1.13
+   ]
+  },
+  {
+   "id": "186634",
+   "time": "12:00",
+   "tour": "WTA",
+   "event": "Prudential Hong Kong Tennis Open",
+   "round": "Quarterfinal",
+   "p1": "Antonia Ruzic",
+   "p2": "Alexandra Eala",
+   "pick": 2,
+   "p": 0.783,
+   "bo": 3,
+   "new": false,
+   "first": 0.699,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.542
+   },
+   "acca": 0.4646,
+   "odds": [
+    3.93,
+    1.25
+   ],
+   "gp": {
+    "over": 2.18,
+    "under": 1.6
+   }
+  },
+  {
+   "id": "186596",
+   "time": "12:30",
+   "tour": "WTA",
+   "event": "Chennai Open",
+   "round": "Quarterfinal",
+   "p1": "Mai Hontama",
+   "p2": "Magda Linette",
+   "pick": 2,
+   "p": 0.641,
+   "bo": 3,
+   "new": false,
+   "first": 0.595,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.528
+   },
+   "acca": 0.1708,
+   "odds": [
+    2.99,
+    1.38
+   ],
+   "gp": {
+    "over": 2.0,
+    "under": 1.73
+   }
+  },
+  {
+   "id": "186500",
+   "time": "13:00",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Quarterfinal",
+   "p1": "Ben Shelton",
+   "p2": "Tommy Paul",
+   "pick": 1,
+   "p": 0.509,
+   "bo": 3,
+   "new": false,
+   "first": 0.506,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.536
+   },
+   "acca": 0.1476,
+   "odds": [
+    2.1,
+    1.73
+   ],
+   "gp": {
+    "over": 1.55,
+    "under": 2.3
+   }
+  },
+  {
+   "id": "186595",
+   "time": "14:00",
+   "tour": "WTA",
+   "event": "Chennai Open",
+   "round": "Quarterfinal",
+   "p1": "Anastasia Zakharova",
+   "p2": "Lucrezia Stefanini",
+   "pick": 2,
+   "p": 0.576,
+   "bo": 3,
+   "new": false,
+   "first": 0.551,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.544
+   },
+   "acca": 0.1643,
+   "odds": [
+    1.96,
+    1.83
+   ],
+   "gp": {
+    "over": 1.83,
+    "under": 1.88
+   }
+  },
+  {
+   "id": "186501",
+   "time": "14:30",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Quarterfinal",
+   "p1": "Luca Van Assche",
+   "p2": "Rinky Hijikata",
+   "pick": 2,
+   "p": 0.539,
+   "bo": 3,
+   "new": false,
+   "first": 0.526,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.535
+   },
+   "acca": 0.1523,
+   "odds": [
+    1.58,
+    2.37
+   ],
+   "gp": {
+    "over": 1.72,
+    "under": 2.02
+   }
+  },
+  {
+   "id": "186688",
+   "time": "15:30",
+   "tour": "WTA",
+   "event": "Angola Ladies Open",
+   "round": "Quarterfinal",
+   "p1": "Anna Blinkova",
+   "p2": "Yasmine Kabbaj",
+   "pick": 1,
+   "p": 0.722,
+   "bo": 3,
+   "new": false,
+   "first": 0.653,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.504
+   },
+   "acca": 0.4,
+   "odds": [
+    1.09,
+    6.87
+   ],
+   "gp": {
+    "over": 3.0,
+    "under": 1.33
+   }
+  },
+  {
+   "id": "186734",
+   "time": "17:00",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Semifinal",
+   "p1": "Leyre Romero Gormaz",
+   "p2": "Julia Riera",
+   "pick": 1,
+   "p": 0.524,
+   "bo": 3,
+   "new": false,
+   "first": 0.516,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.549
+   },
+   "acca": 0.157,
+   "odds": [
+    1.68,
+    2.12
+   ],
+   "gp": {
+    "over": 1.82,
+    "under": 1.86
+   }
+  },
+  {
+   "id": "186492",
+   "time": "18:00",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Quarterfinal",
+   "p1": "Taylor Fritz",
+   "p2": "Carlos Alcaraz",
+   "pick": 2,
+   "p": 0.828,
+   "bo": 3,
+   "new": false,
+   "first": 0.737,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.58
+   },
+   "acca": 0.52,
+   "odds": [
+    3.32,
+    1.33
+   ],
+   "gp": {
+    "over": 1.75,
+    "under": 1.98
+   }
+  },
+  {
+   "id": "186735",
+   "time": "18:30",
+   "tour": "WTA",
+   "event": "Reto Win Tennis Cali Open",
+   "round": "Semifinal",
+   "p1": "Alice Tubello",
+   "p2": "Bianca Andreescu",
+   "pick": 2,
+   "p": 0.633,
+   "bo": 3,
+   "new": false,
+   "first": 0.589,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.531
+   },
+   "acca": 0.1701
+  },
+  {
+   "id": "186493",
+   "time": "19:30",
+   "tour": "ATP",
+   "event": "Rolex Paris Masters",
+   "round": "Quarterfinal",
+   "p1": "Casper Ruud",
+   "p2": "Nuno Borges",
+   "pick": 1,
+   "p": 0.606,
+   "bo": 3,
+   "new": false,
+   "first": 0.571,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.525
+   },
+   "acca": 0.1604,
+   "odds": [
+    1.51,
+    2.53
+   ],
+   "gp": {
+    "over": 1.8,
+    "under": 1.93
    }
   }
  ],
- "updated": "2026-11-05T12:50:49+00:00",
+ "updated": "2026-11-06T00:18:52+00:00",
  "double": {
   "legs": [
-   "186689",
-   "186688"
+   "186492",
+   "186689"
   ],
-  "p": 0.566
+  "p": 0.649
  }
 }

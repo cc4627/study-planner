@@ -9,34 +9,40 @@
    "away": "Braga",
    "pick": {
     "side": "A",
-    "p": 0.501,
-    "odds": 1.909
+    "p": 0.541,
+    "odds": 1.769
    },
    "goals": {
     "side": "over",
-    "p": 0.505,
-    "odds": 1.87
+    "p": 0.537,
+    "odds": 1.769
    },
    "btts": {
     "side": "yes",
-    "p": 0.525
+    "p": 0.538
    },
    "combo": {
-    "p": 0.309,
-    "odds": 3.57
+    "p": 0.349,
+    "odds": 3.13
    },
    "corners": {
     "exp": 9.0,
     "line": 10.5,
     "side": "under",
-    "p": 0.697
+    "p": 0.696
    },
    "cards": {
-    "exp": 4.3,
+    "exp": 4.2,
     "line": 5.5,
     "side": "under",
-    "p": 0.737
-   }
+    "p": 0.75
+   },
+   "ft": [
+    0,
+    0
+   ],
+   "cn": 9,
+   "yc": 4
   },
   {
    "time": "17:45",
@@ -46,24 +52,30 @@
    "away": "Kairat Almaty",
    "pick": {
     "side": "H",
-    "p": 0.857,
-    "odds": 1.111
+    "p": 0.837,
+    "odds": 1.143
    },
    "goals": null,
    "btts": null,
    "combo": null,
    "corners": {
-    "exp": 10.0,
+    "exp": 9.9,
     "line": 9.5,
     "side": "over",
-    "p": 0.531
+    "p": 0.525
    },
    "cards": {
     "exp": 2.9,
     "line": 4.5,
     "side": "under",
-    "p": 0.828
-   }
+    "p": 0.823
+   },
+   "ft": [
+    1,
+    1
+   ],
+   "cn": 11,
+   "yc": 7
   },
   {
    "time": "17:45",
@@ -86,7 +98,13 @@
     "line": 2.5,
     "side": "over",
     "p": 0.72
-   }
+   },
+   "ft": [
+    1,
+    6
+   ],
+   "cn": 9,
+   "yc": 1
   },
   {
    "time": "17:45",
@@ -96,24 +114,40 @@
    "away": "Heart of Midlothian",
    "pick": {
     "side": "H",
-    "p": 0.443,
-    "odds": 2.15
+    "p": 0.434,
+    "odds": 2.2
    },
-   "goals": null,
-   "btts": null,
-   "combo": null,
+   "goals": {
+    "side": "over",
+    "p": 0.586,
+    "odds": 1.625
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.607
+   },
+   "combo": {
+    "p": 0.294,
+    "odds": 3.58
+   },
    "corners": {
-    "exp": 9.8,
+    "exp": 9.9,
     "line": 9.5,
     "side": "over",
-    "p": 0.511
+    "p": 0.522
    },
    "cards": {
     "exp": 4.1,
     "line": 4.5,
     "side": "under",
-    "p": 0.604
-   }
+    "p": 0.608
+   },
+   "ft": [
+    3,
+    1
+   ],
+   "cn": 9,
+   "yc": 5
   },
   {
    "time": "17:45",
@@ -123,8 +157,8 @@
    "away": "KAA Gent",
    "pick": {
     "side": "A",
-    "p": 0.589,
-    "odds": 1.625
+    "p": 0.583,
+    "odds": 1.645
    },
    "goals": {
     "side": "over",
@@ -133,11 +167,11 @@
    },
    "btts": {
     "side": "no",
-    "p": 0.507
+    "p": 0.505
    },
    "combo": {
-    "p": 0.358,
-    "odds": 3.04
+    "p": 0.355,
+    "odds": 3.08
    },
    "corners": {
     "exp": 9.7,
@@ -149,8 +183,14 @@
     "exp": 3.6,
     "line": 3.5,
     "side": "under",
-    "p": 0.526
-   }
+    "p": 0.525
+   },
+   "ft": [
+    0,
+    0
+   ],
+   "cn": 10,
+   "yc": 3
   },
   {
    "time": "17:45",
@@ -160,34 +200,40 @@
    "away": "Hajduk Split",
    "pick": {
     "side": "A",
-    "p": 0.705,
-    "odds": 1.357
+    "p": 0.733,
+    "odds": 1.294
    },
    "goals": {
     "side": "over",
-    "p": 0.563,
-    "odds": 1.667
+    "p": 0.589,
+    "odds": 1.606
    },
    "btts": {
     "side": "no",
-    "p": 0.533
+    "p": 0.536
    },
    "combo": {
-    "p": 0.462,
-    "odds": 2.26
+    "p": 0.497,
+    "odds": 2.08
    },
    "corners": {
-    "exp": 10.2,
+    "exp": 10.3,
     "line": 10.5,
     "side": "under",
-    "p": 0.559
+    "p": 0.552
    },
    "cards": {
-    "exp": 3.8,
+    "exp": 3.7,
     "line": 3.5,
     "side": "over",
-    "p": 0.516
-   }
+    "p": 0.502
+   },
+   "ft": [
+    1,
+    0
+   ],
+   "cn": 8,
+   "yc": 7
   },
   {
    "time": "17:45",
@@ -197,34 +243,40 @@
    "away": "Borac Banja Luka",
    "pick": {
     "side": "H",
-    "p": 0.418,
-    "odds": 2.3
+    "p": 0.399,
+    "odds": 2.4
    },
    "goals": {
     "side": "under",
-    "p": 0.516,
-    "odds": 1.833
+    "p": 0.505,
+    "odds": 1.87
    },
    "btts": {
     "side": "yes",
-    "p": 0.527
+    "p": 0.538
    },
    "combo": {
-    "p": 0.181,
-    "odds": 4.22
+    "p": 0.169,
+    "odds": 4.49
    },
    "corners": {
     "exp": 9.8,
     "line": 9.5,
     "side": "over",
-    "p": 0.509
+    "p": 0.512
    },
    "cards": {
-    "exp": 4.1,
+    "exp": 4.2,
     "line": 4.5,
     "side": "under",
-    "p": 0.601
-   }
+    "p": 0.594
+   },
+   "ft": [
+    2,
+    0
+   ],
+   "cn": 10,
+   "yc": 2
   },
   {
    "time": "17:45",
@@ -234,8 +286,8 @@
    "away": "Inter D'Escaldes",
    "pick": {
     "side": "H",
-    "p": 0.901,
-    "odds": 1.062
+    "p": 0.91,
+    "odds": 1.05
    },
    "goals": null,
    "btts": null,
@@ -243,7 +295,7 @@
    "corners": {
     "exp": 9.7,
     "line": 9.5,
-    "side": "under",
+    "side": "over",
     "p": 0.5
    },
    "cards": {
@@ -251,7 +303,13 @@
     "line": 4.5,
     "side": "under",
     "p": 0.813
-   }
+   },
+   "ft": [
+    2,
+    1
+   ],
+   "cn": 9,
+   "yc": 5
   },
   {
    "time": "17:45",
@@ -261,34 +319,40 @@
    "away": "SC Freiburg",
    "pick": {
     "side": "H",
-    "p": 0.409,
-    "odds": 2.35
+    "p": 0.396,
+    "odds": 2.4
    },
    "goals": {
     "side": "over",
-    "p": 0.597,
-    "odds": 1.588
+    "p": 0.547,
+    "odds": 1.741
    },
    "btts": {
     "side": "yes",
-    "p": 0.617
+    "p": 0.579
    },
    "combo": {
-    "p": 0.285,
-    "odds": 3.73
+    "p": 0.257,
+    "odds": 4.18
    },
    "corners": {
     "exp": 9.4,
     "line": 9.5,
     "side": "under",
-    "p": 0.532
+    "p": 0.538
    },
    "cards": {
     "exp": 3.9,
     "line": 4.5,
     "side": "under",
-    "p": 0.657
-   }
+    "p": 0.651
+   },
+   "ft": [
+    0,
+    1
+   ],
+   "cn": 11,
+   "yc": 5
   },
   {
    "time": "17:45",
@@ -298,8 +362,8 @@
    "away": "Ferencvaros",
    "pick": {
     "side": "H",
-    "p": 0.728,
-    "odds": 1.312
+    "p": 0.682,
+    "odds": 1.4
    },
    "goals": null,
    "btts": null,
@@ -308,14 +372,20 @@
     "exp": 9.1,
     "line": 9.5,
     "side": "under",
-    "p": 0.573
+    "p": 0.576
    },
    "cards": {
     "exp": 3.4,
     "line": 4.5,
     "side": "under",
-    "p": 0.746
-   }
+    "p": 0.735
+   },
+   "ft": [
+    0,
+    2
+   ],
+   "cn": 6,
+   "yc": 3
   },
   {
    "time": "17:45",
@@ -325,34 +395,30 @@
    "away": "RB Salzburg",
    "pick": {
     "side": "H",
-    "p": 0.48,
-    "odds": 2.0
+    "p": 0.503,
+    "odds": 1.909
    },
-   "goals": {
-    "side": "over",
-    "p": 0.604,
-    "odds": 1.571
-   },
-   "btts": {
-    "side": "yes",
-    "p": 0.613
-   },
-   "combo": {
-    "p": 0.337,
-    "odds": 3.14
-   },
+   "goals": null,
+   "btts": null,
+   "combo": null,
    "corners": {
-    "exp": 10.1,
+    "exp": 9.9,
     "line": 10.5,
     "side": "under",
-    "p": 0.577
+    "p": 0.59
    },
    "cards": {
     "exp": 3.9,
     "line": 3.5,
     "side": "over",
-    "p": 0.542
-   }
+    "p": 0.546
+   },
+   "ft": [
+    2,
+    0
+   ],
+   "cn": 9,
+   "yc": 7
   },
   {
    "time": "17:45",
@@ -362,7 +428,7 @@
    "away": "TSG Hoffenheim",
    "pick": {
     "side": "H",
-    "p": 0.513,
+    "p": 0.51,
     "odds": 1.87
    },
    "goals": null,
@@ -378,8 +444,14 @@
     "exp": 3.6,
     "line": 3.5,
     "side": "under",
-    "p": 0.52
-   }
+    "p": 0.521
+   },
+   "ft": [
+    1,
+    1
+   ],
+   "cn": 10,
+   "yc": 7
   },
   {
    "time": "17:45",
@@ -389,34 +461,40 @@
    "away": "Jagiellonia Bialystok",
    "pick": {
     "side": "H",
-    "p": 0.464,
-    "odds": 2.05
+    "p": 0.488,
+    "odds": 1.952
    },
    "goals": {
     "side": "under",
-    "p": 0.511,
-    "odds": 1.87
+    "p": 0.578,
+    "odds": 1.645
    },
    "btts": {
-    "side": "yes",
-    "p": 0.523
+    "side": "no",
+    "p": 0.541
    },
    "combo": {
-    "p": 0.195,
-    "odds": 3.83
+    "p": 0.235,
+    "odds": 3.21
    },
    "corners": {
-    "exp": 9.8,
+    "exp": 9.7,
     "line": 9.5,
-    "side": "over",
-    "p": 0.508
+    "side": "under",
+    "p": 0.501
    },
    "cards": {
     "exp": 4.1,
     "line": 4.5,
     "side": "under",
-    "p": 0.613
-   }
+    "p": 0.619
+   },
+   "ft": [
+    1,
+    0
+   ],
+   "cn": 9,
+   "yc": 6
   },
   {
    "time": "17:45",
@@ -426,8 +504,8 @@
    "away": "Viktoria Plzen",
    "pick": {
     "side": "A",
-    "p": 0.417,
-    "odds": 2.3
+    "p": 0.464,
+    "odds": 2.05
    },
    "goals": null,
    "btts": null,
@@ -436,14 +514,20 @@
     "exp": 9.4,
     "line": 9.5,
     "side": "under",
-    "p": 0.536
+    "p": 0.543
    },
    "cards": {
     "exp": 4.0,
     "line": 3.5,
     "side": "over",
-    "p": 0.574
-   }
+    "p": 0.557
+   },
+   "ft": [
+    0,
+    1
+   ],
+   "cn": 9,
+   "yc": 6
   },
   {
    "time": "17:45",
@@ -453,34 +537,40 @@
    "away": "Omonia Nicosia",
    "pick": {
     "side": "H",
-    "p": 0.547,
-    "odds": 1.741
+    "p": 0.582,
+    "odds": 1.645
    },
    "goals": {
     "side": "over",
-    "p": 0.594,
-    "odds": 1.606
+    "p": 0.602,
+    "odds": 1.588
    },
    "btts": {
     "side": "yes",
-    "p": 0.585
+    "p": 0.577
    },
    "combo": {
-    "p": 0.378,
-    "odds": 2.8
+    "p": 0.407,
+    "odds": 2.61
    },
    "corners": {
     "exp": 10.3,
     "line": 10.5,
     "side": "under",
-    "p": 0.549
+    "p": 0.543
    },
    "cards": {
     "exp": 3.6,
     "line": 2.5,
     "side": "over",
-    "p": 0.692
-   }
+    "p": 0.685
+   },
+   "ft": [
+    3,
+    1
+   ],
+   "cn": 7,
+   "yc": 1
   },
   {
    "time": "17:45",
@@ -490,8 +580,8 @@
    "away": "Lyon",
    "pick": {
     "side": "H",
-    "p": 0.588,
-    "odds": 1.625
+    "p": 0.559,
+    "odds": 1.714
    },
    "goals": null,
    "btts": null,
@@ -500,14 +590,20 @@
     "exp": 10.2,
     "line": 9.5,
     "side": "over",
-    "p": 0.555
+    "p": 0.553
    },
    "cards": {
-    "exp": 3.8,
+    "exp": 3.9,
     "line": 4.5,
     "side": "under",
-    "p": 0.665
-   }
+    "p": 0.657
+   },
+   "ft": [
+    1,
+    1
+   ],
+   "cn": 11,
+   "yc": 7
   },
   {
    "time": "17:45",
@@ -517,24 +613,40 @@
    "away": "AFC Bournemouth",
    "pick": {
     "side": "A",
-    "p": 0.668,
-    "odds": 1.435
+    "p": 0.584,
+    "odds": 1.625
    },
-   "goals": null,
-   "btts": null,
-   "combo": null,
+   "goals": {
+    "side": "over",
+    "p": 0.597,
+    "odds": 1.588
+   },
+   "btts": {
+    "side": "yes",
+    "p": 0.571
+   },
+   "combo": {
+    "p": 0.407,
+    "odds": 2.58
+   },
    "corners": {
-    "exp": 9.6,
+    "exp": 9.7,
     "line": 10.5,
     "side": "under",
-    "p": 0.63
+    "p": 0.62
    },
    "cards": {
-    "exp": 3.9,
+    "exp": 4.0,
     "line": 3.5,
     "side": "over",
-    "p": 0.553
-   }
+    "p": 0.573
+   },
+   "ft": [
+    1,
+    3
+   ],
+   "cn": 13,
+   "yc": 4
   },
   {
    "time": "20:00",
@@ -544,8 +656,8 @@
    "away": "FC Nordsjælland",
    "pick": {
     "side": "H",
-    "p": 0.682,
-    "odds": 1.4
+    "p": 0.638,
+    "odds": 1.5
    },
    "goals": null,
    "btts": null,
@@ -554,14 +666,20 @@
     "exp": 9.5,
     "line": 9.5,
     "side": "under",
-    "p": 0.526
+    "p": 0.529
    },
    "cards": {
-    "exp": 3.7,
+    "exp": 3.8,
     "line": 3.5,
     "side": "over",
-    "p": 0.509
-   }
+    "p": 0.521
+   },
+   "ft": [
+    2,
+    0
+   ],
+   "cn": 7,
+   "yc": 3
   },
   {
    "time": "20:00",
@@ -571,34 +689,40 @@
    "away": "Egnatia",
    "pick": {
     "side": "H",
-    "p": 0.681,
-    "odds": 1.408
+    "p": 0.713,
+    "odds": 1.333
    },
    "goals": {
     "side": "over",
-    "p": 0.551,
-    "odds": 1.714
+    "p": 0.572,
+    "odds": 1.645
    },
    "btts": {
     "side": "no",
-    "p": 0.528
+    "p": 0.533
    },
    "combo": {
-    "p": 0.442,
-    "odds": 2.41
+    "p": 0.474,
+    "odds": 2.19
    },
    "corners": {
-    "exp": 9.9,
+    "exp": 10.0,
     "line": 9.5,
     "side": "over",
-    "p": 0.523
+    "p": 0.53
    },
    "cards": {
-    "exp": 3.8,
+    "exp": 3.7,
     "line": 4.5,
     "side": "under",
-    "p": 0.676
-   }
+    "p": 0.685
+   },
+   "ft": [
+    2,
+    0
+   ],
+   "cn": 11,
+   "yc": 4
   },
   {
    "time": "20:00",
@@ -608,24 +732,30 @@
    "away": "Iberia 1999",
    "pick": {
     "side": "H",
-    "p": 0.828,
-    "odds": 1.154
+    "p": 0.842,
+    "odds": 1.133
    },
    "goals": null,
    "btts": null,
    "combo": null,
    "corners": {
-    "exp": 10.1,
+    "exp": 10.2,
     "line": 9.5,
     "side": "over",
-    "p": 0.547
+    "p": 0.554
    },
    "cards": {
-    "exp": 3.6,
+    "exp": 3.5,
     "line": 4.5,
     "side": "under",
-    "p": 0.714
-   }
+    "p": 0.721
+   },
+   "ft": [
+    2,
+    1
+   ],
+   "cn": 5,
+   "yc": 7
   },
   {
    "time": "20:00",
@@ -635,8 +765,8 @@
    "away": "Kauno Zalgiris",
    "pick": {
     "side": "H",
-    "p": 0.823,
-    "odds": 1.167
+    "p": 0.832,
+    "odds": 1.143
    },
    "goals": null,
    "btts": null,
@@ -645,14 +775,20 @@
     "exp": 10.1,
     "line": 9.5,
     "side": "over",
-    "p": 0.54
+    "p": 0.545
    },
    "cards": {
     "exp": 3.6,
     "line": 4.5,
     "side": "under",
-    "p": 0.706
-   }
+    "p": 0.712
+   },
+   "ft": [
+    3,
+    0
+   ],
+   "cn": 6,
+   "yc": 3
   },
   {
    "time": "20:00",
@@ -662,24 +798,30 @@
    "away": "Pafos",
    "pick": {
     "side": "H",
-    "p": 0.736,
-    "odds": 1.294
+    "p": 0.767,
+    "odds": 1.25
    },
    "goals": null,
    "btts": null,
    "combo": null,
    "corners": {
-    "exp": 10.6,
+    "exp": 10.7,
     "line": 10.5,
     "side": "under",
-    "p": 0.514
+    "p": 0.508
    },
    "cards": {
     "exp": 3.2,
     "line": 2.5,
     "side": "over",
-    "p": 0.613
-   }
+    "p": 0.608
+   },
+   "ft": [
+    3,
+    1
+   ],
+   "cn": 13,
+   "yc": 1
   },
   {
    "time": "20:00",
@@ -689,21 +831,21 @@
    "away": "Brighton & Hove Albion",
    "pick": {
     "side": "A",
-    "p": 0.626,
-    "odds": 1.526
+    "p": 0.608,
+    "odds": 1.571
    },
    "goals": {
-    "side": "under",
+    "side": "over",
     "p": 0.505,
     "odds": 1.87
    },
    "btts": {
     "side": "no",
-    "p": 0.54
+    "p": 0.521
    },
    "combo": {
-    "p": 0.254,
-    "odds": 2.85
+    "p": 0.372,
+    "odds": 2.94
    },
    "corners": {
     "exp": 9.7,
@@ -712,11 +854,17 @@
     "p": 0.502
    },
    "cards": {
-    "exp": 4.1,
+    "exp": 4.2,
     "line": 4.5,
     "side": "under",
-    "p": 0.602
-   }
+    "p": 0.596
+   },
+   "ft": [
+    0,
+    1
+   ],
+   "cn": 10,
+   "yc": 5
   },
   {
    "time": "20:00",
@@ -726,34 +874,30 @@
    "away": "CSKA Sofia",
    "pick": {
     "side": "H",
-    "p": 0.676,
-    "odds": 1.4
+    "p": 0.708,
+    "odds": 1.345
    },
-   "goals": {
-    "side": "over",
-    "p": 0.589,
-    "odds": 1.606
-   },
-   "btts": {
-    "side": "yes",
-    "p": 0.514
-   },
-   "combo": {
-    "p": 0.46,
-    "odds": 2.25
-   },
+   "goals": null,
+   "btts": null,
+   "combo": null,
    "corners": {
-    "exp": 9.7,
+    "exp": 9.6,
     "line": 8.5,
     "side": "over",
-    "p": 0.614
+    "p": 0.608
    },
    "cards": {
     "exp": 4.0,
     "line": 4.5,
     "side": "under",
-    "p": 0.624
-   }
+    "p": 0.626
+   },
+   "ft": [
+    2,
+    1
+   ],
+   "cn": 16,
+   "yc": 4
   },
   {
    "time": "20:00",
@@ -763,8 +907,8 @@
    "away": "Jablonec",
    "pick": {
     "side": "H",
-    "p": 0.403,
-    "odds": 2.35
+    "p": 0.391,
+    "odds": 2.45
    },
    "goals": {
     "side": "over",
@@ -776,21 +920,27 @@
     "p": 0.563
    },
    "combo": {
-    "p": 0.253,
-    "odds": 4.23
+    "p": 0.246,
+    "odds": 4.41
    },
    "corners": {
-    "exp": 9.8,
+    "exp": 9.9,
     "line": 9.5,
     "side": "over",
-    "p": 0.516
+    "p": 0.517
    },
    "cards": {
     "exp": 4.2,
     "line": 4.5,
     "side": "under",
-    "p": 0.597
-   }
+    "p": 0.594
+   },
+   "ft": [
+    1,
+    1
+   ],
+   "cn": 10,
+   "yc": 3
   },
   {
    "time": "20:00",
@@ -800,8 +950,8 @@
    "away": "SK Brann",
    "pick": {
     "side": "H",
-    "p": 0.577,
-    "odds": 1.645
+    "p": 0.589,
+    "odds": 1.625
    },
    "goals": null,
    "btts": null,
@@ -816,8 +966,14 @@
     "exp": 3.5,
     "line": 3.5,
     "side": "under",
-    "p": 0.537
-   }
+    "p": 0.538
+   },
+   "ft": [
+    1,
+    1
+   ],
+   "cn": 11,
+   "yc": 2
   },
   {
    "time": "20:00",
@@ -827,8 +983,8 @@
    "away": "Juventus",
    "pick": {
     "side": "A",
-    "p": 0.49,
-    "odds": 1.952
+    "p": 0.509,
+    "odds": 1.87
    },
    "goals": {
     "side": "over",
@@ -837,24 +993,30 @@
    },
    "btts": {
     "side": "yes",
-    "p": 0.555
+    "p": 0.55
    },
    "combo": {
-    "p": 0.315,
-    "odds": 3.45
+    "p": 0.326,
+    "odds": 3.31
    },
    "corners": {
     "exp": 9.9,
     "line": 9.5,
     "side": "over",
-    "p": 0.524
+    "p": 0.521
    },
    "cards": {
     "exp": 3.0,
     "line": 3.5,
     "side": "under",
-    "p": 0.65
-   }
+    "p": 0.655
+   },
+   "ft": [
+    1,
+    2
+   ],
+   "cn": 6,
+   "yc": 4
   },
   {
    "time": "20:00",
@@ -864,14 +1026,14 @@
    "away": "Marseille",
    "pick": {
     "side": "H",
-    "p": 0.728,
-    "odds": 1.312
+    "p": 0.73,
+    "odds": 1.303
    },
    "goals": null,
    "btts": null,
    "combo": null,
    "corners": {
-    "exp": 10.5,
+    "exp": 10.6,
     "line": 9.5,
     "side": "over",
     "p": 0.596
@@ -881,7 +1043,13 @@
     "line": 3.5,
     "side": "under",
     "p": 0.513
-   }
+   },
+   "ft": [
+    0,
+    1
+   ],
+   "cn": 8,
+   "yc": 4
   },
   {
    "time": "20:00",
@@ -891,8 +1059,8 @@
    "away": "Lech Poznan",
    "pick": {
     "side": "H",
-    "p": 0.846,
-    "odds": 1.133
+    "p": 0.855,
+    "odds": 1.111
    },
    "goals": null,
    "btts": null,
@@ -901,14 +1069,20 @@
     "exp": 10.2,
     "line": 10.5,
     "side": "under",
-    "p": 0.56
+    "p": 0.556
    },
    "cards": {
     "exp": 4.0,
     "line": 5.5,
     "side": "under",
-    "p": 0.782
-   }
+    "p": 0.785
+   },
+   "ft": [
+    3,
+    1
+   ],
+   "cn": 9,
+   "yc": 3
   },
   {
    "time": "20:00",
@@ -918,34 +1092,40 @@
    "away": "Union St.-Gilloise",
    "pick": {
     "side": "H",
-    "p": 0.406,
-    "odds": 2.35
+    "p": 0.397,
+    "odds": 2.4
    },
    "goals": {
     "side": "under",
-    "p": 0.511,
-    "odds": 1.87
+    "p": 0.526,
+    "odds": 1.8
    },
    "btts": {
     "side": "yes",
-    "p": 0.533
+    "p": 0.521
    },
    "combo": {
-    "p": 0.173,
-    "odds": 4.39
+    "p": 0.177,
+    "odds": 4.32
    },
    "corners": {
     "exp": 9.5,
     "line": 9.5,
     "side": "under",
-    "p": 0.529
+    "p": 0.53
    },
    "cards": {
     "exp": 4.2,
     "line": 4.5,
     "side": "under",
-    "p": 0.597
-   }
+    "p": 0.595
+   },
+   "ft": [
+    1,
+    2
+   ],
+   "cn": 12,
+   "yc": 2
   },
   {
    "time": "20:00",
@@ -972,7 +1152,13 @@
     "line": 4.5,
     "side": "under",
     "p": 0.595
-   }
+   },
+   "ft": [
+    3,
+    2
+   ],
+   "cn": 12,
+   "yc": 3
   },
   {
    "time": "20:00",
@@ -987,16 +1173,16 @@
    },
    "goals": {
     "side": "over",
-    "p": 0.541,
-    "odds": 1.741
+    "p": 0.537,
+    "odds": 1.769
    },
    "btts": {
     "side": "yes",
-    "p": 0.568
+    "p": 0.565
    },
    "combo": {
-    "p": 0.287,
-    "odds": 3.74
+    "p": 0.285,
+    "odds": 3.8
    },
    "corners": {
     "exp": 9.5,
@@ -1008,8 +1194,14 @@
     "exp": 4.5,
     "line": 4.5,
     "side": "under",
-    "p": 0.538
-   }
+    "p": 0.537
+   },
+   "ft": [
+    0,
+    2
+   ],
+   "cn": 6,
+   "yc": 4
   },
   {
    "time": "20:00",
@@ -1036,7 +1228,13 @@
     "line": 4.5,
     "side": "under",
     "p": 0.653
-   }
+   },
+   "ft": [
+    2,
+    3
+   ],
+   "cn": 14,
+   "yc": 3
   },
   {
    "time": "20:00",
@@ -1073,7 +1271,13 @@
     "line": 3.5,
     "side": "over",
     "p": 0.533
-   }
+   },
+   "ft": [
+    0,
+    2
+   ],
+   "cn": 8,
+   "yc": 5
   },
   {
    "time": "20:00",
@@ -1110,10 +1314,16 @@
     "line": 4.5,
     "side": "under",
     "p": 0.636
-   }
+   },
+   "ft": [
+    3,
+    2
+   ],
+   "cn": 10,
+   "yc": 7
   }
  ],
- "updated": "2026-11-05T12:12:21+00:00",
+ "updated": "2026-11-05T17:43:15+00:00",
  "double": {
   "legs": [
    [
@@ -1121,11 +1331,11 @@
     "Braga"
    ],
    [
-    "Sparta Prague",
-    "AFC Bournemouth"
+    "KuPS Kuopio",
+    "KAA Gent"
    ]
   ],
-  "p": 0.439
+  "p": 0.432
  },
  "daily": {
   "legs": [
@@ -1135,12 +1345,12 @@
     "kind": "pick"
    },
    {
-    "home": "Atalanta",
-    "away": "Kairat Almaty",
+    "home": "Benfica",
+    "away": "Lech Poznan",
     "kind": "pick"
    }
   ],
-  "p": 0.772,
-  "odds": 1.18
+  "p": 0.778,
+  "odds": 1.17
  }
 }

@@ -1,0 +1,415 @@
+{
+ "date": "2026-11-06",
+ "updated": "2026-11-06T00:23:11+00:00",
+ "races": [
+  {
+   "time": "12:25",
+   "course": "Hexham",
+   "country": "England",
+   "picks": [
+    "Imperfectlyperfect",
+    "Ask A Sainte",
+    "Ghasham"
+   ],
+   "p": 0.268
+  },
+  {
+   "time": "12:40",
+   "course": "Aintree",
+   "country": "England",
+   "picks": [
+    "Risky Obsession",
+    "Watery Borren",
+    "Aqua Bleu"
+   ],
+   "p": 0.41
+  },
+  {
+   "time": "12:50",
+   "course": "Fontwell",
+   "country": "England",
+   "picks": [
+    "The Mad Poet",
+    "Smokehouse",
+    "Galante De Vassy"
+   ],
+   "p": 0.19
+  },
+  {
+   "time": "13:00",
+   "course": "Hexham",
+   "country": "England",
+   "picks": [
+    "Kamille Au Kanada",
+    "Just A Poet",
+    "Luna Marquesa"
+   ],
+   "p": 0.559
+  },
+  {
+   "time": "13:15",
+   "course": "Aintree",
+   "country": "England",
+   "picks": [
+    "Barnpark",
+    "Off The Jury",
+    "Stride On"
+   ],
+   "p": 0.177
+  },
+  {
+   "time": "13:25",
+   "course": "Fontwell",
+   "country": "England",
+   "picks": [
+    "Sea Warrior",
+    "Mutley Crew",
+    "Ahanaglogh"
+   ],
+   "p": 0.249
+  },
+  {
+   "time": "13:35",
+   "course": "Hexham",
+   "country": "England",
+   "picks": [
+    "C'mon So",
+    "Walk Tall",
+    "Defence Witness"
+   ],
+   "p": 0.358
+  },
+  {
+   "time": "13:50",
+   "course": "Aintree",
+   "country": "England",
+   "picks": [
+    "Lyssenko",
+    "All In You",
+    "Dedicated Hero"
+   ],
+   "p": 0.383
+  },
+  {
+   "time": "14:00",
+   "course": "Fontwell",
+   "country": "England",
+   "picks": [
+    "I Love You Sivola",
+    "Mild Magic",
+    "Stamina Chope"
+   ],
+   "p": 0.327
+  },
+  {
+   "time": "14:10",
+   "course": "Hexham",
+   "country": "England",
+   "picks": [
+    "Ruby Island",
+    "Scarface",
+    "Hombre De Guerra"
+   ],
+   "p": 0.321
+  },
+  {
+   "time": "14:25",
+   "course": "Aintree",
+   "country": "England",
+   "picks": [
+    "Klimt Madrik",
+    "Royal Infantry",
+    "Intosomethinggood"
+   ],
+   "p": 0.417
+  },
+  {
+   "time": "14:35",
+   "course": "Fontwell",
+   "country": "England",
+   "picks": [
+    "Donnie Azoff",
+    "Motazzen",
+    "So You Know"
+   ],
+   "p": 0.262
+  },
+  {
+   "time": "14:45",
+   "course": "Hexham",
+   "country": "England",
+   "picks": [
+    "Kool Raoul",
+    "High Dancer",
+    "Titanium Ring"
+   ],
+   "p": 0.281
+  },
+  {
+   "time": "14:53",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Sovereign View",
+    "Black Chiffon",
+    "Twisting Physics"
+   ],
+   "p": 0.172
+  },
+  {
+   "time": "15:00",
+   "course": "Aintree",
+   "country": "England",
+   "picks": [
+    "Mirabad",
+    "JPR One",
+    "Rubaud"
+   ],
+   "p": 0.395
+  },
+  {
+   "time": "15:10",
+   "course": "Fontwell",
+   "country": "England",
+   "picks": [
+    "Ted The Thief",
+    "Hard Stare",
+    "Steal The Moves"
+   ],
+   "p": 0.295
+  },
+  {
+   "time": "15:20",
+   "course": "Hexham",
+   "country": "England",
+   "picks": [
+    "Boy Aaron",
+    "Elusive Dreams",
+    "Jeu De Maine"
+   ],
+   "p": 0.258
+  },
+  {
+   "time": "15:28",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Endless Quest",
+    "Maneater",
+    "Malika"
+   ],
+   "p": 0.767
+  },
+  {
+   "time": "15:35",
+   "course": "Aintree",
+   "country": "England",
+   "picks": [
+    "Here Comes Georgie",
+    "Montregard",
+    "Leave Of Absence"
+   ],
+   "p": 0.23
+  },
+  {
+   "time": "15:43",
+   "course": "Fontwell",
+   "country": "England",
+   "picks": [
+    "Winston's Oath",
+    "Mystical Mabel",
+    "Wistmans Prince"
+   ],
+   "p": 0.376
+  },
+  {
+   "time": "15:52",
+   "course": "Hexham",
+   "country": "England",
+   "picks": [
+    "Crafty Gael",
+    "Lady Phoebe",
+    "Robert d'Ores"
+   ],
+   "p": 0.204
+  },
+  {
+   "time": "16:00",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Miss You Nights",
+    "Printing Money",
+    "Sankhum Galaxy"
+   ],
+   "p": 0.229
+  },
+  {
+   "time": "16:05",
+   "course": "Aintree",
+   "country": "England",
+   "picks": [
+    "Mia Sunshine",
+    "Knight Templar",
+    "Quaviste"
+   ],
+   "p": 0.192
+  },
+  {
+   "time": "16:30",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Northern Viola",
+    "Beauty For Love",
+    "Bella Lucia"
+   ],
+   "p": 0.427
+  },
+  {
+   "time": "17:00",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Mobilizing",
+    "Capricious Star",
+    "Lizzie Bennet"
+   ],
+   "p": 0.301
+  },
+  {
+   "time": "17:15",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Grande Cuvee",
+    "Emiza",
+    "Otsana"
+   ],
+   "p": 0.359
+  },
+  {
+   "time": "17:30",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Go Victor",
+    "Speeding Bullet",
+    "Simba's Pride"
+   ],
+   "p": 0.173
+  },
+  {
+   "time": "17:45",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Sensational Filly",
+    "Ladies Gossip",
+    "Corsican Night"
+   ],
+   "p": 0.283
+  },
+  {
+   "time": "18:00",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Oxford Circus",
+    "Archangel Josepi",
+    "Cloch Nua"
+   ],
+   "p": 0.156
+  },
+  {
+   "time": "18:15",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Baila Conmigo",
+    "Pralognan",
+    "Storm Eric"
+   ],
+   "p": 0.162
+  },
+  {
+   "time": "18:30",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Blazing Son",
+    "Tactical Blitz",
+    "Educating Rita"
+   ],
+   "p": 0.172
+  },
+  {
+   "time": "18:45",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Dancing Saxon",
+    "Suzie Songs",
+    "Leading Dancer"
+   ],
+   "p": 0.153
+  },
+  {
+   "time": "19:00",
+   "course": "Newcastle",
+   "country": "England",
+   "picks": [
+    "Ellie's De Vega",
+    "Battenburg Belle",
+    "Marianne Mozart"
+   ],
+   "p": 0.142
+  },
+  {
+   "time": "19:15",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "On Just Terms",
+    "Drive On There",
+    "Muscogee Nation"
+   ],
+   "p": 0.36
+  },
+  {
+   "time": "19:45",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Daler",
+    "Boston Benjamin",
+    "Exquisite Acclaim"
+   ],
+   "p": 0.286
+  },
+  {
+   "time": "20:15",
+   "course": "Dundalk",
+   "country": "Eire",
+   "picks": [
+    "Polanco",
+    "Una Matata",
+    "Jazzy Dancer"
+   ],
+   "p": 0.135
+  }
+ ],
+ "double": {
+  "legs": [
+   [
+    "15:28",
+    "Newcastle"
+   ],
+   [
+    "13:00",
+    "Hexham"
+   ]
+  ],
+  "p": 0.429
+ }
+}

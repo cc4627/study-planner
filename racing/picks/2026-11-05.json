@@ -24,7 +24,19 @@
     "Crest Of Stars",
     "Bond Broker"
    ],
-   "p": 0.396
+   "p": 0.396,
+   "pos": [
+    3,
+    2,
+    1
+   ],
+   "sp": [
+    4.333,
+    2.2,
+    2.5
+   ],
+   "field": 3,
+   "hcap": true
   },
   {
    "time": "12:42",
@@ -35,7 +47,19 @@
     "Treasure Planet",
     "Dakota Star"
    ],
-   "p": 0.126
+   "p": 0.126,
+   "pos": [
+    6,
+    7,
+    9
+   ],
+   "sp": [
+    12.0,
+    3.5,
+    19.0
+   ],
+   "field": 16,
+   "hcap": true
   },
   {
    "time": "12:50",
@@ -46,7 +70,19 @@
     "Midtown Manhattan",
     "Young Doran"
    ],
-   "p": 0.289
+   "p": 0.289,
+   "pos": [
+    1,
+    "DNF",
+    10
+   ],
+   "sp": [
+    2.375,
+    2.25,
+    12.0
+   ],
+   "field": 12,
+   "hcap": false
   },
   {
    "time": "12:59",
@@ -57,7 +93,19 @@
     "Spreadsheet Guru",
     "Ludois"
    ],
-   "p": 0.39
+   "p": 0.39,
+   "pos": [
+    1,
+    3,
+    2
+   ],
+   "sp": [
+    3.25,
+    1.727,
+    5.0
+   ],
+   "field": 8,
+   "hcap": false
   },
   {
    "time": "13:08",
@@ -68,7 +116,19 @@
     "Marlacoo",
     "Sweet Caryline"
    ],
-   "p": 0.334
+   "p": 0.334,
+   "pos": [
+    2,
+    1,
+    3
+   ],
+   "sp": [
+    3.0,
+    3.0,
+    3.25
+   ],
+   "field": 4,
+   "hcap": true
   },
   {
    "time": "13:17",
@@ -79,7 +139,19 @@
     "Merlin Allen",
     "Moments Away"
    ],
-   "p": 0.32
+   "p": 0.32,
+   "pos": [
+    1,
+    3,
+    5
+   ],
+   "sp": [
+    3.125,
+    3.0,
+    3.0
+   ],
+   "field": 9,
+   "hcap": false
   },
   {
    "time": "13:25",
@@ -90,7 +162,19 @@
     "Highland Call",
     "Carleys Lilly"
    ],
-   "p": 0.391
+   "p": 0.391,
+   "pos": [
+    1,
+    9,
+    10
+   ],
+   "sp": [
+    1.909,
+    19.0,
+    23.0
+   ],
+   "field": 11,
+   "hcap": false
   },
   {
    "time": "13:34",
@@ -101,7 +185,19 @@
     "Seeyainthesuninn",
     "Letterston Lady"
    ],
-   "p": 0.211
+   "p": 0.211,
+   "pos": [
+    4,
+    5,
+    7
+   ],
+   "sp": [
+    4.0,
+    10.0,
+    10.0
+   ],
+   "field": 8,
+   "hcap": true
   },
   {
    "time": "13:43",
@@ -112,7 +208,19 @@
     "Lady Litigator",
     "Safari"
    ],
-   "p": 0.438
+   "p": 0.438,
+   "pos": [
+    1,
+    2,
+    "NR"
+   ],
+   "sp": [
+    1.571,
+    4.0,
+    null
+   ],
+   "field": 3,
+   "hcap": false
   },
   {
    "time": "13:52",
@@ -123,7 +231,19 @@
     "Royal Response",
     "Princess Day"
    ],
-   "p": 0.377
+   "p": 0.377,
+   "pos": [
+    5,
+    1,
+    3
+   ],
+   "sp": [
+    2.75,
+    4.0,
+    2.625
+   ],
+   "field": 10,
+   "hcap": false
   },
   {
    "time": "13:57",
@@ -134,7 +254,19 @@
     "Jenson Benson",
     "Far Far Out"
    ],
-   "p": 0.156
+   "p": 0.156,
+   "pos": [
+    6,
+    5,
+    1
+   ],
+   "sp": [
+    2.75,
+    6.0,
+    21.0
+   ],
+   "field": 14,
+   "hcap": true
   },
   {
    "time": "14:00",
@@ -145,7 +277,19 @@
     "Zoffman",
     "Hopeful Hero"
    ],
-   "p": 0.234
+   "p": 0.234,
+   "pos": [
+    3,
+    5,
+    2
+   ],
+   "sp": [
+    4.5,
+    4.5,
+    4.0
+   ],
+   "field": 7,
+   "hcap": true
   },
   {
    "time": "14:07",
@@ -156,7 +300,19 @@
     "Presentandcorrect",
     "Bold Light"
    ],
-   "p": 0.298
+   "p": 0.298,
+   "pos": [
+    "DNF",
+    3,
+    6
+   ],
+   "sp": [
+    2.375,
+    12.0,
+    5.0
+   ],
+   "field": 8,
+   "hcap": true
   },
   {
    "time": "14:15",
@@ -167,7 +323,19 @@
     "Melton Mossy",
     "Diplomatic Ash"
    ],
-   "p": 0.46
+   "p": 0.46,
+   "pos": [
+    3,
+    2,
+    1
+   ],
+   "sp": [
+    2.625,
+    3.25,
+    5.0
+   ],
+   "field": 4,
+   "hcap": true
   },
   {
    "time": "14:20",
@@ -178,7 +346,19 @@
     "Fletcher's Flight",
     "Ten Cuidado"
    ],
-   "p": 0.241
+   "p": 0.241,
+   "pos": [
+    3,
+    1,
+    7
+   ],
+   "sp": [
+    4.5,
+    4.333,
+    6.0
+   ],
+   "field": 13,
+   "hcap": true
   },
   {
    "time": "14:25",
@@ -189,7 +369,19 @@
     "Splendid Fellow",
     "Western Monkey"
    ],
-   "p": 0.114
+   "p": 0.114,
+   "pos": [
+    8,
+    3,
+    7
+   ],
+   "sp": [
+    7.5,
+    4.0,
+    17.0
+   ],
+   "field": 16,
+   "hcap": true
   },
   {
    "time": "14:30",
@@ -200,7 +392,19 @@
     "Eighty Eight",
     "Wellwhatshappenin"
    ],
-   "p": 0.265
+   "p": 0.265,
+   "pos": [
+    10,
+    1,
+    2
+   ],
+   "sp": [
+    4.333,
+    2.1,
+    4.5
+   ],
+   "field": 13,
+   "hcap": true
   },
   {
    "time": "14:35",
@@ -211,7 +415,19 @@
     "Jolie Jewel",
     "Bynx"
    ],
-   "p": 0.523
+   "p": 0.523,
+   "pos": [
+    1,
+    3,
+    2
+   ],
+   "sp": [
+    1.727,
+    2.375,
+    15.0
+   ],
+   "field": 4,
+   "hcap": false
   },
   {
    "time": "14:40",
@@ -222,7 +438,19 @@
     "Looking Splendid",
     "Nice One Eric"
    ],
-   "p": 0.302
+   "p": 0.302,
+   "pos": [
+    2,
+    1,
+    "DNF"
+   ],
+   "sp": [
+    5.0,
+    5.5,
+    2.875
+   ],
+   "field": 5,
+   "hcap": true
   },
   {
    "time": "14:47",
@@ -233,7 +461,19 @@
     "Barbury Boy",
     "Pantile's Gift"
    ],
-   "p": 0.388
+   "p": 0.388,
+   "pos": [
+    1,
+    2,
+    3
+   ],
+   "sp": [
+    1.571,
+    4.333,
+    5.0
+   ],
+   "field": 4,
+   "hcap": false
   },
   {
    "time": "14:53",
@@ -244,7 +484,19 @@
     "Oneforthegutter",
     "Lady Magu"
    ],
-   "p": 0.239
+   "p": 0.239,
+   "pos": [
+    4,
+    6,
+    9
+   ],
+   "sp": [
+    5.5,
+    7.5,
+    10.0
+   ],
+   "field": 9,
+   "hcap": true
   },
   {
    "time": "14:58",
@@ -255,7 +507,19 @@
     "Sappingirl",
     "Coolnav"
    ],
-   "p": 0.315
+   "p": 0.315,
+   "pos": [
+    4,
+    2,
+    1
+   ],
+   "sp": [
+    3.25,
+    5.5,
+    9.5
+   ],
+   "field": 10,
+   "hcap": false
   },
   {
    "time": "15:05",
@@ -266,7 +530,19 @@
     "Queens Bandit",
     "Wild Orchid"
    ],
-   "p": 0.226
+   "p": 0.226,
+   "pos": [
+    5,
+    2,
+    8
+   ],
+   "sp": [
+    6.0,
+    6.0,
+    4.5
+   ],
+   "field": 9,
+   "hcap": true
   },
   {
    "time": "15:10",
@@ -277,7 +553,19 @@
     "Kappa Jy Pyke",
     "Blaze The Way"
    ],
-   "p": 0.745
+   "p": 0.745,
+   "pos": [
+    "NR",
+    1,
+    3
+   ],
+   "sp": [
+    null,
+    1.222,
+    5.5
+   ],
+   "field": 3,
+   "hcap": false
   },
   {
    "time": "15:15",
@@ -288,7 +576,19 @@
     "Empty Nest",
     "Tom Creen"
    ],
-   "p": 0.354
+   "p": 0.354,
+   "pos": [
+    1,
+    3,
+    8
+   ],
+   "sp": [
+    6.0,
+    3.0,
+    13.0
+   ],
+   "field": 9,
+   "hcap": true
   },
   {
    "time": "15:22",
@@ -299,7 +599,19 @@
     "Kdeux Saint Fray",
     "Rip Wheeler"
    ],
-   "p": 0.44
+   "p": 0.44,
+   "pos": [
+    1,
+    2,
+    "NR"
+   ],
+   "sp": [
+    1.615,
+    2.75,
+    null
+   ],
+   "field": 3,
+   "hcap": true
   },
   {
    "time": "15:28",
@@ -310,7 +622,19 @@
     "Signcastle City",
     "Ey Up He's A Star"
    ],
-   "p": 0.16
+   "p": 0.16,
+   "pos": [
+    4,
+    3,
+    9
+   ],
+   "sp": [
+    11.0,
+    4.333,
+    9.0
+   ],
+   "field": 12,
+   "hcap": true
   },
   {
    "time": "15:33",
@@ -321,7 +645,19 @@
     "Block Flight",
     "Manu Du Noyer"
    ],
-   "p": 0.234
+   "p": 0.234,
+   "pos": [
+    1,
+    3,
+    4
+   ],
+   "sp": [
+    2.25,
+    15.0,
+    10.0
+   ],
+   "field": 11,
+   "hcap": false
   },
   {
    "time": "15:40",
@@ -332,7 +668,19 @@
     "Mr Freedom",
     "Must Believe"
    ],
-   "p": 0.309
+   "p": 0.309,
+   "pos": [
+    2,
+    3,
+    1
+   ],
+   "sp": [
+    2.625,
+    4.0,
+    4.0
+   ],
+   "field": 6,
+   "hcap": true
   },
   {
    "time": "15:45",
@@ -343,7 +691,19 @@
     "Courtbrack Boy",
     "Stily"
    ],
-   "p": 0.199
+   "p": 0.199,
+   "pos": [
+    4,
+    1,
+    3
+   ],
+   "sp": [
+    5.5,
+    10.0,
+    5.0
+   ],
+   "field": 15,
+   "hcap": true
   },
   {
    "time": "15:50",
@@ -354,7 +714,19 @@
     "Albatross The Ace",
     "Coronation Hill"
    ],
-   "p": 0.28
+   "p": 0.28,
+   "pos": [
+    6,
+    5,
+    9
+   ],
+   "sp": [
+    4.0,
+    6.0,
+    19.0
+   ],
+   "field": 9,
+   "hcap": false
   },
   {
    "time": "15:55",
@@ -365,7 +737,19 @@
     "Crest of Arms",
     "Basilette"
    ],
-   "p": 0.367
+   "p": 0.367,
+   "pos": [
+    3,
+    2,
+    1
+   ],
+   "sp": [
+    2.25,
+    3.5,
+    4.5
+   ],
+   "field": 4,
+   "hcap": true
   },
   {
    "time": "16:00",
@@ -376,7 +760,19 @@
     "Bombora",
     "Harrow On The Hill"
    ],
-   "p": 0.338
+   "p": 0.338,
+   "pos": [
+    1,
+    5,
+    6
+   ],
+   "sp": [
+    1.333,
+    4.0,
+    11.0
+   ],
+   "field": 9,
+   "hcap": false
   },
   {
    "time": "16:05",
@@ -387,7 +783,19 @@
     "Treble Three",
     "Geissler"
    ],
-   "p": 0.187
+   "p": 0.187,
+   "pos": [
+    2,
+    5,
+    6
+   ],
+   "sp": [
+    2.375,
+    7.0,
+    9.0
+   ],
+   "field": 11,
+   "hcap": false
   },
   {
    "time": "16:15",
@@ -398,7 +806,19 @@
     "Bajan Bandit",
     "The Hare Rail"
    ],
-   "p": 0.251
+   "p": 0.251,
+   "pos": [
+    1,
+    2,
+    4
+   ],
+   "sp": [
+    4.0,
+    5.5,
+    3.0
+   ],
+   "field": 11,
+   "hcap": true
   },
   {
    "time": "16:20",
@@ -409,7 +829,19 @@
     "Red Seagull",
     "River Cartwright"
    ],
-   "p": 0.291
+   "p": 0.291,
+   "pos": [
+    10,
+    2,
+    9
+   ],
+   "sp": [
+    4.5,
+    3.0,
+    9.5
+   ],
+   "field": 12,
+   "hcap": false
   },
   {
    "time": "16:30",
@@ -420,7 +852,19 @@
     "Lady Mariko",
     "Diamondinthedark"
    ],
-   "p": 0.185
+   "p": 0.185,
+   "pos": [
+    4,
+    1,
+    9
+   ],
+   "sp": [
+    8.0,
+    4.5,
+    29.0
+   ],
+   "field": 10,
+   "hcap": true
   },
   {
    "time": "16:45",
@@ -431,7 +875,19 @@
     "Tough Decision",
     "Pien De Dane"
    ],
-   "p": 0.306
+   "p": 0.306,
+   "pos": [
+    5,
+    3,
+    2
+   ],
+   "sp": [
+    3.75,
+    2.0,
+    9.5
+   ],
+   "field": 12,
+   "hcap": false
   },
   {
    "time": "17:00",
@@ -442,7 +898,19 @@
     "Commander Keith",
     "Thai Baht"
    ],
-   "p": 0.184
+   "p": 0.184,
+   "pos": [
+    2,
+    12,
+    1
+   ],
+   "sp": [
+    6.0,
+    5.0,
+    10.0
+   ],
+   "field": 13,
+   "hcap": true
   },
   {
    "time": "17:15",
@@ -453,7 +921,19 @@
     "National Pride",
     "Potters Margot"
    ],
-   "p": 0.213
+   "p": 0.213,
+   "pos": [
+    10,
+    1,
+    5
+   ],
+   "sp": [
+    13.0,
+    2.5,
+    11.0
+   ],
+   "field": 11,
+   "hcap": true
   },
   {
    "time": "17:30",
@@ -464,7 +944,19 @@
     "Celestial Fire",
     "Classic Bellini"
    ],
-   "p": 0.266
+   "p": 0.266,
+   "pos": [
+    3,
+    1,
+    2
+   ],
+   "sp": [
+    4.333,
+    2.75,
+    7.0
+   ],
+   "field": 11,
+   "hcap": false
   },
   {
    "time": "17:45",
@@ -475,7 +967,19 @@
     "Missmisfortune",
     "Two Steps Twice"
    ],
-   "p": 0.544
+   "p": 0.544,
+   "pos": [
+    2,
+    1,
+    3
+   ],
+   "sp": [
+    2.625,
+    1.727,
+    13.0
+   ],
+   "field": 5,
+   "hcap": false
   },
   {
    "time": "18:00",
@@ -486,7 +990,19 @@
     "Modern Times",
     "Fair Y Isle"
    ],
-   "p": 0.193
+   "p": 0.193,
+   "pos": [
+    9,
+    2,
+    8
+   ],
+   "sp": [
+    26.0,
+    3.75,
+    17.0
+   ],
+   "field": 9,
+   "hcap": true
   },
   {
    "time": "18:15",
@@ -497,7 +1013,19 @@
     "Fuseboard",
     "Preferred"
    ],
-   "p": 0.181
+   "p": 0.181,
+   "pos": [
+    9,
+    "NR",
+    7
+   ],
+   "sp": [
+    5.5,
+    null,
+    6.0
+   ],
+   "field": 10,
+   "hcap": true
   },
   {
    "time": "18:30",
@@ -508,7 +1036,19 @@
     "Maldevious",
     "Straight Ahead"
    ],
-   "p": 0.239
+   "p": 0.239,
+   "pos": [
+    4,
+    5,
+    9
+   ],
+   "sp": [
+    3.75,
+    12.0,
+    11.0
+   ],
+   "field": 9,
+   "hcap": true
   }
  ]
 }
