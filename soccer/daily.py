@@ -292,6 +292,15 @@ def main():
                          'away': m['away'], 'pick': pick, 'goals': goals, 'btts': btts, 'combo': combo,
                          'corners': count_call(trackers['corners'], look, models.get('corners'), cross),
                          'cards': count_call(trackers['cards'], look, models.get('cards'), cross)}
+        # An older, not yet started entry sharing a side with one of this run's fixtures in the same league was
+        # superseded (a side matched to the wrong team before, or a fixture moved): drop it.
+        fresh = {(m['home'], m['away']): m['div'] for m in ms}
+        for key, e in list(keep.items()):
+            if key in fresh or started(day, e, now):
+                continue
+            if any(div == e['div'] and (e['home'] in k or e['away'] in k) for k, div in fresh.items()):
+                print(f"  {day}: dropped {e['home']} v {e['away']}, superseded")
+                del keep[key]
         doc['matches'] = list(keep.values())
         doc['updated'] = stamp
         doc['double'] = choose_double(doc, day, now)
