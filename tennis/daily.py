@@ -40,7 +40,7 @@ def read(day):
 
 def write(day, doc):
     os.makedirs(PICKS, exist_ok=True)
-    doc['matches'].sort(key=lambda e: (e['time'], e['event'], e['id']))
+    doc['matches'].sort(key=lambda e: (bool(e.get('tbc')), e['time'], e['event'], e['id']))
     with open(os.path.join(PICKS, f'{day}.json'), 'w', encoding='utf-8') as f:
         json.dump(doc, f, indent=1, ensure_ascii=False)
 
@@ -52,11 +52,13 @@ def score(m):
 def choose_double(doc, day, now):
     """The day's two most confident picks from two matches, kept as they were once either has started."""
     by_id = {e['id']: e for e in doc['matches']}
-    begun = lambda e: 'winner' in e or day < now.date() or (day == now.date() and e['time'] <= now.strftime('%H:%M'))
+    begun = lambda e: 'winner' in e or day < now.date() or (day == now.date() and not e.get('tbc') and e['time'] <= now.strftime('%H:%M'))
     old = doc.get('double')
     if old and any(begun(by_id[i]) for i in old['legs'] if i in by_id):
         return old
-    cand = [e for e in doc['matches'] if not begun(e) and not e.get('new')]
+    if old and any(i not in by_id or by_id[i].get('tbc') for i in old['legs']):
+        old = None  # a leg has left the day, or lost its slot: choose again
+    cand = [e for e in doc['matches'] if not begun(e) and not e.get('new') and not e.get('tbc')]
     if len(cand) < 2:
         return old
     a, b = sorted(cand, key=lambda e: -e['p'])[:2]
@@ -64,6 +66,12 @@ def choose_double(doc, day, now):
 
 
 MAX_DETAIL = 40  # match pages read per run for total-games prices
+
+
+def two_way(o1, o2):
+    """Are these a real pair of match prices? The two chances they imply add up to a little over 100% (the
+    bookmaker's margin); the list sometimes shows other figures for matches not yet scheduled."""
+    return 0.98 <= 1 / o1 + 1 / o2 <= 1.25
 
 
 def attach_odds(today):
@@ -88,11 +96,14 @@ def attach_odds(today):
         pool = lists.get(day, []) + lists.get(day + timedelta(days=1), [])  # the site's dates are Central European
         changed = False
         for e in doc['matches']:
+            if e.get('odds') and 'winner' not in e and not two_way(*e['odds']):
+                del e['odds']  # attached before the check below was added
+                changed = True
             row, swapped = O.find(e, pool)
             if not row:
                 continue
             matched += 1
-            if row['o1'] and row['o2'] and ('winner' not in e or not e.get('odds')):
+            if row['o1'] and row['o2'] and two_way(row['o1'], row['o2']) and ('winner' not in e or not e.get('odds')):
                 o = [row['o2'], row['o1']] if swapped else [row['o1'], row['o2']]
                 if e.get('odds') != o:
                     e['odds'], changed = o, True
@@ -133,6 +144,10 @@ def main():
         if len(gs) >= 100:
             print(f'{tour}: even matches average {sum(gs) / len(gs):.1f} games; hold rate set to {G.calibrate(sum(gs) / len(gs), tour)}')
     print(f'{len(seen)} results rated; {len(fresh)} matches on the boards for today to {today + timedelta(days=AHEAD)}')
+    pre = [m for m in fresh.values() if m['state'] == 'pre']
+    print(f"scheduled matches: {len(pre)}; ESPN timeValid true/false/absent: {sum(m['time_valid'] is True for m in pre)}/"
+          f"{sum(m['time_valid'] is False for m in pre)}/{sum(m['time_valid'] is None for m in pre)}; "
+          f"not yet given a slot: {sum(m['tbc'] for m in pre)}")
     known = {**seen, **fresh}
 
     # Settle
@@ -173,7 +188,7 @@ def main():
         by_day.setdefault(t.date(), []).append({
             'id': m['id'], 'time': t.strftime('%H:%M'), 'tour': m['tour'].upper(), 'event': m['event'], 'round': m['round'],
             'p1': m['p1']['name'], 'p2': m['p2']['name'], 'pick': pick, 'p': round(p, 3), 'bo': bo,
-            'new': min(rating.played(m['p1']['id']), rating.played(m['p2']['id'])) < 5,
+            'new': min(rating.played(m['p1']['id']), rating.played(m['p2']['id'])) < 5, 'tbc': bool(m.get('tbc')),
             'first': round(c['first'], 3), 'games': {k: (round(v, 3) if k == 'p' else v) for k, v in c['games'].items()},
             'acca': round(c['acca'], 4),
         })
@@ -185,7 +200,7 @@ def main():
         keep = {e['id']: e for e in doc['matches']}
         for e in entries:
             old = keep.get(e['id'])
-            if old and ('winner' in old or (day == today and old['time'] <= now.strftime('%H:%M'))):
+            if old and ('winner' in old or (day == today and not e['tbc'] and not old.get('tbc') and old['time'] <= now.strftime('%H:%M'))):
                 continue  # started or played: the pick stays as it was
             keep[e['id']] = e
         # drop draw slots picked before both players were known (older runs listed them as TBD), and matches
