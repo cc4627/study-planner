@@ -1,4 +1,5 @@
-"""Settle past tennis picks and write picks for today's and tomorrow's ATP and WTA singles matches.
+"""Settle past tennis picks and write picks for the ATP and WTA singles matches of today and the next three days
+(as far as the draws already name both players).
 
 Usage: python daily.py [CACHE_DIR]
 
@@ -26,6 +27,7 @@ PICKS = os.path.join(HERE, 'picks')
 START = date(2024, 1, 1)
 KEEP_DAYS = 60
 SETTLE_DAYS = 7
+AHEAD = 3  # days ahead to pick: later rounds join as their players are decided
 
 
 def read(day):
@@ -68,8 +70,8 @@ def attach_odds(today):
     """Bookmaker prices from tennisexplorer.com: both players' win prices on every picked match (kept as they
     were once the match is played), and the over/under price at the pick's games line, read once per match."""
     lists = {}
-    for day, kinds in ((today - timedelta(days=1), ('results',)), (today, ('results', 'matches')), (today + timedelta(days=1), ('matches',)),
-                       (today + timedelta(days=2), ('matches',))):
+    for day, kinds in [(today - timedelta(days=1), ('results',)), (today, ('results', 'matches'))] + \
+            [(today + timedelta(days=k), ('matches',)) for k in range(1, AHEAD + 2)]:
         rows = []
         for kind in kinds:
             try:
@@ -78,7 +80,7 @@ def attach_odds(today):
                 print(f'  ! odds list {kind} {day}: {err!r}')
         lists[day] = rows
     details = matched = 0
-    for k in (-1, 0, 1):
+    for k in range(-1, AHEAD + 1):
         day = today + timedelta(days=k)
         doc = read(day)
         if not doc:
@@ -114,7 +116,7 @@ def main():
     now = datetime.now(LONDON)
     today = now.date()
     seen = {m['id']: m for m in espn.history(START, today - timedelta(days=1), cache)}
-    fresh = espn.around([today, today + timedelta(days=1)])
+    fresh = espn.around([today + timedelta(days=k) for k in range(AHEAD + 1)])
     seen.update({k: m for k, m in fresh.items() if m['state'] == 'post' and m['winner'] and m['sets']})
     rating = E.Elo()
     close = {'ATP': [], 'WTA': []}  # games in even best-of-3 matches over the last year, to tune the games model
@@ -130,7 +132,7 @@ def main():
     for tour, gs in close.items():
         if len(gs) >= 100:
             print(f'{tour}: even matches average {sum(gs) / len(gs):.1f} games; hold rate set to {G.calibrate(sum(gs) / len(gs), tour)}')
-    print(f'{len(seen)} results rated; {len(fresh)} matches on today\'s and tomorrow\'s boards')
+    print(f'{len(seen)} results rated; {len(fresh)} matches on the boards for today to {today + timedelta(days=AHEAD)}')
     known = {**seen, **fresh}
 
     # Settle
@@ -156,12 +158,13 @@ def main():
 
     # Picks for scheduled matches
     stamp = datetime.now(timezone.utc).isoformat(timespec='seconds')
-    by_day = {}
+    by_day, where = {}, {}
     for m in fresh.values():
         if m['state'] != 'pre':
             continue
         t = espn.start_time(m).astimezone(LONDON)
-        if t.date() not in (today, today + timedelta(days=1)):
+        where[m['id']] = t.date()
+        if not today <= t.date() <= today + timedelta(days=AHEAD):
             continue
         p1 = rating.p(m['p1']['id'], m['p2']['id'], E.bo5(m))
         pick, p = (1, p1) if p1 >= 0.5 else (2, 1 - p1)
@@ -174,16 +177,21 @@ def main():
             'first': round(c['first'], 3), 'games': {k: (round(v, 3) if k == 'p' else v) for k, v in c['games'].items()},
             'acca': round(c['acca'], 4),
         })
-    for day, entries in sorted(by_day.items()):
-        doc = read(day) or {'date': str(day), 'matches': []}
+    for day in (today + timedelta(days=k) for k in range(AHEAD + 1)):
+        entries, doc = by_day.get(day, []), read(day)
+        if not entries and not doc:
+            continue
+        doc = doc or {'date': str(day), 'matches': []}
         keep = {e['id']: e for e in doc['matches']}
         for e in entries:
             old = keep.get(e['id'])
             if old and ('winner' in old or (day == today and old['time'] <= now.strftime('%H:%M'))):
                 continue  # started or played: the pick stays as it was
             keep[e['id']] = e
-        # drop draw slots picked before both players were known (older runs listed them as TBD)
-        doc['matches'] = [e for e in keep.values() if 'winner' in e or 'TBD' not in (e['p1'], e['p2'])]
+        # drop draw slots picked before both players were known (older runs listed them as TBD), and matches
+        # since rescheduled to another day
+        doc['matches'] = [e for e in keep.values() if 'winner' in e or
+                          ('TBD' not in (e['p1'], e['p2']) and where.get(e['id'], day) == day)]
         doc['updated'] = stamp
         doc['double'] = choose_double(doc, day, now)
         write(day, doc)

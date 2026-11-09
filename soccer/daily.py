@@ -6,8 +6,8 @@ For each match in football-data.co.uk's fixtures: the bookmakers' favourite and 
 odds, margin removed); goals over/under 2.5 and both teams to score (from the odds); and the corners and
 yellow-cards calls: the expected count and the likelier side of the league's usual line, with its chance.
 Champions, Europa and Conference League ties come from ESPN's free feed (soccer/europe.py), each side's corners
-and cards starting from its own league; so do today's and tomorrow's domestic fixtures in any league football-data
-hasn't listed yet. Each day's two most confident corner calls make the corner double; the two most confident calls with real
+and cards starting from its own league; so do the next few days' domestic fixtures in any league football-data
+hasn't listed yet, and national-team matches (Nations League, friendlies), which get the odds-based calls only. Each day's two most confident corner calls make the corner double; the two most confident calls with real
 odds (result or goals, from two matches) make the daily double; and each match's favourite with its goals
 call makes a match double. Once a match is played, its score, total corners and total yellow cards are added
 (from ESPN the same evening, until football-data's results are in). Writes soccer/picks/YYYY-MM-DD.json and picks/index.json.
@@ -33,7 +33,9 @@ KEEP_DAYS = 60
 SETTLE_DAYS = 21
 EURO_AHEAD = 3  # days of Champions, Europa and Conference League fixtures to pick ahead
 ESPN_SETTLE_DAYS = 2  # days back to settle domestic matches from ESPN while football-data's results catch up
-DOMESTIC_AHEAD = 1  # days ahead (today and tomorrow) to fill in from ESPN when football-data hasn't listed a league's fixtures
+DOMESTIC_AHEAD = 3  # days ahead to fill in from ESPN when football-data hasn't listed a league's fixtures
+INTL_AHEAD = 3      # days of national-team fixtures to pick ahead
+INTL_DIVS = {code for code, _ in europe.INTERNATIONAL.values()}
 
 
 def load_model():
@@ -286,13 +288,18 @@ def main():
     for k in range(3, -1, -1):
         day = today - timedelta(days=k)
         doc = read(day)
-        open_euro = doc and any(e['div'] in ('UCL', 'UEL', 'UECL') and 'ft' not in e for e in doc['matches'])
-        if not open_euro:
-            continue
+        open_divs = {e['div'] for e in (doc or {}).get('matches', []) if 'ft' not in e}
+        played_ = {}
         try:
-            played_ = {(m['home'], m['away']): m for m in europe.matches(day) if m['hg'] is not None}
+            if open_divs & {'UCL', 'UEL', 'UECL'}:
+                played_.update({(m['home'], m['away']): m for m in europe.matches(day) if m['hg'] is not None})
+            if open_divs & INTL_DIVS:
+                played_.update({(m['home'], m['away']): m for m in europe.matches(day, europe.INTERNATIONAL, cards=False)
+                                if m['hg'] is not None})
         except Exception as err:
             print(f'  ! European results for {day}: {err!r}')
+            continue
+        if not played_:
             continue
         for e in doc['matches']:
             m = played_.get((e['home'], e['away']))
@@ -319,6 +326,21 @@ def main():
             euro.append(m)
     unmatched = sorted({t for m in euro for t, f in ((m['home'], m['_look']['home']), (m['away'], m['_look']['away'])) if t == f and t not in known})
     print(f'European: {euro_settled} settled, {len(euro)} coming; not in the domestic files: {", ".join(unmatched) or "none"}')
+    intl, listed = [], {}
+    for k in range(INTL_AHEAD + 1):
+        day = today + timedelta(days=k)
+        try:
+            coming = europe.matches(day, europe.INTERNATIONAL, cards=False)
+        except Exception as err:
+            print(f'  ! international fixtures for {day}: {err!r}')
+            coming = []
+        for m in coming:
+            if m['state'] != 'pre':
+                continue
+            listed[str(day)] = listed.get(str(day), 0) + 1
+            if result_pick(m):  # nothing to call without prices; it joins once ESPN has them
+                intl.append(dict(m, _intl=True))
+    print(f'International: {listed or "none"} listed, {len(intl)} with prices')
 
     # Picks for the coming matches
     fx = [m for m in fd.fixtures() if m['date'] >= today]
@@ -326,11 +348,12 @@ def main():
     for m in fx:
         days[str(m['date'])] = days.get(str(m['date']), 0) + 1
     print(f'football-data fixtures: {days or "none"}')
-    fx += espn_fill(fx, today, div_of) + euro
+    fx += espn_fill(fx, today, div_of) + euro + intl
     by_day = {}
     for m in fx:
         by_day.setdefault(m['date'], []).append(m)
     stamp = datetime.now(timezone.utc).isoformat(timespec='seconds')
+    where = {(m['home'], m['away']): m['date'] for m in fx}
     for day, ms in sorted(by_day.items()):
         doc = read(day) or {'date': str(day), 'matches': []}
         keep = {(e['home'], e['away']): e for e in doc['matches']}
@@ -342,10 +365,11 @@ def main():
             goals, btts, combo = odds_calls(m, pick)
             cross = '_look' in m
             look = m.get('_look', m)
+            counts = not m.get('_intl')  # the corners and cards models know clubs, not national teams
             keep[key] = {'time': m['time'], 'div': m['div'], 'league': m.get('league') or fd.LEAGUES[m['div']], 'home': m['home'],
                          'away': m['away'], 'pick': pick, 'goals': goals, 'btts': btts, 'combo': combo,
-                         'corners': count_call(trackers['corners'], look, models.get('corners'), cross),
-                         'cards': count_call(trackers['cards'], look, models.get('cards'), cross)}
+                         'corners': count_call(trackers['corners'], look, models.get('corners'), cross) if counts else None,
+                         'cards': count_call(trackers['cards'], look, models.get('cards'), cross) if counts else None}
         # An older, not yet started entry sharing a side with one of this run's fixtures in the same league was
         # superseded (a side matched to the wrong team before, or a fixture moved): drop it.
         fresh = {(m['home'], m['away']): m['div'] for m in ms}
@@ -354,6 +378,9 @@ def main():
                 continue
             if any(div == e['div'] and (e['home'] in k or e['away'] in k) for k, div in fresh.items()):
                 print(f"  {day}: dropped {e['home']} v {e['away']}, superseded")
+                del keep[key]
+            elif where.get(key, day) != day:  # the same fixture is now listed on another day
+                print(f"  {day}: dropped {e['home']} v {e['away']}, moved to {where[key]}")
                 del keep[key]
         doc['matches'] = list(keep.values())
         doc['updated'] = stamp

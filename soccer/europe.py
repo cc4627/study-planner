@@ -18,6 +18,9 @@ BASE = 'https://site.api.espn.com/apis/site/v2/sports/soccer'
 UA = {'User-Agent': 'study-planner/1.0 (+https://github.com/cc4627/study-planner)'}
 COMPS = {'uefa.champions': ('UCL', 'Champions League'), 'uefa.europa': ('UEL', 'Europa League'),
          'uefa.europa.conf': ('UECL', 'Conference League')}
+# National-team matches, for international weeks: picked from the odds only (no corners or cards calls, as the
+# models know clubs, not countries).
+INTERNATIONAL = {'uefa.nations': ('UNL', 'Nations League'), 'fifa.friendly': ('INT', 'International friendly')}
 # ESPN's slug for each football-data league, to fill in fixtures football-data hasn't listed yet.
 DOMESTIC = {'E0': 'eng.1', 'E1': 'eng.2', 'E2': 'eng.3', 'E3': 'eng.4', 'EC': 'eng.5', 'SC0': 'sco.1', 'SC1': 'sco.2',
             'SC2': 'sco.3', 'SC3': 'sco.4', 'D1': 'ger.1', 'D2': 'ger.2', 'I1': 'ita.1', 'I2': 'ita.2', 'SP1': 'esp.1',
