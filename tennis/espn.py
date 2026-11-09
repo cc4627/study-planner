@@ -10,12 +10,27 @@ import time
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 BASE = 'https://site.api.espn.com/apis/site/v2/sports/tennis'
 UA = {'User-Agent': 'study-planner/1.0 (+https://github.com/cc4627/study-planner)'}
 TOURS = ('atp', 'wta')
 PAUSE = 1.0
 _last = [0.0]
+EASTERN = ZoneInfo('America/New_York')
+
+
+def unscheduled(c):
+    """Has the tournament still to give this match a day and time? ESPN says so with timeValid; where it doesn't
+    carry that, its stand-in start of midnight US Eastern time gives it away."""
+    tv = c.get('timeValid')
+    if tv is not None:
+        return tv is False
+    try:
+        t = datetime.strptime(c['date'].replace('Z', '+0000'), '%Y-%m-%dT%H:%M%z')
+    except (KeyError, ValueError):
+        return False
+    return t.astimezone(EASTERN).strftime('%H:%M') == '00:00'
 
 
 def scoreboard(tour, day, cache=None):
@@ -76,7 +91,7 @@ def matches(board, tour):
                 yield {
                     'id': str(c['id']), 'tour': tour, 'event': ev.get('shortName') or ev.get('name') or '',
                     'major': bool(ev.get('major')), 'start': c['date'], 'round': (c.get('round') or {}).get('displayName') or '',
-                    'state': st.get('state'), 'p1': pa, 'p2': pb,
+                    'state': st.get('state'), 'p1': pa, 'p2': pb, 'tbc': unscheduled(c), 'time_valid': c.get('timeValid'),
                     'winner': 1 if a.get('winner') else 2 if b.get('winner') else None, 'sets': sets,
                 }
 

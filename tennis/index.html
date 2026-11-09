@@ -34,7 +34,7 @@
     match tuned to real game totals. Prices marked @ are bookmaker odds (average over/under for games) from tennisexplorer.com; the
     € figures use them, and the fair price (1 ÷ chance) where there are none, marked est. First-set prices and the match acca
     (winner, first set and games together) use the fair price, so their € figures are estimates. "New" marks a player with few
-    rated matches. A guide,
+    rated matches. TBC: the tournament hasn't given the match a slot yet, so it may move to another day. A guide,
     not a tip; no bets are placed. Help: <a href="https://www.begambleaware.org" target="_blank" rel="noopener">BeGambleAware</a> ·
     <a href="https://www.gamstop.co.uk" target="_blank" rel="noopener">GAMSTOP</a></p>
 </main>
@@ -78,7 +78,7 @@ SportsPage({
   emptyText:'Picks appear here once the day\'s order of play is out.',
   items:function(d){return d.matches;},
   groupOf:label,
-  over:function(m,now){return m.winner!=null||(!!now&&m.time<now);},
+  over:function(m,now){return m.winner!=null||(!m.tbc&&!!now&&m.time<now);},
   ledger:function(d,ms,H){
     var done=ms.filter(function(m){return m.winner!=null&&!wo(m);});
     if(!done.length){
@@ -130,8 +130,8 @@ SportsPage({
         (ap==null?'<span></span>':'<span class="money '+H.cls(ap)+'">'+(ap>0?'+€'+big(ap):'−€1.00')+'</span>')+'</div>'+
       '</div>':'';
     return '<article class="card'+(gone?' gone':'')+'" style="--k:'+H.colour(label(m))+'">'+
-      '<div class="when"><b>'+H.esc(m.time)+'</b><span>'+H.esc(m.round||'')+'</span></div>'+
-      '<div class="body"><p class="where">'+H.esc(label(m))+'</p>'+
+      '<div class="when"><b>'+(m.tbc&&m.winner==null?'TBC':H.esc(m.time))+'</b><span>'+H.esc(m.round||'')+'</span></div>'+
+      '<div class="body"><p class="where">'+H.esc(label(m))+(m.tbc&&m.winner==null?' · day and time to be confirmed':'')+'</p>'+
       '<div class="players">'+row(1)+'<div class="bar" aria-hidden="true"><i style="width:'+Math.round(p1*100)+'%"></i></div>'+row(2)+'</div>'+
       (m.score?'<p class="meta" style="margin:0">'+H.esc(m.score)+'</p>':'')+mk+
       '</div></article>';
