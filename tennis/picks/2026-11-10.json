@@ -1,0 +1,457 @@
+{
+ "date": "2026-11-10",
+ "matches": [
+  {
+   "id": "186526",
+   "time": "12:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Round 1",
+   "p1": "Adrian Mannarino",
+   "p2": "Aleksandr Shevchenko",
+   "pick": 1,
+   "p": 0.7,
+   "bo": 3,
+   "new": false,
+   "first": 0.637,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.506
+   },
+   "acca": 0.3863,
+   "odds": [
+    1.77,
+    2.02
+   ],
+   "gp": {
+    "over": 1.81,
+    "under": 1.89
+   }
+  },
+  {
+   "id": "186541",
+   "time": "12:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Round 2",
+   "p1": "Alex Michelsen",
+   "p2": "Juan Manuel Cerundolo",
+   "pick": 1,
+   "p": 0.68,
+   "bo": 3,
+   "new": false,
+   "first": 0.623,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.502
+   },
+   "acca": 0.1656,
+   "odds": [
+    1.28,
+    3.62
+   ],
+   "gp": {
+    "over": 1.99,
+    "under": 1.73
+   }
+  },
+  {
+   "id": "186533",
+   "time": "13:30",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Round 1",
+   "p1": "Lorenzo Sonego",
+   "p2": "Quentin Halys",
+   "pick": 2,
+   "p": 0.685,
+   "bo": 3,
+   "new": false,
+   "first": 0.626,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.5
+   },
+   "acca": 0.3731,
+   "odds": [
+    2.05,
+    1.76
+   ],
+   "gp": {
+    "over": 1.51,
+    "under": 2.38
+   }
+  },
+  {
+   "id": "186539",
+   "time": "13:30",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Round 2",
+   "p1": "Tomas Martin Etcheverry",
+   "p2": "Thiago Agustin Tirante",
+   "pick": 2,
+   "p": 0.569,
+   "bo": 3,
+   "new": false,
+   "first": 0.546,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.531
+   },
+   "acca": 0.1563,
+   "odds": [
+    1.72,
+    2.09
+   ],
+   "gp": {
+    "over": 1.61,
+    "under": 2.16
+   }
+  },
+  {
+   "id": "186527",
+   "time": "15:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Round 1",
+   "p1": "Arthur Rinderknech",
+   "p2": "Miomir Kecmanovic",
+   "pick": 1,
+   "p": 0.727,
+   "bo": 3,
+   "new": false,
+   "first": 0.657,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.517
+   },
+   "acca": 0.4115,
+   "odds": [
+    1.45,
+    2.7
+   ],
+   "gp": {
+    "over": 1.75,
+    "under": 1.97
+   }
+  },
+  {
+   "id": "186747",
+   "time": "15:00",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Round 1",
+   "p1": "Carole Monnet",
+   "p2": "Leyre Romero Gormaz",
+   "pick": 2,
+   "p": 0.661,
+   "bo": 3,
+   "new": false,
+   "first": 0.609,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.522
+   },
+   "acca": 0.1724,
+   "odds": [
+    2.53,
+    1.47
+   ],
+   "gp": {
+    "over": 2.02,
+    "under": 1.69
+   }
+  },
+  {
+   "id": "186751",
+   "time": "15:00",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Round 1",
+   "p1": "Alice Tubello",
+   "p2": "Julia Riera",
+   "pick": 1,
+   "p": 0.628,
+   "bo": 3,
+   "new": false,
+   "first": 0.586,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.533
+   },
+   "acca": 0.17,
+   "odds": [
+    1.66,
+    2.13
+   ],
+   "gp": {
+    "over": 1.98,
+    "under": 1.71
+   }
+  },
+  {
+   "id": "186752",
+   "time": "15:00",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Round 1",
+   "p1": "Lucia Bronzetti",
+   "p2": "Julieta Pareja",
+   "pick": 2,
+   "p": 0.557,
+   "bo": 3,
+   "new": false,
+   "first": 0.538,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.547
+   },
+   "acca": 0.162,
+   "odds": [
+    2.78,
+    1.38
+   ],
+   "gp": {
+    "over": 2.14,
+    "under": 1.61
+   }
+  },
+  {
+   "id": "186745",
+   "time": "16:30",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Round 1",
+   "p1": "Bianca Andreescu",
+   "p2": "Rebeka Masarova",
+   "pick": 1,
+   "p": 0.784,
+   "bo": 3,
+   "new": false,
+   "first": 0.7,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.542
+   },
+   "acca": 0.4652,
+   "odds": [
+    1.28,
+    3.38
+   ],
+   "gp": {
+    "over": 2.29,
+    "under": 1.54
+   }
+  },
+  {
+   "id": "186748",
+   "time": "16:30",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Round 1",
+   "p1": "Katrina Scott",
+   "p2": "Andrea Lazaro Garcia",
+   "pick": 2,
+   "p": 0.788,
+   "bo": 3,
+   "new": false,
+   "first": 0.703,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.545
+   },
+   "acca": 0.47,
+   "odds": [
+    5.04,
+    1.13
+   ],
+   "gp": {
+    "over": 2.86,
+    "under": 1.35
+   }
+  },
+  {
+   "id": "186525",
+   "time": "17:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Round 1",
+   "p1": "Holger Rune",
+   "p2": "Zizou Bergs",
+   "pick": 1,
+   "p": 0.561,
+   "bo": 3,
+   "new": false,
+   "first": 0.541,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.533
+   },
+   "acca": 0.1552,
+   "odds": [
+    1.61,
+    2.28
+   ],
+   "gp": {
+    "over": 1.72,
+    "under": 2.01
+   }
+  },
+  {
+   "id": "186757",
+   "time": "18:00",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Round 1",
+   "p1": "Laura Samson",
+   "p2": "Carolina Alves",
+   "pick": 1,
+   "p": 0.813,
+   "bo": 3,
+   "new": false,
+   "first": 0.723,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.565
+   },
+   "acca": 0.4993,
+   "odds": [
+    1.2,
+    3.96
+   ],
+   "gp": {
+    "over": 2.4,
+    "under": 1.49
+   }
+  },
+  {
+   "id": "186759",
+   "time": "18:00",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Round 1",
+   "p1": "Maria Lourdes Carle",
+   "p2": "Valentina Mediorreal Arias",
+   "pick": 1,
+   "p": 0.8,
+   "bo": 3,
+   "new": false,
+   "first": 0.713,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.554
+   },
+   "acca": 0.4837,
+   "odds": [
+    1.01,
+    18.88
+   ]
+  },
+  {
+   "id": "186543",
+   "time": "18:30",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Round 2",
+   "p1": "Lorenzo Musetti",
+   "p2": "Toby Samuel",
+   "pick": 1,
+   "p": 0.69,
+   "bo": 3,
+   "new": false,
+   "first": 0.629,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.502
+   },
+   "acca": 0.3771,
+   "odds": [
+    1.31,
+    3.2
+   ],
+   "gp": {
+    "over": 1.97,
+    "under": 1.76
+   }
+  },
+  {
+   "id": "187372",
+   "time": "20:00",
+   "tour": "WTA",
+   "event": "FAGE WTA Finals Indian Wells",
+   "round": "Group Stage",
+   "p1": "Marta Kostyuk",
+   "p2": "Jessica Pegula",
+   "pick": 2,
+   "p": 0.646,
+   "bo": 3,
+   "new": false,
+   "first": 0.599,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.527
+   },
+   "acca": 0.1714,
+   "odds": [
+    2.41,
+    1.56
+   ],
+   "gp": {
+    "over": 1.76,
+    "under": 2.0
+   }
+  },
+  {
+   "id": "187375",
+   "time": "21:30",
+   "tour": "WTA",
+   "event": "FAGE WTA Finals Indian Wells",
+   "round": "Group Stage",
+   "p1": "Coco Gauff",
+   "p2": "Linda Noskova",
+   "pick": 1,
+   "p": 0.623,
+   "bo": 3,
+   "new": false,
+   "first": 0.582,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.534
+   },
+   "acca": 0.1695,
+   "odds": [
+    1.57,
+    2.37
+   ],
+   "gp": {
+    "over": 1.7,
+    "under": 2.06
+   }
+  }
+ ],
+ "updated": "2026-11-09T23:22:36+00:00",
+ "double": {
+  "legs": [
+   "186757",
+   "186759"
+  ],
+  "p": 0.65
+ }
+}
