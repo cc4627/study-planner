@@ -1,0 +1,71 @@
+{
+ "date": "2026-11-15",
+ "matches": [
+  {
+   "id": "187505",
+   "time": "13:00",
+   "tour": "ATP",
+   "event": "Nitto ATP Finals",
+   "round": "Group Stage",
+   "p1": "Alexander Zverev",
+   "p2": "Rafael Jodar",
+   "pick": 1,
+   "p": 0.666,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.613,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.508
+   },
+   "acca": 0.165,
+   "odds": [
+    1.41,
+    2.71
+   ],
+   "gp": {
+    "over": 1.82,
+    "under": 1.93
+   }
+  },
+  {
+   "id": "187506",
+   "time": "19:30",
+   "tour": "ATP",
+   "event": "Nitto ATP Finals",
+   "round": "Group Stage",
+   "p1": "Ben Shelton",
+   "p2": "Arthur Fils",
+   "pick": 1,
+   "p": 0.535,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.523,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.535
+   },
+   "acca": 0.1516,
+   "odds": [
+    1.68,
+    2.14
+   ],
+   "gp": {
+    "over": 1.51,
+    "under": 2.33
+   }
+  }
+ ],
+ "updated": "2026-11-12T18:59:13+00:00",
+ "double": {
+  "legs": [
+   "187505",
+   "187506"
+  ],
+  "p": 0.356
+ }
+}

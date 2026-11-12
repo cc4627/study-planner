@@ -1,0 +1,125 @@
+{
+ "date": "2026-11-13",
+ "matches": [
+  {
+   "id": "186546",
+   "time": "13:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Semifinal",
+   "p1": "Alejandro Tabilo",
+   "p2": "Thiago Agustin Tirante",
+   "pick": 1,
+   "p": 0.506,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.504,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.536
+   },
+   "acca": 0.1472,
+   "odds": [
+    1.71,
+    2.07
+   ],
+   "gp": {
+    "over": 1.59,
+    "under": 2.22
+   }
+  },
+  {
+   "id": "187384",
+   "time": "20:00",
+   "tour": "WTA",
+   "event": "FAGE WTA Finals Indian Wells",
+   "round": "Group Stage",
+   "p1": "Mirra Andreeva",
+   "p2": "Karolina Muchova",
+   "pick": 1,
+   "p": 0.552,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.535,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.547
+   },
+   "acca": 0.1613,
+   "odds": [
+    1.39,
+    2.98
+   ],
+   "gp": {
+    "over": 1.92,
+    "under": 1.82
+   }
+  },
+  {
+   "id": "187379",
+   "time": "21:30",
+   "tour": "WTA",
+   "event": "FAGE WTA Finals Indian Wells",
+   "round": "Group Stage",
+   "p1": "Aryna Sabalenka",
+   "p2": "Elina Svitolina",
+   "pick": 1,
+   "p": 0.609,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.573,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.538
+   },
+   "acca": 0.1681,
+   "odds": [
+    1.51,
+    2.53
+   ],
+   "gp": {
+    "over": 1.78,
+    "under": 1.94
+   }
+  },
+  {
+   "id": "186773",
+   "time": "05:00",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Semifinal",
+   "p1": "Laura Samson",
+   "p2": "Elizabeth Mandlik",
+   "pick": 1,
+   "p": 0.698,
+   "bo": 3,
+   "new": false,
+   "tbc": true,
+   "first": 0.635,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.508
+   },
+   "acca": 0.1739,
+   "odds": [
+    1.35,
+    2.84
+   ]
+  }
+ ],
+ "updated": "2026-11-12T18:59:13+00:00",
+ "double": {
+  "legs": [
+   "187379",
+   "187384"
+  ],
+  "p": 0.336
+ }
+}
