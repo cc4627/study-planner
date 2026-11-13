@@ -1,0 +1,31 @@
+{
+ "date": "2026-11-16",
+ "matches": [
+  {
+   "time": "19:30",
+   "div": "SP2",
+   "league": "La Liga 2",
+   "home": "Albacete",
+   "away": "Celta B",
+   "pick": null,
+   "goals": null,
+   "btts": null,
+   "combo": null,
+   "corners": {
+    "exp": 9.9,
+    "line": 9.5,
+    "side": "over",
+    "p": 0.516
+   },
+   "cards": {
+    "exp": 5.6,
+    "line": 4.5,
+    "side": "over",
+    "p": 0.65
+   }
+  }
+ ],
+ "updated": "2026-11-13T08:55:18+00:00",
+ "double": null,
+ "daily": null
+}

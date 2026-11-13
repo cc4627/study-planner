@@ -24,7 +24,19 @@
     "Ask A Sainte",
     "Ghasham"
    ],
-   "p": 0.268
+   "p": 0.268,
+   "pos": [
+    1,
+    3,
+    "DNF"
+   ],
+   "sp": [
+    2.5,
+    29.0,
+    5.0
+   ],
+   "field": 7,
+   "hcap": true
   },
   {
    "time": "12:40",
@@ -35,7 +47,19 @@
     "Watery Borren",
     "Aqua Bleu"
    ],
-   "p": 0.41
+   "p": 0.41,
+   "pos": [
+    1,
+    3,
+    2
+   ],
+   "sp": [
+    2.0,
+    3.25,
+    4.5
+   ],
+   "field": 4,
+   "hcap": false
   },
   {
    "time": "12:50",
@@ -46,7 +70,19 @@
     "Smokehouse",
     "Galante De Vassy"
    ],
-   "p": 0.19
+   "p": 0.19,
+   "pos": [
+    4,
+    1,
+    6
+   ],
+   "sp": [
+    4.5,
+    1.571,
+    21.0
+   ],
+   "field": 10,
+   "hcap": false
   },
   {
    "time": "13:00",
@@ -57,7 +93,19 @@
     "Luna Marquesa",
     "Queen Lily"
    ],
-   "p": 0.683
+   "p": 0.683,
+   "pos": [
+    1,
+    3,
+    2
+   ],
+   "sp": [
+    1.444,
+    4.5,
+    6.5
+   ],
+   "field": 4,
+   "hcap": false
   },
   {
    "time": "13:15",
@@ -68,7 +116,19 @@
     "Off The Jury",
     "Stride On"
    ],
-   "p": 0.199
+   "p": 0.199,
+   "pos": [
+    5,
+    1,
+    "NR"
+   ],
+   "sp": [
+    3.75,
+    3.5,
+    null
+   ],
+   "field": 5,
+   "hcap": true
   },
   {
    "time": "13:25",
@@ -79,7 +139,19 @@
     "Mutley Crew",
     "Ahanaglogh"
    ],
-   "p": 0.249
+   "p": 0.249,
+   "pos": [
+    1,
+    6,
+    "NR"
+   ],
+   "sp": [
+    2.2,
+    11.0,
+    null
+   ],
+   "field": 6,
+   "hcap": true
   },
   {
    "time": "13:35",
@@ -90,7 +162,19 @@
     "Walk Tall",
     "Defence Witness"
    ],
-   "p": 0.364
+   "p": 0.364,
+   "pos": [
+    2,
+    "DNF",
+    1
+   ],
+   "sp": [
+    2.625,
+    2.875,
+    9.0
+   ],
+   "field": 7,
+   "hcap": true
   },
   {
    "time": "13:50",
@@ -101,7 +185,19 @@
     "All In You",
     "Dedicated Hero"
    ],
-   "p": 0.383
+   "p": 0.383,
+   "pos": [
+    2,
+    1,
+    6
+   ],
+   "sp": [
+    5.0,
+    2.5,
+    10.0
+   ],
+   "field": 7,
+   "hcap": true
   },
   {
    "time": "14:00",
@@ -112,7 +208,19 @@
     "Mild Magic",
     "Stamina Chope"
    ],
-   "p": 0.385
+   "p": 0.385,
+   "pos": [
+    1,
+    2,
+    3
+   ],
+   "sp": [
+    2.25,
+    2.375,
+    10.0
+   ],
+   "field": 4,
+   "hcap": true
   },
   {
    "time": "14:10",
@@ -123,7 +231,19 @@
     "Scarface",
     "Hombre De Guerra"
    ],
-   "p": 0.321
+   "p": 0.321,
+   "pos": [
+    1,
+    4,
+    3
+   ],
+   "sp": [
+    3.25,
+    5.0,
+    3.5
+   ],
+   "field": 6,
+   "hcap": true
   },
   {
    "time": "14:25",
@@ -134,7 +254,19 @@
     "Royal Infantry",
     "Intosomethinggood"
    ],
-   "p": 0.417
+   "p": 0.417,
+   "pos": [
+    2,
+    1,
+    3
+   ],
+   "sp": [
+    2.2,
+    2.375,
+    5.0
+   ],
+   "field": 3,
+   "hcap": false
   },
   {
    "time": "14:35",
@@ -145,7 +277,19 @@
     "Motazzen",
     "So You Know"
    ],
-   "p": 0.262
+   "p": 0.262,
+   "pos": [
+    7,
+    2,
+    4
+   ],
+   "sp": [
+    13.0,
+    6.5,
+    3.5
+   ],
+   "field": 8,
+   "hcap": true
   },
   {
    "time": "14:45",
@@ -156,7 +300,19 @@
     "High Dancer",
     "Titanium Ring"
    ],
-   "p": 0.281
+   "p": 0.281,
+   "pos": [
+    1,
+    7,
+    3
+   ],
+   "sp": [
+    4.5,
+    4.5,
+    2.75
+   ],
+   "field": 9,
+   "hcap": true
   },
   {
    "time": "14:53",
@@ -167,7 +323,19 @@
     "Black Chiffon",
     "Twisting Physics"
    ],
-   "p": 0.172
+   "p": 0.172,
+   "pos": [
+    10,
+    8,
+    4
+   ],
+   "sp": [
+    15.0,
+    6.5,
+    7.5
+   ],
+   "field": 14,
+   "hcap": true
   },
   {
    "time": "15:00",
@@ -178,7 +346,19 @@
     "JPR One",
     "Rubaud"
    ],
-   "p": 0.395
+   "p": 0.395,
+   "pos": [
+    3,
+    2,
+    1
+   ],
+   "sp": [
+    3.25,
+    3.75,
+    5.0
+   ],
+   "field": 6,
+   "hcap": true
   },
   {
    "time": "15:10",
@@ -189,7 +369,19 @@
     "Hard Stare",
     "Steal The Moves"
    ],
-   "p": 0.295
+   "p": 0.295,
+   "pos": [
+    5,
+    2,
+    1
+   ],
+   "sp": [
+    3.75,
+    1.909,
+    6.5
+   ],
+   "field": 6,
+   "hcap": true
   },
   {
    "time": "15:20",
@@ -200,7 +392,19 @@
     "Elusive Dreams",
     "Jeu De Maine"
    ],
-   "p": 0.258
+   "p": 0.258,
+   "pos": [
+    3,
+    1,
+    2
+   ],
+   "sp": [
+    2.875,
+    3.5,
+    4.0
+   ],
+   "field": 9,
+   "hcap": false
   },
   {
    "time": "15:28",
@@ -211,7 +415,19 @@
     "Maneater",
     "Malika"
    ],
-   "p": 0.767
+   "p": 0.767,
+   "pos": [
+    1,
+    2,
+    3
+   ],
+   "sp": [
+    1.1,
+    4.333,
+    23.0
+   ],
+   "field": 7,
+   "hcap": false
   },
   {
    "time": "15:35",
@@ -222,7 +438,19 @@
     "Montregard",
     "Leave Of Absence"
    ],
-   "p": 0.23
+   "p": 0.23,
+   "pos": [
+    7,
+    1,
+    10
+   ],
+   "sp": [
+    3.5,
+    6.0,
+    8.0
+   ],
+   "field": 12,
+   "hcap": true
   },
   {
    "time": "15:43",
@@ -233,7 +461,19 @@
     "Mystical Mabel",
     "Wistmans Prince"
    ],
-   "p": 0.376
+   "p": 0.376,
+   "pos": [
+    3,
+    6,
+    8
+   ],
+   "sp": [
+    2.1,
+    21.0,
+    8.0
+   ],
+   "field": 10,
+   "hcap": true
   },
   {
    "time": "15:52",
@@ -244,7 +484,19 @@
     "Lady Phoebe",
     "Robert d'Ores"
    ],
-   "p": 0.204
+   "p": 0.204,
+   "pos": [
+    2,
+    4,
+    7
+   ],
+   "sp": [
+    8.5,
+    3.75,
+    8.0
+   ],
+   "field": 10,
+   "hcap": true
   },
   {
    "time": "16:00",
@@ -255,7 +507,19 @@
     "Printing Money",
     "Sankhum Galaxy"
    ],
-   "p": 0.233
+   "p": 0.233,
+   "pos": [
+    7,
+    3,
+    6
+   ],
+   "sp": [
+    8.0,
+    4.0,
+    11.0
+   ],
+   "field": 11,
+   "hcap": true
   },
   {
    "time": "16:05",
@@ -266,7 +530,19 @@
     "Knight Templar",
     "Quaviste"
    ],
-   "p": 0.192
+   "p": 0.192,
+   "pos": [
+    4,
+    3,
+    6
+   ],
+   "sp": [
+    19.0,
+    6.5,
+    2.375
+   ],
+   "field": 10,
+   "hcap": true
   },
   {
    "time": "16:30",
@@ -277,7 +553,19 @@
     "Beauty For Love",
     "Bella Lucia"
    ],
-   "p": 0.427
+   "p": 0.427,
+   "pos": [
+    5,
+    3,
+    1
+   ],
+   "sp": [
+    2.375,
+    3.25,
+    5.5
+   ],
+   "field": 5,
+   "hcap": true
   },
   {
    "time": "17:00",
@@ -288,7 +576,19 @@
     "Capricious Star",
     "Lizzie Bennet"
    ],
-   "p": 0.301
+   "p": 0.301,
+   "pos": [
+    10,
+    3,
+    2
+   ],
+   "sp": [
+    4.333,
+    3.25,
+    4.0
+   ],
+   "field": 10,
+   "hcap": false
   },
   {
    "time": "17:15",
@@ -299,7 +599,19 @@
     "Emiza",
     "What's Enough"
    ],
-   "p": 0.485
+   "p": 0.485,
+   "pos": [
+    1,
+    3,
+    2
+   ],
+   "sp": [
+    1.333,
+    5.5,
+    8.5
+   ],
+   "field": 5,
+   "hcap": false
   },
   {
    "time": "17:30",
@@ -310,7 +622,19 @@
     "Speeding Bullet",
     "Simba's Pride"
    ],
-   "p": 0.173
+   "p": 0.173,
+   "pos": [
+    2,
+    7,
+    3
+   ],
+   "sp": [
+    12.0,
+    7.0,
+    9.0
+   ],
+   "field": 14,
+   "hcap": true
   },
   {
    "time": "17:45",
@@ -321,7 +645,19 @@
     "Ladies Gossip",
     "Corsican Night"
    ],
-   "p": 0.283
+   "p": 0.283,
+   "pos": [
+    5,
+    1,
+    9
+   ],
+   "sp": [
+    1.533,
+    3.25,
+    21.0
+   ],
+   "field": 12,
+   "hcap": false
   },
   {
    "time": "18:00",
@@ -332,7 +668,19 @@
     "Archangel Josepi",
     "Cloch Nua"
    ],
-   "p": 0.156
+   "p": 0.156,
+   "pos": [
+    1,
+    6,
+    4
+   ],
+   "sp": [
+    3.5,
+    4.333,
+    12.0
+   ],
+   "field": 14,
+   "hcap": true
   },
   {
    "time": "18:15",
@@ -343,7 +691,19 @@
     "Pralognan",
     "Storm Eric"
    ],
-   "p": 0.162
+   "p": 0.162,
+   "pos": [
+    6,
+    7,
+    3
+   ],
+   "sp": [
+    4.333,
+    12.0,
+    12.0
+   ],
+   "field": 10,
+   "hcap": true
   },
   {
    "time": "18:30",
@@ -354,7 +714,19 @@
     "Tactical Blitz",
     "Educating Rita"
    ],
-   "p": 0.172
+   "p": 0.172,
+   "pos": [
+    3,
+    5,
+    9
+   ],
+   "sp": [
+    11.0,
+    12.0,
+    4.333
+   ],
+   "field": 14,
+   "hcap": true
   },
   {
    "time": "18:45",
@@ -365,7 +737,19 @@
     "Suzie Songs",
     "Leading Dancer"
    ],
-   "p": 0.161
+   "p": 0.161,
+   "pos": [
+    8,
+    6,
+    3
+   ],
+   "sp": [
+    7.5,
+    11.0,
+    5.0
+   ],
+   "field": 14,
+   "hcap": false
   },
   {
    "time": "19:00",
@@ -376,7 +760,19 @@
     "Battenburg Belle",
     "Marianne Mozart"
    ],
-   "p": 0.142
+   "p": 0.142,
+   "pos": [
+    10,
+    12,
+    11
+   ],
+   "sp": [
+    12.0,
+    17.0,
+    15.0
+   ],
+   "field": 14,
+   "hcap": true
   },
   {
    "time": "19:15",
@@ -387,7 +783,19 @@
     "Drive On There",
     "Muscogee Nation"
    ],
-   "p": 0.404
+   "p": 0.404,
+   "pos": [
+    4,
+    5,
+    1
+   ],
+   "sp": [
+    2.25,
+    2.5,
+    13.0
+   ],
+   "field": 10,
+   "hcap": false
   },
   {
    "time": "19:45",
@@ -398,7 +806,19 @@
     "Boston Benjamin",
     "Exquisite Acclaim"
    ],
-   "p": 0.286
+   "p": 0.286,
+   "pos": [
+    7,
+    6,
+    5
+   ],
+   "sp": [
+    2.375,
+    11.0,
+    11.0
+   ],
+   "field": 8,
+   "hcap": true
   },
   {
    "time": "20:15",
@@ -409,7 +829,19 @@
     "Una Matata",
     "Wegotogether"
    ],
-   "p": 0.154
+   "p": 0.154,
+   "pos": [
+    1,
+    11,
+    6
+   ],
+   "sp": [
+    4.5,
+    7.5,
+    6.5
+   ],
+   "field": 14,
+   "hcap": true
   }
  ]
 }

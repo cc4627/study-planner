@@ -9,8 +9,8 @@
    "away": "Paraguay",
    "pick": {
     "side": "A",
-    "p": 0.88,
-    "odds": 1.071
+    "p": 0.885,
+    "odds": 1.062
    },
    "goals": null,
    "btts": null,
@@ -19,15 +19,15 @@
    "cards": null
   },
   {
-   "time": "14:15",
+   "time": "14:10",
    "div": "INT",
    "league": "International friendly",
    "home": "United Arab Emirates",
    "away": "Honduras",
    "pick": {
     "side": "H",
-    "p": 0.461,
-    "odds": 2.05
+    "p": 0.451,
+    "odds": 2.1
    },
    "goals": {
     "side": "under",
@@ -36,11 +36,11 @@
    },
    "btts": {
     "side": "no",
-    "p": 0.521
+    "p": 0.518
    },
    "combo": {
-    "p": 0.217,
-    "odds": 3.42
+    "p": 0.212,
+    "odds": 3.5
    },
    "corners": null,
    "cards": null
@@ -53,21 +53,21 @@
    "away": "South Korea",
    "pick": {
     "side": "A",
-    "p": 0.517,
-    "odds": 1.833
+    "p": 0.527,
+    "odds": 1.8
    },
    "goals": {
     "side": "under",
-    "p": 0.557,
-    "odds": 1.667
+    "p": 0.545,
+    "odds": 1.714
    },
    "btts": {
     "side": "no",
-    "p": 0.532
+    "p": 0.526
    },
    "combo": {
-    "p": 0.237,
-    "odds": 3.06
+    "p": 0.235,
+    "odds": 3.09
    },
    "corners": null,
    "cards": null
@@ -80,8 +80,8 @@
    "away": "Australia",
    "pick": {
     "side": "A",
-    "p": 0.449,
-    "odds": 2.1
+    "p": 0.472,
+    "odds": 2.0
    },
    "goals": {
     "side": "under",
@@ -90,11 +90,11 @@
    },
    "btts": {
     "side": "no",
-    "p": 0.502
+    "p": 0.507
    },
    "combo": {
-    "p": 0.204,
-    "odds": 3.6
+    "p": 0.212,
+    "odds": 3.43
    },
    "corners": null,
    "cards": null
@@ -112,16 +112,16 @@
    },
    "goals": {
     "side": "under",
-    "p": 0.52,
-    "odds": 1.8
+    "p": 0.51,
+    "odds": 1.833
    },
    "btts": {
     "side": "yes",
-    "p": 0.521
+    "p": 0.529
    },
    "combo": {
-    "p": 0.189,
-    "odds": 3.96
+    "p": 0.183,
+    "odds": 4.03
    },
    "corners": null,
    "cards": null
@@ -134,21 +134,21 @@
    "away": "Kazakhstan",
    "pick": {
     "side": "H",
-    "p": 0.354,
-    "odds": 2.6
+    "p": 0.36,
+    "odds": 2.55
    },
    "goals": {
     "side": "under",
-    "p": 0.612,
-    "odds": 1.556
+    "p": 0.604,
+    "odds": 1.571
    },
    "btts": {
     "side": "no",
-    "p": 0.546
+    "p": 0.54
    },
    "combo": {
-    "p": 0.192,
-    "odds": 4.05
+    "p": 0.191,
+    "odds": 4.01
    },
    "corners": null,
    "cards": null
@@ -161,33 +161,33 @@
    "away": "Burgos",
    "pick": {
     "side": "H",
-    "p": 0.408,
-    "odds": 2.3
+    "p": 0.384,
+    "odds": 2.45
    },
    "goals": {
     "side": "under",
-    "p": 0.578,
-    "odds": 1.606
+    "p": 0.575,
+    "odds": 1.625
    },
    "btts": {
     "side": "no",
-    "p": 0.523
+    "p": 0.518
    },
    "combo": {
-    "p": 0.202,
-    "odds": 3.69
+    "p": 0.191,
+    "odds": 3.98
    },
    "corners": {
     "exp": 9.5,
     "line": 9.5,
     "side": "under",
-    "p": 0.523
+    "p": 0.521
    },
    "cards": {
     "exp": 5.9,
     "line": 4.5,
     "side": "over",
-    "p": 0.69
+    "p": 0.699
    }
   },
   {
@@ -198,8 +198,8 @@
    "away": "Gibraltar",
    "pick": {
     "side": "H",
-    "p": 0.528,
-    "odds": 1.741
+    "p": 0.557,
+    "odds": 1.645
    },
    "goals": null,
    "btts": null,
@@ -215,8 +215,8 @@
    "away": "Iceland",
    "pick": {
     "side": "A",
-    "p": 0.513,
-    "odds": 1.8
+    "p": 0.52,
+    "odds": 1.769
    },
    "goals": {
     "side": "under",
@@ -225,11 +225,11 @@
    },
    "btts": {
     "side": "no",
-    "p": 0.525
+    "p": 0.527
    },
    "combo": {
-    "p": 0.231,
-    "odds": 3.09
+    "p": 0.235,
+    "odds": 3.03
    },
    "corners": null,
    "cards": null
@@ -242,21 +242,21 @@
    "away": "Azerbaijan",
    "pick": {
     "side": "A",
-    "p": 0.732,
-    "odds": 1.256
+    "p": 0.754,
+    "odds": 1.222
    },
    "goals": {
     "side": "under",
-    "p": 0.563,
-    "odds": 1.667
+    "p": 0.547,
+    "odds": 1.741
    },
    "btts": {
     "side": "no",
-    "p": 0.676
+    "p": 0.686
    },
    "combo": {
-    "p": 0.341,
-    "odds": 2.09
+    "p": 0.343,
+    "odds": 2.13
    },
    "corners": null,
    "cards": null
@@ -269,22 +269,12 @@
    "away": "Estonia",
    "pick": {
     "side": "H",
-    "p": 0.419,
-    "odds": 2.2
+    "p": 0.387,
+    "odds": 2.4
    },
-   "goals": {
-    "side": "under",
-    "p": 0.614,
-    "odds": 1.541
-   },
-   "btts": {
-    "side": "no",
-    "p": 0.554
-   },
-   "combo": {
-    "p": 0.219,
-    "odds": 3.39
-   },
+   "goals": null,
+   "btts": null,
+   "combo": null,
    "corners": null,
    "cards": null
   },
@@ -296,8 +286,8 @@
    "away": "Greece",
    "pick": {
     "side": "H",
-    "p": 0.605,
-    "odds": 1.526
+    "p": 0.591,
+    "odds": 1.556
    },
    "goals": {
     "side": "over",
@@ -306,11 +296,11 @@
    },
    "btts": {
     "side": "yes",
-    "p": 0.548
+    "p": 0.554
    },
    "combo": {
-    "p": 0.411,
-    "odds": 2.48
+    "p": 0.403,
+    "odds": 2.53
    },
    "corners": null,
    "cards": null
@@ -323,21 +313,21 @@
    "away": "North Macedonia",
    "pick": {
     "side": "H",
-    "p": 0.786,
-    "odds": 1.182
+    "p": 0.787,
+    "odds": 1.174
    },
    "goals": {
     "side": "over",
-    "p": 0.56,
-    "odds": 1.69
+    "p": 0.599,
+    "odds": 1.571
    },
    "btts": {
     "side": "no",
-    "p": 0.617
+    "p": 0.582
    },
    "combo": {
-    "p": 0.503,
-    "odds": 2.0
+    "p": 0.534,
+    "odds": 1.84
    },
    "corners": null,
    "cards": null
@@ -350,8 +340,8 @@
    "away": "Germany",
    "pick": {
     "side": "A",
-    "p": 0.731,
-    "odds": 1.263
+    "p": 0.724,
+    "odds": 1.278
    },
    "goals": null,
    "btts": null,
@@ -367,8 +357,8 @@
    "away": "Faroe Islands",
    "pick": {
     "side": "H",
-    "p": 0.683,
-    "odds": 1.357
+    "p": 0.689,
+    "odds": 1.345
    },
    "goals": {
     "side": "over",
@@ -377,11 +367,11 @@
    },
    "btts": {
     "side": "no",
-    "p": 0.561
+    "p": 0.568
    },
    "combo": {
-    "p": 0.42,
-    "odds": 2.49
+    "p": 0.424,
+    "odds": 2.47
    },
    "corners": null,
    "cards": null
@@ -397,19 +387,9 @@
     "p": 0.555,
     "odds": 1.667
    },
-   "goals": {
-    "side": "under",
-    "p": 0.569,
-    "odds": 1.667
-   },
-   "btts": {
-    "side": "no",
-    "p": 0.56
-   },
-   "combo": {
-    "p": 0.261,
-    "odds": 2.78
-   },
+   "goals": null,
+   "btts": null,
+   "combo": null,
    "corners": null,
    "cards": null
   },
@@ -421,27 +401,27 @@
    "away": "Uruguay",
    "pick": {
     "side": "H",
-    "p": 0.597,
-    "odds": 1.571
+    "p": 0.591,
+    "odds": 1.606
    },
    "goals": {
     "side": "under",
-    "p": 0.539,
-    "odds": 1.714
+    "p": 0.531,
+    "odds": 1.769
    },
    "btts": {
     "side": "no",
-    "p": 0.552
+    "p": 0.543
    },
    "combo": {
-    "p": 0.26,
-    "odds": 2.69
+    "p": 0.255,
+    "odds": 2.84
    },
    "corners": null,
    "cards": null
   }
  ],
- "updated": "2026-11-12T19:01:08+00:00",
+ "updated": "2026-11-13T08:55:18+00:00",
  "double": null,
  "daily": {
   "legs": [
@@ -456,7 +436,7 @@
     "kind": "pick"
    }
   ],
-  "p": 0.692,
-  "odds": 1.27
+  "p": 0.696,
+  "odds": 1.25
  }
 }

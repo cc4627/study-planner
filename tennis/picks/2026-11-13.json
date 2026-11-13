@@ -20,14 +20,101 @@
     "side": "over",
     "p": 0.536
    },
-   "acca": 0.1472,
+   "acca": 0.1468,
    "odds": [
-    1.71,
-    2.07
+    1.67,
+    2.18
    ],
    "gp": {
-    "over": 1.59,
-    "under": 2.22
+    "over": 1.6,
+    "under": 2.19
+   }
+  },
+  {
+   "id": "186773",
+   "time": "15:00",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Semifinal",
+   "p1": "Laura Samson",
+   "p2": "Elizabeth Mandlik",
+   "pick": 1,
+   "p": 0.698,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.635,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.508
+   },
+   "acca": 0.174,
+   "odds": [
+    1.44,
+    2.69
+   ],
+   "gp": {
+    "over": 1.97,
+    "under": 1.74
+   }
+  },
+  {
+   "id": "186547",
+   "time": "16:00",
+   "tour": "ATP",
+   "event": "Bybit Stockholm Open",
+   "round": "Semifinal",
+   "p1": "Taylor Fritz",
+   "p2": "Lorenzo Musetti",
+   "pick": 1,
+   "p": 0.55,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.534,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.533
+   },
+   "acca": 0.1534,
+   "odds": [
+    1.6,
+    2.3
+   ],
+   "gp": {
+    "over": 1.69,
+    "under": 2.06
+   }
+  },
+  {
+   "id": "186774",
+   "time": "16:30",
+   "tour": "WTA",
+   "event": "DIRECTV Open Presentado por Compesar",
+   "round": "Semifinal",
+   "p1": "Polona Hercog",
+   "p2": "Bianca Andreescu",
+   "pick": 2,
+   "p": 0.805,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.717,
+   "games": {
+    "line": 21.5,
+    "side": "under",
+    "p": 0.558
+   },
+   "acca": 0.4894,
+   "odds": [
+    3.72,
+    1.26
+   ],
+   "gp": {
+    "over": 2.09,
+    "under": 1.65
    }
   },
   {
@@ -49,14 +136,14 @@
     "side": "over",
     "p": 0.547
    },
-   "acca": 0.1613,
+   "acca": 0.1614,
    "odds": [
-    1.39,
-    2.98
+    1.35,
+    3.23
    ],
    "gp": {
-    "over": 1.92,
-    "under": 1.82
+    "over": 1.96,
+    "under": 1.77
    }
   },
   {
@@ -78,48 +165,23 @@
     "side": "over",
     "p": 0.538
    },
-   "acca": 0.1681,
+   "acca": 0.1683,
    "odds": [
-    1.51,
-    2.53
+    1.5,
+    2.57
    ],
    "gp": {
     "over": 1.78,
-    "under": 1.94
+    "under": 1.96
    }
-  },
-  {
-   "id": "186773",
-   "time": "05:00",
-   "tour": "WTA",
-   "event": "DIRECTV Open Presentado por Compesar",
-   "round": "Semifinal",
-   "p1": "Laura Samson",
-   "p2": "Elizabeth Mandlik",
-   "pick": 1,
-   "p": 0.698,
-   "bo": 3,
-   "new": false,
-   "tbc": true,
-   "first": 0.635,
-   "games": {
-    "line": 21.5,
-    "side": "over",
-    "p": 0.508
-   },
-   "acca": 0.1739,
-   "odds": [
-    1.35,
-    2.84
-   ]
   }
  ],
- "updated": "2026-11-12T18:59:13+00:00",
+ "updated": "2026-11-13T08:53:23+00:00",
  "double": {
   "legs": [
-   "187379",
-   "187384"
+   "186774",
+   "186773"
   ],
-  "p": 0.336
+  "p": 0.562
  }
 }

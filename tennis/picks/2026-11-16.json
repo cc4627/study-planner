@@ -1,0 +1,113 @@
+{
+ "date": "2026-11-16",
+ "matches": [
+  {
+   "id": "187511",
+   "time": "13:00",
+   "tour": "ATP",
+   "event": "Nitto ATP Finals",
+   "round": "Group Stage",
+   "p1": "Carlos Alcaraz",
+   "p2": "Frances Tiafoe",
+   "pick": 1,
+   "p": 0.888,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.792,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.641
+   },
+   "acca": 0.6041,
+   "odds": [
+    1.11,
+    6.37
+   ],
+   "gp": {
+    "over": 2.36,
+    "under": 1.52
+   }
+  },
+  {
+   "id": "187512",
+   "time": "19:30",
+   "tour": "ATP",
+   "event": "Nitto ATP Finals",
+   "round": "Group Stage",
+   "p1": "Daniil Medvedev",
+   "p2": "Flavio Cobolli",
+   "pick": 1,
+   "p": 0.682,
+   "bo": 3,
+   "new": false,
+   "tbc": false,
+   "first": 0.624,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.501
+   },
+   "acca": 0.1652,
+   "odds": [
+    1.22,
+    4.12
+   ],
+   "gp": {
+    "over": 2.07,
+    "under": 1.68
+   }
+  },
+  {
+   "id": "187510",
+   "time": "05:00",
+   "tour": "ATP",
+   "event": "Nitto ATP Finals",
+   "round": "Group Stage",
+   "p1": "Carlos Alcaraz",
+   "p2": "Flavio Cobolli",
+   "pick": 1,
+   "p": 0.922,
+   "bo": 3,
+   "new": false,
+   "tbc": true,
+   "first": 0.829,
+   "games": {
+    "line": 22.5,
+    "side": "under",
+    "p": 0.689
+   },
+   "acca": 0.6641
+  },
+  {
+   "id": "187514",
+   "time": "05:00",
+   "tour": "ATP",
+   "event": "Nitto ATP Finals",
+   "round": "Group Stage",
+   "p1": "Flavio Cobolli",
+   "p2": "Frances Tiafoe",
+   "pick": 2,
+   "p": 0.599,
+   "bo": 3,
+   "new": false,
+   "tbc": true,
+   "first": 0.566,
+   "games": {
+    "line": 22.5,
+    "side": "over",
+    "p": 0.526
+   },
+   "acca": 0.1592
+  }
+ ],
+ "updated": "2026-11-13T08:53:23+00:00",
+ "double": {
+  "legs": [
+   "187511",
+   "187512"
+  ],
+  "p": 0.606
+ }
+}

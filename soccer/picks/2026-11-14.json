@@ -14,15 +14,15 @@
    },
    "goals": {
     "side": "over",
-    "p": 0.552,
+    "p": 0.557,
     "odds": 1.667
    },
    "btts": {
     "side": "yes",
-    "p": 0.563
+    "p": 0.567
    },
    "combo": {
-    "p": 0.332,
+    "p": 0.335,
     "odds": 3.06
    },
    "corners": null,
@@ -73,7 +73,7 @@
    "away": "Castellon",
    "pick": {
     "side": "A",
-    "p": 0.414,
+    "p": 0.417,
     "odds": 2.25
    },
    "goals": {
@@ -83,23 +83,23 @@
    },
    "btts": {
     "side": "yes",
-    "p": 0.582
+    "p": 0.581
    },
    "combo": {
-    "p": 0.268,
+    "p": 0.27,
     "odds": 3.75
    },
    "corners": {
     "exp": 9.3,
     "line": 9.5,
     "side": "under",
-    "p": 0.545
+    "p": 0.546
    },
    "cards": {
     "exp": 5.8,
     "line": 4.5,
     "side": "over",
-    "p": 0.687
+    "p": 0.686
    }
   },
   {
@@ -645,7 +645,7 @@
    "away": "Fylde",
    "pick": {
     "side": "A",
-    "p": 0.476,
+    "p": 0.477,
     "odds": 1.909
    },
    "goals": null,
@@ -714,16 +714,16 @@
    },
    "goals": {
     "side": "over",
-    "p": 0.599,
-    "odds": 1.541
+    "p": 0.601,
+    "odds": 1.526
    },
    "btts": {
     "side": "yes",
-    "p": 0.599
+    "p": 0.601
    },
    "combo": {
-    "p": 0.36,
-    "odds": 2.73
+    "p": 0.362,
+    "odds": 2.7
    },
    "corners": {
     "exp": 10.0,
@@ -732,7 +732,7 @@
     "p": 0.58
    },
    "cards": {
-    "exp": 3.9,
+    "exp": 3.8,
     "line": 3.5,
     "side": "over",
     "p": 0.535
@@ -819,34 +819,34 @@
    "home": "Kidderminster",
    "away": "Halifax",
    "pick": {
-    "side": "H",
-    "p": 0.365,
+    "side": "A",
+    "p": 0.364,
     "odds": 2.5
    },
    "goals": {
     "side": "over",
-    "p": 0.519,
-    "odds": 1.769
+    "p": 0.515,
+    "odds": 1.8
    },
    "btts": {
     "side": "yes",
-    "p": 0.559
+    "p": 0.555
    },
    "combo": {
-    "p": 0.229,
-    "odds": 4.42
+    "p": 0.225,
+    "odds": 4.5
    },
    "corners": {
     "exp": 9.3,
     "line": 10.5,
     "side": "under",
-    "p": 0.661
+    "p": 0.662
    },
    "cards": {
     "exp": 4.3,
     "line": 3.5,
     "side": "over",
-    "p": 0.614
+    "p": 0.615
    }
   },
   {
@@ -857,8 +857,8 @@
    "away": "Worthing",
    "pick": {
     "side": "H",
-    "p": 0.424,
-    "odds": 2.15
+    "p": 0.416,
+    "odds": 2.2
    },
    "goals": null,
    "btts": null,
@@ -873,7 +873,7 @@
     "exp": 4.3,
     "line": 3.5,
     "side": "over",
-    "p": 0.617
+    "p": 0.619
    }
   },
   {
@@ -884,8 +884,8 @@
    "away": "Aldershot",
    "pick": {
     "side": "H",
-    "p": 0.656,
-    "odds": 1.385
+    "p": 0.666,
+    "odds": 1.37
    },
    "goals": null,
    "btts": null,
@@ -894,13 +894,13 @@
     "exp": 10.8,
     "line": 10.5,
     "side": "over",
-    "p": 0.506
+    "p": 0.507
    },
    "cards": {
     "exp": 3.7,
     "line": 3.5,
-    "side": "over",
-    "p": 0.5
+    "side": "under",
+    "p": 0.502
    }
   },
   {
@@ -948,8 +948,8 @@
    "away": "Boreham Wood",
    "pick": {
     "side": "A",
-    "p": 0.56,
-    "odds": 1.625
+    "p": 0.578,
+    "odds": 1.571
    },
    "goals": null,
    "btts": null,
@@ -961,10 +961,10 @@
     "p": 0.623
    },
    "cards": {
-    "exp": 3.7,
+    "exp": 3.6,
     "line": 3.5,
     "side": "under",
-    "p": 0.503
+    "p": 0.507
    }
   },
   {
@@ -1012,8 +1012,8 @@
    "away": "Morton",
    "pick": {
     "side": "H",
-    "p": 0.736,
-    "odds": 1.256
+    "p": 0.729,
+    "odds": 1.278
    },
    "goals": null,
    "btts": null,
@@ -1022,13 +1022,13 @@
     "exp": 9.6,
     "line": 10.5,
     "side": "under",
-    "p": 0.631
+    "p": 0.634
    },
    "cards": {
     "exp": 3.7,
     "line": 3.5,
-    "side": "under",
-    "p": 0.503
+    "side": "over",
+    "p": 0.501
    }
   },
   {
@@ -1081,16 +1081,16 @@
    },
    "goals": {
     "side": "under",
-    "p": 0.529,
-    "odds": 1.741
+    "p": 0.532,
+    "odds": 1.714
    },
    "btts": {
-    "side": "yes",
-    "p": 0.5
+    "side": "no",
+    "p": 0.503
    },
    "combo": {
-    "p": 0.214,
-    "odds": 3.26
+    "p": 0.215,
+    "odds": 3.21
    },
    "corners": {
     "exp": 9.9,
@@ -1118,16 +1118,16 @@
    },
    "goals": {
     "side": "under",
-    "p": 0.614,
-    "odds": 1.541
+    "p": 0.612,
+    "odds": 1.556
    },
    "btts": {
     "side": "no",
-    "p": 0.549
+    "p": 0.547
    },
    "combo": {
     "p": 0.201,
-    "odds": 3.78
+    "odds": 3.81
    },
    "corners": null,
    "cards": null
@@ -1140,8 +1140,8 @@
    "away": "Wales",
    "pick": {
     "side": "H",
-    "p": 0.77,
-    "odds": 1.2
+    "p": 0.765,
+    "odds": 1.211
    },
    "goals": null,
    "btts": null,
@@ -1312,7 +1312,7 @@
    "away": "Denmark",
    "pick": {
     "side": "H",
-    "p": 0.62,
+    "p": 0.618,
     "odds": 1.5
    },
    "goals": null,
@@ -1413,7 +1413,7 @@
    }
   }
  ],
- "updated": "2026-11-12T19:01:08+00:00",
+ "updated": "2026-11-13T08:55:18+00:00",
  "double": {
   "legs": [
    [
@@ -1440,7 +1440,7 @@
     "kind": "pick"
    }
   ],
-  "p": 0.567,
-  "odds": 1.51
+  "p": 0.558,
+  "odds": 1.55
  }
 }
