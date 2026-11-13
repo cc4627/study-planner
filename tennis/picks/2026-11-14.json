@@ -1,0 +1,28 @@
+{
+ "date": "2026-11-14",
+ "matches": [
+  {
+   "id": "187441",
+   "time": "05:00",
+   "tour": "WTA",
+   "event": "FAGE WTA Finals Indian Wells",
+   "round": "Semifinal",
+   "p1": "Jessica Pegula",
+   "p2": "Mirra Andreeva",
+   "pick": 1,
+   "p": 0.555,
+   "bo": 3,
+   "new": false,
+   "tbc": true,
+   "first": 0.537,
+   "games": {
+    "line": 21.5,
+    "side": "over",
+    "p": 0.547
+   },
+   "acca": 0.1619
+  }
+ ],
+ "updated": "2026-11-13T08:53:23+00:00",
+ "double": null
+}
